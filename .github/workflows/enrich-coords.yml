@@ -29,6 +29,12 @@ jobs:
         run: |
           python scripts/enrich_coords.py --yaml data/ww1-belgium.yaml
           python scripts/enrich_coords.py --yaml docs/data/ww1-belgium.yaml
+- name: Enrich coordinates (data + docs copy)
+  run: |
+    python scripts/enrich_coords.py --yaml data/ww1-belgium.yaml
+    python scripts/enrich_coords.py --yaml docs/data/ww1-belgium.yaml
+    python scripts/enrich_coords.py --yaml data/berlin-trip.yaml
+    python scripts/enrich_coords.py --yaml docs/data/berlin-trip.yaml
 
       - name: Commit changes (if any)
         run: |
