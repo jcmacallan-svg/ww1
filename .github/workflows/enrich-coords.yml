@@ -25,22 +25,18 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
 
-      - name: Enrich coordinates (data + docs copy)
+      - name: Enrich coordinates (WW1 + Berlin)
         run: |
           python scripts/enrich_coords.py --yaml data/ww1-belgium.yaml
           python scripts/enrich_coords.py --yaml docs/data/ww1-belgium.yaml
-- name: Enrich coordinates (data + docs copy)
-  run: |
-    python scripts/enrich_coords.py --yaml data/ww1-belgium.yaml
-    python scripts/enrich_coords.py --yaml docs/data/ww1-belgium.yaml
-    python scripts/enrich_coords.py --yaml data/berlin-trip.yaml
-    python scripts/enrich_coords.py --yaml docs/data/berlin-trip.yaml
+          python scripts/enrich_coords.py --yaml data/berlin-trip.yaml
+          python scripts/enrich_coords.py --yaml docs/data/berlin-trip.yaml
 
       - name: Commit changes (if any)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ww1-belgium.yaml docs/data/ww1-belgium.yaml
+          git add data/ww1-belgium.yaml docs/data/ww1-belgium.yaml data/berlin-trip.yaml docs/data/berlin-trip.yaml
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
