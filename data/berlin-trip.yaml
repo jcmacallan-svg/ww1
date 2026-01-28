@@ -501,6 +501,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52083333
+      lon: 13.40944444
   why_visit: Top uitzicht over de stad; lekker als je snel ‘oriëntatie’ wilt.
   themes:
   - modern-city
@@ -512,6 +515,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Fernsehturm_Berlin
     maps_query: Fernsehturm Berlin
+    wikidata: Q151356
 - id: alexanderplatz
   name: Alexanderplatz
   type: district
@@ -520,6 +524,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5217
+      lon: 13.4136
   why_visit: Drukke knoop met DDR/modern contrast; handig voor routes en sfeer.
   themes:
   - modern-city
@@ -531,6 +538,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Alexanderplatz
     maps_query: Alexanderplatz
+    wikidata: Q152783
 - id: hamburger-bahnhof
   name: Hamburger Bahnhof – Museum für Gegenwart
   type: museum
@@ -539,6 +547,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52833333
+      lon: 13.37222222
   why_visit: Top voor hedendaagse kunst en grote installaties.
   themes:
   - modern-art
@@ -549,6 +560,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Hamburger_Bahnhof
     maps_query: Hamburger Bahnhof
+    wikidata: Q584756
 - id: berlinische-galerie
   name: Berlinische Galerie (moderne kunst / fotografie)
   type: museum
@@ -557,6 +569,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50416667
+      lon: 13.39888889
   why_visit: Sterk museum voor moderne kunst, fotografie en Berlijnse kunstgeschiedenis.
   themes:
   - modern-art
@@ -567,6 +582,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlinische_Galerie
     maps_query: Berlinische Galerie
+    wikidata: Q700222
 - id: kw-institute
   name: KW Institute for Contemporary Art
   type: museum
@@ -586,6 +602,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/KW_Institute_for_Contemporary_Art
     maps_query: KW Institute for Contemporary Art
+    wikidata: Q1792296
 - id: gropius-bau
   name: Gropius Bau
   type: museum
@@ -594,6 +611,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50638889
+      lon: 13.38194444
   why_visit: Sterke tentoonstellingsruimte (kunst/cultuur) in mooi gebouw.
   themes:
   - modern-art
@@ -605,6 +625,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Gropius_Bau
     maps_query: Gropius Bau
+    wikidata: Q569445
 - id: urban-nation
   name: Urban Nation (street art museum)
   type: museum
@@ -625,6 +646,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Urban_Nation
     maps_query: Urban Nation Museum
+    wikidata: Q111594318
 - id: co-berlin
   name: C/O Berlin (fotografie)
   type: museum
@@ -633,6 +655,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50665
+      lon: 13.33057
   why_visit: Fotografie-anker met wisselende exposities; makkelijk te combineren met Zoo/Ku’damm.
   themes:
   - museum
@@ -644,6 +669,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/C/O_Berlin
     maps_query: C/O Berlin
+    wikidata: Q1022620
 - id: museum-island
   name: Museum Island (Museumsinsel)
   type: district
@@ -652,6 +678,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52138889
+      lon: 13.39555556
   why_visit: Culture cluster met meerdere musea; ideaal als je een museumdag wilt plannen.
   themes:
   - museum
@@ -663,6 +692,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Museum_Island
     maps_query: Museumsinsel Berlin
+    wikidata: Q151963
 - id: pergamon-museum
   name: Pergamon Museum (Museuminsel)
   type: museum
@@ -671,6 +701,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.521
+      lon: 13.396
   why_visit: Wereldklasse oudheid-collectie (check renovatie/openingstijden vooraf).
   themes:
   - museum
@@ -682,6 +715,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Pergamon_Museum
     maps_query: Pergamonmuseum
+    wikidata: Q157298
 - id: neues-museum
   name: Neues Museum
   type: museum
@@ -690,6 +724,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52055556
+      lon: 13.39777778
   why_visit: Sterk museum op Museuminsel (o.a. Egyptisch); mooie herbouw/architectuur.
   themes:
   - museum
@@ -701,6 +738,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Neues_Museum
     maps_query: Neues Museum Berlin
+    wikidata: Q157316
 - id: tiergarten-park
   name: Tiergarten (park-wandeling)
   type: park
@@ -709,6 +747,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51388889
+      lon: 13.35694444
   why_visit: Fijn groen midden in de stad; perfect als ‘reset’ tussen sights.
   themes:
   - outdoors
@@ -719,6 +760,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tiergarten_(park)
     maps_query: Großer Tiergarten
+    wikidata: Q694020
 - id: tempelhofer-feld
   name: Tempelhofer Feld (voormalig vliegveld)
   type: park
@@ -727,6 +769,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.476
+      lon: 13.395
   why_visit: Mega open ruimte voor wandelen/fietsen/skaten + locals vibe.
   themes:
   - vibe
@@ -737,6 +782,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tempelhofer_Feld
     maps_query: Tempelhofer Feld
+    wikidata: Q2402748
 - id: mauerpark
   name: Mauerpark
   type: park
@@ -840,6 +886,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51111111
+      lon: 13.44305556
   why_visit: Berlijn clubcultuur-icoon. Niet voor iedereen; deurbeleid/drukte.
   themes:
   - nightlife
@@ -851,6 +900,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berghain
     maps_query: Berghain
+    wikidata: Q136975
 - id: tresor
   name: Tresor (club – techno)
   type: nightlife
@@ -870,6 +920,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tresor
     maps_query: Tresor Berlin
+    wikidata: Q1892363
 - id: schloss-charlottenburg
   name: Schloss Charlottenburg
   type: palace
@@ -878,6 +929,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5209
+      lon: 13.2957
   why_visit: Paleis + tuinen; mooi contrast met ‘ruw’ Berlijn.
   themes:
   - history
@@ -889,6 +943,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
     maps_query: Schloss Charlottenburg
+    wikidata: Q154996
 - id: kurfuerstendamm
   name: Kurfürstendamm (Ku’damm)
   type: district
@@ -907,3 +962,4 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
+    wikidata: Q160272
