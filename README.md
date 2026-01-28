@@ -85,16 +85,3 @@ Iedereen met write-access kan direct in GitHub de YAML aanpassen via:
 `docs/data/ww1-belgium.yaml` (of via de “Bewerk data op GitHub” link bovenaan de pagina).
 
 Voor bijdragers zonder write-access: laat ze een PR openen.
-
-## Enrich coordinates (lat/lon)
-
-Voor routeplanning zijn coördinaten handig. Draai lokaal:
-
-```bash
-python -m pip install -r requirements.txt
-python scripts/enrich_coords.py --yaml data/ww1-belgium.yaml
-python scripts/enrich_coords.py --yaml docs/data/ww1-belgium.yaml
-```
-
-Of gebruik GitHub Actions:
-**Actions → Enrich POI coordinates → Run workflow** (of wacht op de wekelijkse run).

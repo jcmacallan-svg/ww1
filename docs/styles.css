@@ -299,3 +299,27 @@ code{
 }
 
 .hidden{ display:none !important; }
+
+
+.tabs{
+  margin: 14px 0 6px;
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+}
+.tab{
+  appearance:none;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 999px;
+  cursor:pointer;
+  font-size: 12px;
+}
+.tab:hover{ border-color: rgba(122,162,255,.35); color: var(--text); }
+.tab.active{
+  background: rgba(122,162,255,.14);
+  border-color: rgba(122,162,255,.35);
+  color: var(--text);
+}

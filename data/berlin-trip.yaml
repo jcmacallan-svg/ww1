@@ -1,0 +1,836 @@
+schema_version: '0.2'
+topic: Berlin (history + vibe + modern art + nightlife + food)
+country: Germany
+generated_at: '2026-01-28'
+settings:
+  default_origin:
+    name: Leonardo Hotel Berlin Mitte
+    coordinates:
+      lat: 52.52219
+      lon: 13.38569
+    note: Default start for route suggestions in the Berlin dataset.
+regions:
+- id: berlin-mitte
+  name: Mitte & Museuminsel
+  description: 'Historisch hart: Museuminsel, Unter den Linden, regeringskwartier en gedenkplekken.'
+  base_towns:
+  - Berlin-Mitte
+- id: berlin-tiergarten
+  name: Tiergarten & Regierungsviertel
+  description: Monumenten, parken en regeringscentrum rond Tiergarten en de Spree.
+  base_towns:
+  - Berlin-Tiergarten
+- id: berlin-kreuzberg-neukoelln
+  name: Kreuzberg & Neukölln
+  description: Streetfood, subcultuur, street art en avond-energie.
+  base_towns:
+  - Kreuzberg
+  - Neukölln
+- id: berlin-friedrichshain
+  name: Friedrichshain & East Side
+  description: Muurgeschiedenis, Spree-oever, clubs en creatieve hubs.
+  base_towns:
+  - Friedrichshain
+- id: berlin-prenzlauerberg
+  name: Prenzlauer Berg & Pankow
+  description: Cafés, weekend-sfeer, kleine galeries en parken.
+  base_towns:
+  - Prenzlauer Berg
+- id: berlin-charlottenburg
+  name: Charlottenburg & West Berlin
+  description: 'Klassiek West-Berlijn: Ku’damm, paleis en musea.'
+  base_towns:
+  - Charlottenburg
+- id: berlin-daytrips
+  name: Daytrips (buiten Berlijn)
+  description: Sterke (geschiedenis) uitstapjes buiten de stad, ideaal als je 3+ dagen hebt.
+  base_towns:
+  - Berlin
+pois:
+- id: leonardo-hotel-berlin-mitte
+  name: Leonardo Hotel Berlin Mitte (startpunt)
+  type: hotel
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+    coordinates:
+      lat: 52.52219
+      lon: 13.38569
+  why_visit: 'Handig startpunt: centraal en dicht bij Friedrichstraße/Spree. Wordt gebruikt als start voor routes
+    in deze tab.'
+  themes:
+  - logistics
+  practical:
+    typical_visit_time: —
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Leonardo_Hotel_Berlin_Mitte
+    official: https://www.leonardo-hotels.com/berlin/leonardo-hotel-berlin-mitte
+    maps_query: Leonardo Hotel Berlin Mitte
+- id: berlin-wall-memorial
+  name: Berlin Wall Memorial (Gedenkstätte Berliner Mauer)
+  type: memorial
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum en uitkijkpunt.'
+  themes:
+  - history
+  - cold-war
+  - remembrance
+  related:
+    years:
+    - '1961'
+    - '1989'
+  practical:
+    typical_visit_time: 90–150 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Berlin_Wall_Memorial
+    maps_query: Gedenkstätte Berliner Mauer
+- id: ddr-museum
+  name: DDR Museum
+  type: museum
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Interactief museum over dagelijks leven in de DDR (Koude Oorlog).
+  themes:
+  - history
+  - cold-war
+  - museum
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/DDR_Museum
+    maps_query: DDR Museum Berlin
+- id: stasi-museum
+  name: Stasi Museum (Normannenstraße)
+  type: museum
+  region_id: berlin-friedrichshain
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Originele Stasi-locatie met sterke context over surveillance en DDR-apparaat.
+  themes:
+  - history
+  - cold-war
+  - museum
+  practical:
+    typical_visit_time: 90–150 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Stasi_Museum
+    maps_query: Stasi Museum Berlin
+- id: checkpoint-charlie
+  name: Checkpoint Charlie
+  type: site
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Symbolische grensovergang (Koude Oorlog). Druk/toeristisch, maar historisch relevant.
+  themes:
+  - history
+  - cold-war
+  practical:
+    typical_visit_time: 20–40 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Checkpoint_Charlie
+    maps_query: Checkpoint Charlie
+- id: east-side-gallery
+  name: East Side Gallery
+  type: site
+  region_id: berlin-friedrichshain
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: 'Openlucht-galerie op een stuk Muur: street art + historisch moment langs de Spree.'
+  themes:
+  - street-art
+  - history
+  - vibe
+  - cold-war
+  related:
+    years:
+    - '1990'
+  practical:
+    typical_visit_time: 45–90 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/East_Side_Gallery
+    maps_query: East Side Gallery
+- id: allied-museum
+  name: Allied Museum (AlliiertenMuseum)
+  type: museum
+  region_id: berlin-charlottenburg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Sterk museum over de Westerse geallieerden in Berlijn en de Koude Oorlog (incl. luchtbrug).
+  themes:
+  - history
+  - cold-war
+  - museum
+  practical:
+    typical_visit_time: 75–140 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Allied_Museum
+    maps_query: AlliiertenMuseum Berlin
+- id: teufelsberg
+  name: Teufelsberg (afluisterstation & street art)
+  type: site
+  region_id: berlin-charlottenburg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Koude-Oorlog afluisterpost op een puinberg + street art + uitzicht (vibe!).
+  themes:
+  - cold-war
+  - vibe
+  - street-art
+  - outdoors
+  practical:
+    typical_visit_time: 90–180 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Teufelsberg
+    maps_query: Teufelsberg Berlin
+- id: topography-of-terror
+  name: Topography of Terror
+  type: museum
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Indrukwekkend documentatiecentrum op historische locatie van het nazistische politie-apparaat.
+  themes:
+  - history
+  - ww2
+  - remembrance
+  - museum
+  practical:
+    typical_visit_time: 90–150 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Topography_of_Terror
+    maps_query: Topography of Terror
+- id: memorial-murdered-jews
+  name: Memorial to the Murdered Jews of Europe
+  type: memorial
+  region_id: berlin-tiergarten
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Krachtige herdenkingsplek met info-centrum; ligt centraal en is goed te combineren met Brandenburg/Reichstag.
+  themes:
+  - remembrance
+  - ww2
+  - architecture
+  practical:
+    typical_visit_time: 45–90 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Memorial_to_the_Murdered_Jews_of_Europe
+    maps_query: Holocaust Memorial Berlin
+- id: jewish-museum-berlin
+  name: Jewish Museum Berlin
+  type: museum
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Sterk museum + indrukwekkende architectuur (Libeskind).
+  themes:
+  - history
+  - museum
+  - architecture
+  - remembrance
+  practical:
+    typical_visit_time: 120–240 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Jewish_Museum_Berlin
+    maps_query: Jewish Museum Berlin
+- id: bendlerblock-plot-20-july
+  name: German Resistance Memorial Center (Bendlerblock)
+  type: museum
+  region_id: berlin-tiergarten
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Herinneringsplek rond het 20-juli complot en Duitse weerstand tegen Hitler.
+  themes:
+  - ww2
+  - history
+  - remembrance
+  - museum
+  practical:
+    typical_visit_time: 45–90 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/German_Resistance_Memorial_Center
+    maps_query: Gedenkstätte Deutscher Widerstand
+- id: sachsenhausen
+  name: Sachsenhausen concentration camp memorial (daytrip)
+  type: memorial
+  region_id: berlin-daytrips
+  location:
+    locality: Oranienburg
+    province: Brandenburg
+    country: Germany
+  why_visit: Zeer indrukwekkend; goed te doen als dagtrip als je extra tijd hebt.
+  themes:
+  - ww2
+  - remembrance
+  - history
+  practical:
+    typical_visit_time: 180–300 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Sachsenhausen_concentration_camp
+    maps_query: Sachsenhausen Memorial
+- id: wannsee-conference-house
+  name: House of the Wannsee Conference
+  type: museum
+  region_id: berlin-daytrips
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Historische locatie van de Wannseeconferentie; sober, informatief en belangrijk.
+  themes:
+  - ww2
+  - history
+  - remembrance
+  - museum
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/House_of_the_Wannsee_Conference
+    maps_query: Wannsee Conference House
+- id: german-historical-museum
+  name: Deutsches Historisches Museum
+  type: museum
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Breed historisch overzicht (incl. Keizerrijk/WO1/WO2). Fijne ‘context’ dag.
+  themes:
+  - history
+  - museum
+  - ww1
+  - ww2
+  practical:
+    typical_visit_time: 120–240 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Deutsches_Historisches_Museum
+    maps_query: Deutsches Historisches Museum
+- id: berlin-cathedral
+  name: Berlin Cathedral (Berliner Dom)
+  type: landmark
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Iconische koepel aan Museuminsel; mooi uitzicht vanaf de koepel.
+  themes:
+  - architecture
+  - history
+  - vibe
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Berlin_Cathedral
+    maps_query: Berliner Dom
+- id: brandenburg-gate
+  name: Brandenburger Tor
+  type: landmark
+  region_id: berlin-tiergarten
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Iconisch symbool — perfect startpunt voor een wandeling door het centrum.
+  themes:
+  - history
+  - vibe
+  practical:
+    typical_visit_time: 15–30 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Brandenburg_Gate
+    maps_query: Brandenburg Gate
+- id: reichstag-building
+  name: Reichstag Building (koepel)
+  type: landmark
+  region_id: berlin-tiergarten
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Politiek + architectuur + uitzicht. Reserveren vaak nodig.
+  themes:
+  - history
+  - architecture
+  - vibe
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: mixed
+    notes: Check vooraf reservering voor de koepel.
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Reichstag_building
+    maps_query: Reichstag Building
+- id: potsdamer-platz
+  name: Potsdamer Platz (nieuwe stad / moderne herbouw)
+  type: district
+  region_id: berlin-tiergarten
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: 'Goede ‘nieuwe Berlijn’ vibe: herbouw, hoogbouw en city-feel.'
+  themes:
+  - modern-city
+  - architecture
+  - vibe
+  practical:
+    typical_visit_time: 45–120 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Potsdamer_Platz
+    maps_query: Potsdamer Platz
+- id: berliner-fernsehturm
+  name: Fernsehturm Berlin (TV Tower) – uitzicht
+  type: viewpoint
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Top uitzicht over de stad; lekker als je snel ‘oriëntatie’ wilt.
+  themes:
+  - modern-city
+  - vibe
+  - architecture
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Fernsehturm_Berlin
+    maps_query: Fernsehturm Berlin
+- id: alexanderplatz
+  name: Alexanderplatz
+  type: district
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Drukke knoop met DDR/modern contrast; handig voor routes en sfeer.
+  themes:
+  - modern-city
+  - vibe
+  - cold-war
+  practical:
+    typical_visit_time: 30–90 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Alexanderplatz
+    maps_query: Alexanderplatz
+- id: hamburger-bahnhof
+  name: Hamburger Bahnhof – Museum für Gegenwart
+  type: museum
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Top voor hedendaagse kunst en grote installaties.
+  themes:
+  - modern-art
+  - museum
+  practical:
+    typical_visit_time: 120–240 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Hamburger_Bahnhof
+    maps_query: Hamburger Bahnhof
+- id: berlinische-galerie
+  name: Berlinische Galerie (moderne kunst / fotografie)
+  type: museum
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Sterk museum voor moderne kunst, fotografie en Berlijnse kunstgeschiedenis.
+  themes:
+  - modern-art
+  - museum
+  practical:
+    typical_visit_time: 90–150 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Berlinische_Galerie
+    maps_query: Berlinische Galerie
+- id: kw-institute
+  name: KW Institute for Contemporary Art
+  type: museum
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Hedendaagse kunst/curation; vaak wisselende tentoonstellingen.
+  themes:
+  - modern-art
+  - museum
+  - vibe
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/KW_Institute_for_Contemporary_Art
+    maps_query: KW Institute for Contemporary Art
+- id: gropius-bau
+  name: Gropius Bau
+  type: museum
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Sterke tentoonstellingsruimte (kunst/cultuur) in mooi gebouw.
+  themes:
+  - modern-art
+  - museum
+  - architecture
+  practical:
+    typical_visit_time: 90–180 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Gropius_Bau
+    maps_query: Gropius Bau
+- id: urban-nation
+  name: Urban Nation (street art museum)
+  type: museum
+  region_id: berlin-charlottenburg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Street art / urban art; goede match met Berlijn vibe.
+  themes:
+  - street-art
+  - modern-art
+  - museum
+  - vibe
+  practical:
+    typical_visit_time: 45–90 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Urban_Nation
+    maps_query: Urban Nation Museum
+- id: co-berlin
+  name: C/O Berlin (fotografie)
+  type: museum
+  region_id: berlin-charlottenburg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Fotografie-anker met wisselende exposities; makkelijk te combineren met Zoo/Ku’damm.
+  themes:
+  - museum
+  - modern-art
+  - vibe
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/C/O_Berlin
+    maps_query: C/O Berlin
+- id: museum-island
+  name: Museum Island (Museumsinsel)
+  type: district
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Culture cluster met meerdere musea; ideaal als je een museumdag wilt plannen.
+  themes:
+  - museum
+  - history
+  - architecture
+  practical:
+    typical_visit_time: 120–360 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Museum_Island
+    maps_query: Museumsinsel Berlin
+- id: pergamon-museum
+  name: Pergamon Museum (Museuminsel)
+  type: museum
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Wereldklasse oudheid-collectie (check renovatie/openingstijden vooraf).
+  themes:
+  - museum
+  - history
+  - architecture
+  practical:
+    typical_visit_time: 120–240 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Pergamon_Museum
+    maps_query: Pergamonmuseum
+- id: neues-museum
+  name: Neues Museum
+  type: museum
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Sterk museum op Museuminsel (o.a. Egyptisch); mooie herbouw/architectuur.
+  themes:
+  - museum
+  - history
+  - architecture
+  practical:
+    typical_visit_time: 120–240 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Neues_Museum
+    maps_query: Neues Museum Berlin
+- id: tiergarten-park
+  name: Tiergarten (park-wandeling)
+  type: park
+  region_id: berlin-tiergarten
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Fijn groen midden in de stad; perfect als ‘reset’ tussen sights.
+  themes:
+  - outdoors
+  - vibe
+  practical:
+    typical_visit_time: 45–180 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Tiergarten_(park)
+    maps_query: Großer Tiergarten
+- id: tempelhofer-feld
+  name: Tempelhofer Feld (voormalig vliegveld)
+  type: park
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Mega open ruimte voor wandelen/fietsen/skaten + locals vibe.
+  themes:
+  - vibe
+  - outdoors
+  practical:
+    typical_visit_time: 60–180 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Tempelhofer_Feld
+    maps_query: Tempelhofer Feld
+- id: mauerpark
+  name: Mauerpark
+  type: park
+  region_id: berlin-prenzlauerberg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: 'Zondags: markt + straatmuziek + (soms) karaoke. Heel Berlijns.'
+  themes:
+  - vibe
+  - outdoors
+  practical:
+    typical_visit_time: 60–150 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Mauerpark
+    maps_query: Mauerpark
+- id: markthalle-neun
+  name: Markthalle Neun (streetfood/markt)
+  type: food
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Top streetfood/markt-vibe (zeker bij events). Goed als lunch/diner-stop.
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 45–120 min
+    indoor_outdoor: indoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Markthalle_Neun
+    maps_query: Markthalle Neun
+- id: mustafas-gemuse-kebap
+  name: Mustafa’s Gemüse Kebap (iconisch streetfood)
+  type: food
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Berlijn-klassieker voor snelle hap (verwacht vaak rij).
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 20–45 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Mustafa%27s_Gem%C3%BCse_Kebap
+    maps_query: Mustafa's Gemüse Kebap
+- id: curry-36
+  name: Curry 36 (currywurst-klassieker)
+  type: food
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Eenvoudig, iconisch en snel — goeie snack-stop.
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 15–40 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Curry_36
+    maps_query: Curry 36
+- id: raw-gelaende
+  name: RAW-Gelände (street art & nightlife zone)
+  type: nightlife
+  region_id: berlin-friedrichshain
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Industriële vibe met street art, bars en events—goed voor avond/late sfeer.
+  themes:
+  - vibe
+  - street-art
+  - nightlife
+  practical:
+    typical_visit_time: 60–180 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/RAW-Gel%C3%A4nde
+    maps_query: RAW-Gelände Berlin
+- id: berghain
+  name: Berghain (club – iconisch)
+  type: nightlife
+  region_id: berlin-friedrichshain
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Berlijn clubcultuur-icoon. Niet voor iedereen; deurbeleid/drukte.
+  themes:
+  - nightlife
+  - vibe
+  practical:
+    typical_visit_time: —
+    indoor_outdoor: indoor
+    notes: Check actuele openingstijden/line-ups.
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Berghain
+    maps_query: Berghain
+- id: tresor
+  name: Tresor (club – techno)
+  type: nightlife
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Historische techno-club; vaak betere ‘instap’ dan Berghain.
+  themes:
+  - nightlife
+  - vibe
+  practical:
+    typical_visit_time: —
+    indoor_outdoor: indoor
+    notes: Check actuele openingstijden/line-ups.
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Tresor
+    maps_query: Tresor Berlin
+- id: schloss-charlottenburg
+  name: Schloss Charlottenburg
+  type: palace
+  region_id: berlin-charlottenburg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Paleis + tuinen; mooi contrast met ‘ruw’ Berlijn.
+  themes:
+  - history
+  - architecture
+  - vibe
+  practical:
+    typical_visit_time: 120–240 min
+    indoor_outdoor: mixed
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
+    maps_query: Schloss Charlottenburg
+- id: kurfuerstendamm
+  name: Kurfürstendamm (Ku’damm)
+  type: district
+  region_id: berlin-charlottenburg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: West-Berlijn shop/straat vibe; goed voor avondwandeling en eten.
+  themes:
+  - vibe
+  - modern-city
+  practical:
+    typical_visit_time: 45–120 min
+    indoor_outdoor: outdoor
+  links:
+    wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
+    maps_query: Kurfürstendamm
