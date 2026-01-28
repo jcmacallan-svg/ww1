@@ -189,6 +189,13 @@ async function getBestWikipediaInfo(poi){
 }
 
 /* ---------------- Routing ---------------- */
+
+function getOriginCoord(doc){
+  const c = doc?.settings?.default_origin?.coordinates;
+  if(c && typeof c.lat === "number" && typeof c.lon === "number") return {lat:c.lat, lon:c.lon};
+  return null;
+}
+
 function coordsFromPoi(p){
   const c = p.location?.coordinates;
   if(c && typeof c.lat === "number" && typeof c.lon === "number") return {lat:c.lat, lon:c.lon};

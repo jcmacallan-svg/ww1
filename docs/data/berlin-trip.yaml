@@ -77,9 +77,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.535
-      lon: 13.38972222
   why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum en uitkijkpunt.'
   themes:
   - history
@@ -95,7 +92,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Wall_Memorial
     maps_query: Gedenkstätte Berliner Mauer
-    wikidata: Q95517
 - id: ddr-museum
   name: DDR Museum
   type: museum
@@ -104,9 +100,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.51902778
-      lon: 13.40222222
   why_visit: Interactief museum over dagelijks leven in de DDR (Koude Oorlog).
   themes:
   - history
@@ -118,7 +111,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/DDR_Museum
     maps_query: DDR Museum Berlin
-    wikidata: Q573322
 - id: stasi-museum
   name: Stasi Museum (Normannenstraße)
   type: museum
@@ -127,9 +119,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.51444444
-      lon: 13.4875
   why_visit: Originele Stasi-locatie met sterke context over surveillance en DDR-apparaat.
   themes:
   - history
@@ -141,7 +130,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Stasi_Museum
     maps_query: Stasi Museum Berlin
-    wikidata: Q570472
 - id: checkpoint-charlie
   name: Checkpoint Charlie
   type: site
@@ -150,9 +138,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.5075
-      lon: 13.39027778
   why_visit: Symbolische grensovergang (Koude Oorlog). Druk/toeristisch, maar historisch relevant.
   themes:
   - history
@@ -163,7 +148,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Checkpoint_Charlie
     maps_query: Checkpoint Charlie
-    wikidata: Q68689
 - id: east-side-gallery
   name: East Side Gallery
   type: site
@@ -187,7 +171,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/East_Side_Gallery
     maps_query: East Side Gallery
-    wikidata: Q313746
 - id: allied-museum
   name: Allied Museum (AlliiertenMuseum)
   type: museum
@@ -196,9 +179,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.45583333
-      lon: 13.2725
   why_visit: Sterk museum over de Westerse geallieerden in Berlijn en de Koude Oorlog (incl. luchtbrug).
   themes:
   - history
@@ -210,7 +190,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Allied_Museum
     maps_query: AlliiertenMuseum Berlin
-    wikidata: Q316329
 - id: teufelsberg
   name: Teufelsberg (afluisterstation & street art)
   type: site
@@ -219,9 +198,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.4975
-      lon: 13.24111111
   why_visit: Koude-Oorlog afluisterpost op een puinberg + street art + uitzicht (vibe!).
   themes:
   - cold-war
@@ -234,7 +210,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Teufelsberg
     maps_query: Teufelsberg Berlin
-    wikidata: Q564884
 - id: topography-of-terror
   name: Topography of Terror
   type: museum
@@ -243,9 +218,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.50694444
-      lon: 13.38277778
   why_visit: Indrukwekkend documentatiecentrum op historische locatie van het nazistische politie-apparaat.
   themes:
   - history
@@ -258,7 +230,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Topography_of_Terror
     maps_query: Topography of Terror
-    wikidata: Q819081
 - id: memorial-murdered-jews
   name: Memorial to the Murdered Jews of Europe
   type: memorial
@@ -267,9 +238,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.51388889
-      lon: 13.37888889
   why_visit: Krachtige herdenkingsplek met info-centrum; ligt centraal en is goed te combineren met Brandenburg/Reichstag.
   themes:
   - remembrance
@@ -281,7 +249,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Memorial_to_the_Murdered_Jews_of_Europe
     maps_query: Holocaust Memorial Berlin
-    wikidata: Q160700
 - id: jewish-museum-berlin
   name: Jewish Museum Berlin
   type: museum
@@ -290,9 +257,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.502
-      lon: 13.395
   why_visit: Sterk museum + indrukwekkende architectuur (Libeskind).
   themes:
   - history
@@ -305,7 +269,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Jewish_Museum_Berlin
     maps_query: Jewish Museum Berlin
-    wikidata: Q157003
 - id: bendlerblock-plot-20-july
   name: German Resistance Memorial Center (Bendlerblock)
   type: museum
@@ -314,9 +277,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.50777778
-      lon: 13.3625
   why_visit: Herinneringsplek rond het 20-juli complot en Duitse weerstand tegen Hitler.
   themes:
   - ww2
@@ -329,7 +289,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/German_Resistance_Memorial_Center
     maps_query: Gedenkstätte Deutscher Widerstand
-    wikidata: Q880798
 - id: sachsenhausen
   name: Sachsenhausen concentration camp memorial (daytrip)
   type: memorial
@@ -338,9 +297,6 @@ pois:
     locality: Oranienburg
     province: Brandenburg
     country: Germany
-    coordinates:
-      lat: 52.76583333
-      lon: 13.26416667
   why_visit: Zeer indrukwekkend; goed te doen als dagtrip als je extra tijd hebt.
   themes:
   - ww2
@@ -352,7 +308,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Sachsenhausen_concentration_camp
     maps_query: Sachsenhausen Memorial
-    wikidata: Q154498
 - id: wannsee-conference-house
   name: House of the Wannsee Conference
   type: museum
@@ -361,9 +316,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.43305556
-      lon: 13.16555556
   why_visit: Historische locatie van de Wannseeconferentie; sober, informatief en belangrijk.
   themes:
   - ww2
@@ -376,7 +328,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/House_of_the_Wannsee_Conference
     maps_query: Wannsee Conference House
-    wikidata: Q152120
 - id: german-historical-museum
   name: Deutsches Historisches Museum
   type: museum
@@ -385,9 +336,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.51805556
-      lon: 13.39694444
   why_visit: Breed historisch overzicht (incl. Keizerrijk/WO1/WO2). Fijne ‘context’ dag.
   themes:
   - history
@@ -400,7 +348,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Deutsches_Historisches_Museum
     maps_query: Deutsches Historisches Museum
-    wikidata: Q688335
 - id: berlin-cathedral
   name: Berlin Cathedral (Berliner Dom)
   type: landmark
@@ -409,9 +356,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.51916667
-      lon: 13.40111111
   why_visit: Iconische koepel aan Museuminsel; mooi uitzicht vanaf de koepel.
   themes:
   - architecture
@@ -423,7 +367,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Cathedral
     maps_query: Berliner Dom
-    wikidata: Q154563
 - id: brandenburg-gate
   name: Brandenburger Tor
   type: landmark
@@ -432,9 +375,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.5163
-      lon: 13.3777
   why_visit: Iconisch symbool — perfect startpunt voor een wandeling door het centrum.
   themes:
   - history
@@ -445,7 +385,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Brandenburg_Gate
     maps_query: Brandenburg Gate
-    wikidata: Q82425
 - id: reichstag-building
   name: Reichstag Building (koepel)
   type: landmark
@@ -549,9 +488,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.50416667
-      lon: 13.39888889
   why_visit: Sterk museum voor moderne kunst, fotografie en Berlijnse kunstgeschiedenis.
   themes:
   - modern-art
@@ -562,7 +498,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlinische_Galerie
     maps_query: Berlinische Galerie
-    wikidata: Q700222
 - id: kw-institute
   name: KW Institute for Contemporary Art
   type: museum
@@ -667,9 +602,6 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-    coordinates:
-      lat: 52.521
-      lon: 13.396
   why_visit: Wereldklasse oudheid-collectie (check renovatie/openingstijden vooraf).
   themes:
   - museum
@@ -681,7 +613,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Pergamon_Museum
     maps_query: Pergamonmuseum
-    wikidata: Q157298
 - id: neues-museum
   name: Neues Museum
   type: museum
@@ -903,4 +834,3 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
-    wikidata: Q160272

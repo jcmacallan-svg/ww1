@@ -1,1235 +1,662 @@
+# WWI Belgium Points of Interest (POIs)
+# Goal: a simple, searchable structure you can extend over time.
+# License suggestion: CC-BY 4.0 for the data file (or MIT if you prefer everything MIT).
+# Last updated: 2026-01-28
 version: 0.1
-country: Belgium, France, Germany
-topic: World War I (Belgium + nearby France/Germany)
+country: "Belgium, France, Germany"
+topic: "World War I (Belgium + nearby France/Germany)"
 schema:
   region:
-    id: kebab-case
-    name: Human readable
-    description: Short description
-    base_towns:
-    - Suggested towns to stay
+    id: "kebab-case"
+    name: "Human readable"
+    description: "Short description"
+    base_towns: ["Suggested towns to stay"]
   poi:
-    id: kebab-case
-    name: Name
-    type: museum|memorial|cemetery|battlefield|trench|fort|town|site|visitor-centre|monument
-    region_id: links back to region
+    id: "kebab-case"
+    name: "Name"
+    type: "museum|memorial|cemetery|battlefield|trench|fort|town|site|visitor-centre|monument"
+    region_id: "links back to region"
     location:
-      locality: City / village
-      province: Province
-      country: Belgium
-    why_visit: '1–2 lines: why it’s worth it'
-    themes:
-    - trench-warfare
-    - remembrance
-    - fortress-warfare
-    - invasion-1914
-    - civilian-history
-    - art
-    - air-war
-    - naval-coastal
-    - medical
-    - logistics
+      locality: "City / village"
+      province: "Province"
+      country: "Belgium"
+    why_visit: "1–2 lines: why it’s worth it"
+    themes: ["trench-warfare","remembrance","fortress-warfare","invasion-1914","civilian-history","art","air-war","naval-coastal","medical","logistics"]
     related:
-      battles:
-      - 'Optional: Battle / campaign names'
-      years:
-      - 'Optional: key years'
+      battles: ["Optional: Battle / campaign names"]
+      years: ["Optional: key years"]
     practical:
-      typical_visit_time: e.g., 45–90 min
-      indoor_outdoor: indoor|outdoor|mixed
-      notes: Optional
+      typical_visit_time: "e.g., 45–90 min"
+      indoor_outdoor: "indoor|outdoor|mixed"
+      notes: "Optional"
     links:
-      official: https://… (optional)
-      wikipedia: https://… (optional)
-      wikidata: Q… (optional)
-      maps_query: Free text for quick map search (optional)
+      official: "https://… (optional)"
+      wikipedia: "https://… (optional)"
+      wikidata: "Q… (optional)"
+      maps_query: "Free text for quick map search (optional)"
+
 regions:
-- id: westhoek-ypres-salient
-  name: Westhoek – Ypres Salient (Ieper/Passendale/Heuvelland)
-  description: 'Highest density of Western Front sites: museums, trenches, craters, memorials and cemeteries.'
-  base_towns:
-  - Ieper (Ypres)
-  - Poperinge
-  - Heuvelland
-- id: yser-front
-  name: IJzerfront – Diksmuide/Nieuwpoort & the flooded polders
-  description: 'Belgian Army front sector: preserved Belgian trenches and the story of inundations.'
-  base_towns:
-  - Diksmuide
-  - Nieuwpoort
-- id: waregem-and-leie
-  name: Leie/Lys & Waregem area
-  description: Behind-the-lines remembrance sites, including the only permanent American WWI cemetery in Belgium.
-  base_towns:
-  - Waregem
-  - Kortrijk
-- id: brussels-central
-  name: Brussels & Central Belgium
-  description: National-level collections and context (excellent if you want a big ‘overview’ museum day).
-  base_towns:
-  - Brussel
-- id: liege-forts-1914
-  name: Luik (Liège) – Forten & de invasie van 1914
-  description: 'The opening battles of 1914: Brialmont forts, heavy artillery and the Battle of Liège.'
-  base_towns:
-  - Liège
-  - Ans
-- id: namur-and-meuse-1914
-  name: Namen (Namur) & Maasvallei (Dinant) – 1914
-  description: Fortified Position of Namur and key civilian history sites along the Meuse valley.
-  base_towns:
-  - Namur
-  - Dinant
-  - Wépion
-- id: antwerp-national-redoubt
-  name: Antwerpen & de ‘National Redoubt’ (1914)
-  description: The fortified position of Antwerp and its siege in 1914; some forts are museums today.
-  base_towns:
-  - Antwerpen
-  - Mechelen
-- id: verdun-meuse
-  name: Verdun & Meuse (FR) – 1916
-  description: 'Major WWI battlefield landscape around Verdun: forts, ossuary, trenches and memorial villages.'
-  base_towns:
-  - Verdun
-  - Fleury-devant-Douaumont
-- id: somme-front
-  name: Somme (FR) – 1916
-  description: 'Somme battlefields and memorials: craters, museums and Commonwealth remembrance sites.'
-  base_towns:
-  - Albert
-  - Péronne
-- id: artois-vimy
-  name: Artois & Vimy Ridge (FR) – 1915–1917
-  description: Canadian & Allied remembrance at Vimy Ridge plus wider Artois battlefield context.
-  base_towns:
-  - Arras
-  - Lens
-- id: chemin-des-dames-aisne
-  name: Aisne & Chemin des Dames (FR) – 1917
-  description: '1917 offensives and aftermath: ridges, caves (carrières) and memorial landscapes.'
-  base_towns:
-  - Laon
-  - Soissons
-- id: alsace-vosges
-  name: Elzas/Vogezen (FR) – mountain front
-  description: Mountain warfare sites and trenches in the Vosges/Alsace sector.
-  base_towns:
-  - Colmar
-  - Munster
-- id: german-border-1914
-  name: Duitsland (DE) – grens & 1914/Westfront context
-  description: Selected WWI-relevant border-proximate sites and museums in Germany (limited; expand as needed).
-  base_towns:
-  - Aachen
-  - Saarbrücken
+  - id: westhoek-ypres-salient
+    name: "Westhoek – Ypres Salient (Ieper/Passendale/Heuvelland)"
+    description: "Highest density of Western Front sites: museums, trenches, craters, memorials and cemeteries."
+    base_towns: ["Ieper (Ypres)", "Poperinge", "Heuvelland"]
+  - id: yser-front
+    name: "IJzerfront – Diksmuide/Nieuwpoort & the flooded polders"
+    description: "Belgian Army front sector: preserved Belgian trenches and the story of inundations."
+    base_towns: ["Diksmuide", "Nieuwpoort"]
+  - id: waregem-and-leie
+    name: "Leie/Lys & Waregem area"
+    description: "Behind-the-lines remembrance sites, including the only permanent American WWI cemetery in Belgium."
+    base_towns: ["Waregem", "Kortrijk"]
+  - id: brussels-central
+    name: "Brussels & Central Belgium"
+    description: "National-level collections and context (excellent if you want a big ‘overview’ museum day)."
+    base_towns: ["Brussel"]
+  - id: liege-forts-1914
+    name: "Luik (Liège) – Forten & de invasie van 1914"
+    description: "The opening battles of 1914: Brialmont forts, heavy artillery and the Battle of Liège."
+    base_towns: ["Liège", "Ans"]
+  - id: namur-and-meuse-1914
+    name: "Namen (Namur) & Maasvallei (Dinant) – 1914"
+    description: "Fortified Position of Namur and key civilian history sites along the Meuse valley."
+    base_towns: ["Namur", "Dinant", "Wépion"]
+  - id: antwerp-national-redoubt
+    name: "Antwerpen & de ‘National Redoubt’ (1914)"
+    description: "The fortified position of Antwerp and its siege in 1914; some forts are museums today."
+    base_towns: ["Antwerpen", "Mechelen"]
+
+  - id: verdun-meuse
+    name: "Verdun & Meuse (FR) – 1916"
+    description: "Major WWI battlefield landscape around Verdun: forts, ossuary, trenches and memorial villages."
+    base_towns: ["Verdun", "Fleury-devant-Douaumont"]
+  - id: somme-front
+    name: "Somme (FR) – 1916"
+    description: "Somme battlefields and memorials: craters, museums and Commonwealth remembrance sites."
+    base_towns: ["Albert", "Péronne"]
+  - id: artois-vimy
+    name: "Artois & Vimy Ridge (FR) – 1915–1917"
+    description: "Canadian & Allied remembrance at Vimy Ridge plus wider Artois battlefield context."
+    base_towns: ["Arras", "Lens"]
+  - id: chemin-des-dames-aisne
+    name: "Aisne & Chemin des Dames (FR) – 1917"
+    description: "1917 offensives and aftermath: ridges, caves (carrières) and memorial landscapes."
+    base_towns: ["Laon", "Soissons"]
+  - id: alsace-vosges
+    name: "Elzas/Vogezen (FR) – mountain front"
+    description: "Mountain warfare sites and trenches in the Vosges/Alsace sector."
+    base_towns: ["Colmar", "Munster"]
+  - id: german-border-1914
+    name: "Duitsland (DE) – grens & 1914/Westfront context"
+    description: "Selected WWI-relevant border-proximate sites and museums in Germany (limited; expand as needed)."
+    base_towns: ["Aachen", "Saarbrücken"]
+
 pois:
-- id: in-flanders-fields-museum
-  name: In Flanders Fields Museum (Ieper)
-  type: museum
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Ieper (Ypres)
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 50.85125
-      lon: 2.88563889
-  why_visit: Best ‘big picture’ museum for the Western Front in Belgian Flanders, inside the rebuilt Cloth Hall.
-  themes:
-  - remembrance
-  - trench-warfare
-  - civilian-history
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1914'
-    - '1915'
-    - '1916'
-    - '1917'
-    - '1918'
-  practical:
-    typical_visit_time: 90–150 min
-    indoor_outdoor: indoor
-    notes: Reserve extra time if you want the research centre or temporary exhibitions.
-  links:
-    official: https://www.inflandersfields.be/
-    wikipedia: https://en.wikipedia.org/wiki/In_Flanders_Fields_Museum
-    wikidata: Q3149909
-    maps_query: In Flanders Fields Museum Ieper
-- id: menin-gate-memorial-last-post
-  name: Menin Gate (Menenpoort) & Last Post ceremony
-  type: memorial
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Ieper (Ypres)
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 50.85222222
-      lon: 2.89166667
-  why_visit: Iconic daily remembrance moment (Last Post at 20:00) plus memorial to the missing of the Salient.
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1914'
-    - '1918'
-  practical:
-    typical_visit_time: 20–45 min
-    indoor_outdoor: outdoor
-    notes: Arrive earlier in busy seasons for a good spot.
-  links:
-    official: https://lastpost.be/
-    wikipedia: https://en.wikipedia.org/wiki/Menin_Gate
-    maps_query: Menin Gate Ieper
-    wikidata: Q1822397
-- id: tyne-cot-cemetery
-  name: Tyne Cot Cemetery & Memorial (CWGC)
-  type: cemetery
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Zonnebeke
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 50.88694444
-      lon: 2.99805556
-  why_visit: One of the most powerful cemetery visits in the area; vast scale and a strong memorial to the missing.
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Third Battle of Ypres (Passchendaele)
-    years:
-    - '1917'
-  practical:
-    typical_visit_time: 45–90 min
-    indoor_outdoor: outdoor
-    notes: Combine with Passchendaele/Zonnebeke sites.
-  links:
-    official: https://www.cwgc.org/visit-us/find-cemeteries-memorials/cemetery-details/53300/tyne-cot-cemetery/
-    wikipedia: https://en.wikipedia.org/wiki/Tyne_Cot_Cemetery
-    maps_query: Tyne Cot Cemetery
-    wikidata: Q2369533
-- id: passchendaele-museum
-  name: Passchendaele Museum (Zonnebeke)
-  type: museum
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Zonnebeke
-    province: West Flanders
-    country: Belgium
-  why_visit: Deep dive on Passchendaele (1917) with strong ‘conditions in the salient’ storytelling.
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Third Battle of Ypres (Passchendaele)
-    years:
-    - '1917'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: mixed
-    notes: Great paired with Tyne Cot.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Passchendaele_Museum
-    maps_query: Passchendaele Museum Zonnebeke
-- id: sanctuary-wood-hill-62
-  name: Sanctuary Wood / Hill 62 (trenches + museum)
-  type: trench
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Zillebeke
-    province: West Flanders
-    country: Belgium
-  why_visit: 'A very tangible trench visit: preserved trenches and a ‘feel’ for terrain and distances.'
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1915'
-    - '1916'
-    - '1917'
-  practical:
-    typical_visit_time: 45–90 min
-    indoor_outdoor: mixed
-    notes: Often included on battlefield tours.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Sanctuary_Wood_Museum
-    maps_query: Sanctuary Wood Museum Hill 62
-- id: hooge-crater-museum
-  name: Hooge Crater Museum (private museum, Menin Road)
-  type: museum
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Hooge (near Ieper)
-    province: West Flanders
-    country: Belgium
-  why_visit: Popular private collection with reconstructions; good ‘artifact heavy’ stop near key sites.
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1915'
-    - '1916'
-    - '1917'
-  practical:
-    typical_visit_time: 45–90 min
-    indoor_outdoor: indoor
-    notes: 'Nearby: Hooge Crater Cemetery + battlefield landscape.'
-  links:
-    official: https://www.hoogecrater.com/en/
-    wikipedia: https://en.wikipedia.org/wiki/Hooge_Crater_Museum
-    maps_query: Hooge Crater Museum
-- id: hill-60
-  name: Hill 60 battlefield landscape
-  type: battlefield
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Zillebeke
-    province: West Flanders
-    country: Belgium
-  why_visit: Iconic mined hill in the Salient; great for understanding craters and elevation as ‘weapons’.
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1915'
-    - '1917'
-  practical:
-    typical_visit_time: 30–60 min
-    indoor_outdoor: outdoor
-    notes: Short, powerful terrain visit.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Hill_60_(Ypres)
-    maps_query: Hill 60 Zillebeke
-    wikidata: Q20036965
-- id: yorkshire-trench-dugout
-  name: Yorkshire Trench & Dugout (Boezinge)
-  type: trench
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Boezinge
-    province: West Flanders
-    country: Belgium
-  why_visit: Rare preserved trench + dugout site; helps visualize front-line engineering.
-  themes:
-  - trench-warfare
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1915'
-  practical:
-    typical_visit_time: 30–60 min
-    indoor_outdoor: outdoor
-    notes: Often open-access; check local info for any closures.
-  links:
-    official: https://www.inflandersfields.be/nl/in-flanders-fields-museum/landschapgetuige/yorkshire-trench-dug-out
-    wikipedia: https://en.wikipedia.org/wiki/Yorkshire_Trench
-    maps_query: Yorkshire Trench Boezinge
-- id: talbot-house-poperinge
-  name: Talbot House (Poperinge) – ‘Every Man’s Club’
-  type: museum
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Poperinge
-    province: West Flanders
-    country: Belgium
-  why_visit: 'Exceptional ‘behind the lines’ social history: preserved soldiers’ club (1915) with attic chapel.'
-  themes:
-  - civilian-history
-  - remembrance
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1915'
-    - '1918'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: indoor
-    notes: You can also stay overnight (guesthouse).
-  links:
-    official: https://www.talbothouse.be/en
-    wikipedia: https://en.wikipedia.org/wiki/Talbot_House
-    maps_query: Talbot House Poperinge
-    wikidata: Q7679029
-- id: bayernwald-trenches
-  name: Bayernwald (German trenches, Heuvelland/Wijtschate)
-  type: trench
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Heuvelland (near Wijtschate/Kemmel)
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 50.8015
-      lon: 2.87747
-  why_visit: Restored German trench system; great counterpoint to the more common Allied narrative sites.
-  themes:
-  - trench-warfare
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1915'
-    - '1916'
-  practical:
-    typical_visit_time: 45–90 min
-    indoor_outdoor: outdoor
-    notes: Bring sturdy shoes; it’s a walking site.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Croonaert_Wood
-    maps_query: Bayernwald trenches Heuvelland
-    wikidata: Q4418699
-- id: messines-ireland-peace-park
-  name: Island of Ireland Peace Park (Mesen/Messines)
-  type: memorial
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Mesen (Messines)
-    province: West Flanders
-    country: Belgium
-  why_visit: Memorial that connects battlefield history with reconciliation (excellent ‘reflection’ stop).
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Battle of Messines
-    years:
-    - '1917'
-  practical:
-    typical_visit_time: 20–45 min
-    indoor_outdoor: outdoor
-    notes: Pairs well with Messines Ridge sites.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Island_of_Ireland_Peace_Park
-    maps_query: Island of Ireland Peace Park Mesen
-    wikidata: Q6083563
-- id: ploegsteert-memorial
-  name: Ploegsteert Memorial to the Missing (CWGC)
-  type: memorial
-  region_id: westhoek-ypres-salient
-  location:
-    locality: Ploegsteert (Comines-Warneton)
-    province: Hainaut
-    country: Belgium
-  why_visit: Southern edge of the Salient; quieter, reflective memorial setting in Ploegsteert Wood area.
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Ypres Salient
-    years:
-    - '1914'
-    - '1918'
-  practical:
-    typical_visit_time: 20–45 min
-    indoor_outdoor: outdoor
-    notes: Combine with a forest walk and nearby cemeteries.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Ploegsteert_Memorial_to_the_Missing
-    maps_query: Ploegsteert Memorial
-    wikidata: Q2872987
-- id: trench-of-death-dodengang
-  name: Dodengang / Trench of Death (Diksmuide)
-  type: trench
-  region_id: yser-front
-  location:
-    locality: Diksmuide
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 51.0468
-      lon: 2.8436
-  why_visit: Only preserved Belgian trench system from WWI; very direct ‘front-line’ experience.
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Yser Front
-    years:
-    - '1915'
-    - '1918'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: outdoor
-    notes: Check seasonal hours; it can be busy in spring/summer.
-  links:
-    official: https://dodengang.be/en
-    wikipedia: https://en.wikipedia.org/wiki/Dodengang
-    maps_query: Dodengang Diksmuide
-    wikidata: Q2232109
-- id: museum-aan-de-ijzer-ijzertoren
-  name: Museum aan de IJzer (IJzertoren) – Diksmuide
-  type: museum
-  region_id: yser-front
-  location:
-    locality: Diksmuide
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 51.03166667
-      lon: 2.85333333
-  why_visit: Strong Belgian-front focus + panoramic view over the former front area from the tower.
-  themes:
-  - remembrance
-  - civilian-history
-  related:
-    battles:
-    - Battle of the Yser
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 90–150 min
-    indoor_outdoor: indoor
-    notes: Plan time for the climb/elevator + viewing terrace.
-  links:
-    official: https://www.museumaandeijzer.be/
-    wikipedia: https://en.wikipedia.org/wiki/Yser_Tower
-    maps_query: Museum aan de IJzer Diksmuide
-    wikidata: Q1708620
-- id: vladslo-german-war-cemetery
-  name: Vladslo German War Cemetery (incl. Käthe Kollwitz ‘Grieving Parents’)
-  type: cemetery
-  region_id: yser-front
-  location:
-    locality: Vladslo (Diksmuide)
-    province: West Flanders
-    country: Belgium
-  why_visit: A very different cemetery atmosphere; famous Kollwitz sculpture adds powerful artistic lens on grief.
-  themes:
-  - remembrance
-  - art
-  related:
-    battles:
-    - Yser Front
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 30–60 min
-    indoor_outdoor: outdoor
-    notes: Quiet site—good for a reflective stop.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Vladslo_German_war_cemetery
-    maps_query: Vladslo German war cemetery
-    wikidata: Q572953
-- id: westfront-nieuwpoort
-  name: Westfront Nieuwpoort (visitor centre) + Ganzepoot sluices
-  type: visitor-centre
-  region_id: yser-front
-  location:
-    locality: Nieuwpoort
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 51.13611111
-      lon: 2.75555556
-  why_visit: Tells the story of how strategic inundations halted the German advance in 1914.
-  themes:
-  - naval-coastal
-  - civilian-history
-  - remembrance
-  related:
-    battles:
-    - Battle of the Yser
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: mixed
-    notes: Combines well with coastal walk + King Albert I monument terrace.
-  links:
-    official: https://www.visit-nieuwpoort.be/en/westfront-nieuwpoort-0
-    wikipedia: https://en.wikipedia.org/wiki/King_Albert_I_Memorial
-    maps_query: Westfront Nieuwpoort Ganzepoot
-    wikidata: Q2160506
-- id: king-albert-i-monument-nieuwpoort
-  name: King Albert I Monument (Nieuwpoort)
-  type: monument
-  region_id: yser-front
-  location:
-    locality: Nieuwpoort
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 51.13611111
-      lon: 2.75555556
-  why_visit: Major Belgian WWI memorial at the Ganzepoot; great view and context for the IJzer story.
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Battle of the Yser
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 20–45 min
-    indoor_outdoor: outdoor
-    notes: Often paired with Westfront visitor centre underneath/nearby.
-  links:
-    wikipedia: https://nl.wikipedia.org/wiki/Koning_Albert_I-monument
-    maps_query: Koning Albert I monument Nieuwpoort
-    wikidata: Q2160506
-- id: flanders-field-american-cemetery
-  name: Flanders Field American Cemetery & Memorial (Waregem)
-  type: cemetery
-  region_id: waregem-and-leie
-  location:
-    locality: Waregem
-    province: West Flanders
-    country: Belgium
-    coordinates:
-      lat: 50.87361111
-      lon: 3.45388889
-  why_visit: Only permanent American WWI cemetery in Belgium (ABMC); small, very peaceful site.
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Final offensives 1918
-    years:
-    - '1918'
-  practical:
-    typical_visit_time: 30–60 min
-    indoor_outdoor: outdoor
-    notes: Combine with a Leie/Lys day or as a ‘quiet’ stop on the way.
-  links:
-    official: https://www.abmc.gov/Flanders-Field
-    wikipedia: https://en.wikipedia.org/wiki/Flanders_Field_American_Cemetery_and_Memorial
-    maps_query: Flanders Field American Cemetery Waregem
-    wikidata: Q2216737
-- id: royal-military-museum-14-18
-  name: Royal Museum of the Armed Forces & Military History – 14–18 Galleries (Brussels)
-  type: museum
-  region_id: brussels-central
-  location:
-    locality: Brussels
-    province: Brussels-Capital Region
-    country: Belgium
-    coordinates:
-      lat: 50.84055556
-      lon: 4.39277778
-  why_visit: Huge reference collection on WWI across many belligerents; excellent for broader context.
-  themes:
-  - civilian-history
-  - remembrance
-  related:
-    battles:
-    - Belgium 1914–1918
-    years:
-    - '1914'
-    - '1918'
-  practical:
-    typical_visit_time: 120–240 min
-    indoor_outdoor: indoor
-    notes: Good ‘rainy day’ option or a pre-trip context visit.
-  links:
-    official: https://klm-mra.be/en/14-18-gallery
-    wikipedia: https://en.wikipedia.org/wiki/Royal_Museum_of_the_Armed_Forces_and_Military_History
-    maps_query: Royal Military Museum Brussels 14-18
-    wikidata: Q1395176
-- id: fort-de-loncin
-  name: Fort de Loncin (Ans/Liège) – memorial & museum
-  type: fort
-  region_id: liege-forts-1914
-  location:
-    locality: Ans (near Liège)
-    province: Liège
-    country: Belgium
-    coordinates:
-      lat: 50.67461111
-      lon: 5.49227778
-  why_visit: Signature site of the Battle of Liège; partly preserved in its destroyed state as a memorial.
-  themes:
-  - fortress-warfare
-  - remembrance
-  - invasion-1914
-  related:
-    battles:
-    - Battle of Liège
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 90–150 min
-    indoor_outdoor: mixed
-    notes: Often via guided tour/audio guide.
-  links:
-    official: https://visitwallonia.com/en-gb/content/fort-de-loncin-unique-memorial-great-war-liege
-    wikipedia: https://en.wikipedia.org/wiki/Fort_de_Loncin
-    maps_query: Fort de Loncin
-    wikidata: Q1363576
-- id: liege-fortified-position
-  name: Fortified Position of Liège (Brialmont forts) – overview
-  type: site
-  region_id: liege-forts-1914
-  location:
-    locality: Liège area
-    province: Liège
-    country: Belgium
-    coordinates:
-      lat: 50.797
-      lon: 5.681
-  why_visit: If you like fortification history, the ring of forts is a full-day (or multi-day) theme.
-  themes:
-  - fortress-warfare
-  - invasion-1914
-  related:
-    battles:
-    - Battle of Liège
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: Half day to multi-day
-    indoor_outdoor: mixed
-    notes: Pick 1–2 forts max for a weekend; Loncin is the flagship.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Fortified_position_of_Li%C3%A8ge
-    maps_query: Fortified Position of Liege forts
-    wikidata: Q223608
-- id: fortified-position-of-namur
-  name: Fortified Position of Namur (Brialmont forts) – overview
-  type: site
-  region_id: namur-and-meuse-1914
-  location:
-    locality: Namur area
-    province: Namur
-    country: Belgium
-  why_visit: The 1914 siege story (heavy artillery vs forts) in a different region than Liège.
-  themes:
-  - fortress-warfare
-  - invasion-1914
-  related:
-    battles:
-    - Siege of Namur
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: Half day to multi-day
-    indoor_outdoor: mixed
-    notes: Pick one fort + a viewpoint/citadel for a focused visit.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Fortified_position_of_Namur
-    maps_query: Fortified Position of Namur
-    wikidata: Q3399664
-- id: fort-saint-heribert
-  name: Fort de Saint-Héribert (Namur) – visitable fort
-  type: fort
-  region_id: namur-and-meuse-1914
-  location:
-    locality: Wépion (Namur)
-    province: Namur
-    country: Belgium
-  why_visit: Concrete Brialmont fort heavily bombarded in August 1914; a good ‘fort interior’ visit.
-  themes:
-  - fortress-warfare
-  - invasion-1914
-  related:
-    battles:
-    - Siege of Namur
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 90–150 min
-    indoor_outdoor: mixed
-    notes: Check opening days; many forts are guided/limited schedule.
-  links:
-    official: https://www.namurtourisme.be/en/musees-culture-patrimoine/patrimoine/patrimoine-militaire-fort-de-saint-heribert/
-    wikipedia: https://en.wikipedia.org/wiki/Fort_of_Saint-H%C3%A9ribert
-    maps_query: Fort de Saint-Héribert
-- id: dinant-martyr-town-memorials
-  name: Dinant ‘Martyr Town’ memorials (1914 civilian atrocities)
-  type: town
-  region_id: namur-and-meuse-1914
-  location:
-    locality: Dinant
-    province: Namur
-    country: Belgium
-  why_visit: 'Civilian history lens: memorial landscape tied to early-war violence on the Meuse.'
-  themes:
-  - civilian-history
-  - invasion-1914
-  - remembrance
-  related:
-    battles:
-    - Invasion of Belgium
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 45–120 min
-    indoor_outdoor: mixed
-    notes: Combine with a Meuse valley day (Dinant citadel + memorials).
-  links:
-    official: https://visitwallonia.com/en-gb/3/i-love/heritage-and-culture/wallonia-in-the-wars/14-18/dinant-martyr-town
-    wikipedia: https://en.wikipedia.org/wiki/Dinant_massacre
-    maps_query: Dinant 23 August 1914 memorial
-    wikidata: Q1669385
-- id: fort-liezele
-  name: Fort Liezele (Puurs-Sint-Amands) – WWI (Antwerp 1914) museum
-  type: fort
-  region_id: antwerp-national-redoubt
-  location:
-    locality: Liezele (Puurs-Sint-Amands)
-    province: Antwerp
-    country: Belgium
-  why_visit: Excellent entry point into the 1914 Siege of Antwerp and the ‘National Redoubt’ fort belt.
-  themes:
-  - fortress-warfare
-  - invasion-1914
-  related:
-    battles:
-    - Siege of Antwerp
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: 90–150 min
-    indoor_outdoor: mixed
-    notes: Modern interactive museum inside a preserved fort.
-  links:
-    official: https://www.fortliezele.be/en/
-    wikipedia: https://en.wikipedia.org/wiki/Fort_Liezele
-    maps_query: Fort Liezele museum
-- id: fort-breendonk-note
-  name: Fort Breendonk (Willebroek) – note
-  type: fort
-  region_id: antwerp-national-redoubt
-  location:
-    locality: Breendonk (Willebroek)
-    province: Antwerp
-    country: Belgium
-    coordinates:
-      lat: 51.05638889
-      lon: 4.34138889
-  why_visit: Built as part of Antwerp’s defenses and saw action in 1914, but today the museum focus is WWII.
-  themes:
-  - fortress-warfare
-  - remembrance
-  related:
-    battles:
-    - Siege of Antwerp
-    years:
-    - '1914'
-  practical:
-    typical_visit_time: —
-    indoor_outdoor: mixed
-    notes: Include only if you also want WWII context; otherwise skip for a WWI-only weekend.
-  links:
-    official: https://fortbreendonk.be/en/historical-overview
-    wikipedia: https://en.wikipedia.org/wiki/Fort_Breendonk
-    maps_query: Fort Breendonk
-    wikidata: Q700580
-- id: ossuary-of-douaumont
-  name: Douaumont Ossuary (Ossuaire de Douaumont)
-  type: memorial
-  region_id: verdun-meuse
-  location:
-    locality: Douaumont-Vaux
-    province: Grand Est
-    country: France
-  why_visit: Iconic Verdun remembrance site beside the national cemetery; powerful scale and symbolism.
-  themes:
-  - remembrance
-  - trench-warfare
-  related:
-    battles:
-    - Battle of Verdun
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: mixed
-    notes: Combine with Fort Douaumont + battlefield villages.
-  links:
-    official: https://www.verdun-tourisme.com/en/decouvrir/ossuaire-de-douaumont/
-    wikipedia: https://en.wikipedia.org/wiki/Douaumont_Ossuary
-    maps_query: Ossuaire de Douaumont
-    wikidata: Q705054
-- id: fort-douaumont
-  name: Fort Douaumont
-  type: fort
-  region_id: verdun-meuse
-  location:
-    locality: Douaumont-Vaux
-    province: Grand Est
-    country: France
-    coordinates:
-      lat: 49.21694444
-      lon: 5.43833333
-  why_visit: Key Verdun fort; great for understanding fortress warfare and the 1916 struggle.
-  themes:
-  - fortress-warfare
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Battle of Verdun
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: mixed
-    notes: Bring a jacket—interiors are cool year-round.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Fort_Douaumont
-    maps_query: Fort de Douaumont
-    wikidata: Q186536
-- id: fort-vaux
-  name: Fort Vaux
-  type: fort
-  region_id: verdun-meuse
-  location:
-    locality: Vaux-devant-Damloup
-    province: Grand Est
-    country: France
-  why_visit: Famous Verdun fort with intense 1916 fighting; complements Douaumont well.
-  themes:
-  - fortress-warfare
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Battle of Verdun
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: mixed
-    notes: Often less crowded than Douaumont; excellent paired visit.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Fort_Vaux
-    maps_query: Fort de Vaux Verdun
-    wikidata: Q1438801
-- id: memorial-de-verdun
-  name: Mémorial de Verdun (museum)
-  type: museum
-  region_id: verdun-meuse
-  location:
-    locality: Fleury-devant-Douaumont
-    province: Grand Est
-    country: France
-  why_visit: Strong museum giving battlefield context and human stories; great ‘start point’ for Verdun.
-  themes:
-  - civilian-history
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Battle of Verdun
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 90–150 min
-    indoor_outdoor: indoor
-    notes: Ideal first stop before forts/terrain.
-  links:
-    official: https://memorial-verdun.fr/en/
-    wikipedia: https://en.wikipedia.org/wiki/M%C3%A9morial_de_Verdun
-    maps_query: Mémorial de Verdun
-- id: trench-of-bayonets
-  name: Trench of Bayonets (Tranchée des Baïonnettes)
-  type: memorial
-  region_id: verdun-meuse
-  location:
-    locality: Fleury-devant-Douaumont
-    province: Grand Est
-    country: France
-  why_visit: Small but famous Verdun memorial near the battlefield core; quick reflective stop.
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Battle of Verdun
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 20–40 min
-    indoor_outdoor: mixed
-    notes: Combine with nearby sites; short visit.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Trench_of_Bayonets
-    maps_query: Tranchée des Baïonnettes Verdun
-- id: destroyed-villages-verdun
-  name: Verdun ‘destroyed villages’ (villages détruits)
-  type: site
-  region_id: verdun-meuse
-  location:
-    locality: Verdun area
-    province: Grand Est
-    country: France
-  why_visit: Marked village sites erased by the battle; powerful ‘landscape memory’ stops on the circuit.
-  themes:
-  - civilian-history
-  - remembrance
-  related:
-    battles:
-    - Battle of Verdun
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 30–120 min
-    indoor_outdoor: outdoor
-    notes: Drive/walk between multiple marked village sites.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Villages_d%C3%A9truits
-    maps_query: Villages détruits Verdun
-- id: thiepval-memorial
-  name: Thiepval Memorial to the Missing of the Somme
-  type: memorial
-  region_id: somme-front
-  location:
-    locality: Thiepval
-    province: Hauts-de-France
-    country: France
-    coordinates:
-      lat: 50.05055556
-      lon: 2.68583333
-  why_visit: One of the most significant Somme memorials; massive list of the missing.
-  themes:
-  - remembrance
-  related:
-    battles:
-    - Battle of the Somme
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 30–60 min
-    indoor_outdoor: outdoor
-    notes: Combine with nearby Ulster Tower/Lochnagar crater.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Thiepval_Memorial
-    maps_query: Thiepval Memorial
-    wikidata: Q1861419
-- id: lochnagar-crater
-  name: Lochnagar Crater
-  type: battlefield
-  region_id: somme-front
-  location:
-    locality: La Boisselle
-    province: Hauts-de-France
-    country: France
-  why_visit: Huge mine crater from the Somme opening day; great terrain ‘scale’ moment.
-  themes:
-  - trench-warfare
-  related:
-    battles:
-    - Battle of the Somme
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 20–45 min
-    indoor_outdoor: outdoor
-    notes: Short stop; bring shoes for muddy edges in wet weather.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Lochnagar_crater
-    maps_query: Lochnagar Crater
-    wikidata: Q24739
-- id: somme-1916-museum-albert
-  name: Somme 1916 Museum (Albert)
-  type: museum
-  region_id: somme-front
-  location:
-    locality: Albert
-    province: Hauts-de-France
-    country: France
-  why_visit: Compact museum (incl. underground spaces) that works well as an intro to the Somme sector.
-  themes:
-  - trench-warfare
-  - civilian-history
-  - remembrance
-  related:
-    battles:
-    - Battle of the Somme
-    years:
-    - '1916'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: indoor
-    notes: Good with a day loop around Albert/Thiepval.
-  links:
-    official: https://www.somme1916.org/en/discover/places-to-visit/somme-1916-museum
-    wikipedia: https://en.wikipedia.org/wiki/Mus%C3%A9e_Somme_1916
-    maps_query: Musée Somme 1916 Albert
-- id: historial-peronne
-  name: Historial de la Grande Guerre (Péronne)
-  type: museum
-  region_id: somme-front
-  location:
-    locality: Péronne
-    province: Hauts-de-France
-    country: France
-    coordinates:
-      lat: 49.92916667
-      lon: 2.93083333
-  why_visit: Major WWI museum with multinational perspective; excellent ‘context + objects’ visit.
-  themes:
-  - civilian-history
-  - remembrance
-  related:
-    battles:
-    - Somme sector
-    years:
-    - '1914'
-    - '1918'
-  practical:
-    typical_visit_time: 120–240 min
-    indoor_outdoor: indoor
-    notes: Great rainy-day anchor on a Somme weekend.
-  links:
-    official: https://www.historial.fr/en/
-    wikipedia: https://en.wikipedia.org/wiki/Historial_de_la_Grande_Guerre
-    maps_query: Historial de la Grande Guerre Péronne
-    wikidata: Q1620783
-- id: canadian-national-vimy-memorial
-  name: Canadian National Vimy Memorial
-  type: memorial
-  region_id: artois-vimy
-  location:
-    locality: Givenchy-en-Gohelle
-    province: Hauts-de-France
-    country: France
-    coordinates:
-      lat: 50.3794
-      lon: 2.7736
-  why_visit: Iconic memorial + preserved trenches; very strong interpretation of Vimy Ridge.
-  themes:
-  - remembrance
-  - trench-warfare
-  related:
-    battles:
-    - Battle of Vimy Ridge
-    years:
-    - '1917'
-  practical:
-    typical_visit_time: 90–180 min
-    indoor_outdoor: mixed
-    notes: Guided tours are worth it when available.
-  links:
-    official: https://www.veterans.gc.ca/eng/remembrance/memorials/overseas/first-world-war/france/vimy
-    wikipedia: https://en.wikipedia.org/wiki/Canadian_National_Vimy_Memorial
-    maps_query: Canadian National Vimy Memorial
-    wikidata: Q2561040
-- id: wellington-quarry-arras
-  name: Wellington Quarry (Carrière Wellington) – Arras
-  type: museum
-  region_id: artois-vimy
-  location:
-    locality: Arras
-    province: Hauts-de-France
-    country: France
-    coordinates:
-      lat: 50.28059983
-      lon: 2.78297983
-  why_visit: Underground tunnels linked to the Battle of Arras; immersive guided experience.
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Battle of Arras
-    years:
-    - '1917'
-  practical:
-    typical_visit_time: 75–120 min
-    indoor_outdoor: indoor
-    notes: Book ahead in peak season.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/Carri%C3%A8re_Wellington
-    maps_query: Carrière Wellington Arras
-    wikidata: Q2940288
-- id: caverne-du-dragon
-  name: Caverne du Dragon (Chemin des Dames)
-  type: museum
-  region_id: chemin-des-dames-aisne
-  location:
-    locality: Oulches-la-Vallée-Foulon
-    province: Hauts-de-France
-    country: France
-  why_visit: Striking underground site used by both sides; strong for 1917 Aisne context.
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Second Battle of the Aisne
-    years:
-    - '1917'
-  practical:
-    typical_visit_time: 60–120 min
-    indoor_outdoor: indoor
-    notes: Bring warm clothes; caves are cool.
-  links:
-    official: https://www.chemindesdames.fr/en
-    wikipedia: https://en.wikipedia.org/wiki/Caverne_du_Dragon
-    maps_query: Caverne du Dragon
-- id: hartmannswillerkopf-vieil-armand
-  name: Hartmannswillerkopf (Vieil Armand) – battlefield & memorial
-  type: battlefield
-  region_id: alsace-vosges
-  location:
-    locality: Wattwiller
-    province: Grand Est
-    country: France
-    coordinates:
-      lat: 47.86111111
-      lon: 7.16111111
-  why_visit: Major mountain-front battlefield with trenches and a memorial; very different terrain from Flanders.
-  themes:
-  - trench-warfare
-  - remembrance
-  related:
-    battles:
-    - Hartmannswillerkopf
-    years:
-    - '1914'
-    - '1915'
-    - '1916'
-  practical:
-    typical_visit_time: 90–180 min
-    indoor_outdoor: outdoor
-    notes: Hiking shoes recommended; weather can change quickly.
-  links:
-    official: https://www.memorial-hwk.eu/en/
-    wikipedia: https://en.wikipedia.org/wiki/Hartmannswillerkopf
-    maps_query: Hartmannswillerkopf memorial
-    wikidata: Q325716
-- id: german-border-placeholder
-  name: Duitsland (DE) – startpunt voor uitbreiden
-  type: site
-  region_id: german-border-1914
-  location:
-    locality: Border region
-    province: ''
-    country: Germany
-  why_visit: Placeholder zodat je DE-locaties per regio kunt toevoegen (gebruik add_from_wikipedia.py).
-  themes:
-  - civilian-history
-  related:
-    battles:
-    - Western Front
-    years:
-    - '1914'
-    - '1918'
-  practical:
-    typical_visit_time: —
-    indoor_outdoor: —
-    notes: Voeg concrete musea/forten/monumenten toe via Wikipedia-links.
-  links:
-    wikipedia: https://en.wikipedia.org/wiki/World_War_I
-    maps_query: Germany World War I museum
-    wikidata: Q361
+  # --- Westhoek / Ypres Salient ---
+  - id: in-flanders-fields-museum
+    name: "In Flanders Fields Museum (Ieper)"
+    type: museum
+    region_id: westhoek-ypres-salient
+    location: { locality: "Ieper (Ypres)", province: "West Flanders", country: "Belgium" }
+    why_visit: "Best ‘big picture’ museum for the Western Front in Belgian Flanders, inside the rebuilt Cloth Hall."
+    themes: ["remembrance","trench-warfare","civilian-history"]
+    related: { battles: ["Ypres Salient"], years: ["1914","1915","1916","1917","1918"] }
+    practical: { typical_visit_time: "90–150 min", indoor_outdoor: "indoor", notes: "Reserve extra time if you want the research centre or temporary exhibitions." }
+    links:
+      official: "https://www.inflandersfields.be/"
+      wikipedia: "https://en.wikipedia.org/wiki/In_Flanders_Fields_Museum"
+      wikidata: "Q3149909"
+      maps_query: "In Flanders Fields Museum Ieper"
+
+  - id: menin-gate-memorial-last-post
+    name: "Menin Gate (Menenpoort) & Last Post ceremony"
+    type: memorial
+    region_id: westhoek-ypres-salient
+    location: { locality: "Ieper (Ypres)", province: "West Flanders", country: "Belgium" }
+    why_visit: "Iconic daily remembrance moment (Last Post at 20:00) plus memorial to the missing of the Salient."
+    themes: ["remembrance"]
+    related: { battles: ["Ypres Salient"], years: ["1914","1918"] }
+    practical: { typical_visit_time: "20–45 min", indoor_outdoor: "outdoor", notes: "Arrive earlier in busy seasons for a good spot." }
+    links:
+      official: "https://lastpost.be/"
+      wikipedia: "https://en.wikipedia.org/wiki/Menin_Gate"
+      maps_query: "Menin Gate Ieper"
+
+  - id: tyne-cot-cemetery
+    name: "Tyne Cot Cemetery & Memorial (CWGC)"
+    type: cemetery
+    region_id: westhoek-ypres-salient
+    location: { locality: "Zonnebeke", province: "West Flanders", country: "Belgium" }
+    why_visit: "One of the most powerful cemetery visits in the area; vast scale and a strong memorial to the missing."
+    themes: ["remembrance"]
+    related: { battles: ["Third Battle of Ypres (Passchendaele)"], years: ["1917"] }
+    practical: { typical_visit_time: "45–90 min", indoor_outdoor: "outdoor", notes: "Combine with Passchendaele/Zonnebeke sites." }
+    links:
+      official: "https://www.cwgc.org/visit-us/find-cemeteries-memorials/cemetery-details/53300/tyne-cot-cemetery/"
+      wikipedia: "https://en.wikipedia.org/wiki/Tyne_Cot_Cemetery"
+      maps_query: "Tyne Cot Cemetery"
+
+  - id: passchendaele-museum
+    name: "Passchendaele Museum (Zonnebeke)"
+    type: museum
+    region_id: westhoek-ypres-salient
+    location: { locality: "Zonnebeke", province: "West Flanders", country: "Belgium" }
+    why_visit: "Deep dive on Passchendaele (1917) with strong ‘conditions in the salient’ storytelling."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Third Battle of Ypres (Passchendaele)"], years: ["1917"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "mixed", notes: "Great paired with Tyne Cot." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Passchendaele_Museum"
+      maps_query: "Passchendaele Museum Zonnebeke"
+
+  - id: sanctuary-wood-hill-62
+    name: "Sanctuary Wood / Hill 62 (trenches + museum)"
+    type: trench
+    region_id: westhoek-ypres-salient
+    location: { locality: "Zillebeke", province: "West Flanders", country: "Belgium" }
+    why_visit: "A very tangible trench visit: preserved trenches and a ‘feel’ for terrain and distances."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Ypres Salient"], years: ["1915","1916","1917"] }
+    practical: { typical_visit_time: "45–90 min", indoor_outdoor: "mixed", notes: "Often included on battlefield tours." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Sanctuary_Wood_Museum"
+      maps_query: "Sanctuary Wood Museum Hill 62"
+
+  - id: hooge-crater-museum
+    name: "Hooge Crater Museum (private museum, Menin Road)"
+    type: museum
+    region_id: westhoek-ypres-salient
+    location: { locality: "Hooge (near Ieper)", province: "West Flanders", country: "Belgium" }
+    why_visit: "Popular private collection with reconstructions; good ‘artifact heavy’ stop near key sites."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Ypres Salient"], years: ["1915","1916","1917"] }
+    practical: { typical_visit_time: "45–90 min", indoor_outdoor: "indoor", notes: "Nearby: Hooge Crater Cemetery + battlefield landscape." }
+    links:
+      official: "https://www.hoogecrater.com/en/"
+      wikipedia: "https://en.wikipedia.org/wiki/Hooge_Crater_Museum"
+      maps_query: "Hooge Crater Museum"
+
+  - id: hill-60
+    name: "Hill 60 battlefield landscape"
+    type: battlefield
+    region_id: westhoek-ypres-salient
+    location: { locality: "Zillebeke", province: "West Flanders", country: "Belgium" }
+    why_visit: "Iconic mined hill in the Salient; great for understanding craters and elevation as ‘weapons’."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Ypres Salient"], years: ["1915","1917"] }
+    practical: { typical_visit_time: "30–60 min", indoor_outdoor: "outdoor", notes: "Short, powerful terrain visit." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Hill_60_(Ypres)"
+      maps_query: "Hill 60 Zillebeke"
+
+  - id: yorkshire-trench-dugout
+    name: "Yorkshire Trench & Dugout (Boezinge)"
+    type: trench
+    region_id: westhoek-ypres-salient
+    location: { locality: "Boezinge", province: "West Flanders", country: "Belgium" }
+    why_visit: "Rare preserved trench + dugout site; helps visualize front-line engineering."
+    themes: ["trench-warfare"]
+    related: { battles: ["Ypres Salient"], years: ["1915"] }
+    practical: { typical_visit_time: "30–60 min", indoor_outdoor: "outdoor", notes: "Often open-access; check local info for any closures." }
+    links:
+      official: "https://www.inflandersfields.be/nl/in-flanders-fields-museum/landschapgetuige/yorkshire-trench-dug-out"
+      wikipedia: "https://en.wikipedia.org/wiki/Yorkshire_Trench"
+      maps_query: "Yorkshire Trench Boezinge"
+
+  - id: talbot-house-poperinge
+    name: "Talbot House (Poperinge) – ‘Every Man’s Club’"
+    type: museum
+    region_id: westhoek-ypres-salient
+    location: { locality: "Poperinge", province: "West Flanders", country: "Belgium" }
+    why_visit: "Exceptional ‘behind the lines’ social history: preserved soldiers’ club (1915) with attic chapel."
+    themes: ["civilian-history","remembrance"]
+    related: { battles: ["Ypres Salient"], years: ["1915","1918"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "indoor", notes: "You can also stay overnight (guesthouse)." }
+    links:
+      official: "https://www.talbothouse.be/en"
+      wikipedia: "https://en.wikipedia.org/wiki/Talbot_House"
+      maps_query: "Talbot House Poperinge"
+
+  - id: bayernwald-trenches
+    name: "Bayernwald (German trenches, Heuvelland/Wijtschate)"
+    type: trench
+    region_id: westhoek-ypres-salient
+    location: { locality: "Heuvelland (near Wijtschate/Kemmel)", province: "West Flanders", country: "Belgium" }
+    why_visit: "Restored German trench system; great counterpoint to the more common Allied narrative sites."
+    themes: ["trench-warfare"]
+    related: { battles: ["Ypres Salient"], years: ["1915","1916"] }
+    practical: { typical_visit_time: "45–90 min", indoor_outdoor: "outdoor", notes: "Bring sturdy shoes; it’s a walking site." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Croonaert_Wood"
+      maps_query: "Bayernwald trenches Heuvelland"
+
+  - id: messines-ireland-peace-park
+    name: "Island of Ireland Peace Park (Mesen/Messines)"
+    type: memorial
+    region_id: westhoek-ypres-salient
+    location: { locality: "Mesen (Messines)", province: "West Flanders", country: "Belgium" }
+    why_visit: "Memorial that connects battlefield history with reconciliation (excellent ‘reflection’ stop)."
+    themes: ["remembrance"]
+    related: { battles: ["Battle of Messines"], years: ["1917"] }
+    practical: { typical_visit_time: "20–45 min", indoor_outdoor: "outdoor", notes: "Pairs well with Messines Ridge sites." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Island_of_Ireland_Peace_Park"
+      maps_query: "Island of Ireland Peace Park Mesen"
+
+  - id: ploegsteert-memorial
+    name: "Ploegsteert Memorial to the Missing (CWGC)"
+    type: memorial
+    region_id: westhoek-ypres-salient
+    location: { locality: "Ploegsteert (Comines-Warneton)", province: "Hainaut", country: "Belgium" }
+    why_visit: "Southern edge of the Salient; quieter, reflective memorial setting in Ploegsteert Wood area."
+    themes: ["remembrance"]
+    related: { battles: ["Ypres Salient"], years: ["1914","1918"] }
+    practical: { typical_visit_time: "20–45 min", indoor_outdoor: "outdoor", notes: "Combine with a forest walk and nearby cemeteries." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Ploegsteert_Memorial_to_the_Missing"
+      maps_query: "Ploegsteert Memorial"
+
+  # --- IJzerfront ---
+  - id: trench-of-death-dodengang
+    name: "Dodengang / Trench of Death (Diksmuide)"
+    type: trench
+    region_id: yser-front
+    location: { locality: "Diksmuide", province: "West Flanders", country: "Belgium" }
+    why_visit: "Only preserved Belgian trench system from WWI; very direct ‘front-line’ experience."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Yser Front"], years: ["1915","1918"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "outdoor", notes: "Check seasonal hours; it can be busy in spring/summer." }
+    links:
+      official: "https://dodengang.be/en"
+      wikipedia: "https://en.wikipedia.org/wiki/Dodengang"
+      maps_query: "Dodengang Diksmuide"
+
+  - id: museum-aan-de-ijzer-ijzertoren
+    name: "Museum aan de IJzer (IJzertoren) – Diksmuide"
+    type: museum
+    region_id: yser-front
+    location: { locality: "Diksmuide", province: "West Flanders", country: "Belgium" }
+    why_visit: "Strong Belgian-front focus + panoramic view over the former front area from the tower."
+    themes: ["remembrance","civilian-history"]
+    related: { battles: ["Battle of the Yser"], years: ["1914"] }
+    practical: { typical_visit_time: "90–150 min", indoor_outdoor: "indoor", notes: "Plan time for the climb/elevator + viewing terrace." }
+    links:
+      official: "https://www.museumaandeijzer.be/"
+      wikipedia: "https://en.wikipedia.org/wiki/Yser_Tower"
+      maps_query: "Museum aan de IJzer Diksmuide"
+
+  - id: vladslo-german-war-cemetery
+    name: "Vladslo German War Cemetery (incl. Käthe Kollwitz ‘Grieving Parents’)"
+    type: cemetery
+    region_id: yser-front
+    location: { locality: "Vladslo (Diksmuide)", province: "West Flanders", country: "Belgium" }
+    why_visit: "A very different cemetery atmosphere; famous Kollwitz sculpture adds powerful artistic lens on grief."
+    themes: ["remembrance","art"]
+    related: { battles: ["Yser Front"], years: ["1914"] }
+    practical: { typical_visit_time: "30–60 min", indoor_outdoor: "outdoor", notes: "Quiet site—good for a reflective stop." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Vladslo_German_war_cemetery"
+      maps_query: "Vladslo German war cemetery"
+
+  - id: westfront-nieuwpoort
+    name: "Westfront Nieuwpoort (visitor centre) + Ganzepoot sluices"
+    type: visitor-centre
+    region_id: yser-front
+    location: { locality: "Nieuwpoort", province: "West Flanders", country: "Belgium" }
+    why_visit: "Tells the story of how strategic inundations halted the German advance in 1914."
+    themes: ["naval-coastal","civilian-history","remembrance"]
+    related: { battles: ["Battle of the Yser"], years: ["1914"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "mixed", notes: "Combines well with coastal walk + King Albert I monument terrace." }
+    links:
+      official: "https://www.visit-nieuwpoort.be/en/westfront-nieuwpoort-0"
+      wikipedia: "https://en.wikipedia.org/wiki/King_Albert_I_Memorial"
+      maps_query: "Westfront Nieuwpoort Ganzepoot"
+
+  - id: king-albert-i-monument-nieuwpoort
+    name: "King Albert I Monument (Nieuwpoort)"
+    type: monument
+    region_id: yser-front
+    location: { locality: "Nieuwpoort", province: "West Flanders", country: "Belgium" }
+    why_visit: "Major Belgian WWI memorial at the Ganzepoot; great view and context for the IJzer story."
+    themes: ["remembrance"]
+    related: { battles: ["Battle of the Yser"], years: ["1914"] }
+    practical: { typical_visit_time: "20–45 min", indoor_outdoor: "outdoor", notes: "Often paired with Westfront visitor centre underneath/nearby." }
+    links:
+      wikipedia: "https://nl.wikipedia.org/wiki/Koning_Albert_I-monument"
+      maps_query: "Koning Albert I monument Nieuwpoort"
+
+  # --- Waregem / Leie ---
+  - id: flanders-field-american-cemetery
+    name: "Flanders Field American Cemetery & Memorial (Waregem)"
+    type: cemetery
+    region_id: waregem-and-leie
+    location: { locality: "Waregem", province: "West Flanders", country: "Belgium" }
+    why_visit: "Only permanent American WWI cemetery in Belgium (ABMC); small, very peaceful site."
+    themes: ["remembrance"]
+    related: { battles: ["Final offensives 1918"], years: ["1918"] }
+    practical: { typical_visit_time: "30–60 min", indoor_outdoor: "outdoor", notes: "Combine with a Leie/Lys day or as a ‘quiet’ stop on the way." }
+    links:
+      official: "https://www.abmc.gov/Flanders-Field"
+      wikipedia: "https://en.wikipedia.org/wiki/Flanders_Field_American_Cemetery_and_Memorial"
+      maps_query: "Flanders Field American Cemetery Waregem"
+
+  # --- Brussels / Central ---
+  - id: royal-military-museum-14-18
+    name: "Royal Museum of the Armed Forces & Military History – 14–18 Galleries (Brussels)"
+    type: museum
+    region_id: brussels-central
+    location: { locality: "Brussels", province: "Brussels-Capital Region", country: "Belgium" }
+    why_visit: "Huge reference collection on WWI across many belligerents; excellent for broader context."
+    themes: ["civilian-history","remembrance"]
+    related: { battles: ["Belgium 1914–1918"], years: ["1914","1918"] }
+    practical: { typical_visit_time: "120–240 min", indoor_outdoor: "indoor", notes: "Good ‘rainy day’ option or a pre-trip context visit." }
+    links:
+      official: "https://klm-mra.be/en/14-18-gallery"
+      wikipedia: "https://en.wikipedia.org/wiki/Royal_Museum_of_the_Armed_Forces_and_Military_History"
+      maps_query: "Royal Military Museum Brussels 14-18"
+
+  # --- Liège forts / 1914 ---
+  - id: fort-de-loncin
+    name: "Fort de Loncin (Ans/Liège) – memorial & museum"
+    type: fort
+    region_id: liege-forts-1914
+    location: { locality: "Ans (near Liège)", province: "Liège", country: "Belgium" }
+    why_visit: "Signature site of the Battle of Liège; partly preserved in its destroyed state as a memorial."
+    themes: ["fortress-warfare","remembrance","invasion-1914"]
+    related: { battles: ["Battle of Liège"], years: ["1914"] }
+    practical: { typical_visit_time: "90–150 min", indoor_outdoor: "mixed", notes: "Often via guided tour/audio guide." }
+    links:
+      official: "https://visitwallonia.com/en-gb/content/fort-de-loncin-unique-memorial-great-war-liege"
+      wikipedia: "https://en.wikipedia.org/wiki/Fort_de_Loncin"
+      maps_query: "Fort de Loncin"
+
+  - id: liege-fortified-position
+    name: "Fortified Position of Liège (Brialmont forts) – overview"
+    type: site
+    region_id: liege-forts-1914
+    location: { locality: "Liège area", province: "Liège", country: "Belgium" }
+    why_visit: "If you like fortification history, the ring of forts is a full-day (or multi-day) theme."
+    themes: ["fortress-warfare","invasion-1914"]
+    related: { battles: ["Battle of Liège"], years: ["1914"] }
+    practical: { typical_visit_time: "Half day to multi-day", indoor_outdoor: "mixed", notes: "Pick 1–2 forts max for a weekend; Loncin is the flagship." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Fortified_position_of_Li%C3%A8ge"
+      maps_query: "Fortified Position of Liege forts"
+
+  # --- Namur / Meuse valley ---
+  - id: fortified-position-of-namur
+    name: "Fortified Position of Namur (Brialmont forts) – overview"
+    type: site
+    region_id: namur-and-meuse-1914
+    location: { locality: "Namur area", province: "Namur", country: "Belgium" }
+    why_visit: "The 1914 siege story (heavy artillery vs forts) in a different region than Liège."
+    themes: ["fortress-warfare","invasion-1914"]
+    related: { battles: ["Siege of Namur"], years: ["1914"] }
+    practical: { typical_visit_time: "Half day to multi-day", indoor_outdoor: "mixed", notes: "Pick one fort + a viewpoint/citadel for a focused visit." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Fortified_position_of_Namur"
+      maps_query: "Fortified Position of Namur"
+
+  - id: fort-saint-heribert
+    name: "Fort de Saint-Héribert (Namur) – visitable fort"
+    type: fort
+    region_id: namur-and-meuse-1914
+    location: { locality: "Wépion (Namur)", province: "Namur", country: "Belgium" }
+    why_visit: "Concrete Brialmont fort heavily bombarded in August 1914; a good ‘fort interior’ visit."
+    themes: ["fortress-warfare","invasion-1914"]
+    related: { battles: ["Siege of Namur"], years: ["1914"] }
+    practical: { typical_visit_time: "90–150 min", indoor_outdoor: "mixed", notes: "Check opening days; many forts are guided/limited schedule." }
+    links:
+      official: "https://www.namurtourisme.be/en/musees-culture-patrimoine/patrimoine/patrimoine-militaire-fort-de-saint-heribert/"
+      wikipedia: "https://en.wikipedia.org/wiki/Fort_of_Saint-H%C3%A9ribert"
+      maps_query: "Fort de Saint-Héribert"
+
+  - id: dinant-martyr-town-memorials
+    name: "Dinant ‘Martyr Town’ memorials (1914 civilian atrocities)"
+    type: town
+    region_id: namur-and-meuse-1914
+    location: { locality: "Dinant", province: "Namur", country: "Belgium" }
+    why_visit: "Civilian history lens: memorial landscape tied to early-war violence on the Meuse."
+    themes: ["civilian-history","invasion-1914","remembrance"]
+    related: { battles: ["Invasion of Belgium"], years: ["1914"] }
+    practical: { typical_visit_time: "45–120 min", indoor_outdoor: "mixed", notes: "Combine with a Meuse valley day (Dinant citadel + memorials)." }
+    links:
+      official: "https://visitwallonia.com/en-gb/3/i-love/heritage-and-culture/wallonia-in-the-wars/14-18/dinant-martyr-town"
+      wikipedia: "https://en.wikipedia.org/wiki/Dinant_massacre"
+      maps_query: "Dinant 23 August 1914 memorial"
+
+  # --- Antwerp / National Redoubt ---
+  - id: fort-liezele
+    name: "Fort Liezele (Puurs-Sint-Amands) – WWI (Antwerp 1914) museum"
+    type: fort
+    region_id: antwerp-national-redoubt
+    location: { locality: "Liezele (Puurs-Sint-Amands)", province: "Antwerp", country: "Belgium" }
+    why_visit: "Excellent entry point into the 1914 Siege of Antwerp and the ‘National Redoubt’ fort belt."
+    themes: ["fortress-warfare","invasion-1914"]
+    related: { battles: ["Siege of Antwerp"], years: ["1914"] }
+    practical: { typical_visit_time: "90–150 min", indoor_outdoor: "mixed", notes: "Modern interactive museum inside a preserved fort." }
+    links:
+      official: "https://www.fortliezele.be/en/"
+      wikipedia: "https://en.wikipedia.org/wiki/Fort_Liezele"
+      maps_query: "Fort Liezele museum"
+
+  - id: fort-breendonk-note
+    name: "Fort Breendonk (Willebroek) – note"
+    type: fort
+    region_id: antwerp-national-redoubt
+    location: { locality: "Breendonk (Willebroek)", province: "Antwerp", country: "Belgium" }
+    why_visit: "Built as part of Antwerp’s defenses and saw action in 1914, but today the museum focus is WWII."
+    themes: ["fortress-warfare","remembrance"]
+    related: { battles: ["Siege of Antwerp"], years: ["1914"] }
+    practical: { typical_visit_time: "—", indoor_outdoor: "mixed", notes: "Include only if you also want WWII context; otherwise skip for a WWI-only weekend." }
+    links:
+      official: "https://fortbreendonk.be/en/historical-overview"
+      wikipedia: "https://en.wikipedia.org/wiki/Fort_Breendonk"
+      maps_query: "Fort Breendonk"
+
+# --- Verdun / Meuse (France) ---
+  - id: ossuary-of-douaumont
+    name: "Douaumont Ossuary (Ossuaire de Douaumont)"
+    type: memorial
+    region_id: verdun-meuse
+    location: { locality: "Douaumont-Vaux", province: "Grand Est", country: "France" }
+    why_visit: "Iconic Verdun remembrance site beside the national cemetery; powerful scale and symbolism."
+    themes: ["remembrance","trench-warfare"]
+    related: { battles: ["Battle of Verdun"], years: ["1916"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "mixed", notes: "Combine with Fort Douaumont + battlefield villages." }
+    links:
+      official: "https://www.verdun-tourisme.com/en/decouvrir/ossuaire-de-douaumont/"
+      wikipedia: "https://en.wikipedia.org/wiki/Douaumont_Ossuary"
+      maps_query: "Ossuaire de Douaumont"
+
+  - id: fort-douaumont
+    name: "Fort Douaumont"
+    type: fort
+    region_id: verdun-meuse
+    location: { locality: "Douaumont-Vaux", province: "Grand Est", country: "France" }
+    why_visit: "Key Verdun fort; great for understanding fortress warfare and the 1916 struggle."
+    themes: ["fortress-warfare","trench-warfare","remembrance"]
+    related: { battles: ["Battle of Verdun"], years: ["1916"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "mixed", notes: "Bring a jacket—interiors are cool year-round." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Fort_Douaumont"
+      maps_query: "Fort de Douaumont"
+
+  - id: fort-vaux
+    name: "Fort Vaux"
+    type: fort
+    region_id: verdun-meuse
+    location: { locality: "Vaux-devant-Damloup", province: "Grand Est", country: "France" }
+    why_visit: "Famous Verdun fort with intense 1916 fighting; complements Douaumont well."
+    themes: ["fortress-warfare","trench-warfare","remembrance"]
+    related: { battles: ["Battle of Verdun"], years: ["1916"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "mixed", notes: "Often less crowded than Douaumont; excellent paired visit." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Fort_Vaux"
+      maps_query: "Fort de Vaux Verdun"
+
+  - id: memorial-de-verdun
+    name: "Mémorial de Verdun (museum)"
+    type: museum
+    region_id: verdun-meuse
+    location: { locality: "Fleury-devant-Douaumont", province: "Grand Est", country: "France" }
+    why_visit: "Strong museum giving battlefield context and human stories; great ‘start point’ for Verdun."
+    themes: ["civilian-history","trench-warfare","remembrance"]
+    related: { battles: ["Battle of Verdun"], years: ["1916"] }
+    practical: { typical_visit_time: "90–150 min", indoor_outdoor: "indoor", notes: "Ideal first stop before forts/terrain." }
+    links:
+      official: "https://memorial-verdun.fr/en/"
+      wikipedia: "https://en.wikipedia.org/wiki/M%C3%A9morial_de_Verdun"
+      maps_query: "Mémorial de Verdun"
+
+  - id: trench-of-bayonets
+    name: "Trench of Bayonets (Tranchée des Baïonnettes)"
+    type: memorial
+    region_id: verdun-meuse
+    location: { locality: "Fleury-devant-Douaumont", province: "Grand Est", country: "France" }
+    why_visit: "Small but famous Verdun memorial near the battlefield core; quick reflective stop."
+    themes: ["remembrance"]
+    related: { battles: ["Battle of Verdun"], years: ["1916"] }
+    practical: { typical_visit_time: "20–40 min", indoor_outdoor: "mixed", notes: "Combine with nearby sites; short visit." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Trench_of_Bayonets"
+      maps_query: "Tranchée des Baïonnettes Verdun"
+
+  - id: destroyed-villages-verdun
+    name: "Verdun ‘destroyed villages’ (villages détruits)"
+    type: site
+    region_id: verdun-meuse
+    location: { locality: "Verdun area", province: "Grand Est", country: "France" }
+    why_visit: "Marked village sites erased by the battle; powerful ‘landscape memory’ stops on the circuit."
+    themes: ["civilian-history","remembrance"]
+    related: { battles: ["Battle of Verdun"], years: ["1916"] }
+    practical: { typical_visit_time: "30–120 min", indoor_outdoor: "outdoor", notes: "Drive/walk between multiple marked village sites." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Villages_d%C3%A9truits"
+      maps_query: "Villages détruits Verdun"
+
+  # --- Somme (France) ---
+  - id: thiepval-memorial
+    name: "Thiepval Memorial to the Missing of the Somme"
+    type: memorial
+    region_id: somme-front
+    location: { locality: "Thiepval", province: "Hauts-de-France", country: "France" }
+    why_visit: "One of the most significant Somme memorials; massive list of the missing."
+    themes: ["remembrance"]
+    related: { battles: ["Battle of the Somme"], years: ["1916"] }
+    practical: { typical_visit_time: "30–60 min", indoor_outdoor: "outdoor", notes: "Combine with nearby Ulster Tower/Lochnagar crater." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Thiepval_Memorial"
+      maps_query: "Thiepval Memorial"
+
+  - id: lochnagar-crater
+    name: "Lochnagar Crater"
+    type: battlefield
+    region_id: somme-front
+    location: { locality: "La Boisselle", province: "Hauts-de-France", country: "France" }
+    why_visit: "Huge mine crater from the Somme opening day; great terrain ‘scale’ moment."
+    themes: ["trench-warfare"]
+    related: { battles: ["Battle of the Somme"], years: ["1916"] }
+    practical: { typical_visit_time: "20–45 min", indoor_outdoor: "outdoor", notes: "Short stop; bring shoes for muddy edges in wet weather." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Lochnagar_crater"
+      maps_query: "Lochnagar Crater"
+
+  - id: somme-1916-museum-albert
+    name: "Somme 1916 Museum (Albert)"
+    type: museum
+    region_id: somme-front
+    location: { locality: "Albert", province: "Hauts-de-France", country: "France" }
+    why_visit: "Compact museum (incl. underground spaces) that works well as an intro to the Somme sector."
+    themes: ["trench-warfare","civilian-history","remembrance"]
+    related: { battles: ["Battle of the Somme"], years: ["1916"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "indoor", notes: "Good with a day loop around Albert/Thiepval." }
+    links:
+      official: "https://www.somme1916.org/en/discover/places-to-visit/somme-1916-museum"
+      wikipedia: "https://en.wikipedia.org/wiki/Mus%C3%A9e_Somme_1916"
+      maps_query: "Musée Somme 1916 Albert"
+
+  - id: historial-peronne
+    name: "Historial de la Grande Guerre (Péronne)"
+    type: museum
+    region_id: somme-front
+    location: { locality: "Péronne", province: "Hauts-de-France", country: "France" }
+    why_visit: "Major WWI museum with multinational perspective; excellent ‘context + objects’ visit."
+    themes: ["civilian-history","remembrance"]
+    related: { battles: ["Somme sector"], years: ["1914","1918"] }
+    practical: { typical_visit_time: "120–240 min", indoor_outdoor: "indoor", notes: "Great rainy-day anchor on a Somme weekend." }
+    links:
+      official: "https://www.historial.fr/en/"
+      wikipedia: "https://en.wikipedia.org/wiki/Historial_de_la_Grande_Guerre"
+      maps_query: "Historial de la Grande Guerre Péronne"
+
+  # --- Artois / Vimy (France) ---
+  - id: canadian-national-vimy-memorial
+    name: "Canadian National Vimy Memorial"
+    type: memorial
+    region_id: artois-vimy
+    location: { locality: "Givenchy-en-Gohelle", province: "Hauts-de-France", country: "France" }
+    why_visit: "Iconic memorial + preserved trenches; very strong interpretation of Vimy Ridge."
+    themes: ["remembrance","trench-warfare"]
+    related: { battles: ["Battle of Vimy Ridge"], years: ["1917"] }
+    practical: { typical_visit_time: "90–180 min", indoor_outdoor: "mixed", notes: "Guided tours are worth it when available." }
+    links:
+      official: "https://www.veterans.gc.ca/eng/remembrance/memorials/overseas/first-world-war/france/vimy"
+      wikipedia: "https://en.wikipedia.org/wiki/Canadian_National_Vimy_Memorial"
+      maps_query: "Canadian National Vimy Memorial"
+
+  - id: wellington-quarry-arras
+    name: "Wellington Quarry (Carrière Wellington) – Arras"
+    type: museum
+    region_id: artois-vimy
+    location: { locality: "Arras", province: "Hauts-de-France", country: "France" }
+    why_visit: "Underground tunnels linked to the Battle of Arras; immersive guided experience."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Battle of Arras"], years: ["1917"] }
+    practical: { typical_visit_time: "75–120 min", indoor_outdoor: "indoor", notes: "Book ahead in peak season." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/Carri%C3%A8re_Wellington"
+      maps_query: "Carrière Wellington Arras"
+
+  # --- Chemin des Dames / Aisne (France) ---
+  - id: caverne-du-dragon
+    name: "Caverne du Dragon (Chemin des Dames)"
+    type: museum
+    region_id: chemin-des-dames-aisne
+    location: { locality: "Oulches-la-Vallée-Foulon", province: "Hauts-de-France", country: "France" }
+    why_visit: "Striking underground site used by both sides; strong for 1917 Aisne context."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Second Battle of the Aisne"], years: ["1917"] }
+    practical: { typical_visit_time: "60–120 min", indoor_outdoor: "indoor", notes: "Bring warm clothes; caves are cool." }
+    links:
+      official: "https://www.chemindesdames.fr/en"
+      wikipedia: "https://en.wikipedia.org/wiki/Caverne_du_Dragon"
+      maps_query: "Caverne du Dragon"
+
+  # --- Alsace / Vosges (France) ---
+  - id: hartmannswillerkopf-vieil-armand
+    name: "Hartmannswillerkopf (Vieil Armand) – battlefield & memorial"
+    type: battlefield
+    region_id: alsace-vosges
+    location: { locality: "Wattwiller", province: "Grand Est", country: "France" }
+    why_visit: "Major mountain-front battlefield with trenches and a memorial; very different terrain from Flanders."
+    themes: ["trench-warfare","remembrance"]
+    related: { battles: ["Hartmannswillerkopf"], years: ["1914","1915","1916"] }
+    practical: { typical_visit_time: "90–180 min", indoor_outdoor: "outdoor", notes: "Hiking shoes recommended; weather can change quickly." }
+    links:
+      official: "https://www.memorial-hwk.eu/en/"
+      wikipedia: "https://en.wikipedia.org/wiki/Hartmannswillerkopf"
+      maps_query: "Hartmannswillerkopf memorial"
+
+  # --- Germany (border-proximate placeholder) ---
+  - id: german-border-placeholder
+    name: "Duitsland (DE) – startpunt voor uitbreiden"
+    type: site
+    region_id: german-border-1914
+    location: { locality: "Border region", province: "", country: "Germany" }
+    why_visit: "Placeholder zodat je DE-locaties per regio kunt toevoegen (gebruik add_from_wikipedia.py)."
+    themes: ["civilian-history"]
+    related: { battles: ["Western Front"], years: ["1914","1918"] }
+    practical: { typical_visit_time: "—", indoor_outdoor: "—", notes: "Voeg concrete musea/forten/monumenten toe via Wikipedia-links." }
+    links:
+      wikipedia: "https://en.wikipedia.org/wiki/World_War_I"
+      maps_query: "Germany World War I museum"
