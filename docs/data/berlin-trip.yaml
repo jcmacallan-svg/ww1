@@ -77,6 +77,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.535
+      lon: 13.38972222
   why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum en uitkijkpunt.'
   themes:
   - history
@@ -92,6 +95,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Wall_Memorial
     maps_query: Gedenkstätte Berliner Mauer
+    wikidata: Q95517
 - id: ddr-museum
   name: DDR Museum
   type: museum
@@ -356,6 +360,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51916667
+      lon: 13.40111111
   why_visit: Iconische koepel aan Museuminsel; mooi uitzicht vanaf de koepel.
   themes:
   - architecture
@@ -367,6 +374,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Cathedral
     maps_query: Berliner Dom
+    wikidata: Q154563
 - id: brandenburg-gate
   name: Brandenburger Tor
   type: landmark
@@ -621,6 +629,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52055556
+      lon: 13.39777778
   why_visit: Sterk museum op Museuminsel (o.a. Egyptisch); mooie herbouw/architectuur.
   themes:
   - museum
@@ -632,6 +643,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Neues_Museum
     maps_query: Neues Museum Berlin
+    wikidata: Q157316
 - id: tiergarten-park
   name: Tiergarten (park-wandeling)
   type: park
