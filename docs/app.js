@@ -326,7 +326,7 @@ function buildWeekendPlan(){
   if(withCoords.length < 2){
     return `<div class="small">Ik heb coördinaten nodig om een route te berekenen. Voeg in YAML bij je favorieten <code>location.coordinates</code> toe (lat/lon), of voeg favorieten toe die al coördinaten hebben.</div>`;
   }
-  const origin = getOriginCoord(doc);
+  const origin = getOriginCoord(__DOC);
 // Order by nearest-neighbor. If origin is known (e.g. hotel), start from origin for a more realistic route.
 let ordered;
 if(origin){
