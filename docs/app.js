@@ -78,6 +78,30 @@ function saveFavs(ds, favs){
   localStorage.setItem(favKey(ds), JSON.stringify(Array.from(favs)));
 }
 let favs = loadFavs(currentDataset);
+/* ---------------- Planner settings (per dataset) ---------------- */
+function planKey(ds){ return `tripkit_plan_${ds}_v1`; }
+function defaultPlanSettings(ds){
+  if(ds === "berlin"){
+    // Example: arrive Fri evening, Sat+Sun full days, depart Mon afternoon
+    return { days: 4, arrival: "evening", departure: "afternoon", mapProvider: "both" };
+  }
+  // WW1 weekend: arrive Fri afternoon, Sat full, depart Sun evening
+  return { days: 3, arrival: "afternoon", departure: "evening", mapProvider: "both" };
+}
+function loadPlanSettings(ds){
+  const def = defaultPlanSettings(ds);
+  try{
+    const raw = JSON.parse(localStorage.getItem(planKey(ds)) || "null");
+    if(!raw) return def;
+    return { ...def, ...raw };
+  }catch{
+    return def;
+  }
+}
+function savePlanSettings(ds, settings){
+  localStorage.setItem(planKey(ds), JSON.stringify(settings));
+}
+let __PLAN = loadPlanSettings(currentDataset);
 
 /* ---------------- Wikipedia/Wikidata enrichment ---------------- */
 function wikiTitleFromUrl(url){
@@ -243,6 +267,118 @@ function googleMapsDirectionsLink(coords, originOverride=null){
   return u.toString();
 }
 
+
+function appleMapsDirectionsLink(coords, originOverride=null){
+  if(coords.length < 2) return null;
+  const fmt = (c)=> `${c.lat},${c.lon}`;
+  const origin = originOverride ? originOverride : coords[0];
+  const stops = coords.slice(1);
+  const daddr = stops.map(fmt).join("+to:");
+  const u = new URL("https://maps.apple.com/");
+  u.searchParams.set("saddr", fmt(origin));
+  u.searchParams.set("daddr", daddr);
+  u.searchParams.set("dirflg", "d"); // driving
+  return u.toString();
+}
+
+function parseTypicalVisitMinutes(poi){
+  const s = (poi?.practical?.typical_visit_time || "").toString().trim().toLowerCase();
+  if(!s || s === "—" || s === "-") return 60;
+  if(s.includes("half day")) return 240;
+  if(s.includes("multi-day")) return 300;
+  const nums = Array.from(s.matchAll(/(\d+(?:\.\d+)?)/g)).map(m=>parseFloat(m[1])).filter(n=>Number.isFinite(n));
+  if(nums.length >= 2) return Math.max(15, Math.round((nums[0] + nums[1]) / 2));
+  if(nums.length === 1) return Math.max(15, Math.round(nums[0]));
+  return 60;
+}
+
+function avgSpeedKmph(doc){
+  const s = doc?.settings?.routing?.avg_speed_kmph;
+  if(typeof s === "number" && Number.isFinite(s) && s > 5) return s;
+  return (currentDataset === "berlin") ? 25 : 60;
+}
+
+function formatMinutes(min){
+  const m = Math.max(0, Math.round(min));
+  const h = Math.floor(m / 60);
+  const r = m % 60;
+  if(h <= 0) return `${r} min`;
+  if(r === 0) return `${h}h`;
+  return `${h}h ${r}m`;
+}
+
+function dayBudgets(days, arrival, departure){
+  const arrivalMap = { morning: 360, afternoon: 240, evening: 120 };
+  const departMap  = { morning: 180, afternoon: 240, evening: 360 };
+  const full = 480;
+  const d = Math.max(1, Math.min(10, parseInt(days,10) || 1));
+  if(d === 1){
+    const a = arrivalMap[arrival] ?? 240;
+    const dep = departMap[departure] ?? 240;
+    return [Math.min(a + dep, full)];
+  }
+  const out = new Array(d).fill(full);
+  out[0] = arrivalMap[arrival] ?? 240;
+  out[d-1] = departMap[departure] ?? 240;
+  return out;
+}
+
+function buildOptimizedPlan(withCoords, origin, budgets, speed){
+  const remaining = withCoords.map(x=>({ poi:x.poi, coord:x.coord }));
+  const days = [];
+  for(let di=0; di<budgets.length; di++){
+    const budget = budgets[di];
+    let timeLeft = budget;
+    let cur = origin;
+    const stops = [];
+    let travelKm = 0;
+    let visitMin = 0;
+
+    while(remaining.length){
+      const ranked = remaining
+        .map((x, idx)=>({ idx, x, d: haversineKm(cur, x.coord) }))
+        .sort((a,b)=>a.d-b.d);
+
+      let chosen = null;
+      for(const cand of ranked){
+        const x = cand.x;
+        const travelMin = (cand.d / speed) * 60;
+        const vMin = parseTypicalVisitMinutes(x.poi);
+        const backMin = (haversineKm(x.coord, origin) / speed) * 60;
+        const needWithReturn = travelMin + vMin + backMin;
+        // small buffer to avoid overfilling
+        if(needWithReturn <= timeLeft - 10 || (stops.length === 0 && needWithReturn <= timeLeft + 5)){
+          chosen = { ...x, travelMin, vMin, distKm: cand.d, idx: cand.idx };
+          break;
+        }
+      }
+      if(!chosen) break;
+
+      stops.push({ poi: chosen.poi, coord: chosen.coord });
+      travelKm += chosen.distKm;
+      visitMin += chosen.vMin;
+      timeLeft -= (chosen.travelMin + chosen.vMin);
+      cur = chosen.coord;
+      remaining.splice(chosen.idx, 1);
+    }
+
+    if(stops.length){
+      const backKm = haversineKm(cur, origin);
+      travelKm += backKm;
+    }
+
+    days.push({ budgetMin: budget, stops, travelKm, visitMin });
+  }
+  return { days, leftovers: remaining };
+}
+
+function routeCoordsForDay(origin, stops){
+  const coords = [origin, ...stops.map(s=>s.coord)];
+  if(stops.length) coords.push(origin);
+  return coords;
+}
+
+
 /* ---------------- Planner panel ---------------- */
 function ensurePlannerPanel(){
   let panel = document.getElementById("plannerPanel");
@@ -258,7 +394,39 @@ function ensurePlannerPanel(){
         <div style="font-size:13px; color: var(--muted); margin-bottom:6px;">⭐ Favorieten & weekendroute</div>
         <div class="small" id="plannerMeta">Selecteer locaties met de ster. Daarna kun je een compacte weekendroute laten voorstellen.</div>
       </div>
-      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <div style="display:flex; gap:12px; align-items:flex-end; flex-wrap:wrap; margin-top:10px;">
+  <div style="display:flex; flex-direction:column; gap:6px;">
+    <div class="small" style="color:var(--muted);">Aantal dagen</div>
+    <select id="planDays" class="input" style="min-width:120px;">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+      <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>
+    </select>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:6px;">
+    <div class="small" style="color:var(--muted);">Aankomst</div>
+    <select id="planArrival" class="input" style="min-width:140px;">
+      <option value="morning">Ochtend</option>
+      <option value="afternoon">Middag</option>
+      <option value="evening">Avond</option>
+    </select>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:6px;">
+    <div class="small" style="color:var(--muted);">Vertrek</div>
+    <select id="planDeparture" class="input" style="min-width:140px;">
+      <option value="morning">Ochtend</option>
+      <option value="afternoon">Middag</option>
+      <option value="evening">Avond</option>
+    </select>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:6px;">
+    <div class="small" style="color:var(--muted);">Kaart</div>
+    <select id="planMapProvider" class="input" style="min-width:150px;">
+      <option value="both">Google + Apple</option>
+      <option value="google">Alleen Google</option>
+      <option value="apple">Alleen Apple</option>
+    </select>
+  </div>
+  <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-left:auto;">
         <button id="btnPlan" class="btn">Maak weekendplan</button>
         <button id="btnClearFavs" class="btn btn-ghost">Wis favorieten</button>
       </div>
@@ -271,6 +439,8 @@ function ensurePlannerPanel(){
       padding:9px 12px; border-radius:12px; cursor:pointer; font-size:12px; }
     .btn:hover{ border-color: rgba(122,162,255,.45); }
     .btn-ghost{ background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.10); color:var(--muted); }
+    #plannerPanel select{ color: var(--text); }
+    #plannerPanel option{ color:#111; }
     .plan{ border-top:1px solid rgba(255,255,255,.08); padding-top:10px; margin-top:10px; }
     .plan h3{ margin:0 0 6px; font-size:13px; }
     .plan ul{ margin:6px 0 0 18px; padding:0; }
@@ -317,6 +487,20 @@ function updatePlannerUI(){
     out.innerHTML = favList.length ? `<div class="small">Favorieten:</div><ul>${favList.map(p=>`<li>${escapeHtml(p.name)} <span class="pill">${escapeHtml(p.region_id)}</span></li>`).join("")}</ul>` : "";
   }
 }
+
+
+function applyPlannerSettingsUI(){
+  const panel = document.getElementById("plannerPanel");
+  if(!panel) return;
+  const daysEl = panel.querySelector("#planDays");
+  const arrEl = panel.querySelector("#planArrival");
+  const depEl = panel.querySelector("#planDeparture");
+  const mapEl = panel.querySelector("#planMapProvider");
+  if(daysEl) daysEl.value = String(__PLAN.days || 3);
+  if(arrEl) arrEl.value = __PLAN.arrival || "afternoon";
+  if(depEl) depEl.value = __PLAN.departure || "evening";
+  if(mapEl) mapEl.value = __PLAN.mapProvider || "both";
+}
 function buildWeekendPlan(){
   const favList = (__DOC.pois || []).filter(p => favs.has(p.id));
   if(favList.length < 2){
@@ -326,45 +510,69 @@ function buildWeekendPlan(){
   if(withCoords.length < 2){
     return `<div class="small">Ik heb coördinaten nodig om een route te berekenen. Voeg in YAML bij je favorieten <code>location.coordinates</code> toe (lat/lon), of voeg favorieten toe die al coördinaten hebben.</div>`;
   }
-  const origin = getOriginCoord(__DOC);
-// Order by nearest-neighbor. If origin is known (e.g. hotel), start from origin for a more realistic route.
-let ordered;
-if(origin){
-  // pick the first stop closest to origin, then do nearest-neighbor among remaining
-  const pts = withCoords.map(x=>({ id:x.poi.id, coord:x.coord, poi:x.poi }));
-  if(!pts.length){
-    return { html: `<div class="small">Geen favorieten met coördinaten gevonden.</div>` };
-  }
-  // choose start as closest to origin
-  let bestIdx = 0, bestD = Infinity;
-  for(let i=0;i<pts.length;i++){
-    const d = haversineKm(origin, pts[i].coord);
-    if(d < bestD){ bestD = d; bestIdx = i; }
-  }
-  const start = pts.splice(bestIdx,1)[0];
-  ordered = [start, ...nearestNeighborOrder(pts)];
-}else{
-  ordered = nearestNeighborOrder(withCoords.map(x=>({ id:x.poi.id, coord:x.coord, poi:x.poi })));
-}
-  const fri = ordered.slice(0,1);
-  const sat = ordered.slice(1, Math.min(6, ordered.length));
-  const sun = ordered.slice(Math.min(6, ordered.length));
 
-  const section = (label, arr) => `
+  const origin = getOriginCoord(__DOC) || withCoords[0].coord;
+  const speed = avgSpeedKmph(__DOC);
+  const budgets = dayBudgets(__PLAN.days, __PLAN.arrival, __PLAN.departure);
+  const plan = buildOptimizedPlan(withCoords, origin, budgets, speed);
+
+  const slotLabel = (i)=>{
+    const d = budgets.length;
+    if(d === 1) return " (dagtrip)";
+    if(i === 0){
+      const a = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.arrival] || "";
+      return ` (aankomst: ${a})`;
+    }
+    if(i === d-1){
+      const dep = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.departure] || "";
+      return ` (vertrek: ${dep})`;
+    }
+    return " (volledige dag)";
+  };
+
+  const provider = __PLAN.mapProvider || "both";
+  const mapsButtons = (coords)=>{
+    const g = googleMapsDirectionsLink(coords, origin);
+    const a = appleMapsDirectionsLink(coords, origin);
+    const gBtn = g ? `<a class="linkbtn" href="${g}" target="_blank" rel="noopener">Open in Google Maps</a>` : "";
+    const aBtn = a ? `<a class="linkbtn" href="${a}" target="_blank" rel="noopener">Open in Apple Maps</a>` : "";
+    if(provider === "google") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}</div>`;
+    if(provider === "apple") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${aBtn}</div>`;
+    return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}${aBtn}</div>`;
+  };
+
+  const section = (label, day) => {
+    const stops = day.stops || [];
+    const coords = routeCoordsForDay(origin, stops);
+    return `
+      <div class="plan">
+        <h3>${label} <span class="pill">${stops.length} stop(s)</span></h3>
+        <div class="small" style="color:var(--muted);">
+          Reis: ~${day.travelKm.toFixed(1)} km • Bezoek: ~${formatMinutes(day.visitMin)} • Budget: ${formatMinutes(day.budgetMin)}
+        </div>
+        ${stops.length ? `<ul>${stops.map(x=>`<li>${escapeHtml(x.poi.name)} <span class="pill">${escapeHtml(x.poi.location?.locality || "")}</span></li>`).join("")}</ul>` : `<div class="small">Geen stops gepland (te weinig tijd of alles al ingepland).</div>`}
+        ${stops.length ? mapsButtons(coords) : ""}
+      </div>
+    `;
+  };
+
+  const allStops = plan.days.flatMap(d=>d.stops || []);
+  const overallCoords = routeCoordsForDay(origin, allStops);
+  const overallMaps = allStops.length ? mapsButtons(overallCoords) : "";
+
+  const leftoversHtml = plan.leftovers?.length ? `
     <div class="plan">
-      <h3>${label} <span class="pill">${arr.length} stop(s)</span></h3>
-      <ul>${arr.map(x=>`<li>${escapeHtml(x.poi.name)} <span class="pill">${escapeHtml(x.poi.location?.locality || "")}</span></li>`).join("")}</ul>
+      <h3>Overige favorieten <span class="pill">${plan.leftovers.length}</span></h3>
+      <div class="small">Deze pasten niet in het gekozen aantal dagen/tijden (of zouden de route erg lang maken).</div>
+      <ul>${plan.leftovers.map(x=>`<li>${escapeHtml(x.poi.name)} <span class="pill">${escapeHtml(x.poi.location?.locality || "")}</span></li>`).join("")}</ul>
     </div>
-  `;
-  const coords = ordered.slice(0,10).map(x=>x.coord);
-  const maps = googleMapsDirectionsLink(coords);
+  ` : "";
 
   return `
-    <div class="small">Suggestie is gebaseerd op een simpele “dichtstbijzijnde volgende stop” aanpak (geen openingstijden).</div>
-    ${section("Vrijdag (aankomst)", fri)}
-    ${section("Zaterdag (hoofddag)", sat)}
-    ${section("Zondag (terugreis)", sun)}
-    ${maps ? `<a class="linkbtn" href="${maps}" target="_blank" rel="noopener">Open route in Google Maps</a>` : ""}
+    <div class="small">Route is geoptimaliseerd (nearest-neighbor) en verdeeld over dagen op basis van jouw tijdblokken. (Geen openingstijden/tickets meegenomen.)</div>
+    ${overallMaps ? `<div class="plan"><h3>Alles in één route <span class="pill">${withCoords.length} stop(s)</span></h3>${overallMaps}</div>` : ""}
+    ${plan.days.map((d,i)=>section(`Dag ${i+1}${slotLabel(i)}`, d)).join("")}
+    ${leftoversHtml}
   `;
 }
 
@@ -610,6 +818,7 @@ async function fetchYaml(url){
 async function loadDataset(ds){
   currentDataset = ds;
   favs = loadFavs(currentDataset);
+  __PLAN = loadPlanSettings(currentDataset);
   updateEditLink();
 
   // reset UI state
@@ -641,6 +850,8 @@ async function loadDataset(ds){
   els.type.value = "";
   els.theme.value = "";
 
+  applyPlannerSettingsUI();
+
   // reset planner output
   const out = document.querySelector("#plannerOutput");
   if(out){ out.innerHTML = ""; out.dataset.hasPlan = ""; }
@@ -666,6 +877,7 @@ async function main(){
   wireGitHubLinks();
   injectStarStylesOnce();
   ensurePlannerPanel();
+  applyPlannerSettingsUI();
   wireTabs();
 
   // controls
@@ -676,6 +888,29 @@ async function main(){
   els.photosOnly.addEventListener("change", (e)=>{ __STATE.photosOnly = e.target.checked; render(); });
 
   const panel = document.getElementById("plannerPanel");
+
+
+// planner settings
+const daysSel = panel.querySelector("#planDays");
+const arrSel = panel.querySelector("#planArrival");
+const depSel = panel.querySelector("#planDeparture");
+const mapSel = panel.querySelector("#planMapProvider");
+const persistPlan = ()=>{
+  __PLAN = {
+    days: parseInt(daysSel?.value || __PLAN.days, 10) || __PLAN.days,
+    arrival: arrSel?.value || __PLAN.arrival,
+    departure: depSel?.value || __PLAN.departure,
+    mapProvider: mapSel?.value || __PLAN.mapProvider,
+  };
+  savePlanSettings(currentDataset, __PLAN);
+  const out = panel.querySelector("#plannerOutput");
+  if(out){ out.innerHTML = ""; out.dataset.hasPlan = ""; }
+  updatePlannerUI();
+};
+daysSel?.addEventListener("change", persistPlan);
+arrSel?.addEventListener("change", persistPlan);
+depSel?.addEventListener("change", persistPlan);
+mapSel?.addEventListener("change", persistPlan);
   panel.querySelector("#btnClearFavs").addEventListener("click", ()=>{
     favs = new Set();
     saveFavs(currentDataset, favs);
