@@ -14,6 +14,20 @@
   --radius: 16px;
 }
 
+
+/* Hint browsers to render native controls in dark mode */
+:root{ color-scheme: dark; }
+
+select{
+  background-color: var(--panel);
+  color: var(--text);
+}
+select option{
+  background-color: var(--panel);
+  color: var(--text);
+}
+
+
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 body{
