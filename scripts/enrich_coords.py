@@ -2,27 +2,16 @@
 """
 Enrich POIs in YAML with coordinates (lat/lon) using Wikipedia / MediaWiki API.
 
-Why:
-- The web UI can suggest compact routes only when POIs have coordinates.
-- You asked to have coordinates for *all* POIs.
-
-What it does:
 - For each POI with links.wikipedia, fetch:
-  - canonical title (redirects handled)
   - coordinates (if present)
   - Wikidata QID (pageprops.wikibase_item) (optional)
-- Writes back into YAML:
+- Writes back:
   - location.coordinates: {lat: <float>, lon: <float>}
   - links.wikidata: Q...
-- Leaves existing coordinates untouched unless --overwrite is passed.
 
-Usage:
+Usage (local):
   python -m pip install -r requirements.txt
   python scripts/enrich_coords.py --yaml data/ww1-belgium.yaml
-  python scripts/enrich_coords.py --yaml docs/data/ww1-belgium.yaml
-
-Optional:
-  --overwrite   overwrite existing coordinates
 """
 
 import argparse
@@ -32,12 +21,11 @@ from urllib.parse import urlparse, unquote
 import requests
 import yaml
 
-USER_AGENT = "ww1-tripkit/0.1 (coordinate enrichment)"
+USER_AGENT = "tripkit/0.1 (coords enrichment)"
 TIMEOUT = 30
 
 
 def wiki_title_from_url(url: str) -> tuple[str, str]:
-    """Return (lang, title) from a Wikipedia URL."""
     u = urlparse(url)
     host = (u.netloc or "").lower()
     lang = host.split(".")[0] if "wikipedia.org" in host else "en"
@@ -86,8 +74,7 @@ def fetch_coords_and_qid(lang: str, title: str) -> dict | None:
         lon = coords[0].get("lon")
 
     qid = (page.get("pageprops") or {}).get("wikibase_item")
-
-    return {"title": page.get("title") or title, "lat": lat, "lon": lon, "qid": qid}
+    return {"lat": lat, "lon": lon, "qid": qid}
 
 
 def load_yaml(path: str) -> dict:
