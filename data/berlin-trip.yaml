@@ -172,6 +172,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.504997
+      lon: 13.439605
   why_visit: 'Openlucht-galerie op een stuk Muur: street art + historisch moment langs de Spree.'
   themes:
   - street-art
@@ -591,6 +594,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5267846
+      lon: 13.3949752
   why_visit: Hedendaagse kunst/curation; vaak wisselende tentoonstellingen.
   themes:
   - modern-art
@@ -634,6 +640,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.49867
+      lon: 13.35665
   why_visit: Street art / urban art; goede match met Berlijn vibe.
   themes:
   - street-art
@@ -813,6 +822,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.501987
+      lon: 13.43183
   why_visit: Top streetfood/markt-vibe (zeker bij events). Goed als lunch/diner-stop.
   themes:
   - food
@@ -831,6 +843,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.49345
+      lon: 13.38852
   why_visit: Berlijn-klassieker voor snelle hap (verwacht vaak rij).
   themes:
   - food
@@ -849,6 +864,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.4935
+      lon: 13.3877
   why_visit: Eenvoudig, iconisch en snel — goeie snack-stop.
   themes:
   - food
@@ -867,6 +885,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50708
+      lon: 13.45456
   why_visit: Industriële vibe met street art, bars en events—goed voor avond/late sfeer.
   themes:
   - vibe
@@ -909,6 +930,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51068
+      lon: 13.41948
   why_visit: Historische techno-club; vaak betere ‘instap’ dan Berghain.
   themes:
   - nightlife
@@ -952,6 +976,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5005
+      lon: 13.3077
   why_visit: West-Berlijn shop/straat vibe; goed voor avondwandeling en eten.
   themes:
   - vibe
