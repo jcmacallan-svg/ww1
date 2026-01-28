@@ -920,6 +920,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tresor
     maps_query: Tresor Berlin
+    wikidata: Q1892363
 - id: schloss-charlottenburg
   name: Schloss Charlottenburg
   type: palace
@@ -928,6 +929,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5209
+      lon: 13.2957
   why_visit: Paleis + tuinen; mooi contrast met ‘ruw’ Berlijn.
   themes:
   - history
@@ -939,6 +943,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
     maps_query: Schloss Charlottenburg
+    wikidata: Q154996
 - id: kurfuerstendamm
   name: Kurfürstendamm (Ku’damm)
   type: district
@@ -957,3 +962,4 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
+    wikidata: Q160272
