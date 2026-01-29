@@ -77,6 +77,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.535
+      lon: 13.38972222
   why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum en uitkijkpunt.'
   themes:
   - history
@@ -92,6 +95,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Wall_Memorial
     maps_query: Gedenkstätte Berliner Mauer
+    wikidata: Q95517
 - id: ddr-museum
   name: DDR Museum
   type: museum
@@ -100,6 +104,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51902778
+      lon: 13.40222222
   why_visit: Interactief museum over dagelijks leven in de DDR (Koude Oorlog).
   themes:
   - history
@@ -111,6 +118,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/DDR_Museum
     maps_query: DDR Museum Berlin
+    wikidata: Q573322
 - id: stasi-museum
   name: Stasi Museum (Normannenstraße)
   type: museum
@@ -119,6 +127,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51444444
+      lon: 13.4875
   why_visit: Originele Stasi-locatie met sterke context over surveillance en DDR-apparaat.
   themes:
   - history
@@ -130,6 +141,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Stasi_Museum
     maps_query: Stasi Museum Berlin
+    wikidata: Q570472
 - id: checkpoint-charlie
   name: Checkpoint Charlie
   type: site
@@ -138,6 +150,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5075
+      lon: 13.39027778
   why_visit: Symbolische grensovergang (Koude Oorlog). Druk/toeristisch, maar historisch relevant.
   themes:
   - history
@@ -148,6 +163,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Checkpoint_Charlie
     maps_query: Checkpoint Charlie
+    wikidata: Q68689
 - id: east-side-gallery
   name: East Side Gallery
   type: site
@@ -171,6 +187,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/East_Side_Gallery
     maps_query: East Side Gallery
+    wikidata: Q313746
 - id: allied-museum
   name: Allied Museum (AlliiertenMuseum)
   type: museum
@@ -179,6 +196,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.45583333
+      lon: 13.2725
   why_visit: Sterk museum over de Westerse geallieerden in Berlijn en de Koude Oorlog (incl. luchtbrug).
   themes:
   - history
@@ -190,6 +210,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Allied_Museum
     maps_query: AlliiertenMuseum Berlin
+    wikidata: Q316329
 - id: teufelsberg
   name: Teufelsberg (afluisterstation & street art)
   type: site
@@ -198,6 +219,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.4975
+      lon: 13.24111111
   why_visit: Koude-Oorlog afluisterpost op een puinberg + street art + uitzicht (vibe!).
   themes:
   - cold-war
@@ -210,6 +234,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Teufelsberg
     maps_query: Teufelsberg Berlin
+    wikidata: Q564884
 - id: topography-of-terror
   name: Topography of Terror
   type: museum
@@ -218,6 +243,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50694444
+      lon: 13.38277778
   why_visit: Indrukwekkend documentatiecentrum op historische locatie van het nazistische politie-apparaat.
   themes:
   - history
@@ -230,6 +258,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Topography_of_Terror
     maps_query: Topography of Terror
+    wikidata: Q819081
 - id: memorial-murdered-jews
   name: Memorial to the Murdered Jews of Europe
   type: memorial
@@ -238,6 +267,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51388889
+      lon: 13.37888889
   why_visit: Krachtige herdenkingsplek met info-centrum; ligt centraal en is goed te combineren met Brandenburg/Reichstag.
   themes:
   - remembrance
@@ -249,6 +281,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Memorial_to_the_Murdered_Jews_of_Europe
     maps_query: Holocaust Memorial Berlin
+    wikidata: Q160700
 - id: jewish-museum-berlin
   name: Jewish Museum Berlin
   type: museum
@@ -257,6 +290,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.502
+      lon: 13.395
   why_visit: Sterk museum + indrukwekkende architectuur (Libeskind).
   themes:
   - history
@@ -269,6 +305,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Jewish_Museum_Berlin
     maps_query: Jewish Museum Berlin
+    wikidata: Q157003
 - id: bendlerblock-plot-20-july
   name: German Resistance Memorial Center (Bendlerblock)
   type: museum
@@ -277,6 +314,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50777778
+      lon: 13.3625
   why_visit: Herinneringsplek rond het 20-juli complot en Duitse weerstand tegen Hitler.
   themes:
   - ww2
@@ -289,6 +329,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/German_Resistance_Memorial_Center
     maps_query: Gedenkstätte Deutscher Widerstand
+    wikidata: Q880798
 - id: sachsenhausen
   name: Sachsenhausen concentration camp memorial (daytrip)
   type: memorial
@@ -297,6 +338,9 @@ pois:
     locality: Oranienburg
     province: Brandenburg
     country: Germany
+    coordinates:
+      lat: 52.76583333
+      lon: 13.26416667
   why_visit: Zeer indrukwekkend; goed te doen als dagtrip als je extra tijd hebt.
   themes:
   - ww2
@@ -308,6 +352,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Sachsenhausen_concentration_camp
     maps_query: Sachsenhausen Memorial
+    wikidata: Q154498
 - id: wannsee-conference-house
   name: House of the Wannsee Conference
   type: museum
@@ -316,6 +361,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.43305556
+      lon: 13.16555556
   why_visit: Historische locatie van de Wannseeconferentie; sober, informatief en belangrijk.
   themes:
   - ww2
@@ -328,6 +376,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/House_of_the_Wannsee_Conference
     maps_query: Wannsee Conference House
+    wikidata: Q152120
 - id: german-historical-museum
   name: Deutsches Historisches Museum
   type: museum
@@ -336,6 +385,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51805556
+      lon: 13.39694444
   why_visit: Breed historisch overzicht (incl. Keizerrijk/WO1/WO2). Fijne ‘context’ dag.
   themes:
   - history
@@ -348,6 +400,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Deutsches_Historisches_Museum
     maps_query: Deutsches Historisches Museum
+    wikidata: Q688335
 - id: berlin-cathedral
   name: Berlin Cathedral (Berliner Dom)
   type: landmark
@@ -356,6 +409,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51916667
+      lon: 13.40111111
   why_visit: Iconische koepel aan Museuminsel; mooi uitzicht vanaf de koepel.
   themes:
   - architecture
@@ -367,6 +423,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Cathedral
     maps_query: Berliner Dom
+    wikidata: Q154563
 - id: brandenburg-gate
   name: Brandenburger Tor
   type: landmark
@@ -375,6 +432,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5163
+      lon: 13.3777
   why_visit: Iconisch symbool — perfect startpunt voor een wandeling door het centrum.
   themes:
   - history
@@ -385,6 +445,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Brandenburg_Gate
     maps_query: Brandenburg Gate
+    wikidata: Q82425
 - id: reichstag-building
   name: Reichstag Building (koepel)
   type: landmark
@@ -393,6 +454,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51861111
+      lon: 13.37611111
   why_visit: Politiek + architectuur + uitzicht. Reserveren vaak nodig.
   themes:
   - history
@@ -405,6 +469,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Reichstag_building
     maps_query: Reichstag Building
+    wikidata: Q151897
 - id: potsdamer-platz
   name: Potsdamer Platz (nieuwe stad / moderne herbouw)
   type: district
@@ -413,6 +478,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50894
+      lon: 13.37633
   why_visit: 'Goede ‘nieuwe Berlijn’ vibe: herbouw, hoogbouw en city-feel.'
   themes:
   - modern-city
@@ -424,6 +492,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Potsdamer_Platz
     maps_query: Potsdamer Platz
+    wikidata: Q152252
 - id: berliner-fernsehturm
   name: Fernsehturm Berlin (TV Tower) – uitzicht
   type: viewpoint
@@ -432,6 +501,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52083333
+      lon: 13.40944444
   why_visit: Top uitzicht over de stad; lekker als je snel ‘oriëntatie’ wilt.
   themes:
   - modern-city
@@ -443,6 +515,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Fernsehturm_Berlin
     maps_query: Fernsehturm Berlin
+    wikidata: Q151356
 - id: alexanderplatz
   name: Alexanderplatz
   type: district
@@ -451,6 +524,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5217
+      lon: 13.4136
   why_visit: Drukke knoop met DDR/modern contrast; handig voor routes en sfeer.
   themes:
   - modern-city
@@ -462,6 +538,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Alexanderplatz
     maps_query: Alexanderplatz
+    wikidata: Q152783
 - id: hamburger-bahnhof
   name: Hamburger Bahnhof – Museum für Gegenwart
   type: museum
@@ -470,6 +547,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52833333
+      lon: 13.37222222
   why_visit: Top voor hedendaagse kunst en grote installaties.
   themes:
   - modern-art
@@ -480,6 +560,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Hamburger_Bahnhof
     maps_query: Hamburger Bahnhof
+    wikidata: Q584756
 - id: berlinische-galerie
   name: Berlinische Galerie (moderne kunst / fotografie)
   type: museum
@@ -488,6 +569,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50416667
+      lon: 13.39888889
   why_visit: Sterk museum voor moderne kunst, fotografie en Berlijnse kunstgeschiedenis.
   themes:
   - modern-art
@@ -498,6 +582,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlinische_Galerie
     maps_query: Berlinische Galerie
+    wikidata: Q700222
 - id: kw-institute
   name: KW Institute for Contemporary Art
   type: museum
@@ -517,6 +602,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/KW_Institute_for_Contemporary_Art
     maps_query: KW Institute for Contemporary Art
+    wikidata: Q1792296
 - id: gropius-bau
   name: Gropius Bau
   type: museum
@@ -525,6 +611,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50638889
+      lon: 13.38194444
   why_visit: Sterke tentoonstellingsruimte (kunst/cultuur) in mooi gebouw.
   themes:
   - modern-art
@@ -536,6 +625,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Gropius_Bau
     maps_query: Gropius Bau
+    wikidata: Q569445
 - id: urban-nation
   name: Urban Nation (street art museum)
   type: museum
@@ -556,6 +646,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Urban_Nation
     maps_query: Urban Nation Museum
+    wikidata: Q111594318
 - id: co-berlin
   name: C/O Berlin (fotografie)
   type: museum
@@ -564,6 +655,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.50665
+      lon: 13.33057
   why_visit: Fotografie-anker met wisselende exposities; makkelijk te combineren met Zoo/Ku’damm.
   themes:
   - museum
@@ -575,6 +669,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/C/O_Berlin
     maps_query: C/O Berlin
+    wikidata: Q1022620
 - id: museum-island
   name: Museum Island (Museumsinsel)
   type: district
@@ -583,6 +678,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52138889
+      lon: 13.39555556
   why_visit: Culture cluster met meerdere musea; ideaal als je een museumdag wilt plannen.
   themes:
   - museum
@@ -594,6 +692,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Museum_Island
     maps_query: Museumsinsel Berlin
+    wikidata: Q151963
 - id: pergamon-museum
   name: Pergamon Museum (Museuminsel)
   type: museum
@@ -602,6 +701,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.521
+      lon: 13.396
   why_visit: Wereldklasse oudheid-collectie (check renovatie/openingstijden vooraf).
   themes:
   - museum
@@ -613,6 +715,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Pergamon_Museum
     maps_query: Pergamonmuseum
+    wikidata: Q157298
 - id: neues-museum
   name: Neues Museum
   type: museum
@@ -621,6 +724,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.52055556
+      lon: 13.39777778
   why_visit: Sterk museum op Museuminsel (o.a. Egyptisch); mooie herbouw/architectuur.
   themes:
   - museum
@@ -632,6 +738,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Neues_Museum
     maps_query: Neues Museum Berlin
+    wikidata: Q157316
 - id: tiergarten-park
   name: Tiergarten (park-wandeling)
   type: park
@@ -640,6 +747,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51388889
+      lon: 13.35694444
   why_visit: Fijn groen midden in de stad; perfect als ‘reset’ tussen sights.
   themes:
   - outdoors
@@ -650,6 +760,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tiergarten_(park)
     maps_query: Großer Tiergarten
+    wikidata: Q694020
 - id: tempelhofer-feld
   name: Tempelhofer Feld (voormalig vliegveld)
   type: park
@@ -658,6 +769,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.476
+      lon: 13.395
   why_visit: Mega open ruimte voor wandelen/fietsen/skaten + locals vibe.
   themes:
   - vibe
@@ -668,6 +782,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tempelhofer_Feld
     maps_query: Tempelhofer Feld
+    wikidata: Q2402748
 - id: mauerpark
   name: Mauerpark
   type: park
@@ -676,6 +791,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.54361111
+      lon: 13.40333333
   why_visit: 'Zondags: markt + straatmuziek + (soms) karaoke. Heel Berlijns.'
   themes:
   - vibe
@@ -686,6 +804,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Mauerpark
     maps_query: Mauerpark
+    wikidata: Q639887
 - id: markthalle-neun
   name: Markthalle Neun (streetfood/markt)
   type: food
@@ -767,6 +886,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.51111111
+      lon: 13.44305556
   why_visit: Berlijn clubcultuur-icoon. Niet voor iedereen; deurbeleid/drukte.
   themes:
   - nightlife
@@ -778,6 +900,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berghain
     maps_query: Berghain
+    wikidata: Q136975
 - id: tresor
   name: Tresor (club – techno)
   type: nightlife
@@ -797,6 +920,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tresor
     maps_query: Tresor Berlin
+    wikidata: Q1892363
 - id: schloss-charlottenburg
   name: Schloss Charlottenburg
   type: palace
@@ -805,6 +929,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5209
+      lon: 13.2957
   why_visit: Paleis + tuinen; mooi contrast met ‘ruw’ Berlijn.
   themes:
   - history
@@ -816,6 +943,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
     maps_query: Schloss Charlottenburg
+    wikidata: Q154996
 - id: kurfuerstendamm
   name: Kurfürstendamm (Ku’damm)
   type: district
@@ -834,9 +962,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
-
-# --- Added: Restaurants & cocktail bars (2026-01) ---
-# --- Added: Restaurants & cocktail bars (2026-01) ---
+    wikidata: Q160272
 - id: rutz-restaurant
   name: Rutz (fine dining)
   type: restaurant
@@ -845,7 +971,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one big dinner” night.'
+  why_visit: Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one big dinner” night.
   themes:
   - food
   - vibe
@@ -855,7 +981,7 @@ pois:
     notes: Reserveer ruim op tijd.
   links:
     official: https://rutz-restaurant.de/
-    maps_query: "Rutz Restaurant, Chausseestraße 8, 10115 Berlin"
+    maps_query: Rutz Restaurant, Chausseestraße 8, 10115 Berlin
 - id: horvath-restaurant
   name: Restaurant Horváth (Kreuzberg)
   type: restaurant
@@ -864,7 +990,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor “culinair + Berlijn vibe”.'
+  why_visit: Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor “culinair + Berlijn vibe”.
   themes:
   - food
   - vibe
@@ -874,7 +1000,7 @@ pois:
     notes: Reserveer; dresscode smart-casual werkt prima.
   links:
     official: https://www.restaurant-horvath.de/en
-    maps_query: "Restaurant Horváth, Paul-Lincke-Ufer 44a, 10999 Berlin"
+    maps_query: Restaurant Horváth, Paul-Lincke-Ufer 44a, 10999 Berlin
 - id: lorenz-adlon-esszimmer
   name: Lorenz Adlon Esszimmer
   type: restaurant
@@ -883,7 +1009,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Iconische “special occasion” setting bij Brandenburger Tor; klassiek topsegment.'
+  why_visit: Iconische “special occasion” setting bij Brandenburger Tor; klassiek topsegment.
   themes:
   - food
   - vibe
@@ -893,7 +1019,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://www.hotel-adlon.de/en/restaurants-bars/lorenz-adlon-esszimmer/
-    maps_query: "Lorenz Adlon Esszimmer, Unter den Linden 77, 10117 Berlin"
+    maps_query: Lorenz Adlon Esszimmer, Unter den Linden 77, 10117 Berlin
 - id: grill-royal
   name: Grill Royal
   type: restaurant
@@ -911,7 +1037,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://www.grillroyal.com/
-    maps_query: "Grill Royal, Friedrichstraße 105b, 10117 Berlin"
+    maps_query: Grill Royal, Friedrichstraße 105b, 10117 Berlin
 - id: kindee
   name: Kin Dee
   type: restaurant
@@ -920,7 +1046,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed beoordeeld.'
+  why_visit: Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed beoordeeld.
   themes:
   - food
   - vibe
@@ -929,7 +1055,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://kindeeberlin.de/
-    maps_query: "Kin Dee, Lützowstraße 81, 10785 Berlin"
+    maps_query: Kin Dee, Lützowstraße 81, 10785 Berlin
 - id: brlo-brwhouse
   name: BRLO Brwhouse (bier + goed eten)
   type: restaurant
@@ -938,7 +1064,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor lunch/early dinner).'
+  why_visit: Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor lunch/early dinner).
   themes:
   - food
   - vibe
@@ -947,7 +1073,7 @@ pois:
     indoor_outdoor: mixed
   links:
     official: https://www.brlo.de/
-    maps_query: "BRLO Brwhouse, Schöneberger Straße 16, 10963 Berlin"
+    maps_query: BRLO Brwhouse, Schöneberger Straße 16, 10963 Berlin
 - id: lovis
   name: Lovis (fine bistro)
   type: restaurant
@@ -956,7 +1082,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin dining”.'
+  why_visit: Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin dining”.
   themes:
   - food
   - vibe
@@ -965,7 +1091,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://lovis.berlin/
-    maps_query: "Lovis, Pannierstraße 24, 12047 Berlin"
+    maps_query: Lovis, Pannierstraße 24, 12047 Berlin
 - id: house-of-small-wonder
   name: House of Small Wonder (lunch/brunch)
   type: cafe
@@ -974,7 +1100,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Hele fijne brunch/lunch sfeer in een “green atrium”; ideaal weekend-start.'
+  why_visit: Hele fijne brunch/lunch sfeer in een “green atrium”; ideaal weekend-start.
   themes:
   - food
   - vibe
@@ -983,7 +1109,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://houseofsmallwonder.de/
-    maps_query: "House of Small Wonder, Johannisstraße 20, 10117 Berlin"
+    maps_query: House of Small Wonder, Johannisstraße 20, 10117 Berlin
 - id: the-father-carpenter
   name: The Father Carpenter (coffee + pastry)
   type: cafe
@@ -992,7 +1118,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Sterke koffie + rustige binnentuin; perfect als korte “reset” stop.'
+  why_visit: Sterke koffie + rustige binnentuin; perfect als korte “reset” stop.
   themes:
   - food
   - vibe
@@ -1001,7 +1127,7 @@ pois:
     indoor_outdoor: mixed
   links:
     official: https://thefathercarpenter.com/
-    maps_query: "The Father Carpenter, Münzstraße 21, 10178 Berlin"
+    maps_query: The Father Carpenter, Münzstraße 21, 10178 Berlin
 - id: bar-tausend
   name: Bar Tausend
   type: cocktailbar
@@ -1010,7 +1136,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out” start.'
+  why_visit: Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out” start.
   themes:
   - nightlife
   - vibe
@@ -1020,7 +1146,7 @@ pois:
     notes: Vaak druk; handig om vroeg te gaan.
   links:
     official: https://tausendberlin.com/
-    maps_query: "Bar Tausend, Schiffbauerdamm 11, 10117 Berlin"
+    maps_query: Bar Tausend, Schiffbauerdamm 11, 10117 Berlin
 - id: buck-and-breck
   name: Buck and Breck
   type: cocktailbar
@@ -1029,7 +1155,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Mini “speakeasy” met topmixology; vaak genoemd als Berlijnse bar-institutie.'
+  why_visit: Mini “speakeasy” met topmixology; vaak genoemd als Berlijnse bar-institutie.
   themes:
   - nightlife
   - vibe
@@ -1038,7 +1164,7 @@ pois:
     indoor_outdoor: indoor
     notes: Klein; wachtrij mogelijk.
   links:
-    maps_query: "Buck and Breck, Brunnenstraße 177, 10119 Berlin"
+    maps_query: Buck and Breck, Brunnenstraße 177, 10119 Berlin
 - id: green-door
   name: Green Door (cocktail bar)
   type: cocktailbar
@@ -1047,7 +1173,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Klassieker met sterke cocktails; regelmatig bekroond/genoemd in bar-lijstjes.'
+  why_visit: Klassieker met sterke cocktails; regelmatig bekroond/genoemd in bar-lijstjes.
   themes:
   - nightlife
   - vibe
@@ -1056,7 +1182,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://greendoorbar.de/
-    maps_query: "Green Door Bar, Winterfeldtstraße 50, 10781 Berlin"
+    maps_query: Green Door Bar, Winterfeldtstraße 50, 10781 Berlin
 - id: rum-trader
   name: Rum Trader
   type: cocktailbar
@@ -1065,7 +1191,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse “louder” spots.'
+  why_visit: Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse “louder” spots.
   themes:
   - nightlife
   - vibe
@@ -1073,7 +1199,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Rum Trader, Rankestraße 33, 10789 Berlin"
+    maps_query: Rum Trader, Rankestraße 33, 10789 Berlin
 - id: velvet-bar
   name: Velvet (cocktail bar)
   type: cocktailbar
@@ -1082,7 +1208,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Sterke cocktails met laid-back sfeer; fijn voor een late-night stop.'
+  why_visit: Sterke cocktails met laid-back sfeer; fijn voor een late-night stop.
   themes:
   - nightlife
   - vibe
@@ -1090,7 +1216,7 @@ pois:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Velvet Bar Berlin, Ganghoferstraße 1, 12043 Berlin"
+    maps_query: Velvet Bar Berlin, Ganghoferstraße 1, 12043 Berlin
 - id: becketts-kopf
   name: Beckett’s Kopf
   type: cocktailbar
@@ -1099,7 +1225,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Intiem, boekbaar (vaak per “slot”) en heel consistent goed.'
+  why_visit: Intiem, boekbaar (vaak per “slot”) en heel consistent goed.
   themes:
   - nightlife
   - vibe
@@ -1109,7 +1235,7 @@ pois:
     notes: Check reservering/slots.
   links:
     official: https://beckettskopf.de/
-    maps_query: "Beckett's Kopf, Pappelallee 64, 10437 Berlin"
+    maps_query: Beckett's Kopf, Pappelallee 64, 10437 Berlin
 - id: bellboy
   name: Bellboy (cocktail bar)
   type: cocktailbar
@@ -1118,7 +1244,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Kleine bar met scherpe cocktails; goed “quality over quantity”.'
+  why_visit: Kleine bar met scherpe cocktails; goed “quality over quantity”.
   themes:
   - nightlife
   - vibe
@@ -1126,7 +1252,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Bellboy Bar, Pannierstraße 57, 12047 Berlin"
+    maps_query: Bellboy Bar, Pannierstraße 57, 12047 Berlin
 - id: bar-milano
   name: Bar Milano
   type: cocktailbar
@@ -1135,7 +1261,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Stylish cocktails + goede muziek; fijne after-dinner spot.'
+  why_visit: Stylish cocktails + goede muziek; fijne after-dinner spot.
   themes:
   - nightlife
   - vibe
@@ -1143,7 +1269,7 @@ pois:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Bar Milano Berlin, Linienstraße 127, 10115 Berlin"
+    maps_query: Bar Milano Berlin, Linienstraße 127, 10115 Berlin
 - id: bar-brutal-54
   name: Bar Brutal 54
   type: cocktailbar
@@ -1152,7 +1278,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met hidden gems.'
+  why_visit: Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met hidden gems.
   themes:
   - nightlife
   - vibe
@@ -1160,7 +1286,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Bar Brutal 54, Schönhauser Allee 54, 10437 Berlin"
+    maps_query: Bar Brutal 54, Schönhauser Allee 54, 10437 Berlin
 - id: kwia
   name: kwia (cocktail bar)
   type: cocktailbar
@@ -1169,7 +1295,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Klein en high quality; goed als “1–2 cocktails and done”.'
+  why_visit: Klein en high quality; goed als “1–2 cocktails and done”.
   themes:
   - nightlife
   - vibe
@@ -1177,7 +1303,7 @@ pois:
     typical_visit_time: 45–120 min
     indoor_outdoor: indoor
   links:
-    maps_query: "kwia bar, Oranienburger Straße 13, 10178 Berlin"
+    maps_query: kwia bar, Oranienburger Straße 13, 10178 Berlin
 - id: lamm-bar
   name: Lamm (bar)
   type: cocktailbar
@@ -1186,7 +1312,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Laid-back buurtbar met sterke drinks; fijn om de Neukölln vibe te pakken.'
+  why_visit: Laid-back buurtbar met sterke drinks; fijn om de Neukölln vibe te pakken.
   themes:
   - nightlife
   - vibe
@@ -1194,7 +1320,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Lamm Bar Berlin, Schillerpromenade 21, 12049 Berlin"
+    maps_query: Lamm Bar Berlin, Schillerpromenade 21, 12049 Berlin
 - id: monkey-bar
   name: Monkey Bar (rooftop-ish vibe)
   type: cocktailbar
@@ -1203,7 +1329,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Uitzicht + city vibe (Bikini Berlin / Zoo area); goed voor zonsondergang-drink.'
+  why_visit: Uitzicht + city vibe (Bikini Berlin / Zoo area); goed voor zonsondergang-drink.
   themes:
   - nightlife
   - vibe
@@ -1213,7 +1339,7 @@ pois:
     indoor_outdoor: mixed
   links:
     official: https://www.monkeybarberlin.de/
-    maps_query: "Monkey Bar Berlin, Budapester Straße 40, 10787 Berlin"
+    maps_query: Monkey Bar Berlin, Budapester Straße 40, 10787 Berlin
 - id: trio-restaurant-bar
   name: Trio (casual dinner + wine)
   type: restaurant
@@ -1222,7 +1348,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar wel goed”.'
+  why_visit: Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar wel goed”.
   themes:
   - food
   - vibe
@@ -1230,4 +1356,4 @@ pois:
     typical_visit_time: 75–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Trio Restaurant Berlin, Manteuffelstraße 12, 10997 Berlin"
+    maps_query: Trio Restaurant Berlin, Manteuffelstraße 12, 10997 Berlin
