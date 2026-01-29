@@ -115,7 +115,16 @@ function planKey(ds){ return `tripkit_plan_${ds}_v1`; }
 function defaultPlanSettings(ds){
   if(ds === "berlin"){
     // Example: arrive Fri evening, Sat+Sun full days, depart Mon afternoon
-    return { days: 4, arrival: "evening", departure: "afternoon", mapProvider: "both" };
+    return {
+      days: 4,
+      arrival: "evening",
+      departure: "afternoon",
+      mapProvider: "both",
+      // Extra route slots (Berlin): plan food + cocktails per day
+      includeLunch: true,
+      includeDinner: true,
+      includeCocktails: true,
+    };
   }
   // WW1 weekend: arrive Fri afternoon, Sat full, depart Sun evening
   return { days: 3, arrival: "afternoon", departure: "evening", mapProvider: "both" };
@@ -501,6 +510,112 @@ function routeCoordsForDay(origin, stops){
   return coords;
 }
 
+function isFoodPoi(poi){
+  if(!poi) return false;
+  if((poi.type || "").toLowerCase() === "food") return true;
+  return (poi.themes || []).includes("food");
+}
+function isNightlifePoi(poi){
+  if(!poi) return false;
+  if((poi.type || "").toLowerCase() === "nightlife") return true;
+  return (poi.themes || []).includes("nightlife");
+}
+function isCocktailPoi(poi){
+  if(!poi) return false;
+  const themes = poi.themes || [];
+  if(themes.includes("cocktails") || themes.includes("cocktail")) return true;
+  // fallback heuristic: name contains "cocktail" or "bar" and it's nightlife
+  const nm = (poi.name || "").toLowerCase();
+  if(nm.includes("cocktail")) return true;
+  if(isNightlifePoi(poi) && nm.includes("bar")) return true;
+  return false;
+}
+
+function travelKmForStops(origin, stops){
+  const coords = routeCoordsForDay(origin, stops);
+  let km = 0;
+  for(let i=1;i<coords.length;i++) km += haversineKm(coords[i-1], coords[i]);
+  return km;
+}
+function visitMinForStops(stops){
+  return (stops || []).reduce((sum, s)=> sum + parseTypicalVisitMinutes(s.poi), 0);
+}
+
+function pickNearestUnused(cands, targetCoord, usedIds){
+  if(!cands || !cands.length || !targetCoord) return null;
+  let best = null;
+  for(const x of cands){
+    if(!x.coord) continue;
+    const used = usedIds && usedIds.has(x.poi.id);
+    const d = haversineKm(x.coord, targetCoord);
+    if(!best || (used ? 1e9 : d) < (best.used ? 1e9 : best.d) || (!used && !best.used && d < best.d)){
+      best = { x, d, used };
+    }
+  }
+  if(best && usedIds) usedIds.add(best.x.poi.id);
+  return best ? best.x : null;
+}
+
+function insertMealSlotsBerlin(plan, origin, budgets, pools){
+  const { lunchPool, dinnerPool, cocktailPool } = pools;
+  const includeLunch = !!__PLAN.includeLunch;
+  const includeDinner = (__PLAN.includeDinner !== false);
+  const includeCocktails = !!__PLAN.includeCocktails;
+
+  // Determine which slots exist per day based on arrival/departure.
+  const dayCount = budgets.length;
+  const used = new Set();
+  for(let i=0;i<dayCount;i++){
+    const day = plan.days[i] || { budgetMin: budgets[i], stops: [], travelKm: 0, visitMin: 0 };
+    const isFirst = (i===0);
+    const isLast = (i===dayCount-1);
+    const arrival = (__PLAN.arrival || "afternoon");
+    const departure = (__PLAN.departure || "evening");
+
+    const wantLunch = includeLunch && (!isFirst || arrival !== "evening") && (!isLast || departure !== "morning");
+    const wantDinner = includeDinner && (!isLast || departure === "evening") ;
+    const wantCocktail = includeCocktails && wantDinner;
+
+    // pick targets
+    const stops = day.stops || [];
+    const midCoord = stops.length ? stops[Math.floor(stops.length/2)].coord : origin;
+    const endCoord = stops.length ? stops[stops.length-1].coord : origin;
+
+    let lunch = null, dinner = null, cocktail = null;
+    if(wantLunch){
+      lunch = pickNearestUnused(lunchPool, midCoord, used) || pickNearestUnused(lunchPool, midCoord, null);
+      if(lunch){
+        // insert around the middle
+        const idx = Math.max(0, Math.min(stops.length, Math.floor(stops.length/2)));
+        stops.splice(idx, 0, lunch);
+      }
+    }
+
+    if(wantDinner){
+      // after possible lunch insert, recompute end coord
+      const end2 = stops.length ? stops[stops.length-1].coord : endCoord;
+      dinner = pickNearestUnused(dinnerPool, end2, used) || pickNearestUnused(dinnerPool, end2, null);
+      if(dinner){
+        stops.push(dinner);
+      }
+    }
+
+    if(wantCocktail){
+      const t = dinner ? dinner.coord : (stops.length ? stops[stops.length-1].coord : origin);
+      cocktail = pickNearestUnused(cocktailPool, t, used) || pickNearestUnused(cocktailPool, t, null);
+      if(cocktail){
+        stops.push(cocktail);
+      }
+    }
+
+    day.stops = stops;
+    day.travelKm = travelKmForStops(origin, stops);
+    day.visitMin = visitMinForStops(stops);
+    plan.days[i] = day;
+  }
+  return plan;
+}
+
 
 /* ---------------- Planner panel ---------------- */
 function ensurePlannerPanel(){
@@ -548,6 +663,17 @@ function ensurePlannerPanel(){
       <option value="google">Alleen Google</option>
       <option value="apple">Alleen Apple</option>
     </select>
+  </div>
+  <div id="planBerlinExtras" style="display:none; gap:10px; align-items:center; flex-wrap:wrap; padding:6px 10px; border-radius:12px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);">
+    <label class="small" style="display:flex; align-items:center; gap:8px; color:var(--muted);">
+      <input id="planIncludeLunch" type="checkbox" /> Lunch
+    </label>
+    <label class="small" style="display:flex; align-items:center; gap:8px; color:var(--muted);">
+      <input id="planIncludeDinner" type="checkbox" /> Diner
+    </label>
+    <label class="small" style="display:flex; align-items:center; gap:8px; color:var(--muted);">
+      <input id="planIncludeCocktails" type="checkbox" /> Cocktailbar
+    </label>
   </div>
   <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-left:auto;">
         <button id="btnPlan" class="btn">Maak weekendplan</button>
@@ -621,27 +747,75 @@ function applyPlannerSettingsUI(){
   const arrEl = panel.querySelector("#planArrival");
   const depEl = panel.querySelector("#planDeparture");
   const mapEl = panel.querySelector("#planMapProvider");
+  const extras = panel.querySelector("#planBerlinExtras");
+  const lunchEl = panel.querySelector("#planIncludeLunch");
+  const dinnerEl = panel.querySelector("#planIncludeDinner");
+  const cockEl = panel.querySelector("#planIncludeCocktails");
   if(daysEl) daysEl.value = String(__PLAN.days || 3);
   if(arrEl) arrEl.value = __PLAN.arrival || "afternoon";
   if(depEl) depEl.value = __PLAN.departure || "evening";
   if(mapEl) mapEl.value = __PLAN.mapProvider || "both";
+  if(extras) extras.style.display = (currentDataset === "berlin") ? "flex" : "none";
+  if(lunchEl) lunchEl.checked = !!__PLAN.includeLunch;
+  if(dinnerEl) dinnerEl.checked = (__PLAN.includeDinner !== false);
+  if(cockEl) cockEl.checked = !!__PLAN.includeCocktails;
 }
 async function buildWeekendPlan(){
   const favList = (__DOC.pois || []).filter(p => favs.has(p.id));
+  const isBerlin = (currentDataset === "berlin");
   // Vul ontbrekende coördinaten automatisch aan (Wikidata → Nominatim) en cache in je browser.
   await ensureCoordsForPois(favList);
-  if(favList.length < 2){
+  if(favList.length < 2 && !isBerlin){
     return `<div class="small">Selecteer minstens 2 favorieten om een route te maken.</div>`;
   }
   const withCoords = favList.map(p=>({poi:p, coord:coordsFromPoi(p)})).filter(x=>x.coord);
-  if(withCoords.length < 2){
+  if(withCoords.length < 1){
     return `<div class="small">Ik heb coördinaten nodig om een route te berekenen. Voeg in YAML bij je favorieten <code>location.coordinates</code> toe (lat/lon), of voeg favorieten toe die al coördinaten hebben.</div>`;
   }
 
   const origin = getOriginCoord(__DOC) || withCoords[0].coord;
   const speed = avgSpeedKmph(__DOC);
   const budgets = dayBudgets(__PLAN.days, __PLAN.arrival, __PLAN.departure);
-  const plan = buildOptimizedPlan(withCoords, origin, budgets, speed);
+
+  // Optional: for Berlin we can treat food/cocktail favorites as repeating daily slots.
+  let mainStops = withCoords;
+  const pools = { lunchPool: [], dinnerPool: [], cocktailPool: [] };
+  if(isBerlin && (__PLAN.includeLunch || (__PLAN.includeDinner !== false) || __PLAN.includeCocktails)){
+    const includeLunch = !!__PLAN.includeLunch;
+    const includeDinner = (__PLAN.includeDinner !== false);
+    const includeCocktails = !!__PLAN.includeCocktails;
+
+    for(const x of withCoords){
+      const p = x.poi;
+      if(isFoodPoi(p) && (includeLunch || includeDinner)){
+        pools.lunchPool.push(x);
+        pools.dinnerPool.push(x);
+        continue;
+      }
+      if(isCocktailPoi(p) && includeCocktails){
+        pools.cocktailPool.push(x);
+        continue;
+      }
+      // keep as a regular stop
+    }
+    // Rebuild mainStops without the pooled items
+    mainStops = withCoords.filter(x=>{
+      const p = x.poi;
+      if(isFoodPoi(p) && (includeLunch || includeDinner)) return false;
+      if(isCocktailPoi(p) && includeCocktails) return false;
+      return true;
+    });
+  }
+
+  let plan;
+  if(mainStops.length){
+    plan = buildOptimizedPlan(mainStops, origin, budgets, speed);
+  }else{
+    plan = { days: budgets.map(b=>({budgetMin:b, stops: [], travelKm:0, visitMin:0})), leftovers: [] };
+  }
+  if(isBerlin){
+    plan = insertMealSlotsBerlin(plan, origin, budgets, pools);
+  }
 
   const slotLabel = (i)=>{
     const d = budgets.length;
@@ -1059,12 +1233,19 @@ const daysSel = panel.querySelector("#planDays");
 const arrSel = panel.querySelector("#planArrival");
 const depSel = panel.querySelector("#planDeparture");
 const mapSel = panel.querySelector("#planMapProvider");
+const lunchSel = panel.querySelector("#planIncludeLunch");
+const dinnerSel = panel.querySelector("#planIncludeDinner");
+const cockSel = panel.querySelector("#planIncludeCocktails");
 const persistPlan = ()=>{
   __PLAN = {
+    ...__PLAN,
     days: parseInt(daysSel?.value || __PLAN.days, 10) || __PLAN.days,
     arrival: arrSel?.value || __PLAN.arrival,
     departure: depSel?.value || __PLAN.departure,
     mapProvider: mapSel?.value || __PLAN.mapProvider,
+    includeLunch: lunchSel ? !!lunchSel.checked : __PLAN.includeLunch,
+    includeDinner: dinnerSel ? !!dinnerSel.checked : (__PLAN.includeDinner !== false),
+    includeCocktails: cockSel ? !!cockSel.checked : __PLAN.includeCocktails,
   };
   savePlanSettings(currentDataset, __PLAN);
   const out = panel.querySelector("#plannerOutput");
@@ -1075,6 +1256,13 @@ daysSel?.addEventListener("change", persistPlan);
 arrSel?.addEventListener("change", persistPlan);
 depSel?.addEventListener("change", persistPlan);
 mapSel?.addEventListener("change", persistPlan);
+lunchSel?.addEventListener("change", persistPlan);
+dinnerSel?.addEventListener("change", persistPlan);
+cockSel?.addEventListener("change", persistPlan);
+// Berlin extras
+lunchSel?.addEventListener("change", persistPlan);
+dinnerSel?.addEventListener("change", persistPlan);
+cockSel?.addEventListener("change", persistPlan);
   panel.querySelector("#btnClearFavs").addEventListener("click", ()=>{
     favs = new Set();
     saveFavs(currentDataset, favs);
