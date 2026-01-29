@@ -866,7 +866,7 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
       return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}${aBtn}</div>`;
     };
   
-    const section = (label, day) => {
+    const section = (label, day, di) => {
       const stops = day.stops || [];
       const coords = routeCoordsForDay(origin, stops);
       return `
