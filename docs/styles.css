@@ -323,3 +323,142 @@ code{
   border-color: rgba(122,162,255,.35);
   color: var(--text);
 }
+
+
+/* --- Mobile improvements (planner + buttons + topbar) --- */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(122,162,255,.14);
+  border: 1px solid rgba(122,162,255,.35);
+  color: var(--text);
+  font-weight: 650;
+  font-size: 13px;
+  cursor:pointer;
+  user-select:none;
+  min-height: 44px; /* touch target */
+}
+.btn:hover{ border-color: rgba(122,162,255,.55); }
+.btn:active{ transform: translateY(1px); }
+
+.btn-ghost{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  color: var(--text);
+}
+.btn-ghost:hover{ border-color: rgba(255,255,255,.18); }
+
+.linkbtn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  color: var(--text);
+  text-decoration:none;
+  min-height: 44px;
+}
+.linkbtn:hover{ border-color: rgba(255,255,255,.18); }
+
+.plan{
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.row{
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Make interactive elements easier on small screens */
+@media (max-width: 720px){
+  .topbar .container{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .nav{
+    width:100%;
+  }
+  .nav a{
+    flex: 1 1 auto;
+    text-align:center;
+  }
+
+  .controls{
+    grid-template-columns: 1fr; /* force single column earlier */
+  }
+
+  .plan .row{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .btn, .btn-ghost, .linkbtn{
+    width:100%;
+  }
+
+  /* Prevent horizontal scroll caused by long URLs or text */
+  .card, .plan, .status, .region{
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 420px){
+  .container{ padding: 0 12px; }
+  .title{ font-size: 18px; }
+  .subtitle{ font-size: 12px; }
+  .control input, .control select{ font-size: 16px; } /* avoid iOS zoom */
+}
+
+
+/* Photo counter next to the photos-only toggle */
+.photoCounter{
+  margin-left: .6rem;
+  font-size: .85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* Placeholder for missing images */
+.thumb .noimg.placeholder{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:.35rem;
+  height:100%;
+  width:100%;
+  color: var(--muted);
+  text-align:center;
+  padding: .8rem;
+}
+.thumb .noimg.placeholder .phIcon{
+  font-size: 1.4rem;
+  opacity:.9;
+}
+.thumb .noimg.placeholder .phText{
+  font-size: .9rem;
+}

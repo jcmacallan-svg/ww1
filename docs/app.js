@@ -26,7 +26,39 @@ const els = {
   photosOnly: document.getElementById("photosOnly"),
   editDataLink: document.getElementById("editDataLink"),
   viewRepoLink: document.getElementById("viewRepoLink"),
+  photoCounter: null,
 };
+
+// Photo counter (shown next to "Toon alleen POI’s met foto")
+let PHOTO_STATS = { total: 0, withPhoto: 0, resolved: 0 };
+function resetPhotoStats(){
+  PHOTO_STATS = { total: 0, withPhoto: 0, resolved: 0 };
+  renderPhotoCounter();
+}
+function renderPhotoCounter(){
+  if(!els.photoCounter) return;
+  const t = PHOTO_STATS.total;
+  const w = PHOTO_STATS.withPhoto;
+  const r = PHOTO_STATS.resolved;
+  if(t === 0){
+    els.photoCounter.textContent = "";
+    return;
+  }
+  const missing = Math.max(0, t - w);
+  const loading = (r < t) ? ` · laden ${r}/${t}` : "";
+  els.photoCounter.textContent = `Foto’s ${w}/${t} · ontbreekt ${missing}${loading}`;
+}
+function ensurePhotoCounterEl(){
+  if(els.photoCounter) return;
+  const label = els.photosOnly?.closest("label");
+  if(!label) return;
+  const span = document.createElement("span");
+  span.id = "photoCounter";
+  span.className = "photoCounter";
+  span.textContent = "";
+  label.appendChild(span);
+  els.photoCounter = span;
+}
 
 function setStatus(msg){ if(els.statusText) els.statusText.textContent = msg; }
 
@@ -78,6 +110,7 @@ function saveFavs(ds, favs){
   localStorage.setItem(favKey(ds), JSON.stringify(Array.from(favs)));
 }
 let favs = loadFavs(currentDataset);
+  __COORD_OVERRIDES = loadCoordOverrides(currentDataset);
 /* ---------------- Planner settings (per dataset) ---------------- */
 function planKey(ds){ return `tripkit_plan_${ds}_v1`; }
 function defaultPlanSettings(ds){
@@ -214,16 +247,107 @@ async function getBestWikipediaInfo(poi){
 
 /* ---------------- Routing ---------------- */
 
-function getOriginCoord(doc){
-  const c = doc?.settings?.default_origin?.coordinates;
-  if(c && typeof c.lat === "number" && typeof c.lon === "number") return {lat:c.lat, lon:c.lon};
+function _num(v){
+  if(typeof v === "number" && Number.isFinite(v)) return v;
+  if(typeof v === "string"){
+    const n = parseFloat(v);
+    if(Number.isFinite(n)) return n;
+  }
   return null;
 }
 
-function coordsFromPoi(p){
-  const c = p.location?.coordinates;
-  if(c && typeof c.lat === "number" && typeof c.lon === "number") return {lat:c.lat, lon:c.lon};
+function getOriginCoord(doc){
+  const c = doc?.settings?.default_origin?.coordinates;
+  const lat = _num(c?.lat);
+  const lon = _num(c?.lon);
+  if(lat != null && lon != null) return {lat, lon};
   return null;
+}
+
+// Per-dataset coordinate overrides (stored client-side; useful when YAML lacks coords)
+function coordKey(ds){ return `tripkit_coord_overrides_${ds}_v1`; }
+function loadCoordOverrides(ds){
+  try{ return JSON.parse(localStorage.getItem(coordKey(ds)) || "{}") || {}; }
+  catch{ return {}; }
+}
+function saveCoordOverrides(ds, obj){
+  localStorage.setItem(coordKey(ds), JSON.stringify(obj || {}));
+}
+let __COORD_OVERRIDES = loadCoordOverrides(currentDataset);
+
+function coordsFromPoi(p){
+  // 1) YAML coords
+  const c = p.location?.coordinates;
+  let lat = _num(c?.lat), lon = _num(c?.lon);
+  if(lat != null && lon != null) return {lat, lon};
+
+  // 2) local override
+  const o = __COORD_OVERRIDES?.[p.id];
+  lat = _num(o?.lat); lon = _num(o?.lon);
+  if(lat != null && lon != null) return {lat, lon};
+
+  return null;
+}
+
+// 3) Try to get coordinates from Wikidata (P625)
+async function fetchWikidataCoord(qid){
+  if(!qid) return null;
+  try{
+    const ent = await fetchWikidataEntity(qid);
+    const claim = ent?.claims?.P625?.[0]?.mainsnak?.datavalue?.value;
+    if(claim && typeof claim.latitude !== "undefined" && typeof claim.longitude !== "undefined"){
+      const lat = _num(claim.latitude);
+      const lon = _num(claim.longitude);
+      if(lat != null && lon != null) return {lat, lon, source: "wikidata"};
+    }
+  }catch{}
+  return null;
+}
+
+// 4) Fallback: Nominatim geocode using maps_query/name + locality + country.
+// Results are cached in localStorage overrides.
+async function geocodeNominatim(poi){
+  const parts = [];
+  if(poi.links?.maps_query) parts.push(poi.links.maps_query);
+  else parts.push(poi.name);
+  if(poi.location?.locality) parts.push(poi.location.locality);
+  if(poi.location?.province) parts.push(poi.location.province);
+  if(poi.location?.country) parts.push(poi.location.country);
+  const q = parts.filter(Boolean).join(", ");
+  try{
+    const u = new URL("https://nominatim.openstreetmap.org/search");
+    u.searchParams.set("format","json");
+    u.searchParams.set("limit","1");
+    u.searchParams.set("q", q);
+    const res = await fetch(u.toString(), { headers: { "accept":"application/json" }, cache: "no-store" });
+    if(!res.ok) return null;
+    const arr = await res.json();
+    const first = Array.isArray(arr) ? arr[0] : null;
+    const lat = _num(first?.lat);
+    const lon = _num(first?.lon);
+    if(lat != null && lon != null) return {lat, lon, source: "nominatim"};
+  }catch{}
+  return null;
+}
+
+async function ensureCoordsForPois(pois){
+  const updated = [];
+  for(const p of pois){
+    if(coordsFromPoi(p)) continue;
+
+    const qid = p.links?.wikidata || null;
+    let got = await fetchWikidataCoord(qid);
+    if(!got) got = await geocodeNominatim(p);
+
+    if(got){
+      __COORD_OVERRIDES[p.id] = { lat: got.lat, lon: got.lon, source: got.source };
+      updated.push(p.id);
+    }
+  }
+  if(updated.length){
+    saveCoordOverrides(currentDataset, __COORD_OVERRIDES);
+  }
+  return updated;
 }
 function haversineKm(a, b){
   if(!a || !b) return Infinity;
@@ -479,6 +603,8 @@ function updatePlannerUI(){
   const meta = panel.querySelector("#plannerMeta");
   const out = panel.querySelector("#plannerOutput");
   const favList = (__DOC.pois || []).filter(p => favs.has(p.id));
+  // Vul ontbrekende coördinaten automatisch aan (Wikidata → Nominatim) en cache in je browser.
+  await ensureCoordsForPois(favList);
   if(meta){
     meta.textContent = favList.length ? `${favList.length} favoriet(en) geselecteerd.` :
       "Selecteer locaties met de ster. Daarna kun je een compacte weekendroute laten voorstellen.";
@@ -501,8 +627,10 @@ function applyPlannerSettingsUI(){
   if(depEl) depEl.value = __PLAN.departure || "evening";
   if(mapEl) mapEl.value = __PLAN.mapProvider || "both";
 }
-function buildWeekendPlan(){
+async function buildWeekendPlan(){
   const favList = (__DOC.pois || []).filter(p => favs.has(p.id));
+  // Vul ontbrekende coördinaten automatisch aan (Wikidata → Nominatim) en cache in je browser.
+  await ensureCoordsForPois(favList);
   if(favList.length < 2){
     return `<div class="small">Selecteer minstens 2 favorieten om een route te maken.</div>`;
   }
@@ -631,13 +759,14 @@ function createCard(poi, regionById){
   a.href = poi.links?.wikipedia || "#";
   a.target = "_blank";
   a.rel = "noopener";
+  PHOTO_STATS.total += 1; renderPhotoCounter();
   a.appendChild(createStarButton(poi.id));
 
   const thumb = document.createElement("div");
   thumb.className = "thumb";
   const noimg = document.createElement("div");
-  noimg.className = "noimg";
-  noimg.textContent = "Foto laden…";
+  noimg.className = "noimg placeholder";
+  noimg.innerHTML = `<div class="phIcon">📷</div><div class="phText">Foto laden…</div>`;
   thumb.appendChild(noimg);
 
   const row = document.createElement("div");
@@ -665,14 +794,38 @@ function createCard(poi, regionById){
   a.appendChild(meta);
   a.appendChild(summary);
 
+
+  // If YAML already has an image (from enrich_media.py), use it immediately.
+  const preThumb = poi.media?.image?.thumb || poi.media?.image?.url || null;
+  if(preThumb){
+    const img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = poi.name;
+    img.src = preThumb;
+    thumb.innerHTML = "";
+    thumb.appendChild(img);
+    a.dataset.hasPhoto = "1";
+    PHOTO_STATS.withPhoto += 1;
+    PHOTO_STATS.resolved += 1;
+    renderPhotoCounter();
+  }
   getBestWikipediaInfo(poi).then((info)=>{
+    const alreadyHasImg = (thumb.querySelector("img") !== null);
+
     if(!info){
-      noimg.textContent = "Geen foto beschikbaar";
-      a.dataset.hasPhoto = "0";
+      const phText = noimg.querySelector(".phText");
+      if(phText) phText.textContent = "Geen foto beschikbaar";
+      a.dataset.hasPhoto = alreadyHasImg ? "1" : "0";
+      if(!alreadyHasImg){
+        PHOTO_STATS.resolved += 1;
+      }
+      renderPhotoCounter();
       return;
     }
+
     if(info.pageUrl) a.href = info.pageUrl;
-    if(info.thumbnail){
+
+    if(!alreadyHasImg && info.thumbnail){
       const img = document.createElement("img");
       img.loading = "lazy";
       img.alt = poi.name;
@@ -680,13 +833,23 @@ function createCard(poi, regionById){
       thumb.innerHTML = "";
       thumb.appendChild(img);
       a.dataset.hasPhoto = "1";
+      PHOTO_STATS.withPhoto += 1;
     }else{
-      noimg.textContent = "Geen foto beschikbaar";
-      a.dataset.hasPhoto = "0";
+      if(!alreadyHasImg){
+        const phText = noimg.querySelector(".phText");
+        if(phText) phText.textContent = "Geen foto beschikbaar";
+        a.dataset.hasPhoto = "0";
+      }
     }
+
     if((poi.why_visit || "").length < 40 && info.extract){
       summary.textContent = info.extract;
     }
+
+    if(!alreadyHasImg){
+      PHOTO_STATS.resolved += 1;
+    }
+    renderPhotoCounter();
   });
 
   return a;
@@ -737,6 +900,7 @@ function render(){
   });
 
   els.regionsContainer.innerHTML = "";
+  resetPhotoStats();
   let shownRegions = 0, shownCards = 0;
 
   for(const r of regions){
@@ -818,6 +982,7 @@ async function fetchYaml(url){
 async function loadDataset(ds){
   currentDataset = ds;
   favs = loadFavs(currentDataset);
+  __COORD_OVERRIDES = loadCoordOverrides(currentDataset);
   __PLAN = loadPlanSettings(currentDataset);
   updateEditLink();
 
@@ -874,6 +1039,7 @@ function wireTabs(){
 
 /* ---------------- Main ---------------- */
 async function main(){
+  ensurePhotoCounterEl();
   wireGitHubLinks();
   injectStarStylesOnce();
   ensurePlannerPanel();
@@ -919,10 +1085,16 @@ mapSel?.addEventListener("change", persistPlan);
     if(out){ out.innerHTML = ""; out.dataset.hasPlan = ""; }
     updatePlannerUI();
   });
-  panel.querySelector("#btnPlan").addEventListener("click", ()=>{
+  panel.querySelector("#btnPlan").addEventListener("click", async ()=>{
     const out = panel.querySelector("#plannerOutput");
-    out.innerHTML = buildWeekendPlan();
     out.dataset.hasPlan = "1";
+    out.innerHTML = `<div class="small">Coördinaten ophalen en route bouwen…</div>`;
+    try{
+      out.innerHTML = await buildWeekendPlan();
+    }catch(e){
+      console.error(e);
+      out.innerHTML = `<div class="small">Er ging iets mis bij het maken van de route. Probeer opnieuw.</div>`;
+    }
   });
 
   await loadDataset(currentDataset);
