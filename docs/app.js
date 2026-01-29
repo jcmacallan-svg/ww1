@@ -596,7 +596,7 @@ function injectStarStylesOnce(){
   `;
   document.head.appendChild(s);
 }
-function updatePlannerUI(){
+async function updatePlannerUI(){
   const panel = document.getElementById("plannerPanel");
   if(!panel || !__DOC) return;
   const meta = panel.querySelector("#plannerMeta");
