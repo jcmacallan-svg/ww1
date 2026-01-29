@@ -993,21 +993,89 @@ function computeDayStats(day, origin, speed){
   day.travelKm = km;
   day.visitMin = visit;
 }
+
+function parseHHMMtoMinutes(hhmm){
+  if(!hhmm || typeof hhmm !== "string") return null;
+  const m = hhmm.trim().match(/^([01]?\d|2[0-3]):([0-5]\d)$/);
+  if(!m) return null;
+  const h = parseInt(m[1],10);
+  const mi = parseInt(m[2],10);
+  return h*60 + mi;
+}
+
 function optimizeDayOrder(day, origin){
-  const remaining = (day.stops || []).slice();
-  const out = [];
-  let cur = origin;
-  while(remaining.length){
+  const stops = (day.stops || []).slice();
+  if(!stops.length) return;
+
+  // If the user has set manual times, respect that order by treating timed stops as anchors.
+  // Untimed stops get assigned to the nearest anchor (by distance) and are routed before that anchor.
+  const anchors = [];
+  for(const s of stops){
+    const poiId = s?.poi?.id;
+    const t = poiId ? getManualTime(poiId) : "";
+    const mins = parseHHMMtoMinutes(t);
+    if(mins != null) anchors.push({ stop: s, tMins: mins });
+  }
+  anchors.sort((a,b)=>a.tMins - b.tMins);
+
+  // No anchors → simple nearest-neighbour.
+  if(!anchors.length){
+    const remaining = stops.slice();
+    const out = [];
+    let cur = origin;
+    while(remaining.length){
+      let bestIdx = 0;
+      let bestD = Infinity;
+      for(let i=0;i<remaining.length;i++){
+        const d = haversineKm(cur, remaining[i].coord);
+        if(d < bestD){ bestD = d; bestIdx = i; }
+      }
+      const picked = remaining.splice(bestIdx,1)[0];
+      out.push(picked);
+      cur = picked.coord;
+    }
+    day.stops = out;
+    return;
+  }
+
+  const anchorSet = new Set(anchors.map(a=>a.stop));
+  const flex = stops.filter(s=>!anchorSet.has(s));
+
+  // Assign each flex stop to its nearest anchor.
+  const buckets = anchors.map(()=>[]);
+  for(const s of flex){
     let bestIdx = 0;
     let bestD = Infinity;
-    for(let i=0;i<remaining.length;i++){
-      const d = haversineKm(cur, remaining[i].coord);
+    for(let i=0;i<anchors.length;i++){
+      const d = haversineKm(s.coord, anchors[i].stop.coord);
       if(d < bestD){ bestD = d; bestIdx = i; }
     }
-    const picked = remaining.splice(bestIdx,1)[0];
-    out.push(picked);
-    cur = picked.coord;
+    buckets[bestIdx].push(s);
   }
+
+  // Route each bucket (untimed) before its anchor in time order.
+  const out = [];
+  let cur = origin;
+  for(let i=0;i<anchors.length;i++){
+    const bucket = buckets[i];
+    // nearest neighbour within bucket
+    const remaining = bucket.slice();
+    while(remaining.length){
+      let bestIdx = 0;
+      let bestD = Infinity;
+      for(let j=0;j<remaining.length;j++){
+        const d = haversineKm(cur, remaining[j].coord);
+        if(d < bestD){ bestD = d; bestIdx = j; }
+      }
+      const picked = remaining.splice(bestIdx,1)[0];
+      out.push(picked);
+      cur = picked.coord;
+    }
+    // add anchor
+    out.push(anchors[i].stop);
+    cur = anchors[i].stop.coord;
+  }
+
   day.stops = out;
 }
 function renderCurrentPlan(){
