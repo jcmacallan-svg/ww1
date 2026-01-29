@@ -840,6 +840,7 @@ async function buildWeekendPlan(){
 }
 
 function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
+  const doc = __DOC;
   const slotLabel = (i)=>{
       const d = budgets.length;
       if(d === 1) return " (dagtrip)";
