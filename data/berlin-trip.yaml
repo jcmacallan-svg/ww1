@@ -92,6 +92,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Wall_Memorial
     maps_query: Gedenkstätte Berliner Mauer
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Mémorial_du_mur_de_Berlin_(6330924243).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Mémorial_du_mur_de_Berlin_(6330924243).jpg
+      license: CC BY 2.0
+      license_url: https://creativecommons.org/licenses/by/2.0
+      credit: Mémorial du mur de Berlin
+      source: wikimedia
 - id: ddr-museum
   name: DDR Museum
   type: museum
@@ -111,6 +119,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/DDR_Museum
     maps_query: DDR Museum Berlin
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/20220811_DDR-Museum_01.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:20220811_DDR-Museum_01.jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: Own work
+      source: wikimedia
 - id: stasi-museum
   name: Stasi Museum (Normannenstraße)
   type: museum
@@ -130,6 +146,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Stasi_Museum
     maps_query: Stasi Museum Berlin
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Sede_Stasi_Museum.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Sede_Stasi_Museum.JPG
+      license: CC BY 3.0
+      license_url: https://creativecommons.org/licenses/by/3.0
+      credit: Own work
+      source: wikimedia
 - id: checkpoint-charlie
   name: Checkpoint Charlie
   type: site
@@ -148,6 +172,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Checkpoint_Charlie
     maps_query: Checkpoint Charlie
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Checkpoint_Charlie_Berlin.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Checkpoint_Charlie_Berlin.jpg
+      license: CC BY-SA 2.0
+      license_url: https://creativecommons.org/licenses/by-sa/2.0
+      credit: Checkpoint Charlie
+      source: wikimedia
 - id: east-side-gallery
   name: East Side Gallery
   type: site
@@ -171,6 +203,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/East_Side_Gallery
     maps_query: East Side Gallery
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Wall6270.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Wall6270.JPG
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: allied-museum
   name: Allied Museum (AlliiertenMuseum)
   type: museum
@@ -190,6 +230,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Allied_Museum
     maps_query: AlliiertenMuseum Berlin
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Clayallee_AlliiertenMuseum_UAV_04-2017.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Clayallee_AlliiertenMuseum_UAV_04-2017.jpg
+      license: FAL
+      license_url: http://artlibre.org/licence/lal/en
+      credit: Own work
+      source: wikimedia
 - id: teufelsberg
   name: Teufelsberg (afluisterstation & street art)
   type: site
@@ -210,6 +258,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Teufelsberg
     maps_query: Teufelsberg Berlin
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Funkturm_Berlin_View_13.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Funkturm_Berlin_View_13.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: topography-of-terror
   name: Topography of Terror
   type: museum
@@ -230,6 +286,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Topography_of_Terror
     maps_query: Topography of Terror
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Topographie_des_Terrors_Neubau.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Topographie_des_Terrors_Neubau.jpg
+      license: CC BY-SA 3.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+      credit: Stiftung Topographie des Terrors
+      source: wikimedia
 - id: memorial-murdered-jews
   name: Memorial to the Murdered Jews of Europe
   type: memorial
@@ -249,6 +313,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Memorial_to_the_Murdered_Jews_of_Europe
     maps_query: Holocaust Memorial Berlin
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Holocaust-Mahnmal_in_Mitte_1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Holocaust-Mahnmal_in_Mitte_1.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: jewish-museum-berlin
   name: Jewish Museum Berlin
   type: museum
@@ -269,6 +341,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Jewish_Museum_Berlin
     maps_query: Jewish Museum Berlin
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Jüdisches_Museum_und_der_Libeskind-Bau_(cropped).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Jüdisches_Museum_und_der_Libeskind-Bau_(cropped).jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: bendlerblock-plot-20-july
   name: German Resistance Memorial Center (Bendlerblock)
   type: museum
@@ -289,6 +369,13 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/German_Resistance_Memorial_Center
     maps_query: Gedenkstätte Deutscher Widerstand
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Bendlerblock.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Bendlerblock.jpg
+      license: Public domain
+      credit: 'Transferred from en.wikipedia to Commons. Original text: Photo by en:User:Adam Carr, May 2006'
+      source: wikimedia
 - id: sachsenhausen
   name: Sachsenhausen concentration camp memorial (daytrip)
   type: memorial
@@ -308,6 +395,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Sachsenhausen_concentration_camp
     maps_query: Sachsenhausen Memorial
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Sachsenhausen_2_-_Flickr_-_GregTheBusker.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Sachsenhausen_2_-_Flickr_-_GregTheBusker.jpg
+      license: CC BY 2.0
+      license_url: https://creativecommons.org/licenses/by/2.0
+      credit: Sachsenhausen_2
+      source: wikimedia
 - id: wannsee-conference-house
   name: House of the Wannsee Conference
   type: museum
@@ -328,6 +423,15 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/House_of_the_Wannsee_Conference
     maps_query: Wannsee Conference House
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Heydrich-Endlosung.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Heydrich-Endlosung.jpg
+      license: Public domain
+      credit: "Probably near to http://www.ghwk.de/fileadmin/user_upload/pdf-wannsee/dokumente/begleitschreiben-heydrich-1942.pdf\
+        \ (See  http://www.ghwk.de/wannsee-konferenz/dokumente-zur-wannsee-konferenz.html ). \n\nFor a more natural\
+        \ photo colouration of original document see: http://www.ghwk.de/fileadmin/user_upload/pdf-wannsee/dokumente/luther_einladung_dezember1941_barrierefrei.pdf"
+      source: wikimedia
 - id: german-historical-museum
   name: Deutsches Historisches Museum
   type: museum
@@ -348,6 +452,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Deutsches_Historisches_Museum
     maps_query: Deutsches Historisches Museum
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin,_Mitte,_Unter_den_Linden,_Zeughaus_09.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin,_Mitte,_Unter_den_Linden,_Zeughaus_09.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: berlin-cathedral
   name: Berlin Cathedral (Berliner Dom)
   type: landmark
@@ -367,6 +479,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Cathedral
     maps_query: Berliner Dom
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berliner_Dom_von_Humboldt-Box.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berliner_Dom_von_Humboldt-Box.jpg
+      license: CC BY-SA 3.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+      credit: Own work
+      source: wikimedia
 - id: brandenburg-gate
   name: Brandenburger Tor
   type: landmark
@@ -385,6 +505,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Brandenburg_Gate
     maps_query: Brandenburg Gate
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Brandenburger_Tor_morgens.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Brandenburger_Tor_morgens.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: reichstag-building
   name: Reichstag Building (koepel)
   type: landmark
@@ -405,6 +533,14 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Reichstag_building
     maps_query: Reichstag Building
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Reichstagsgebäude_von_Westen.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Reichstagsgebäude_von_Westen.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: potsdamer-platz
   name: Potsdamer Platz (nieuwe stad / moderne herbouw)
   type: district
@@ -424,6 +560,15 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Potsdamer_Platz
     maps_query: Potsdamer Platz
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/PotsdamerPlatz_Vogelperspektive_2004_1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:PotsdamerPlatz_Vogelperspektive_2004_1.jpg
+      license: Public domain
+      credit: 'de.wikipedia.org: 18:32, 17. Apr 2006 . . Mijozi (Diskussion) . . 997 x 730 (205480 Byte) (* Bildbeschreibung:
+        Potsdamer Platz, Berlin (Vogelperspektive) * Quelle: Privatarchiv * Fotograf: Michael J. Zirbes * Datum:
+        September 2004 )'
+      source: wikimedia
 - id: berliner-fernsehturm
   name: Fernsehturm Berlin (TV Tower) – uitzicht
   type: viewpoint
@@ -834,9 +979,6 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
-
-# --- Added: Restaurants & cocktail bars (2026-01) ---
-# --- Added: Restaurants & cocktail bars (2026-01) ---
 - id: rutz-restaurant
   name: Rutz (fine dining)
   type: restaurant
@@ -845,7 +987,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one big dinner” night.'
+  why_visit: Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one big dinner” night.
   themes:
   - food
   - vibe
@@ -855,7 +997,7 @@ pois:
     notes: Reserveer ruim op tijd.
   links:
     official: https://rutz-restaurant.de/
-    maps_query: "Rutz Restaurant, Chausseestraße 8, 10115 Berlin"
+    maps_query: Rutz Restaurant, Chausseestraße 8, 10115 Berlin
 - id: horvath-restaurant
   name: Restaurant Horváth (Kreuzberg)
   type: restaurant
@@ -864,7 +1006,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor “culinair + Berlijn vibe”.'
+  why_visit: Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor “culinair + Berlijn vibe”.
   themes:
   - food
   - vibe
@@ -874,7 +1016,7 @@ pois:
     notes: Reserveer; dresscode smart-casual werkt prima.
   links:
     official: https://www.restaurant-horvath.de/en
-    maps_query: "Restaurant Horváth, Paul-Lincke-Ufer 44a, 10999 Berlin"
+    maps_query: Restaurant Horváth, Paul-Lincke-Ufer 44a, 10999 Berlin
 - id: lorenz-adlon-esszimmer
   name: Lorenz Adlon Esszimmer
   type: restaurant
@@ -883,7 +1025,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Iconische “special occasion” setting bij Brandenburger Tor; klassiek topsegment.'
+  why_visit: Iconische “special occasion” setting bij Brandenburger Tor; klassiek topsegment.
   themes:
   - food
   - vibe
@@ -893,7 +1035,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://www.hotel-adlon.de/en/restaurants-bars/lorenz-adlon-esszimmer/
-    maps_query: "Lorenz Adlon Esszimmer, Unter den Linden 77, 10117 Berlin"
+    maps_query: Lorenz Adlon Esszimmer, Unter den Linden 77, 10117 Berlin
 - id: grill-royal
   name: Grill Royal
   type: restaurant
@@ -911,7 +1053,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://www.grillroyal.com/
-    maps_query: "Grill Royal, Friedrichstraße 105b, 10117 Berlin"
+    maps_query: Grill Royal, Friedrichstraße 105b, 10117 Berlin
 - id: kindee
   name: Kin Dee
   type: restaurant
@@ -920,7 +1062,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed beoordeeld.'
+  why_visit: Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed beoordeeld.
   themes:
   - food
   - vibe
@@ -929,7 +1071,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://kindeeberlin.de/
-    maps_query: "Kin Dee, Lützowstraße 81, 10785 Berlin"
+    maps_query: Kin Dee, Lützowstraße 81, 10785 Berlin
 - id: brlo-brwhouse
   name: BRLO Brwhouse (bier + goed eten)
   type: restaurant
@@ -938,7 +1080,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor lunch/early dinner).'
+  why_visit: Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor lunch/early dinner).
   themes:
   - food
   - vibe
@@ -947,7 +1089,7 @@ pois:
     indoor_outdoor: mixed
   links:
     official: https://www.brlo.de/
-    maps_query: "BRLO Brwhouse, Schöneberger Straße 16, 10963 Berlin"
+    maps_query: BRLO Brwhouse, Schöneberger Straße 16, 10963 Berlin
 - id: lovis
   name: Lovis (fine bistro)
   type: restaurant
@@ -956,7 +1098,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin dining”.'
+  why_visit: Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin dining”.
   themes:
   - food
   - vibe
@@ -965,7 +1107,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://lovis.berlin/
-    maps_query: "Lovis, Pannierstraße 24, 12047 Berlin"
+    maps_query: Lovis, Pannierstraße 24, 12047 Berlin
 - id: house-of-small-wonder
   name: House of Small Wonder (lunch/brunch)
   type: cafe
@@ -974,7 +1116,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Hele fijne brunch/lunch sfeer in een “green atrium”; ideaal weekend-start.'
+  why_visit: Hele fijne brunch/lunch sfeer in een “green atrium”; ideaal weekend-start.
   themes:
   - food
   - vibe
@@ -983,7 +1125,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://houseofsmallwonder.de/
-    maps_query: "House of Small Wonder, Johannisstraße 20, 10117 Berlin"
+    maps_query: House of Small Wonder, Johannisstraße 20, 10117 Berlin
 - id: the-father-carpenter
   name: The Father Carpenter (coffee + pastry)
   type: cafe
@@ -992,7 +1134,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Sterke koffie + rustige binnentuin; perfect als korte “reset” stop.'
+  why_visit: Sterke koffie + rustige binnentuin; perfect als korte “reset” stop.
   themes:
   - food
   - vibe
@@ -1001,7 +1143,7 @@ pois:
     indoor_outdoor: mixed
   links:
     official: https://thefathercarpenter.com/
-    maps_query: "The Father Carpenter, Münzstraße 21, 10178 Berlin"
+    maps_query: The Father Carpenter, Münzstraße 21, 10178 Berlin
 - id: bar-tausend
   name: Bar Tausend
   type: cocktailbar
@@ -1010,7 +1152,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out” start.'
+  why_visit: Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out” start.
   themes:
   - nightlife
   - vibe
@@ -1020,7 +1162,7 @@ pois:
     notes: Vaak druk; handig om vroeg te gaan.
   links:
     official: https://tausendberlin.com/
-    maps_query: "Bar Tausend, Schiffbauerdamm 11, 10117 Berlin"
+    maps_query: Bar Tausend, Schiffbauerdamm 11, 10117 Berlin
 - id: buck-and-breck
   name: Buck and Breck
   type: cocktailbar
@@ -1029,7 +1171,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Mini “speakeasy” met topmixology; vaak genoemd als Berlijnse bar-institutie.'
+  why_visit: Mini “speakeasy” met topmixology; vaak genoemd als Berlijnse bar-institutie.
   themes:
   - nightlife
   - vibe
@@ -1038,7 +1180,7 @@ pois:
     indoor_outdoor: indoor
     notes: Klein; wachtrij mogelijk.
   links:
-    maps_query: "Buck and Breck, Brunnenstraße 177, 10119 Berlin"
+    maps_query: Buck and Breck, Brunnenstraße 177, 10119 Berlin
 - id: green-door
   name: Green Door (cocktail bar)
   type: cocktailbar
@@ -1047,7 +1189,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Klassieker met sterke cocktails; regelmatig bekroond/genoemd in bar-lijstjes.'
+  why_visit: Klassieker met sterke cocktails; regelmatig bekroond/genoemd in bar-lijstjes.
   themes:
   - nightlife
   - vibe
@@ -1056,7 +1198,7 @@ pois:
     indoor_outdoor: indoor
   links:
     official: https://greendoorbar.de/
-    maps_query: "Green Door Bar, Winterfeldtstraße 50, 10781 Berlin"
+    maps_query: Green Door Bar, Winterfeldtstraße 50, 10781 Berlin
 - id: rum-trader
   name: Rum Trader
   type: cocktailbar
@@ -1065,7 +1207,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse “louder” spots.'
+  why_visit: Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse “louder” spots.
   themes:
   - nightlife
   - vibe
@@ -1073,7 +1215,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Rum Trader, Rankestraße 33, 10789 Berlin"
+    maps_query: Rum Trader, Rankestraße 33, 10789 Berlin
 - id: velvet-bar
   name: Velvet (cocktail bar)
   type: cocktailbar
@@ -1082,7 +1224,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Sterke cocktails met laid-back sfeer; fijn voor een late-night stop.'
+  why_visit: Sterke cocktails met laid-back sfeer; fijn voor een late-night stop.
   themes:
   - nightlife
   - vibe
@@ -1090,7 +1232,7 @@ pois:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Velvet Bar Berlin, Ganghoferstraße 1, 12043 Berlin"
+    maps_query: Velvet Bar Berlin, Ganghoferstraße 1, 12043 Berlin
 - id: becketts-kopf
   name: Beckett’s Kopf
   type: cocktailbar
@@ -1099,7 +1241,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Intiem, boekbaar (vaak per “slot”) en heel consistent goed.'
+  why_visit: Intiem, boekbaar (vaak per “slot”) en heel consistent goed.
   themes:
   - nightlife
   - vibe
@@ -1109,7 +1251,7 @@ pois:
     notes: Check reservering/slots.
   links:
     official: https://beckettskopf.de/
-    maps_query: "Beckett's Kopf, Pappelallee 64, 10437 Berlin"
+    maps_query: Beckett's Kopf, Pappelallee 64, 10437 Berlin
 - id: bellboy
   name: Bellboy (cocktail bar)
   type: cocktailbar
@@ -1118,7 +1260,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Kleine bar met scherpe cocktails; goed “quality over quantity”.'
+  why_visit: Kleine bar met scherpe cocktails; goed “quality over quantity”.
   themes:
   - nightlife
   - vibe
@@ -1126,7 +1268,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Bellboy Bar, Pannierstraße 57, 12047 Berlin"
+    maps_query: Bellboy Bar, Pannierstraße 57, 12047 Berlin
 - id: bar-milano
   name: Bar Milano
   type: cocktailbar
@@ -1135,7 +1277,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Stylish cocktails + goede muziek; fijne after-dinner spot.'
+  why_visit: Stylish cocktails + goede muziek; fijne after-dinner spot.
   themes:
   - nightlife
   - vibe
@@ -1143,7 +1285,7 @@ pois:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Bar Milano Berlin, Linienstraße 127, 10115 Berlin"
+    maps_query: Bar Milano Berlin, Linienstraße 127, 10115 Berlin
 - id: bar-brutal-54
   name: Bar Brutal 54
   type: cocktailbar
@@ -1152,7 +1294,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met hidden gems.'
+  why_visit: Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met hidden gems.
   themes:
   - nightlife
   - vibe
@@ -1160,7 +1302,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Bar Brutal 54, Schönhauser Allee 54, 10437 Berlin"
+    maps_query: Bar Brutal 54, Schönhauser Allee 54, 10437 Berlin
 - id: kwia
   name: kwia (cocktail bar)
   type: cocktailbar
@@ -1169,7 +1311,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Klein en high quality; goed als “1–2 cocktails and done”.'
+  why_visit: Klein en high quality; goed als “1–2 cocktails and done”.
   themes:
   - nightlife
   - vibe
@@ -1177,7 +1319,7 @@ pois:
     typical_visit_time: 45–120 min
     indoor_outdoor: indoor
   links:
-    maps_query: "kwia bar, Oranienburger Straße 13, 10178 Berlin"
+    maps_query: kwia bar, Oranienburger Straße 13, 10178 Berlin
 - id: lamm-bar
   name: Lamm (bar)
   type: cocktailbar
@@ -1186,7 +1328,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Laid-back buurtbar met sterke drinks; fijn om de Neukölln vibe te pakken.'
+  why_visit: Laid-back buurtbar met sterke drinks; fijn om de Neukölln vibe te pakken.
   themes:
   - nightlife
   - vibe
@@ -1194,7 +1336,7 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Lamm Bar Berlin, Schillerpromenade 21, 12049 Berlin"
+    maps_query: Lamm Bar Berlin, Schillerpromenade 21, 12049 Berlin
 - id: monkey-bar
   name: Monkey Bar (rooftop-ish vibe)
   type: cocktailbar
@@ -1203,7 +1345,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Uitzicht + city vibe (Bikini Berlin / Zoo area); goed voor zonsondergang-drink.'
+  why_visit: Uitzicht + city vibe (Bikini Berlin / Zoo area); goed voor zonsondergang-drink.
   themes:
   - nightlife
   - vibe
@@ -1213,7 +1355,7 @@ pois:
     indoor_outdoor: mixed
   links:
     official: https://www.monkeybarberlin.de/
-    maps_query: "Monkey Bar Berlin, Budapester Straße 40, 10787 Berlin"
+    maps_query: Monkey Bar Berlin, Budapester Straße 40, 10787 Berlin
 - id: trio-restaurant-bar
   name: Trio (casual dinner + wine)
   type: restaurant
@@ -1222,7 +1364,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar wel goed”.'
+  why_visit: Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar wel goed”.
   themes:
   - food
   - vibe
@@ -1230,8 +1372,7 @@ pois:
     typical_visit_time: 75–150 min
     indoor_outdoor: indoor
   links:
-    maps_query: "Trio Restaurant Berlin, Manteuffelstraße 12, 10997 Berlin"
-
+    maps_query: Trio Restaurant Berlin, Manteuffelstraße 12, 10997 Berlin
 - id: klunkerkranich
   name: Klunkerkranich (rooftop bar / food)
   type: food

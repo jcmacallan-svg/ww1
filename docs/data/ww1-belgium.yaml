@@ -1075,6 +1075,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fort_Vaux
     maps_query: Fort de Vaux Verdun
     wikidata: Q1438801
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Fort_de_Vaux_-_extérieur.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Fort_de_Vaux_-_extérieur.JPG
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Own work
+      source: wikimedia
 - id: memorial-de-verdun
   name: Mémorial de Verdun (museum)
   type: museum
@@ -1175,6 +1183,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Thiepval_Memorial
     maps_query: Thiepval Memorial
     wikidata: Q1861419
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Thiepval_cimetière_derrière_mémorial_1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Thiepval_cimetière_derrière_mémorial_1.jpg
+      license: CC BY-SA 2.0
+      license_url: https://creativecommons.org/licenses/by-sa/2.0
+      credit: https://www.flickr.com/photos/pikerslanefarm/1788158299/
+      source: wikimedia
 - id: lochnagar-crater
   name: Lochnagar Crater
   type: battlefield
@@ -1199,6 +1215,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Lochnagar_crater
     maps_query: Lochnagar Crater
     wikidata: Q24739
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Lochnagar_Crater_Ovillers.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Lochnagar_Crater_Ovillers.JPG
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Self-photographed
+      source: wikimedia
 - id: somme-1916-museum-albert
   name: Somme 1916 Museum (Albert)
   type: museum
@@ -1255,6 +1279,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Historial_de_la_Grande_Guerre
     maps_query: Historial de la Grande Guerre Péronne
     wikidata: Q1620783
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Péronne_fossé_du_château_avec_vue_vers_église.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Péronne_fossé_du_château_avec_vue_vers_église.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Self-photographed
+      source: wikimedia
 - id: canadian-national-vimy-memorial
   name: Canadian National Vimy Memorial
   type: memorial
@@ -1284,6 +1316,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Canadian_National_Vimy_Memorial
     maps_query: Canadian National Vimy Memorial
     wikidata: Q2561040
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Canadian_National_Vimy_Memorial.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Canadian_National_Vimy_Memorial.jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: Own work
+      source: wikimedia
 - id: wellington-quarry-arras
   name: Wellington Quarry (Carrière Wellington) – Arras
   type: museum
@@ -1312,6 +1352,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Carri%C3%A8re_Wellington
     maps_query: Carrière Wellington Arras
     wikidata: Q2940288
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Carriere_wellington_entrance.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Carriere_wellington_entrance.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work by the original uploader
+      source: wikimedia
 - id: caverne-du-dragon
   name: Caverne du Dragon (Chemin des Dames)
   type: museum
@@ -1368,6 +1416,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Hartmannswillerkopf
     maps_query: Hartmannswillerkopf memorial
     wikidata: Q325716
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/2016-05_Hartmannswillerkopf.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:2016-05_Hartmannswillerkopf.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: german-border-placeholder
   name: Duitsland (DE) – startpunt voor uitbreiden
   type: site
@@ -1393,3 +1449,12 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/World_War_I
     maps_query: Germany World War I museum
     wikidata: Q361
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:WWImontage.jpg
+      license: Public domain
+      credit: "Trenches on the Western Front\n\t\t\n\t\t\n\t\t\t\n\t\t\t German Albatros D.III biplane fighters\
+        \ of Jasta 11 at Douai, France\n\t\t\n\t\t\n\t\t\t\n\t\t\t Vickers machine gun crew with gas masks\n\t\t\
+        \n\t\t\n\t\t\t\n\t\t\t British Mark V tanks\n\t\t\n\t\t\n\t\t\t\n\t\t\t British battleship HMS Irresistible"
+      source: wikimedia
