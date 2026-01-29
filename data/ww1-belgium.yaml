@@ -158,6 +158,11 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/In_Flanders_Fields_Museum
     wikidata: Q3149909
     maps_query: In Flanders Fields Museum Ieper
+  media:
+    image:
+      thumb: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Flanders_Fields_Museum.JPG/960px-Flanders_Fields_Museum.JPG
+      page: https://en.wikipedia.org/wiki/In_Flanders_Fields_Museum
+      source: wikimedia
 - id: menin-gate-memorial-last-post
   name: Menin Gate (Menenpoort) & Last Post ceremony
   type: memorial
@@ -187,6 +192,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Menin_Gate
     maps_query: Menin Gate Ieper
     wikidata: Q1822397
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Menenpoort_ieper.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Menenpoort_ieper.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: tyne-cot-cemetery
   name: Tyne Cot Cemetery & Memorial (CWGC)
   type: cemetery
@@ -215,6 +228,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Tyne_Cot_Cemetery
     maps_query: Tyne Cot Cemetery
     wikidata: Q2369533
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Tyne_Cot_Cemetery.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Tyne_Cot_Cemetery.jpg
+      license: CC BY 2.0 be
+      license_url: https://creativecommons.org/licenses/by/2.0/be/deed.en
+      credit: Own work
+      source: wikimedia
 - id: passchendaele-museum
   name: Passchendaele Museum (Zonnebeke)
   type: museum
@@ -330,6 +351,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Hill_60_(Ypres)
     maps_query: Hill 60 Zillebeke
     wikidata: Q20036965
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Hill_60_Ypres_Belgium_13_-_1917_deep_mine_crater_Hill_60.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Hill_60_Ypres_Belgium_13_-_1917_deep_mine_crater_Hill_60.JPG
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: yorkshire-trench-dugout
   name: Yorkshire Trench & Dugout (Boezinge)
   type: trench
@@ -415,6 +444,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Croonaert_Wood
     maps_query: Bayernwald trenches Heuvelland
     wikidata: Q4418699
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/IM004496.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:IM004496.JPG
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: messines-ireland-peace-park
   name: Island of Ireland Peace Park (Mesen/Messines)
   type: memorial
@@ -442,6 +479,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Island_of_Ireland_Peace_Park
     maps_query: Island of Ireland Peace Park Mesen
     wikidata: Q6083563
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Tower,_Irish_Peace_Park,_Mesen,_Belgium.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Tower,_Irish_Peace_Park,_Mesen,_Belgium.jpg
+      license: CC BY 3.0
+      license_url: https://creativecommons.org/licenses/by/3.0
+      credit: Donarreiskoffer
+      source: wikimedia
 - id: ploegsteert-memorial
   name: Ploegsteert Memorial to the Missing (CWGC)
   type: memorial
@@ -470,6 +515,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Ploegsteert_Memorial_to_the_Missing
     maps_query: Ploegsteert Memorial
     wikidata: Q2872987
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/0_Ploegsteert_Memorial_to_the_Missing_-_Hyde_Park_Corner_-_(1).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:0_Ploegsteert_Memorial_to_the_Missing_-_Hyde_Park_Corner_-_(1).jpg
+      license: CC BY 3.0
+      license_url: https://creativecommons.org/licenses/by/3.0
+      credit: Self-photographed
+      source: wikimedia
 - id: trench-of-death-dodengang
   name: Dodengang / Trench of Death (Diksmuide)
   type: trench
@@ -500,6 +553,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Dodengang
     maps_query: Dodengang Diksmuide
     wikidata: Q2232109
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Dodengang.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Dodengang.jpg
+      license: Public domain
+      credit: Stormbeest
+      source: wikimedia
 - id: museum-aan-de-ijzer-ijzertoren
   name: Museum aan de IJzer (IJzertoren) – Diksmuide
   type: museum

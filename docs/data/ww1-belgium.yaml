@@ -158,6 +158,11 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/In_Flanders_Fields_Museum
     wikidata: Q3149909
     maps_query: In Flanders Fields Museum Ieper
+  media:
+    image:
+      thumb: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Flanders_Fields_Museum.JPG/960px-Flanders_Fields_Museum.JPG
+      page: https://en.wikipedia.org/wiki/In_Flanders_Fields_Museum
+      source: wikimedia
 - id: menin-gate-memorial-last-post
   name: Menin Gate (Menenpoort) & Last Post ceremony
   type: memorial
@@ -187,6 +192,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Menin_Gate
     maps_query: Menin Gate Ieper
     wikidata: Q1822397
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Menenpoort_ieper.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Menenpoort_ieper.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: tyne-cot-cemetery
   name: Tyne Cot Cemetery & Memorial (CWGC)
   type: cemetery
@@ -215,6 +228,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Tyne_Cot_Cemetery
     maps_query: Tyne Cot Cemetery
     wikidata: Q2369533
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Tyne_Cot_Cemetery.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Tyne_Cot_Cemetery.jpg
+      license: CC BY 2.0 be
+      license_url: https://creativecommons.org/licenses/by/2.0/be/deed.en
+      credit: Own work
+      source: wikimedia
 - id: passchendaele-museum
   name: Passchendaele Museum (Zonnebeke)
   type: museum
@@ -318,6 +339,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Hill_60_(Ypres)
     maps_query: Hill 60 Zillebeke
     wikidata: Q20036965
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Hill_60_Ypres_Belgium_13_-_1917_deep_mine_crater_Hill_60.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Hill_60_Ypres_Belgium_13_-_1917_deep_mine_crater_Hill_60.JPG
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: yorkshire-trench-dugout
   name: Yorkshire Trench & Dugout (Boezinge)
   type: trench
@@ -397,6 +426,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Croonaert_Wood
     maps_query: Bayernwald trenches Heuvelland
     wikidata: Q4418699
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/IM004496.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:IM004496.JPG
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: messines-ireland-peace-park
   name: Island of Ireland Peace Park (Mesen/Messines)
   type: memorial
@@ -421,6 +458,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Island_of_Ireland_Peace_Park
     maps_query: Island of Ireland Peace Park Mesen
     wikidata: Q6083563
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Tower,_Irish_Peace_Park,_Mesen,_Belgium.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Tower,_Irish_Peace_Park,_Mesen,_Belgium.jpg
+      license: CC BY 3.0
+      license_url: https://creativecommons.org/licenses/by/3.0
+      credit: Donarreiskoffer
+      source: wikimedia
 - id: ploegsteert-memorial
   name: Ploegsteert Memorial to the Missing (CWGC)
   type: memorial
@@ -446,6 +491,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Ploegsteert_Memorial_to_the_Missing
     maps_query: Ploegsteert Memorial
     wikidata: Q2872987
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/0_Ploegsteert_Memorial_to_the_Missing_-_Hyde_Park_Corner_-_(1).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:0_Ploegsteert_Memorial_to_the_Missing_-_Hyde_Park_Corner_-_(1).jpg
+      license: CC BY 3.0
+      license_url: https://creativecommons.org/licenses/by/3.0
+      credit: Self-photographed
+      source: wikimedia
 - id: trench-of-death-dodengang
   name: Dodengang / Trench of Death (Diksmuide)
   type: trench
@@ -476,6 +529,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Dodengang
     maps_query: Dodengang Diksmuide
     wikidata: Q2232109
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Dodengang.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Dodengang.jpg
+      license: Public domain
+      credit: Stormbeest
+      source: wikimedia
 - id: museum-aan-de-ijzer-ijzertoren
   name: Museum aan de IJzer (IJzertoren) – Diksmuide
   type: museum
@@ -505,6 +565,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Yser_Tower
     maps_query: Museum aan de IJzer Diksmuide
     wikidata: Q1708620
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Yser_Tower_(DSCF9567).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Yser_Tower_(DSCF9567).jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: Own work
+      source: wikimedia
 - id: vladslo-german-war-cemetery
   name: Vladslo German War Cemetery (incl. Käthe Kollwitz ‘Grieving Parents’)
   type: cemetery
@@ -530,6 +598,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Vladslo_German_war_cemetery
     maps_query: Vladslo German war cemetery
     wikidata: Q572953
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Het_treurende_ouderpaar_-_Käthe_Kolwitz.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Het_treurende_ouderpaar_-_Käthe_Kolwitz.JPG
+      license: Public domain
+      credit: Own work
+      source: wikimedia
 - id: westfront-nieuwpoort
   name: Westfront Nieuwpoort (visitor centre) + Ganzepoot sluices
   type: visitor-centre
@@ -560,6 +635,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/King_Albert_I_Memorial
     maps_query: Westfront Nieuwpoort Ganzepoot
     wikidata: Q2160506
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/0_Monument_du_Roi_Albert_1er_-_Nieuport_(1).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:0_Monument_du_Roi_Albert_1er_-_Nieuport_(1).jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: king-albert-i-monument-nieuwpoort
   name: King Albert I Monument (Nieuwpoort)
   type: monument
@@ -587,6 +670,14 @@ pois:
     wikipedia: https://nl.wikipedia.org/wiki/Koning_Albert_I-monument
     maps_query: Koning Albert I monument Nieuwpoort
     wikidata: Q2160506
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/0_Monument_du_Roi_Albert_1er_-_Nieuport_(1).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:0_Monument_du_Roi_Albert_1er_-_Nieuport_(1).jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: flanders-field-american-cemetery
   name: Flanders Field American Cemetery & Memorial (Waregem)
   type: cemetery
@@ -615,6 +706,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Flanders_Field_American_Cemetery_and_Memorial
     maps_query: Flanders Field American Cemetery Waregem
     wikidata: Q2216737
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Flanders_Field_American_Cemetery_(Waregem)_1.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Flanders_Field_American_Cemetery_(Waregem)_1.JPG
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: royal-military-museum-14-18
   name: Royal Museum of the Armed Forces & Military History – 14–18 Galleries (Brussels)
   type: museum
@@ -645,6 +744,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Royal_Museum_of_the_Armed_Forces_and_Military_History
     maps_query: Royal Military Museum Brussels 14-18
     wikidata: Q1395176
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Military_Museum_Brussels_2007_456.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Royal_Military_Museum_Brussels_2007_456.JPG
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Own work
+      source: wikimedia
 - id: fort-de-loncin
   name: Fort de Loncin (Ans/Liège) – memorial & museum
   type: fort
@@ -675,6 +782,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fort_de_Loncin
     maps_query: Fort de Loncin
     wikidata: Q1363576
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Loncin01.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Loncin01.JPG
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: The RedBurn
+      source: wikimedia
 - id: liege-fortified-position
   name: Fortified Position of Liège (Brialmont forts) – overview
   type: site
@@ -703,6 +818,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fortified_position_of_Li%C3%A8ge
     maps_query: Fortified Position of Liege forts
     wikidata: Q223608
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Map_of_Liege_defences.svg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Map_of_Liege_defences.svg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: 'This file was derived from:  Festungsring Luettich Karte.png:'
+      source: wikimedia
 - id: fortified-position-of-namur
   name: Fortified Position of Namur (Brialmont forts) – overview
   type: site
@@ -728,6 +851,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fortified_position_of_Namur
     maps_query: Fortified Position of Namur
     wikidata: Q3399664
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Forts_namur.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Forts_namur.jpg
+      license: Public domain
+      credit: fredthonar
+      source: wikimedia
 - id: fort-saint-heribert
   name: Fort de Saint-Héribert (Namur) – visitable fort
   type: fort
@@ -780,6 +910,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Dinant_massacre
     maps_query: Dinant 23 August 1914 memorial
     wikidata: Q1669385
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Destruction_of_Dinant_in_WW1.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Destruction_of_Dinant_in_WW1.JPG
+      license: Public domain
+      credit: '"Popular Mechanics" Magazine January 1915'
+      source: wikimedia
 - id: fort-liezele
   name: Fort Liezele (Puurs-Sint-Amands) – WWI (Antwerp 1914) museum
   type: fort
@@ -834,6 +971,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fort_Breendonk
     maps_query: Fort Breendonk
     wikidata: Q700580
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Fort_Breendonk_entrance_(DSCF0597).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Fort_Breendonk_entrance_(DSCF0597).jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: Own work
+      source: wikimedia
 - id: ossuary-of-douaumont
   name: Douaumont Ossuary (Ossuaire de Douaumont)
   type: memorial
@@ -860,6 +1005,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Douaumont_Ossuary
     maps_query: Ossuaire de Douaumont
     wikidata: Q705054
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Ossuaire_de_Douaumont,_Verdun_1914-1918_P-FG-CP-01050-13.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Ossuaire_de_Douaumont,_Verdun_1914-1918_P-FG-CP-01050-13.jpg
+      license: Public domain
+      credit: https://galeries.limedia.fr/ark:/31124/dkkg4vm8fqg1lvjp/
+      source: wikimedia
 - id: fort-douaumont
   name: Fort Douaumont
   type: fort
@@ -889,6 +1041,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fort_Douaumont
     maps_query: Fort de Douaumont
     wikidata: Q186536
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Fort_de_Douaumont_-_Vue_générale.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Fort_de_Douaumont_-_Vue_générale.JPG
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Own work
+      source: wikimedia
 - id: fort-vaux
   name: Fort Vaux
   type: fort
