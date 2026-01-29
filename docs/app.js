@@ -899,8 +899,17 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
     };
   
     const allStops = plan.days.flatMap(d=>d.stops || []);
-    const overallCoords = routeCoordsForDay(origin, allStops);
-    const overallMaps = allStops.length ? mapsButtons(overallCoords) : "";
+
+    // Only count stops that actually have coordinates; some POIs (especially food/nightlife)
+    // may not be geocoded yet.
+    const withCoords = allStops.filter(x => {
+      const c = x?.poi?.location?.coordinates;
+      const lat = c?.lat, lon = c?.lon;
+      return Number.isFinite(lat) && Number.isFinite(lon);
+    });
+
+    const overallCoords = routeCoordsForDay(origin, withCoords);
+    const overallMaps = withCoords.length ? mapsButtons(overallCoords) : "";
   
     const leftoversHtml = plan.leftovers?.length ? `
       <div class="plan">
