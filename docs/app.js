@@ -110,7 +110,6 @@ function saveFavs(ds, favs){
   localStorage.setItem(favKey(ds), JSON.stringify(Array.from(favs)));
 }
 let favs = loadFavs(currentDataset);
-  __COORD_OVERRIDES = loadCoordOverrides(currentDataset);
 /* ---------------- Planner settings (per dataset) ---------------- */
 function planKey(ds){ return `tripkit_plan_${ds}_v1`; }
 function defaultPlanSettings(ds){
@@ -597,7 +596,7 @@ function injectStarStylesOnce(){
   `;
   document.head.appendChild(s);
 }
-async function updatePlannerUI(){
+function updatePlannerUI(){
   const panel = document.getElementById("plannerPanel");
   if(!panel || !__DOC) return;
   const meta = panel.querySelector("#plannerMeta");
@@ -982,7 +981,6 @@ async function fetchYaml(url){
 async function loadDataset(ds){
   currentDataset = ds;
   favs = loadFavs(currentDataset);
-  __COORD_OVERRIDES = loadCoordOverrides(currentDataset);
   __PLAN = loadPlanSettings(currentDataset);
   updateEditLink();
 
