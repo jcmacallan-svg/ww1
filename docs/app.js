@@ -14,6 +14,7 @@ const DATASETS = {
 
 let currentDataset = "ww1";
 let __DOC = null;
+let __CURRENT_PLAN = null; // last generated plan (for manual editing)
 let __STATE = { search:"", region:"", type:"", theme:"", photosOnly:false };
 
 const els = {
@@ -699,6 +700,15 @@ function ensurePlannerPanel(){
     .linkbtn{ display:inline-block; margin-top:8px; text-decoration:none; font-size:12px; padding:8px 10px;
       border-radius:12px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); color:var(--text); }
     .linkbtn:hover{ border-color: rgba(122,162,255,.35); }
+
+    .plan-tools{ margin-top:8px; }
+    .plan-li{ display:flex; gap:10px; align-items:flex-start; justify-content:space-between; padding:10px 0; }
+    .plan-li .li-main{ flex: 1 1 auto; min-width: 160px; }
+    .plan-li .li-title{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .plan-li .li-tools{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .plan-li .li-tools .time{ width: 120px; }
+    .plan-li .li-tools .move{ width: 120px; }
+
   `;
   document.head.appendChild(style);
 
@@ -817,65 +827,293 @@ async function buildWeekendPlan(){
     plan = insertMealSlotsBerlin(plan, origin, budgets, pools);
   }
 
-  const slotLabel = (i)=>{
-    const d = budgets.length;
-    if(d === 1) return " (dagtrip)";
-    if(i === 0){
-      const a = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.arrival] || "";
-      return ` (aankomst: ${a})`;
-    }
-    if(i === d-1){
-      const dep = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.departure] || "";
-      return ` (vertrek: ${dep})`;
-    }
-    return " (volledige dag)";
+    const html = buildWeekendPlanHtml(plan, origin, budgets, withCoords.length);
+  __CURRENT_PLAN = {
+    plan,
+    origin,
+    budgets,
+    htmlProvider: () => buildWeekendPlanHtml(plan, origin, budgets, withCoords.length)
   };
+  savePlanDraft();
+  return html;
 
-  const provider = __PLAN.mapProvider || "both";
-  const mapsButtons = (coords)=>{
-    const g = googleMapsDirectionsLink(coords, origin);
-    const a = appleMapsDirectionsLink(coords, origin);
-    const gBtn = g ? `<a class="linkbtn" href="${g}" target="_blank" rel="noopener">Open in Google Maps</a>` : "";
-    const aBtn = a ? `<a class="linkbtn" href="${a}" target="_blank" rel="noopener">Open in Apple Maps</a>` : "";
-    if(provider === "google") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}</div>`;
-    if(provider === "apple") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${aBtn}</div>`;
-    return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}${aBtn}</div>`;
-  };
-
-  const section = (label, day) => {
-    const stops = day.stops || [];
-    const coords = routeCoordsForDay(origin, stops);
-    return `
-      <div class="plan">
-        <h3>${label} <span class="pill">${stops.length} stop(s)</span></h3>
-        <div class="small" style="color:var(--muted);">
-          Reis: ~${day.travelKm.toFixed(1)} km • Bezoek: ~${formatMinutes(day.visitMin)} • Budget: ${formatMinutes(day.budgetMin)}
-        </div>
-        ${stops.length ? `<ul>${stops.map(x=>`<li>${escapeHtml(x.poi.name)} <span class="pill">${escapeHtml(x.poi.location?.locality || "")}</span></li>`).join("")}</ul>` : `<div class="small">Geen stops gepland (te weinig tijd of alles al ingepland).</div>`}
-        ${stops.length ? mapsButtons(coords) : ""}
-      </div>
-    `;
-  };
-
-  const allStops = plan.days.flatMap(d=>d.stops || []);
-  const overallCoords = routeCoordsForDay(origin, allStops);
-  const overallMaps = allStops.length ? mapsButtons(overallCoords) : "";
-
-  const leftoversHtml = plan.leftovers?.length ? `
-    <div class="plan">
-      <h3>Overige favorieten <span class="pill">${plan.leftovers.length}</span></h3>
-      <div class="small">Deze pasten niet in het gekozen aantal dagen/tijden (of zouden de route erg lang maken).</div>
-      <ul>${plan.leftovers.map(x=>`<li>${escapeHtml(x.poi.name)} <span class="pill">${escapeHtml(x.poi.location?.locality || "")}</span></li>`).join("")}</ul>
-    </div>
-  ` : "";
-
-  return `
-    <div class="small">Route is geoptimaliseerd (nearest-neighbor) en verdeeld over dagen op basis van jouw tijdblokken. (Geen openingstijden/tickets meegenomen.)</div>
-    ${overallMaps ? `<div class="plan"><h3>Alles in één route <span class="pill">${withCoords.length} stop(s)</span></h3>${overallMaps}</div>` : ""}
-    ${plan.days.map((d,i)=>section(`Dag ${i+1}${slotLabel(i)}`, d)).join("")}
-    ${leftoversHtml}
-  `;
 }
+
+function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
+  const slotLabel = (i)=>{
+      const d = budgets.length;
+      if(d === 1) return " (dagtrip)";
+      if(i === 0){
+        const a = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.arrival] || "";
+        return ` (aankomst: ${a})`;
+      }
+      if(i === d-1){
+        const dep = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.departure] || "";
+        return ` (vertrek: ${dep})`;
+      }
+      return " (volledige dag)";
+    };
+  
+    const provider = __PLAN.mapProvider || "both";
+    const mapsButtons = (coords)=>{
+      const g = googleMapsDirectionsLink(coords, origin);
+      const a = appleMapsDirectionsLink(coords, origin);
+      const gBtn = g ? `<a class="linkbtn" href="${g}" target="_blank" rel="noopener">Open in Google Maps</a>` : "";
+      const aBtn = a ? `<a class="linkbtn" href="${a}" target="_blank" rel="noopener">Open in Apple Maps</a>` : "";
+      if(provider === "google") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}</div>`;
+      if(provider === "apple") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${aBtn}</div>`;
+      return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}${aBtn}</div>`;
+    };
+  
+    const section = (label, day) => {
+      const stops = day.stops || [];
+      const coords = routeCoordsForDay(origin, stops);
+      return `
+        <div class="plan">
+          <h3>${label} <span class="pill">${stops.length} stop(s)</span></h3>
+          <div class="plan-tools">
+            <button class="btn btn-ghost" data-action="reopt-day" data-day="${di}">Heroptimaliseer deze dag</button>
+          </div>
+          <div class="small" style="color:var(--muted);">
+            Reis: ~${day.travelKm.toFixed(1)} km • Bezoek: ~${formatMinutes(day.visitMin)} • Budget: ${formatMinutes(day.budgetMin)}
+          </div>
+          ${stops.length ? `<ul>${stops.map((x, si)=>`
+            <li class="plan-li" data-day="${di}" data-poi="${escapeHtml(x.poi.id)}">
+              <div class="li-main">
+                <div class="li-title">${escapeHtml(x.poi.name)} ${x.poi.type ? `<span class="pill">${escapeHtml(x.poi.type)}</span>` : ""}</div>
+                <div class="small" style="color:var(--muted);">${escapeHtml(x.poi.location?.locality || "")}</div>
+              </div>
+              <div class="li-tools">
+                <input class="input time" type="time" data-action="time" data-day="${di}" data-poi="${escapeHtml(x.poi.id)}" value="${escapeHtml(getManualTime(x.poi.id))}" title="Tijd (optioneel)" />
+                <select class="input move" data-action="move-day" data-day="${di}" data-poi="${escapeHtml(x.poi.id)}" title="Verplaats naar dag">
+                  ${budgets.map((_,dii)=>`<option value="${dii}" ${dii===di?'selected':''}>Dag ${dii+1}</option>`).join("")}
+                </select>
+                <button class="btn btn-ghost" data-action="up" data-day="${di}" data-poi="${escapeHtml(x.poi.id)}" title="Omhoog">↑</button>
+                <button class="btn btn-ghost" data-action="down" data-day="${di}" data-poi="${escapeHtml(x.poi.id)}" title="Omlaag">↓</button>
+                <button class="btn btn-ghost" data-action="remove" data-day="${di}" data-poi="${escapeHtml(x.poi.id)}" title="Uit planning halen">✕</button>
+              </div>
+            </li>`).join("")}</ul>` : `<div class="small">Geen stops gepland (te weinig tijd of alles al ingepland).</div>`}
+          ${stops.length ? mapsButtons(coords) : ""}
+        </div>
+      `;
+    };
+  
+    const allStops = plan.days.flatMap(d=>d.stops || []);
+    const overallCoords = routeCoordsForDay(origin, allStops);
+    const overallMaps = allStops.length ? mapsButtons(overallCoords) : "";
+  
+    const leftoversHtml = plan.leftovers?.length ? `
+      <div class="plan">
+        <h3>Overige favorieten <span class="pill">${plan.leftovers.length}</span></h3>
+        <div class="small">Deze pasten niet in het gekozen aantal dagen/tijden (of zouden de route erg lang maken).</div>
+        <ul>${plan.leftovers.map(x=>`<li>${escapeHtml(x.poi.name)} <span class="pill">${escapeHtml(x.poi.location?.locality || "")}</span></li>`).join("")}</ul>
+      </div>
+    ` : "";
+  
+    return `
+      <div class="small">Route is geoptimaliseerd (nearest-neighbor) en verdeeld over dagen op basis van jouw tijdblokken. (Geen openingstijden/tickets meegenomen.)</div>
+      
+      <div class="plan" style="margin-top:10px;">
+        <h3>Handmatig aanpassen</h3>
+        <div class="small" style="color:var(--muted);">Verplaats stops tussen dagen, zet een tijd, of heroptimaliseer per dag. Je wijzigingen worden opgeslagen in je browser.</div>
+        <div class="row" style="margin-top:8px;">
+          <button class="btn" data-action="reopt-all">Heroptimaliseer alles</button>
+          <button class="btn btn-ghost" data-action="restore">Herstel laatste handmatige versie</button>
+          <button class="btn btn-ghost" data-action="reset">Reset naar automatische planning</button>
+        </div>
+      </div>
+  
+      ${overallMaps ?  `<div class="plan"><h3>Alles in één route <span class="pill">${withCoords.length} stop(s)</span></h3>${overallMaps}</div>` : ""}
+      ${plan.days.map((d,i)=>section(`Dag ${i+1}${slotLabel(i)}`, d, i)).join("")}
+      ${leftoversHtml}
+    `;
+}
+
+
+
+/* ---------------- Plan editor (manual tweaks) ---------------- */
+function planKey(){
+  const favIds = Array.from(favs).sort().join(",");
+  return `tripkit.plan.${currentDataset}.${favIds}.${__PLAN.days}.${__PLAN.arrival}.${__PLAN.departure}.${__PLAN.includeLunch?'L':''}${__PLAN.includeDinner!==false?'D':''}${__PLAN.includeCocktails?'C':''}`;
+}
+function savePlanDraft(){
+  try{
+    if(!__CURRENT_PLAN) return;
+    localStorage.setItem(planKey(), JSON.stringify({
+      v:1, dataset: currentDataset, saved_at: Date.now(),
+      plan: __CURRENT_PLAN.plan,
+      origin: __CURRENT_PLAN.origin
+    }));
+  }catch(_){}
+}
+function loadPlanDraft(){
+  try{
+    const raw = localStorage.getItem(planKey());
+    if(!raw) return null;
+    const obj = JSON.parse(raw);
+    if(!obj || !obj.plan) return null;
+    return obj;
+  }catch(_){ return null; }
+}
+function getManualTime(poiId){
+  const t = __CURRENT_PLAN?.plan?.manual?.times?.[poiId];
+  return (typeof t === "string") ? t : "";
+}
+function setManualTime(poiId, hhmm){
+  __CURRENT_PLAN.plan.manual = __CURRENT_PLAN.plan.manual || {};
+  __CURRENT_PLAN.plan.manual.times = __CURRENT_PLAN.plan.manual.times || {};
+  if(hhmm) __CURRENT_PLAN.plan.manual.times[poiId] = hhmm;
+  else delete __CURRENT_PLAN.plan.manual.times[poiId];
+  savePlanDraft();
+}
+function computeDayStats(day, origin, speed){
+  const stops = day.stops || [];
+  let km = 0;
+  let visit = 0;
+  let cur = origin;
+  for(const s of stops){
+    if(!s?.coord) continue;
+    km += haversineKm(cur, s.coord);
+    cur = s.coord;
+    visit += parseTypicalVisitMinutes(s.poi);
+  }
+  if(stops.length){
+    km += haversineKm(cur, origin);
+  }
+  day.travelKm = km;
+  day.visitMin = visit;
+}
+function optimizeDayOrder(day, origin){
+  const remaining = (day.stops || []).slice();
+  const out = [];
+  let cur = origin;
+  while(remaining.length){
+    let bestIdx = 0;
+    let bestD = Infinity;
+    for(let i=0;i<remaining.length;i++){
+      const d = haversineKm(cur, remaining[i].coord);
+      if(d < bestD){ bestD = d; bestIdx = i; }
+    }
+    const picked = remaining.splice(bestIdx,1)[0];
+    out.push(picked);
+    cur = picked.coord;
+  }
+  day.stops = out;
+}
+function renderCurrentPlan(){
+  const panel = document.getElementById("plannerPanel");
+  const out = panel?.querySelector("#plannerOutput");
+  if(!out || !__CURRENT_PLAN) return;
+  out.innerHTML = __CURRENT_PLAN.htmlProvider();
+  wirePlanEditor(out);
+}
+function wirePlanEditor(container){
+  if(container.dataset.wired === "1") return;
+  container.dataset.wired = "1";
+
+  container.addEventListener("click", (e)=>{
+    const btn = e.target.closest("button[data-action]");
+    if(!btn) return;
+    const action = btn.dataset.action;
+    const dayIdx = btn.dataset.day ? parseInt(btn.dataset.day,10) : null;
+    const poiId = btn.dataset.poi || null;
+
+    if(!__CURRENT_PLAN) return;
+
+    if(action === "restore"){
+      const draft = loadPlanDraft();
+      if(draft){
+        __CURRENT_PLAN.plan = draft.plan;
+        __CURRENT_PLAN.origin = draft.origin;
+        // recompute stats
+        const speed = avgSpeedKmph(__DOC);
+        (__CURRENT_PLAN.plan.days||[]).forEach(d=>computeDayStats(d, __CURRENT_PLAN.origin, speed));
+        renderCurrentPlan();
+      }
+      return;
+    }
+
+    if(action === "reset"){
+      // remove manual draft for this key
+      try{ localStorage.removeItem(planKey()); }catch(_){}
+      // re-run planning fresh
+      const panel = document.getElementById("plannerPanel");
+      panel?.querySelector("#btnPlan")?.click();
+      return;
+    }
+
+    if(action === "reopt-day" && dayIdx!=null){
+      const day = __CURRENT_PLAN.plan.days[dayIdx];
+      optimizeDayOrder(day, __CURRENT_PLAN.origin);
+      computeDayStats(day, __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+      savePlanDraft();
+      renderCurrentPlan();
+      return;
+    }
+
+    if(action === "reopt-all"){
+      (__CURRENT_PLAN.plan.days||[]).forEach(d=>{
+        optimizeDayOrder(d, __CURRENT_PLAN.origin);
+        computeDayStats(d, __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+      });
+      savePlanDraft();
+      renderCurrentPlan();
+      return;
+    }
+
+    if(!poiId || dayIdx==null) return;
+    const days = __CURRENT_PLAN.plan.days || [];
+    const day = days[dayIdx];
+    const idx = (day.stops||[]).findIndex(s=>s.poi?.id===poiId);
+    if(idx<0) return;
+
+    if(action === "up" && idx>0){
+      const tmp = day.stops[idx-1]; day.stops[idx-1]=day.stops[idx]; day.stops[idx]=tmp;
+      computeDayStats(day, __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+      savePlanDraft(); renderCurrentPlan(); return;
+    }
+    if(action === "down" && idx < day.stops.length-1){
+      const tmp = day.stops[idx+1]; day.stops[idx+1]=day.stops[idx]; day.stops[idx]=tmp;
+      computeDayStats(day, __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+      savePlanDraft(); renderCurrentPlan(); return;
+    }
+    if(action === "remove"){
+      const removed = day.stops.splice(idx,1)[0];
+      __CURRENT_PLAN.plan.leftovers = __CURRENT_PLAN.plan.leftovers || [];
+      __CURRENT_PLAN.plan.leftovers.push(removed);
+      computeDayStats(day, __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+      savePlanDraft(); renderCurrentPlan(); return;
+    }
+  });
+
+  container.addEventListener("change", (e)=>{
+    const sel = e.target.closest("select[data-action='move-day']");
+    if(sel){
+      const poiId = sel.dataset.poi;
+      const fromDay = parseInt(sel.dataset.day,10);
+      const toDay = parseInt(sel.value,10);
+      if(!__CURRENT_PLAN || !poiId || Number.isNaN(fromDay) || Number.isNaN(toDay) || fromDay===toDay) return;
+      const days = __CURRENT_PLAN.plan.days || [];
+      const src = days[fromDay];
+      const dst = days[toDay];
+      const idx = (src.stops||[]).findIndex(s=>s.poi?.id===poiId);
+      if(idx<0) return;
+      const moved = src.stops.splice(idx,1)[0];
+      dst.stops = dst.stops || [];
+      dst.stops.push(moved);
+      computeDayStats(src, __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+      computeDayStats(dst, __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+      savePlanDraft(); renderCurrentPlan();
+      return;
+    }
+    const t = e.target.closest("input[data-action='time']");
+    if(t){
+      const poiId = t.dataset.poi;
+      if(poiId) setManualTime(poiId, t.value);
+    }
+  });
+}
+
 
 /* ---------------- Rendering ---------------- */
 function badge(text){
@@ -1277,6 +1515,7 @@ cockSel?.addEventListener("change", persistPlan);
     out.innerHTML = `<div class="small">Coördinaten ophalen en route bouwen…</div>`;
     try{
       out.innerHTML = await buildWeekendPlan();
+      try{ wirePlanEditor(out); }catch(_){ }
     }catch(e){
       console.error(e);
       out.innerHTML = `<div class="small">Er ging iets mis bij het maken van de route. Probeer opnieuw.</div>`;

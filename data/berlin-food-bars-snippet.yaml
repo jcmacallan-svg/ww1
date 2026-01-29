@@ -1,0 +1,270 @@
+pois:
+- id: klunkerkranich
+  name: Klunkerkranich (rooftop bar)
+  type: food
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: 'Rooftop-vibe boven een mall: uitzicht, drankjes en vaak muziek/events.
+    Top als (late) middag/avondstop.'
+  themes:
+  - food
+  - cocktails
+  - vibe
+  - nightlife
+  practical:
+    typical_visit_time: 60–150 min
+    indoor_outdoor: mixed
+    notes: Check openingstijden (seizoens-/eventafhankelijk).
+  links:
+    maps_query: Klunkerkranich Berlin
+    official: https://www.klunkerkranich.org/
+- id: rutz
+  name: Rutz
+  type: food
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Top fine dining in Mitte (sterk voor wijnpairing en moderne Duitse keuken).
+  themes:
+  - food
+  practical:
+    typical_visit_time: 120–180 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Restaurant Rutz Berlin
+    wikipedia: https://en.wikipedia.org/wiki/Rutz_(restaurant)
+    official: https://rutz-berlin.de/
+- id: restaurant-tim-raue
+  name: Restaurant Tim Raue
+  type: food
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Bekend om moderne Aziatisch-geïnspireerde fine dining; sterk als ‘anchor’
+    diner.
+  themes:
+  - food
+  practical:
+    typical_visit_time: 120–180 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Restaurant Tim Raue Berlin
+    official: https://tim-raue.com/
+- id: nobelhart-schmutzig
+  name: Nobelhart & Schmutzig
+  type: food
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: 'Regionale focus (Duits) en counter-dining: echt ‘Berlijns’ en uitgesproken.'
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 150–210 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Nobelhart & Schmutzig Berlin
+    official: https://www.nobelhartundschmutzig.com/
+- id: cookies-cream
+  name: Cookies Cream
+  type: food
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Vegetarische fine dining in een verborgen courtyard—leuk als ‘secret
+    spot’.
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 120–180 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Cookies Cream Berlin
+    official: https://cookiescream.com/
+- id: grill-royal
+  name: Grill Royal
+  type: food
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Iconische ‘see-and-be-seen’ steak/vis aan de Spree (Friedrichstraße area).
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 90–150 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Grill Royal Berlin
+- id: katz-orange
+  name: Katz Orange
+  type: food
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Goeie bistro-vibe (bekend om ‘sau’/comfort) — fijne dinner optie zonder
+    ‘tourist trap’ gevoel.
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 90–150 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Katz Orange Berlin
+    official: https://katzorange.com/
+- id: long-march-canteen
+  name: Long March Canteen
+  type: food
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Moderne Chinese sharing dishes; lekker ‘lively’ voor avond.
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 75–150 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Long March Canteen Berlin
+- id: house-of-small-wonder
+  name: House of Small Wonder
+  type: food
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Brunch/lunch-klassieker met serre/boomhuis vibe (fotogeniek).
+  themes:
+  - food
+  - vibe
+  practical:
+    typical_visit_time: 60–120 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: House of Small Wonder Berlin
+- id: father-carpenter
+  name: Father Carpenter
+  type: food
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Goede koffie + ontbijt/lunch; handig tussen Mitte highlights.
+  themes:
+  - food
+  practical:
+    typical_visit_time: 45–90 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Father Carpenter Berlin
+- id: monkey-bar
+  name: Monkey Bar
+  type: nightlife
+  region_id: berlin-charlottenburg
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Cocktails met uitzicht (vaak sunset vibe).
+  themes:
+  - cocktails
+  - vibe
+  - nightlife
+  practical:
+    typical_visit_time: 60–150 min
+    indoor_outdoor: mixed
+  links:
+    maps_query: Monkey Bar Berlin
+- id: green-door
+  name: Green Door
+  type: nightlife
+  region_id: berlin-kreuzberg-neukoelln
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Klassieke cocktailbar (speakeasy-ish) met sterke lijst.
+  themes:
+  - cocktails
+  - nightlife
+  practical:
+    typical_visit_time: 60–150 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Green Door Berlin
+- id: buck-and-breck
+  name: Buck and Breck
+  type: nightlife
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Kleine high-end cocktailbar (reserveren/wachtrij mogelijk).
+  themes:
+  - cocktails
+  - nightlife
+  - vibe
+  practical:
+    typical_visit_time: 60–150 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Buck and Breck Berlin
+- id: bar-tausend
+  name: Bar Tausend
+  type: nightlife
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: 'Berlijnse classic: verborgen entree, goede cocktails, late sfeer.'
+  themes:
+  - cocktails
+  - nightlife
+  - vibe
+  practical:
+    typical_visit_time: 60–180 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Bar Tausend Berlin
+- id: rum-trader
+  name: Rum Trader
+  type: nightlife
+  region_id: berlin-mitte
+  location:
+    locality: Berlin
+    province: Berlin
+    country: Germany
+  why_visit: Old-school cocktailinstituut; fijn voor één ‘serieuze’ cocktailstop.
+  themes:
+  - cocktails
+  - nightlife
+  practical:
+    typical_visit_time: 60–150 min
+    indoor_outdoor: indoor
+  links:
+    maps_query: Rum Trader Berlin
