@@ -462,3 +462,18 @@ code{
 .thumb .noimg.placeholder .phText{
   font-size: .9rem;
 }
+/* Planner selects: beter contrast */
+#plannerPanel select,
+#plannerPanel select option {
+  color: #f2f2f2;
+  background-color: #1b1f24;
+}
+
+#plannerPanel select {
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+#plannerPanel select:focus {
+  outline: 2px solid rgba(255,255,255,0.25);
+  outline-offset: 2px;
+}
