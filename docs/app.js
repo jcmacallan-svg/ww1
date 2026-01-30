@@ -113,6 +113,30 @@ function saveFavs(ds, favs){
 let favs = loadFavs(currentDataset);
 /* ---------------- Planner settings (per dataset) ---------------- */
 function planKey(ds){ return `tripkit_plan_${ds}_v1`; }
+
+function mealKey(ds){ return `tripkit_meal_choices_${ds}_v1`; }
+function loadMealChoices(ds){
+  try{
+    const raw = localStorage.getItem(mealKey(ds));
+    if(!raw) return {};
+    const obj = JSON.parse(raw);
+    return (obj && typeof obj === "object") ? obj : {};
+  }catch(_){ return {}; }
+}
+function saveMealChoices(ds, obj){
+  try{ localStorage.setItem(mealKey(ds), JSON.stringify(obj || {})); }catch(_){}
+}
+function setMealChoice(ds, dayIdx, slot, poiId){
+  const all = loadMealChoices(ds);
+  const key = String(dayIdx);
+  all[key] = all[key] || {};
+  all[key][slot] = poiId || "";
+  saveMealChoices(ds, all);
+}
+function getMealChoice(ds, dayIdx, slot){
+  const all = loadMealChoices(ds);
+  return all?.[String(dayIdx)]?.[slot] || "";
+}
 function defaultPlanSettings(ds){
   if(ds === "berlin"){
     // Example: arrive Fri evening, Sat+Sun full days, depart Mon afternoon
@@ -443,10 +467,10 @@ function defaultVisitMinutes(poi){
   if(["memorial","monument","cemetery"].includes(t)) return 40;
   if(["trench","battlefield","park"].includes(t)) return 70;
   if(["museum","fort","visitor-centre"].includes(t)) return 120;
-  if(buckets.includes("food-nightlife")) return 75;
-  if(buckets.includes("culture-art")) return 120;
-  if(buckets.includes("outdoors-walks")) return 70;
-  if(buckets.includes("remembrance")) return 40;
+  if(buckets.includes("eat-night")) return 75;
+  if(buckets.includes("culture")) return 120;
+  if(buckets.includes("city-outdoors")) return 70;
+  if(buckets.includes("history")) return 60;
   return 60;
 }
 
@@ -539,22 +563,28 @@ function routeCoordsForDay(origin, stops){
 
 function isFoodPoi(poi){
   if(!poi) return false;
-  if((poi.type || "").toLowerCase() === "food") return true;
-  return (poi.themes || []).includes("food");
+  const t = (poi.type || "").toLowerCase();
+  if(["food","restaurant","cafe","bar","cocktailbar"].includes(t)) return true;
+  const themes = (poi.themes || []).map(x=>String(x).toLowerCase());
+  return themes.includes("food") || themes.includes("restaurant") || themes.includes("cafe") || themes.includes("bar");
 }
 function isNightlifePoi(poi){
   if(!poi) return false;
-  if((poi.type || "").toLowerCase() === "nightlife") return true;
-  return (poi.themes || []).includes("nightlife");
+  const t = (poi.type || "").toLowerCase();
+  if(["nightlife","bar","cocktailbar","cafe"].includes(t)) return true;
+  const themes = (poi.themes || []).map(x=>String(x).toLowerCase());
+  return themes.includes("nightlife") || themes.includes("vibe") || themes.includes("bar");
 }
 function isCocktailPoi(poi){
   if(!poi) return false;
-  const themes = poi.themes || [];
+  const t = (poi.type || "").toLowerCase();
+  if(t === "cocktailbar") return true;
+  const themes = (poi.themes || []).map(x=>String(x).toLowerCase());
   if(themes.includes("cocktails") || themes.includes("cocktail")) return true;
-  // fallback heuristic: name contains "cocktail" or "bar" and it's nightlife
+  // heuristic: name contains "cocktail" or it is nightlife+bar-ish
   const nm = (poi.name || "").toLowerCase();
   if(nm.includes("cocktail")) return true;
-  if(isNightlifePoi(poi) && nm.includes("bar")) return true;
+  if(isNightlifePoi(poi) && (nm.includes("bar") || nm.includes("roof"))) return true;
   return false;
 }
 
@@ -585,63 +615,114 @@ function pickNearestUnused(cands, targetCoord, usedIds){
 
 function insertMealSlotsBerlin(plan, origin, budgets, pools){
   const { lunchPool, dinnerPool, cocktailPool } = pools;
-  const includeLunch = !!__PLAN.includeLunch;
-  const includeDinner = (__PLAN.includeDinner !== false);
-  const includeCocktails = !!__PLAN.includeCocktails;
+  const ds = currentDataset;
 
-  // Determine which slots exist per day based on arrival/departure.
-  const dayCount = budgets.length;
-  const used = new Set();
-  for(let i=0;i<dayCount;i++){
-    const day = plan.days[i] || { budgetMin: budgets[i], stops: [], travelKm: 0, visitMin: 0 };
-    const isFirst = (i===0);
-    const isLast = (i===dayCount-1);
-    const arrival = (__PLAN.arrival || "afternoon");
-    const departure = (__PLAN.departure || "evening");
+  // Remove any previously inserted meal-slot stops
+  (plan.days || []).forEach(d=>{
+    d.stops = (d.stops || []).filter(s=>!s.slot);
+  });
 
-    const wantLunch = includeLunch && (!isFirst || arrival !== "evening") && (!isLast || departure !== "morning");
-    const wantDinner = includeDinner && (!isLast || departure === "evening") ;
-    const wantCocktail = includeCocktails && wantDinner;
+  const usedIds = new Set();
 
-    // pick targets
-    const stops = day.stops || [];
-    const midCoord = stops.length ? stops[Math.floor(stops.length/2)].coord : origin;
-    const endCoord = stops.length ? stops[stops.length-1].coord : origin;
+  const wantMealSlot = (di, slot) => {
+    const ps = loadPlanSettings(ds);
+    const days = ps.days || (plan.days ? plan.days.length : 0);
+    const arrival = ps.arrival || "evening";
+    const departure = ps.departure || "afternoon";
+    const isFirst = di === 0;
+    const isLast = di === days - 1;
 
-    let lunch = null, dinner = null, cocktail = null;
-    if(wantLunch){
-      lunch = pickNearestUnused(lunchPool, midCoord, used) || pickNearestUnused(lunchPool, midCoord, null);
-      if(lunch){
-        // insert around the middle
-        const idx = Math.max(0, Math.min(stops.length, Math.floor(stops.length/2)));
-        stops.splice(idx, 0, lunch);
+    if(slot === "lunch"){
+      if(!ps.includeLunch) return false;
+      if(isFirst && arrival !== "morning") return false;
+      if(isLast && departure === "morning") return false;
+      return true;
+    }
+    if(slot === "dinner"){
+      if(!ps.includeDinner) return false;
+      if(isLast && departure === "morning") return false;
+      return true;
+    }
+    if(slot === "cocktail"){
+      if(!ps.includeCocktails) return false;
+      if(isLast && (departure === "morning" || departure === "afternoon")) return false;
+      return true;
+    }
+    return false;
+  };
+
+  const pickFromPool = (pool, preferredId, anchorCoord) => {
+    if(!pool || !pool.length) return null;
+
+    if(preferredId){
+      const found = pool.find(s=>s.poi?.id===preferredId);
+      if(found){
+        usedIds.add(found.poi.id);
+        return found;
       }
     }
 
-    if(wantDinner){
-      // after possible lunch insert, recompute end coord
-      const end2 = stops.length ? stops[stops.length-1].coord : endCoord;
-      dinner = pickNearestUnused(dinnerPool, end2, used) || pickNearestUnused(dinnerPool, end2, null);
-      if(dinner){
-        stops.push(dinner);
+    const unused = pool.filter(s=>!usedIds.has(s.poi?.id));
+    if(unused.length){
+      const picked = pickNearestUnused(unused, anchorCoord, new Set()); // unused already filtered
+      if(picked){
+        usedIds.add(picked.poi.id);
+        return picked;
       }
     }
 
-    if(wantCocktail){
-      const t = dinner ? dinner.coord : (stops.length ? stops[stops.length-1].coord : origin);
-      cocktail = pickNearestUnused(cocktailPool, t, used) || pickNearestUnused(cocktailPool, t, null);
-      if(cocktail){
-        stops.push(cocktail);
+    // If everything is used, allow reuse but rotate so we don't always pick the same thing
+    const picked = pickNearestUnused(pool, anchorCoord, new Set());
+    if(picked){
+      usedIds.add(picked.poi.id);
+      return picked;
+    }
+    return null;
+  };
+
+  for(let di=0; di<plan.days.length; di++){
+    const day = plan.days[di];
+    const dayStops = day.stops || [];
+    const mid = dayStops.length ? dayStops[Math.floor(dayStops.length/2)].coord : origin.coordinates;
+    const end = dayStops.length ? dayStops[dayStops.length-1].coord : origin.coordinates;
+
+    const lunchPref = getMealChoice(ds, di, "lunch");
+    const dinnerPref = getMealChoice(ds, di, "dinner");
+    const cocktailPref = getMealChoice(ds, di, "cocktail");
+
+    // Lunch (insert around mid)
+    if(wantMealSlot(di, "lunch")){
+      const pick = pickFromPool(lunchPool, lunchPref, mid);
+      if(pick){
+        const stop = { poi: pick.poi, coord: pick.coord, slot: "lunch", manuallyPlaced: !!lunchPref };
+        const pos = Math.max(0, Math.floor(dayStops.length/2));
+        dayStops.splice(pos, 0, stop);
       }
     }
 
-    day.stops = stops;
-    day.travelKm = travelKmForStops(origin, stops);
-    day.visitMin = visitMinForStops(stops);
-    plan.days[i] = day;
+    // Dinner (towards end)
+    if(wantMealSlot(di, "dinner")){
+      const pick = pickFromPool(dinnerPool, dinnerPref, end);
+      if(pick){
+        const stop = { poi: pick.poi, coord: pick.coord, slot: "dinner", manuallyPlaced: !!dinnerPref };
+        dayStops.push(stop);
+      }
+    }
+
+    // Cocktails (end)
+    if(wantMealSlot(di, "cocktail")){
+      const anchor = dayStops.length ? dayStops[dayStops.length-1].coord : end;
+      const pick = pickFromPool(cocktailPool, cocktailPref, anchor);
+      if(pick){
+        const stop = { poi: pick.poi, coord: pick.coord, slot: "cocktail", manuallyPlaced: !!cocktailPref };
+        dayStops.push(stop);
+      }
+    }
+
+    day.stops = dayStops;
   }
-  return plan;
 }
+
 
 
 /* ---------------- Planner panel ---------------- */
@@ -859,19 +940,21 @@ async function buildWeekendPlan(){
     plan = insertMealSlotsBerlin(plan, origin, budgets, pools);
   }
 
-    const html = buildWeekendPlanHtml(plan, origin, budgets, withCoords.length);
+    const html = buildWeekendPlanHtml(plan, origin, budgets, withCoords.length, pools);
   __CURRENT_PLAN = {
     plan,
     origin,
     budgets,
-    htmlProvider: () => buildWeekendPlanHtml(plan, origin, budgets, withCoords.length)
+    pools,
+    totalStops: withCoords.length,
+    htmlProvider: () => buildWeekendPlanHtml(plan, origin, budgets, withCoords.length, pools)
   };
   savePlanDraft();
   return html;
 
 }
 
-function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
+function buildWeekendPlanHtml(plan, origin, budgets, totalStops, pools){
   const doc = __DOC;
   const slotLabel = (i)=>{
       const d = budgets.length;
@@ -897,6 +980,47 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
       if(provider === "apple") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${aBtn}</div>`;
       return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}${aBtn}</div>`;
     };
+
+    const ds = currentDataset;
+    const ps = loadPlanSettings(ds);
+
+    const wantMealSlot = (di, slot) => {
+      const days = ps.days || plan.days.length;
+      const arrival = ps.arrival || "evening";
+      const departure = ps.departure || "afternoon";
+      const isFirst = di === 0;
+      const isLast = di === days - 1;
+
+      if(slot === "lunch"){
+        if(!ps.includeLunch) return false;
+        if(isFirst && arrival !== "morning") return false;
+        if(isLast && departure === "morning") return false;
+        return true;
+      }
+      if(slot === "dinner"){
+        if(!ps.includeDinner) return false;
+        if(isLast && departure === "morning") return false;
+        return true;
+      }
+      if(slot === "cocktail"){
+        if(!ps.includeCocktails) return false;
+        if(isLast && (departure === "morning" || departure === "afternoon")) return false;
+        return true;
+      }
+      return false;
+    };
+
+    const mealSelect = (di, slot, label, pool) => {
+      if(!wantMealSlot(di, slot)) return "";
+      const chosen = getMealChoice(ds, di, slot);
+      const opts = (pool || []).map(s => {
+        const id = s.poi?.id || "";
+        const nm = s.poi?.name || id;
+        return `<option value="${escapeHtml(id)}"${id===chosen ? " selected":""}>${escapeHtml(nm)}</option>`;
+      }).join("");
+      const disabled = (!pool || !pool.length) ? " disabled" : "";
+      return `<label class="small">\n        ${label}\n        <select class="select" data-action="meal" data-slot="${slot}" data-day="${di}"${disabled}>\n          <option value="">(auto)</option>\n          ${opts}\n        </select>\n      </label>`;
+    };
   
     const section = (label, day, di) => {
       const stops = day.stops || [];
@@ -907,6 +1031,9 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
           <h3>${label} <span class="pill">${stops.length} stop(s)</span></h3>
           <div class="plan-tools">
             <label class="small" style="color:var(--muted); display:flex; align-items:center; gap:8px;">Start <input class="input time" type="time" data-action="day-start" data-day="${di}" value="${escapeHtml(getDayStart(di))}" /></label>
+            ${mealSelect(di,"lunch","Lunch", pools?.lunchPool)}
+            ${mealSelect(di,"dinner","Diner", pools?.dinnerPool)}
+            ${mealSelect(di,"cocktail","Cocktails", pools?.cocktailPool)}
             <button class="btn btn-ghost" data-action="reopt-day" data-day="${di}">Heroptimaliseer deze dag</button>
           </div>
           <div class="small" style="color:var(--muted);">
@@ -1188,6 +1315,24 @@ function wirePlanEditor(container){
   });
 
   container.addEventListener("change", (e)=>{
+    const mealSel = e.target.closest("select[data-action='meal']");
+    if(mealSel){
+      const di = Number(mealSel.dataset.day);
+      const slot = mealSel.dataset.slot || "";
+      setMealChoice(currentDataset, di, slot, mealSel.value);
+
+      if(__CURRENT_PLAN?.plan && __CURRENT_PLAN?.pools){
+        // Re-apply meal slots without destroying your manual ordering of the other stops
+        insertMealSlotsBerlin(__CURRENT_PLAN.plan, __CURRENT_PLAN.origin, __CURRENT_PLAN.budgets, __CURRENT_PLAN.pools);
+        // Recompute stats (distance/time)
+        for(let i=0;i<__CURRENT_PLAN.plan.days.length;i++){
+          __CURRENT_PLAN.plan.days[i] = computeDayStats(__CURRENT_PLAN.plan.days[i], __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+        }
+      }
+      renderCurrentPlan();
+      return;
+    }
+
     const sel = e.target.closest("select[data-action='move-day']");
     if(sel){
       const poiId = sel.dataset.poi;
@@ -1380,11 +1525,10 @@ function createCard(poi, regionById){
  * We keep detailed tags in YAML, but present 5 consistent categories in the UI.
  */
 const THEME_BUCKETS = [
-  { id: "history-war", label: "Geschiedenis & Oorlog" },
-  { id: "remembrance", label: "Herdenking & Reflectie" },
-  { id: "culture-art", label: "Musea, Kunst & Architectuur" },
-  { id: "outdoors-walks", label: "Buiten & Landschap" },
-  { id: "food-nightlife", label: "Eten & Uitgaan" },
+  { id: "eat-night", label: "Eten & Uitgaan" },
+  { id: "culture", label: "Musea & Cultuur" },
+  { id: "history", label: "Geschiedenis & Herdenking" },
+  { id: "city-outdoors", label: "Wijken & Buiten" },
 ];
 
 function mapToBuckets(poi){
@@ -1392,36 +1536,33 @@ function mapToBuckets(poi){
   const t = (poi?.type || "").toLowerCase();
   const themes = (poi?.themes || []).map(x=>String(x).toLowerCase());
 
-  // Type-driven
-  if(["food","nightlife","bar","cafe","restaurant"].includes(t)) buckets.add("food-nightlife");
-  if(t === "park") buckets.add("outdoors-walks");
-  if(["trench","battlefield"].includes(t)) buckets.add("outdoors-walks");
-  if(t === "museum") buckets.add("culture-art");
-  if(["memorial","cemetery","monument"].includes(t)) buckets.add("remembrance");
-
-  // Theme-driven (legacy tags)
   const hasAny = (...keys)=> keys.some(k => themes.includes(k));
   const hasLike = (...subs)=> subs.some(s => themes.some(x=>x.includes(s)));
 
-  if(hasLike("ww1","ww2","cold-war","invasion","battle","front","fortress","trench")){
-    buckets.add("history-war");
+  // --- Type-driven (your current datasets mainly use `type`) ---
+  if(["food","restaurant","cafe","cocktailbar","bar","nightlife"].includes(t)) buckets.add("eat-night");
+  if(["museum","palace","landmark","viewpoint","viewpoints"].includes(t)) buckets.add("culture");
+  if(["memorial","cemetery","monument","trench","battlefield","fort","site"].includes(t)) buckets.add("history");
+  if(["district","park","hotel","town","visitor-centre","visitor-center"].includes(t)) buckets.add("city-outdoors");
+
+  // --- Theme-driven (legacy tags) ---
+  if(hasLike("food","night","cocktail","bar","cafe","restaurant","vibe") || hasAny("food","nightlife","cocktails","cocktail","vibe")){
+    buckets.add("eat-night");
   }
-  if(hasAny("remembrance") || hasLike("remembr","holocaust","cemetery")){
-    buckets.add("remembrance");
+  if(hasAny("museum","art","modern-art","architecture","street-art") || hasLike("museum","art","architect","gallery")){
+    buckets.add("culture");
   }
-  if(hasAny("museum","art","modern-art","architecture") || hasLike("museum","art","architect","gallery")){
-    buckets.add("culture-art");
+  if(hasLike("ww1","ww2","cold-war","invasion","battle","front","fortress","trench","holocaust","memorial","remembr","cemetery")){
+    buckets.add("history");
   }
-  if(hasAny("outdoors") || hasLike("outdoor","park","walk","hike","landscape","trail")){
-    buckets.add("outdoors-walks");
-  }
-  if(hasAny("food","nightlife","cocktails","vibe") || hasLike("cocktail","night","food","vibe","club","bar","cafe")){
-    buckets.add("food-nightlife");
+  if(hasAny("outdoors") || hasLike("outdoor","park","walk","hike","landscape","trail","district","neighborhood")){
+    buckets.add("city-outdoors");
   }
 
+  // Fallback
   if(buckets.size === 0){
-    if(["site","district","landmark","viewpoint","palace","town","fort"].includes(t)) buckets.add("history-war");
-    else buckets.add("history-war");
+    if(["district","park","viewpoint","landmark"].includes(t)) buckets.add("city-outdoors");
+    else buckets.add("history");
   }
   return Array.from(buckets);
 }
@@ -1447,15 +1588,21 @@ function buildSelect(selectEl, values, placeholder){
     opt.textContent = placeholder;
     selectEl.appendChild(opt);
   }
+
   for(const v of values){
     const opt = document.createElement("option");
-    opt.value = v;
-    opt.textContent = v;
+    if(v && typeof v === "object"){
+      opt.value = String(v.value ?? "");
+      opt.textContent = String(v.label ?? v.value ?? "");
+    }else{
+      opt.value = String(v);
+      opt.textContent = String(v);
+    }
     selectEl.appendChild(opt);
   }
 }
 
-function render(){
+function renderfunction render(){
   const doc = __DOC;
   if(!doc) return;
 
@@ -1472,8 +1619,8 @@ function render(){
 
   const filtered = pois.filter(p=>{
     if(regionFilter && p.region_id !== regionFilter) return false;
-    if(typeFilter && (p.type||"") !== typeFilter) return false;
-    if(themeFilter && !(mapToBuckets(p) || []).includes(themeFilter)) return false;
+    const catFilter = typeFilter || themeFilter;
+    if(catFilter && !(mapToBuckets(p) || []).includes(catFilter)) return false;
     if(q && !poiSearchHaystack(p, regionById).includes(q)) return false;
     return true;
   });
@@ -1587,8 +1734,9 @@ async function loadDataset(ds){
     const r = regions.find(x=>x.id===opt.value);
     if(r) opt.textContent = r.name;
   }
-  buildSelect(els.type, uniq(pois.map(p=>p.type)).sort(), "Alle types");
-  buildSelect(els.theme, allBucketOptionsForPois(pois), "Alle thema’s");
+  const cats = THEME_BUCKETS.map(b=>({ value: b.id, label: b.label }));
+  buildSelect(els.type, cats, "Alle categorieën");
+  buildSelect(els.theme, cats, "Alle categorieën");
   els.region.value = "";
   els.type.value = "";
   els.theme.value = "";
@@ -1627,8 +1775,18 @@ async function main(){
   // controls
   els.search.addEventListener("input", (e)=>{ __STATE.search = e.target.value; render(); });
   els.region.addEventListener("change", (e)=>{ __STATE.region = e.target.value; render(); });
-  els.type.addEventListener("change", (e)=>{ __STATE.type = e.target.value; render(); });
-  els.theme.addEventListener("change", (e)=>{ __STATE.theme = e.target.value; render(); });
+  els.type.addEventListener("change", (e)=>{
+    __STATE.type = e.target.value;
+    __STATE.theme = e.target.value;
+    if(els.theme.value !== e.target.value) els.theme.value = e.target.value;
+    render();
+  });
+  els.theme.addEventListener("change", (e)=>{
+    __STATE.theme = e.target.value;
+    __STATE.type = e.target.value;
+    if(els.type.value !== e.target.value) els.type.value = e.target.value;
+    render();
+  });
   els.photosOnly.addEventListener("change", (e)=>{ __STATE.photosOnly = e.target.checked; render(); });
 
   const panel = document.getElementById("plannerPanel");
