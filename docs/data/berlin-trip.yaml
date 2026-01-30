@@ -12,8 +12,7 @@ settings:
 regions:
 - id: berlin-mitte
   name: Mitte & Museuminsel
-  description: 'Historisch hart: Museuminsel, Unter den Linden, regeringskwartier
-    en gedenkplekken.'
+  description: 'Historisch hart: Museuminsel, Unter den Linden, regeringskwartier en gedenkplekken.'
   base_towns:
   - Berlin-Mitte
 - id: berlin-tiergarten
@@ -44,8 +43,7 @@ regions:
   - Charlottenburg
 - id: berlin-daytrips
   name: Daytrips (buiten Berlijn)
-  description: Sterke (geschiedenis) uitstapjes buiten de stad, ideaal als je 3+ dagen
-    hebt.
+  description: Sterke (geschiedenis) uitstapjes buiten de stad, ideaal als je 3+ dagen hebt.
   base_towns:
   - Berlin
 pois:
@@ -60,8 +58,8 @@ pois:
     coordinates:
       lat: 52.52219
       lon: 13.38569
-  why_visit: 'Handig startpunt: centraal en dicht bij Friedrichstraße/Spree. Wordt
-    gebruikt als start voor routes in deze tab.'
+  why_visit: 'Handig startpunt: centraal en dicht bij Friedrichstraße/Spree. Wordt gebruikt als start voor routes
+    in deze tab.'
   themes:
   - logistics
   practical:
@@ -82,8 +80,7 @@ pois:
     coordinates:
       lat: 52.535
       lon: 13.38972222
-  why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum
-    en uitkijkpunt.'
+  why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum en uitkijkpunt.'
   themes:
   - history
   - cold-war
@@ -162,8 +159,7 @@ pois:
     coordinates:
       lat: 52.5075
       lon: 13.39027778
-  why_visit: Symbolische grensovergang (Koude Oorlog). Druk/toeristisch, maar historisch
-    relevant.
+  why_visit: Symbolische grensovergang (Koude Oorlog). Druk/toeristisch, maar historisch relevant.
   themes:
   - history
   - cold-war
@@ -184,8 +180,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Openlucht-galerie op een stuk Muur: street art + historisch moment langs
-    de Spree.'
+  why_visit: 'Openlucht-galerie op een stuk Muur: street art + historisch moment langs de Spree.'
   themes:
   - street-art
   - history
@@ -214,8 +209,7 @@ pois:
     coordinates:
       lat: 52.45583333
       lon: 13.2725
-  why_visit: Sterk museum over de Westerse geallieerden in Berlijn en de Koude Oorlog
-    (incl. luchtbrug).
+  why_visit: Sterk museum over de Westerse geallieerden in Berlijn en de Koude Oorlog (incl. luchtbrug).
   themes:
   - history
   - cold-war
@@ -266,8 +260,7 @@ pois:
     coordinates:
       lat: 52.50694444
       lon: 13.38277778
-  why_visit: Indrukwekkend documentatiecentrum op historische locatie van het nazistische
-    politie-apparaat.
+  why_visit: Indrukwekkend documentatiecentrum op historische locatie van het nazistische politie-apparaat.
   themes:
   - history
   - ww2
@@ -293,8 +286,7 @@ pois:
     coordinates:
       lat: 52.51388889
       lon: 13.37888889
-  why_visit: Krachtige herdenkingsplek met info-centrum; ligt centraal en is goed
-    te combineren met Brandenburg/Reichstag.
+  why_visit: Krachtige herdenkingsplek met info-centrum; ligt centraal en is goed te combineren met Brandenburg/Reichstag.
   themes:
   - remembrance
   - ww2
@@ -396,8 +388,7 @@ pois:
     coordinates:
       lat: 52.43305556
       lon: 13.16555556
-  why_visit: Historische locatie van de Wannseeconferentie; sober, informatief en
-    belangrijk.
+  why_visit: Historische locatie van de Wannseeconferentie; sober, informatief en belangrijk.
   themes:
   - ww2
   - history
@@ -423,8 +414,7 @@ pois:
     coordinates:
       lat: 52.51805556
       lon: 13.39694444
-  why_visit: Breed historisch overzicht (incl. Keizerrijk/WO1/WO2). Fijne ‘context’
-    dag.
+  why_visit: Breed historisch overzicht (incl. Keizerrijk/WO1/WO2). Fijne ‘context’ dag.
   themes:
   - history
   - museum
@@ -718,8 +708,7 @@ pois:
     coordinates:
       lat: 52.50665
       lon: 13.33057
-  why_visit: Fotografie-anker met wisselende exposities; makkelijk te combineren met
-    Zoo/Ku’damm.
+  why_visit: Fotografie-anker met wisselende exposities; makkelijk te combineren met Zoo/Ku’damm.
   themes:
   - museum
   - modern-art
@@ -744,8 +733,7 @@ pois:
     coordinates:
       lat: 52.52138889
       lon: 13.39555556
-  why_visit: Culture cluster met meerdere musea; ideaal als je een museumdag wilt
-    plannen.
+  why_visit: Culture cluster met meerdere musea; ideaal als je een museumdag wilt plannen.
   themes:
   - museum
   - history
@@ -949,8 +937,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Industriële vibe met street art, bars en events—goed voor avond/late
-    sfeer.
+  why_visit: Industriële vibe met street art, bars en events—goed voor avond/late sfeer.
   themes:
   - vibe
   - street-art
@@ -1009,6 +996,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tresor
     maps_query: Tresor Berlin
+    wikidata: Q1892363
 - id: schloss-charlottenburg
   name: Schloss Charlottenburg
   type: palace
@@ -1017,6 +1005,9 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
+    coordinates:
+      lat: 52.5209
+      lon: 13.2957
   why_visit: Paleis + tuinen; mooi contrast met ‘ruw’ Berlijn.
   themes:
   - history
@@ -1030,6 +1021,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
     maps_query: Schloss Charlottenburg
+    wikidata: Q154996
 - id: kurfuerstendamm
   name: Kurfürstendamm (Ku’damm)
   type: district
@@ -1050,6 +1042,7 @@ pois:
   links:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
+    wikidata: Q160272
 - id: rutz-restaurant
   name: Rutz (fine dining)
   type: restaurant
@@ -1058,8 +1051,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one
-    big dinner” night.
+  why_visit: Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one big dinner” night.
   themes:
   - food
   - vibe
@@ -1080,8 +1072,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor
-    “culinair + Berlijn vibe”.
+  why_visit: Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor “culinair + Berlijn vibe”.
   themes:
   - food
   - vibe
@@ -1102,8 +1093,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Iconische “special occasion” setting bij Brandenburger Tor; klassiek
-    topsegment.
+  why_visit: Iconische “special occasion” setting bij Brandenburger Tor; klassiek topsegment.
   themes:
   - food
   - vibe
@@ -1124,8 +1114,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Berlijn-klassieker aan de Spree: steaks/seafood + “see and be seen”
-    sfeer.'
+  why_visit: 'Berlijn-klassieker aan de Spree: steaks/seafood + “see and be seen” sfeer.'
   themes:
   - food
   - vibe
@@ -1145,8 +1134,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed
-    beoordeeld.
+  why_visit: Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed beoordeeld.
   themes:
   - food
   - vibe
@@ -1166,8 +1154,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor
-    lunch/early dinner).
+  why_visit: Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor lunch/early dinner).
   themes:
   - food
   - vibe
@@ -1187,8 +1174,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin
-    dining”.
+  why_visit: Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin dining”.
   themes:
   - food
   - vibe
@@ -1248,8 +1234,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out”
-    start.
+  why_visit: Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out” start.
   themes:
   - nightlife
   - vibe
@@ -1310,8 +1295,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse
-    “louder” spots.
+  why_visit: Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse “louder” spots.
   themes:
   - nightlife
   - vibe
@@ -1408,8 +1392,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met
-    hidden gems.
+  why_visit: Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met hidden gems.
   themes:
   - nightlife
   - vibe
@@ -1487,8 +1470,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar
-    wel goed”.
+  why_visit: Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar wel goed”.
   themes:
   - food
   - vibe
@@ -1507,8 +1489,7 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Rooftop op een parkeerdek van de Neukölln Arcaden; sunset-vibe, muziek
-    en prima bites/drinks.
+  why_visit: Rooftop op een parkeerdek van de Neukölln Arcaden; sunset-vibe, muziek en prima bites/drinks.
   themes:
   - food
   - vibe
@@ -1524,3 +1505,4 @@ pois:
     official: https://klunkerkranich.org/
     wikipedia: https://de.wikipedia.org/wiki/Klunkerkranich
     maps_query: Klunkerkranich Dachterrasse Neukölln Arcaden Karl-Marx-Straße 66 Berlin
+    wikidata: Q1141135
