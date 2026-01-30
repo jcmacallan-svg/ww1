@@ -1602,7 +1602,7 @@ function buildSelect(selectEl, values, placeholder){
   }
 }
 
-function renderfunction render(){
+function render(){
   const doc = __DOC;
   if(!doc) return;
 
