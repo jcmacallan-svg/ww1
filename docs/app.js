@@ -415,15 +415,41 @@ function appleMapsDirectionsLink(coords, originOverride=null){
 }
 
 function parseTypicalVisitMinutes(poi){
+  const minV = poi?.practical?.visit_duration_min;
+  const maxV = poi?.practical?.visit_duration_max;
+  if(Number.isFinite(minV) && Number.isFinite(maxV) && maxV > 0){
+    return Math.max(5, Math.round((minV + maxV)/2));
+  }
+
   const s = (poi?.practical?.typical_visit_time || "").toString().trim().toLowerCase();
-  if(!s || s === "—" || s === "-") return 60;
+  if(!s || s === "—" || s === "-") return defaultVisitMinutes(poi);
   if(s.includes("half day")) return 240;
-  if(s.includes("multi-day")) return 300;
-  const nums = Array.from(s.matchAll(/(\d+(?:\.\d+)?)/g)).map(m=>parseFloat(m[1])).filter(n=>Number.isFinite(n));
-  if(nums.length >= 2) return Math.max(15, Math.round((nums[0] + nums[1]) / 2));
-  if(nums.length === 1) return Math.max(15, Math.round(nums[0]));
+  if(s.includes("multi-day")) return 360;
+
+  const nums = (s.match(/\d+/g) || []).map(n=>parseInt(n,10)).filter(Number.isFinite);
+  if(nums.length === 1) return Math.max(5, nums[0]);
+  if(nums.length >= 2){
+    const a = Math.min(nums[0], nums[1]);
+    const b = Math.max(nums[0], nums[1]);
+    return Math.max(5, Math.round((a+b)/2));
+  }
+  return defaultVisitMinutes(poi);
+}
+
+function defaultVisitMinutes(poi){
+  const t = (poi?.type || "").toLowerCase();
+  const buckets = mapToBuckets(poi);
+  if(["food","nightlife","bar","cafe","restaurant"].includes(t)) return 75;
+  if(["memorial","monument","cemetery"].includes(t)) return 40;
+  if(["trench","battlefield","park"].includes(t)) return 70;
+  if(["museum","fort","visitor-centre"].includes(t)) return 120;
+  if(buckets.includes("food-nightlife")) return 75;
+  if(buckets.includes("culture-art")) return 120;
+  if(buckets.includes("outdoors-walks")) return 70;
+  if(buckets.includes("remembrance")) return 40;
   return 60;
 }
+
 
 function avgSpeedKmph(doc){
   const s = doc?.settings?.routing?.avg_speed_kmph;
@@ -658,6 +684,10 @@ function ensurePlannerPanel(){
     </select>
   </div>
   <div style="display:flex; flex-direction:column; gap:6px;">
+    <div class="small" style="color:var(--muted);">Starttijd (volle dagen)</div>
+    <input id="planStartTime" class="input" type="time" value="10:00" style="min-width:150px;" />
+  </div>
+  <div style="display:flex; flex-direction:column; gap:6px;">
     <div class="small" style="color:var(--muted);">Kaart</div>
     <select id="planMapProvider" class="input" style="min-width:150px;">
       <option value="both">Google + Apple</option>
@@ -757,6 +787,7 @@ function applyPlannerSettingsUI(){
   const arrEl = panel.querySelector("#planArrival");
   const depEl = panel.querySelector("#planDeparture");
   const mapEl = panel.querySelector("#planMapProvider");
+  const startEl = panel.querySelector("#planStartTime");
   const extras = panel.querySelector("#planBerlinExtras");
   const lunchEl = panel.querySelector("#planIncludeLunch");
   const dinnerEl = panel.querySelector("#planIncludeDinner");
@@ -765,6 +796,7 @@ function applyPlannerSettingsUI(){
   if(arrEl) arrEl.value = __PLAN.arrival || "afternoon";
   if(depEl) depEl.value = __PLAN.departure || "evening";
   if(mapEl) mapEl.value = __PLAN.mapProvider || "both";
+  if(startEl) startEl.value = __PLAN.startTime || "10:00";
   if(extras) extras.style.display = (currentDataset === "berlin") ? "flex" : "none";
   if(lunchEl) lunchEl.checked = !!__PLAN.includeLunch;
   if(dinnerEl) dinnerEl.checked = (__PLAN.includeDinner !== false);
@@ -868,11 +900,13 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
   
     const section = (label, day, di) => {
       const stops = day.stops || [];
+      const timeline = computeTimelineForDay(di, stops);
       const coords = routeCoordsForDay(origin, stops);
       return `
         <div class="plan">
           <h3>${label} <span class="pill">${stops.length} stop(s)</span></h3>
           <div class="plan-tools">
+            <label class="small" style="color:var(--muted); display:flex; align-items:center; gap:8px;">Start <input class="input time" type="time" data-action="day-start" data-day="${di}" value="${escapeHtml(getDayStart(di))}" /></label>
             <button class="btn btn-ghost" data-action="reopt-day" data-day="${di}">Heroptimaliseer deze dag</button>
           </div>
           <div class="small" style="color:var(--muted);">
@@ -881,7 +915,7 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops){
           ${stops.length ? `<ul>${stops.map((x, si)=>`
             <li class="plan-li" data-day="${di}" data-poi="${escapeHtml(x.poi.id)}">
               <div class="li-main">
-                <div class="li-title">${escapeHtml(x.poi.name)} ${x.poi.type ? `<span class="pill">${escapeHtml(x.poi.type)}</span>` : ""}</div>
+                <div class="li-title"><span class="pill" style="margin-right:8px;">${escapeHtml(hhmmFromMinutes(timeline[si]?.start||0))}–${escapeHtml(hhmmFromMinutes(timeline[si]?.end||0))}</span>${escapeHtml(x.poi.name)} ${x.poi.type ? `<span class="pill">${escapeHtml(x.poi.type)}</span>` : ""} <span class="pill">${escapeHtml(String(timeline[si]?.dur||""))} min</span></div>
                 <div class="small" style="color:var(--muted);">${escapeHtml(x.poi.location?.locality || "")}</div>
               </div>
               <div class="li-tools">
@@ -965,6 +999,62 @@ function loadPlanDraft(){
     return obj;
   }catch(_){ return null; }
 }
+
+function getDayStart(di){
+  const t = __CURRENT_PLAN?.plan?.manual?.dayStarts?.[String(di)];
+  if(typeof t === "string" && t) return t;
+  const d = __PLAN.days || 3;
+  const global = (__PLAN.startTime || "10:00");
+  if(di === 0){
+    const a = __PLAN.arrival || "afternoon";
+    return ({ morning: "10:00", afternoon: "15:00", evening: "20:00" })[a] || "15:00";
+  }
+  if(di === d-1){
+    const dep = __PLAN.departure || "evening";
+    return ({ morning: "09:00", afternoon: global, evening: global })[dep] || global;
+  }
+  return global;
+}
+function setDayStart(di, hhmm){
+  if(!__CURRENT_PLAN) return;
+  __CURRENT_PLAN.plan.manual = __CURRENT_PLAN.plan.manual || {};
+  __CURRENT_PLAN.plan.manual.dayStarts = __CURRENT_PLAN.plan.manual.dayStarts || {};
+  __CURRENT_PLAN.plan.manual.dayStarts[String(di)] = hhmm;
+  savePlanDraft();
+}
+function minutesFromHHMM(hhmm){
+  const m = /^([0-2]\d):([0-5]\d)$/.exec(hhmm || "");
+  if(!m) return null;
+  return (parseInt(m[1],10)*60 + parseInt(m[2],10));
+}
+function hhmmFromMinutes(mins){
+  let m = Math.max(0, Math.round(mins));
+  const hh = String(Math.floor(m/60)).padStart(2,"0");
+  const mm = String(m%60).padStart(2,"0");
+  return `${hh}:${mm}`;
+}
+function computeTimelineForDay(di, stops){
+  const manual = (__CURRENT_PLAN?.plan?.manual?.times) || {};
+  let cur = minutesFromHHMM(getDayStart(di));
+  if(cur == null) cur = 600;
+  const bufferMin = 10;
+  const out = [];
+  for(const x of (stops || [])){
+    const pid = x?.poi?.id;
+    const dur = parseTypicalVisitMinutes(x?.poi);
+    const mHHMM = pid ? manual[pid] : "";
+    if(mHHMM){
+      const mm = minutesFromHHMM(mHHMM);
+      if(mm != null) cur = mm;
+    }
+    const start = cur;
+    const end = cur + dur;
+    out.push({ start, end, dur, poiId: pid });
+    cur = end + bufferMin;
+  }
+  return out;
+}
+
 function getManualTime(poiId){
   const t = __CURRENT_PLAN?.plan?.manual?.times?.[poiId];
   return (typeof t === "string") ? t : "";
@@ -975,6 +1065,7 @@ function setManualTime(poiId, hhmm){
   if(hhmm) __CURRENT_PLAN.plan.manual.times[poiId] = hhmm;
   else delete __CURRENT_PLAN.plan.manual.times[poiId];
   savePlanDraft();
+  renderCurrentPlan();
 }
 function computeDayStats(day, origin, speed){
   const stops = day.stops || [];
@@ -993,89 +1084,21 @@ function computeDayStats(day, origin, speed){
   day.travelKm = km;
   day.visitMin = visit;
 }
-
-function parseHHMMtoMinutes(hhmm){
-  if(!hhmm || typeof hhmm !== "string") return null;
-  const m = hhmm.trim().match(/^([01]?\d|2[0-3]):([0-5]\d)$/);
-  if(!m) return null;
-  const h = parseInt(m[1],10);
-  const mi = parseInt(m[2],10);
-  return h*60 + mi;
-}
-
 function optimizeDayOrder(day, origin){
-  const stops = (day.stops || []).slice();
-  if(!stops.length) return;
-
-  // If the user has set manual times, respect that order by treating timed stops as anchors.
-  // Untimed stops get assigned to the nearest anchor (by distance) and are routed before that anchor.
-  const anchors = [];
-  for(const s of stops){
-    const poiId = s?.poi?.id;
-    const t = poiId ? getManualTime(poiId) : "";
-    const mins = parseHHMMtoMinutes(t);
-    if(mins != null) anchors.push({ stop: s, tMins: mins });
-  }
-  anchors.sort((a,b)=>a.tMins - b.tMins);
-
-  // No anchors → simple nearest-neighbour.
-  if(!anchors.length){
-    const remaining = stops.slice();
-    const out = [];
-    let cur = origin;
-    while(remaining.length){
-      let bestIdx = 0;
-      let bestD = Infinity;
-      for(let i=0;i<remaining.length;i++){
-        const d = haversineKm(cur, remaining[i].coord);
-        if(d < bestD){ bestD = d; bestIdx = i; }
-      }
-      const picked = remaining.splice(bestIdx,1)[0];
-      out.push(picked);
-      cur = picked.coord;
-    }
-    day.stops = out;
-    return;
-  }
-
-  const anchorSet = new Set(anchors.map(a=>a.stop));
-  const flex = stops.filter(s=>!anchorSet.has(s));
-
-  // Assign each flex stop to its nearest anchor.
-  const buckets = anchors.map(()=>[]);
-  for(const s of flex){
-    let bestIdx = 0;
-    let bestD = Infinity;
-    for(let i=0;i<anchors.length;i++){
-      const d = haversineKm(s.coord, anchors[i].stop.coord);
-      if(d < bestD){ bestD = d; bestIdx = i; }
-    }
-    buckets[bestIdx].push(s);
-  }
-
-  // Route each bucket (untimed) before its anchor in time order.
+  const remaining = (day.stops || []).slice();
   const out = [];
   let cur = origin;
-  for(let i=0;i<anchors.length;i++){
-    const bucket = buckets[i];
-    // nearest neighbour within bucket
-    const remaining = bucket.slice();
-    while(remaining.length){
-      let bestIdx = 0;
-      let bestD = Infinity;
-      for(let j=0;j<remaining.length;j++){
-        const d = haversineKm(cur, remaining[j].coord);
-        if(d < bestD){ bestD = d; bestIdx = j; }
-      }
-      const picked = remaining.splice(bestIdx,1)[0];
-      out.push(picked);
-      cur = picked.coord;
+  while(remaining.length){
+    let bestIdx = 0;
+    let bestD = Infinity;
+    for(let i=0;i<remaining.length;i++){
+      const d = haversineKm(cur, remaining[i].coord);
+      if(d < bestD){ bestD = d; bestIdx = i; }
     }
-    // add anchor
-    out.push(anchors[i].stop);
-    cur = anchors[i].stop.coord;
+    const picked = remaining.splice(bestIdx,1)[0];
+    out.push(picked);
+    cur = picked.coord;
   }
-
   day.stops = out;
 }
 function renderCurrentPlan(){
@@ -1185,6 +1208,14 @@ function wirePlanEditor(container){
       return;
     }
     const t = e.target.closest("input[data-action='time']");
+    const ds = e.target.closest("input[data-action='day-start']");
+
+if(ds){
+  const di = parseInt(ds.dataset.day,10);
+  if(!Number.isNaN(di)) setDayStart(di, ds.value);
+  renderCurrentPlan();
+  return;
+}
     if(t){
       const poiId = t.dataset.poi;
       if(poiId) setManualTime(poiId, t.value);
@@ -1344,6 +1375,65 @@ function createCard(poi, regionById){
   return a;
 }
 
+
+/** Theme buckets (UI-level categories)
+ * We keep detailed tags in YAML, but present 5 consistent categories in the UI.
+ */
+const THEME_BUCKETS = [
+  { id: "history-war", label: "Geschiedenis & Oorlog" },
+  { id: "remembrance", label: "Herdenking & Reflectie" },
+  { id: "culture-art", label: "Musea, Kunst & Architectuur" },
+  { id: "outdoors-walks", label: "Buiten & Landschap" },
+  { id: "food-nightlife", label: "Eten & Uitgaan" },
+];
+
+function mapToBuckets(poi){
+  const buckets = new Set();
+  const t = (poi?.type || "").toLowerCase();
+  const themes = (poi?.themes || []).map(x=>String(x).toLowerCase());
+
+  // Type-driven
+  if(["food","nightlife","bar","cafe","restaurant"].includes(t)) buckets.add("food-nightlife");
+  if(t === "park") buckets.add("outdoors-walks");
+  if(["trench","battlefield"].includes(t)) buckets.add("outdoors-walks");
+  if(t === "museum") buckets.add("culture-art");
+  if(["memorial","cemetery","monument"].includes(t)) buckets.add("remembrance");
+
+  // Theme-driven (legacy tags)
+  const hasAny = (...keys)=> keys.some(k => themes.includes(k));
+  const hasLike = (...subs)=> subs.some(s => themes.some(x=>x.includes(s)));
+
+  if(hasLike("ww1","ww2","cold-war","invasion","battle","front","fortress","trench")){
+    buckets.add("history-war");
+  }
+  if(hasAny("remembrance") || hasLike("remembr","holocaust","cemetery")){
+    buckets.add("remembrance");
+  }
+  if(hasAny("museum","art","modern-art","architecture") || hasLike("museum","art","architect","gallery")){
+    buckets.add("culture-art");
+  }
+  if(hasAny("outdoors") || hasLike("outdoor","park","walk","hike","landscape","trail")){
+    buckets.add("outdoors-walks");
+  }
+  if(hasAny("food","nightlife","cocktails","vibe") || hasLike("cocktail","night","food","vibe","club","bar","cafe")){
+    buckets.add("food-nightlife");
+  }
+
+  if(buckets.size === 0){
+    if(["site","district","landmark","viewpoint","palace","town","fort"].includes(t)) buckets.add("history-war");
+    else buckets.add("history-war");
+  }
+  return Array.from(buckets);
+}
+
+function allBucketOptionsForPois(pois){
+  const seen = new Set();
+  for(const p of pois){
+    for(const b of mapToBuckets(p)) seen.add(b);
+  }
+  return THEME_BUCKETS.filter(t=>seen.has(t.id)).map(t=>({value:t.id, label:t.label}));
+}
+
 function buildSelect(selectEl, values, placeholder){
   const first = selectEl.querySelector("option");
   selectEl.innerHTML = "";
@@ -1383,7 +1473,7 @@ function render(){
   const filtered = pois.filter(p=>{
     if(regionFilter && p.region_id !== regionFilter) return false;
     if(typeFilter && (p.type||"") !== typeFilter) return false;
-    if(themeFilter && !(p.themes||[]).includes(themeFilter)) return false;
+    if(themeFilter && !(mapToBuckets(p) || []).includes(themeFilter)) return false;
     if(q && !poiSearchHaystack(p, regionById).includes(q)) return false;
     return true;
   });
@@ -1498,7 +1588,7 @@ async function loadDataset(ds){
     if(r) opt.textContent = r.name;
   }
   buildSelect(els.type, uniq(pois.map(p=>p.type)).sort(), "Alle types");
-  buildSelect(els.theme, uniq(pois.flatMap(p=>p.themes || [])).sort(), "Alle thema’s");
+  buildSelect(els.theme, allBucketOptionsForPois(pois), "Alle thema’s");
   els.region.value = "";
   els.type.value = "";
   els.theme.value = "";
@@ -1549,6 +1639,7 @@ const daysSel = panel.querySelector("#planDays");
 const arrSel = panel.querySelector("#planArrival");
 const depSel = panel.querySelector("#planDeparture");
 const mapSel = panel.querySelector("#planMapProvider");
+const startSel = panel.querySelector("#planStartTime");
 const lunchSel = panel.querySelector("#planIncludeLunch");
 const dinnerSel = panel.querySelector("#planIncludeDinner");
 const cockSel = panel.querySelector("#planIncludeCocktails");
@@ -1559,6 +1650,7 @@ const persistPlan = ()=>{
     arrival: arrSel?.value || __PLAN.arrival,
     departure: depSel?.value || __PLAN.departure,
     mapProvider: mapSel?.value || __PLAN.mapProvider,
+    startTime: startSel?.value || __PLAN.startTime,
     includeLunch: lunchSel ? !!lunchSel.checked : __PLAN.includeLunch,
     includeDinner: dinnerSel ? !!dinnerSel.checked : (__PLAN.includeDinner !== false),
     includeCocktails: cockSel ? !!cockSel.checked : __PLAN.includeCocktails,
@@ -1572,6 +1664,7 @@ daysSel?.addEventListener("change", persistPlan);
 arrSel?.addEventListener("change", persistPlan);
 depSel?.addEventListener("change", persistPlan);
 mapSel?.addEventListener("change", persistPlan);
+startSel?.addEventListener("change", persistPlan);
 lunchSel?.addEventListener("change", persistPlan);
 dinnerSel?.addEventListener("change", persistPlan);
 cockSel?.addEventListener("change", persistPlan);
