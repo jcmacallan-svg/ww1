@@ -46,68 +46,79 @@ schema:
 regions:
 - id: westhoek-ypres-salient
   name: Westhoek – Ypres Salient (Ieper/Passendale/Heuvelland)
-  description: 'Highest density of Western Front sites: museums, trenches, craters, memorials and cemeteries.'
+  description: 'Highest density of Western Front sites: museums, trenches, craters,
+    memorials and cemeteries.'
   base_towns:
   - Ieper (Ypres)
   - Poperinge
   - Heuvelland
 - id: yser-front
   name: IJzerfront – Diksmuide/Nieuwpoort & the flooded polders
-  description: 'Belgian Army front sector: preserved Belgian trenches and the story of inundations.'
+  description: 'Belgian Army front sector: preserved Belgian trenches and the story
+    of inundations.'
   base_towns:
   - Diksmuide
   - Nieuwpoort
 - id: waregem-and-leie
   name: Leie/Lys & Waregem area
-  description: Behind-the-lines remembrance sites, including the only permanent American WWI cemetery in Belgium.
+  description: Behind-the-lines remembrance sites, including the only permanent American
+    WWI cemetery in Belgium.
   base_towns:
   - Waregem
   - Kortrijk
 - id: brussels-central
   name: Brussels & Central Belgium
-  description: National-level collections and context (excellent if you want a big ‘overview’ museum day).
+  description: National-level collections and context (excellent if you want a big
+    ‘overview’ museum day).
   base_towns:
   - Brussel
 - id: liege-forts-1914
   name: Luik (Liège) – Forten & de invasie van 1914
-  description: 'The opening battles of 1914: Brialmont forts, heavy artillery and the Battle of Liège.'
+  description: 'The opening battles of 1914: Brialmont forts, heavy artillery and
+    the Battle of Liège.'
   base_towns:
   - Liège
   - Ans
 - id: namur-and-meuse-1914
   name: Namen (Namur) & Maasvallei (Dinant) – 1914
-  description: Fortified Position of Namur and key civilian history sites along the Meuse valley.
+  description: Fortified Position of Namur and key civilian history sites along the
+    Meuse valley.
   base_towns:
   - Namur
   - Dinant
   - Wépion
 - id: antwerp-national-redoubt
   name: Antwerpen & de ‘National Redoubt’ (1914)
-  description: The fortified position of Antwerp and its siege in 1914; some forts are museums today.
+  description: The fortified position of Antwerp and its siege in 1914; some forts
+    are museums today.
   base_towns:
   - Antwerpen
   - Mechelen
 - id: verdun-meuse
   name: Verdun & Meuse (FR) – 1916
-  description: 'Major WWI battlefield landscape around Verdun: forts, ossuary, trenches and memorial villages.'
+  description: 'Major WWI battlefield landscape around Verdun: forts, ossuary, trenches
+    and memorial villages.'
   base_towns:
   - Verdun
   - Fleury-devant-Douaumont
 - id: somme-front
   name: Somme (FR) – 1916
-  description: 'Somme battlefields and memorials: craters, museums and Commonwealth remembrance sites.'
+  description: 'Somme battlefields and memorials: craters, museums and Commonwealth
+    remembrance sites.'
   base_towns:
   - Albert
   - Péronne
 - id: artois-vimy
   name: Artois & Vimy Ridge (FR) – 1915–1917
-  description: Canadian & Allied remembrance at Vimy Ridge plus wider Artois battlefield context.
+  description: Canadian & Allied remembrance at Vimy Ridge plus wider Artois battlefield
+    context.
   base_towns:
   - Arras
   - Lens
 - id: chemin-des-dames-aisne
   name: Aisne & Chemin des Dames (FR) – 1917
-  description: '1917 offensives and aftermath: ridges, caves (carrières) and memorial landscapes.'
+  description: '1917 offensives and aftermath: ridges, caves (carrières) and memorial
+    landscapes.'
   base_towns:
   - Laon
   - Soissons
@@ -119,7 +130,8 @@ regions:
   - Munster
 - id: german-border-1914
   name: Duitsland (DE) – grens & 1914/Westfront context
-  description: Selected WWI-relevant border-proximate sites and museums in Germany (limited; expand as needed).
+  description: Selected WWI-relevant border-proximate sites and museums in Germany
+    (limited; expand as needed).
   base_towns:
   - Aachen
   - Saarbrücken
@@ -135,7 +147,8 @@ pois:
     coordinates:
       lat: 50.85125
       lon: 2.88563889
-  why_visit: Best ‘big picture’ museum for the Western Front in Belgian Flanders, inside the rebuilt Cloth Hall.
+  why_visit: Best ‘big picture’ museum for the Western Front in Belgian Flanders,
+    inside the rebuilt Cloth Hall.
   themes:
   - remembrance
   - trench-warfare
@@ -153,6 +166,8 @@ pois:
     typical_visit_time: 90–150 min
     indoor_outdoor: indoor
     notes: Reserve extra time if you want the research centre or temporary exhibitions.
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     official: https://www.inflandersfields.be/
     wikipedia: https://en.wikipedia.org/wiki/In_Flanders_Fields_Museum
@@ -174,7 +189,8 @@ pois:
     coordinates:
       lat: 50.85222222
       lon: 2.89166667
-  why_visit: Iconic daily remembrance moment (Last Post at 20:00) plus memorial to the missing of the Salient.
+  why_visit: Iconic daily remembrance moment (Last Post at 20:00) plus memorial to
+    the missing of the Salient.
   themes:
   - remembrance
   related:
@@ -187,6 +203,8 @@ pois:
     typical_visit_time: 20–45 min
     indoor_outdoor: outdoor
     notes: Arrive earlier in busy seasons for a good spot.
+    visit_duration_min: 20
+    visit_duration_max: 45
   links:
     official: https://lastpost.be/
     wikipedia: https://en.wikipedia.org/wiki/Menin_Gate
@@ -211,7 +229,8 @@ pois:
     coordinates:
       lat: 50.88694444
       lon: 2.99805556
-  why_visit: One of the most powerful cemetery visits in the area; vast scale and a strong memorial to the missing.
+  why_visit: One of the most powerful cemetery visits in the area; vast scale and
+    a strong memorial to the missing.
   themes:
   - remembrance
   related:
@@ -223,6 +242,8 @@ pois:
     typical_visit_time: 45–90 min
     indoor_outdoor: outdoor
     notes: Combine with Passchendaele/Zonnebeke sites.
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     official: https://www.cwgc.org/visit-us/find-cemeteries-memorials/cemetery-details/53300/tyne-cot-cemetery/
     wikipedia: https://en.wikipedia.org/wiki/Tyne_Cot_Cemetery
@@ -244,7 +265,8 @@ pois:
     locality: Zonnebeke
     province: West Flanders
     country: Belgium
-  why_visit: Deep dive on Passchendaele (1917) with strong ‘conditions in the salient’ storytelling.
+  why_visit: Deep dive on Passchendaele (1917) with strong ‘conditions in the salient’
+    storytelling.
   themes:
   - trench-warfare
   - remembrance
@@ -257,6 +279,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
     notes: Great paired with Tyne Cot.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Passchendaele_Museum
     maps_query: Passchendaele Museum Zonnebeke
@@ -268,7 +292,8 @@ pois:
     locality: Zillebeke
     province: West Flanders
     country: Belgium
-  why_visit: 'A very tangible trench visit: preserved trenches and a ‘feel’ for terrain and distances.'
+  why_visit: 'A very tangible trench visit: preserved trenches and a ‘feel’ for terrain
+    and distances.'
   themes:
   - trench-warfare
   - remembrance
@@ -283,6 +308,8 @@ pois:
     typical_visit_time: 45–90 min
     indoor_outdoor: mixed
     notes: Often included on battlefield tours.
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/Sanctuary_Wood_Museum
     maps_query: Sanctuary Wood Museum Hill 62
@@ -294,7 +321,8 @@ pois:
     locality: Hooge (near Ieper)
     province: West Flanders
     country: Belgium
-  why_visit: Popular private collection with reconstructions; good ‘artifact heavy’ stop near key sites.
+  why_visit: Popular private collection with reconstructions; good ‘artifact heavy’
+    stop near key sites.
   themes:
   - trench-warfare
   - remembrance
@@ -309,6 +337,8 @@ pois:
     typical_visit_time: 45–90 min
     indoor_outdoor: indoor
     notes: 'Nearby: Hooge Crater Cemetery + battlefield landscape.'
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     official: https://www.hoogecrater.com/en/
     wikipedia: https://en.wikipedia.org/wiki/Hooge_Crater_Museum
@@ -321,7 +351,8 @@ pois:
     locality: Zillebeke
     province: West Flanders
     country: Belgium
-  why_visit: Iconic mined hill in the Salient; great for understanding craters and elevation as ‘weapons’.
+  why_visit: Iconic mined hill in the Salient; great for understanding craters and
+    elevation as ‘weapons’.
   themes:
   - trench-warfare
   - remembrance
@@ -335,6 +366,8 @@ pois:
     typical_visit_time: 30–60 min
     indoor_outdoor: outdoor
     notes: Short, powerful terrain visit.
+    visit_duration_min: 30
+    visit_duration_max: 60
   links:
     wikipedia: https://en.wikipedia.org/wiki/Hill_60_(Ypres)
     maps_query: Hill 60 Zillebeke
@@ -367,6 +400,8 @@ pois:
     typical_visit_time: 30–60 min
     indoor_outdoor: outdoor
     notes: Often open-access; check local info for any closures.
+    visit_duration_min: 30
+    visit_duration_max: 60
   links:
     official: https://www.inflandersfields.be/nl/in-flanders-fields-museum/landschapgetuige/yorkshire-trench-dug-out
     wikipedia: https://en.wikipedia.org/wiki/Yorkshire_Trench
@@ -379,7 +414,8 @@ pois:
     locality: Poperinge
     province: West Flanders
     country: Belgium
-  why_visit: 'Exceptional ‘behind the lines’ social history: preserved soldiers’ club (1915) with attic chapel.'
+  why_visit: 'Exceptional ‘behind the lines’ social history: preserved soldiers’ club
+    (1915) with attic chapel.'
   themes:
   - civilian-history
   - remembrance
@@ -393,6 +429,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
     notes: You can also stay overnight (guesthouse).
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     official: https://www.talbothouse.be/en
     wikipedia: https://en.wikipedia.org/wiki/Talbot_House
@@ -409,7 +447,8 @@ pois:
     coordinates:
       lat: 50.8015
       lon: 2.87747
-  why_visit: Restored German trench system; great counterpoint to the more common Allied narrative sites.
+  why_visit: Restored German trench system; great counterpoint to the more common
+    Allied narrative sites.
   themes:
   - trench-warfare
   related:
@@ -422,6 +461,8 @@ pois:
     typical_visit_time: 45–90 min
     indoor_outdoor: outdoor
     notes: Bring sturdy shoes; it’s a walking site.
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/Croonaert_Wood
     maps_query: Bayernwald trenches Heuvelland
@@ -442,7 +483,8 @@ pois:
     locality: Mesen (Messines)
     province: West Flanders
     country: Belgium
-  why_visit: Memorial that connects battlefield history with reconciliation (excellent ‘reflection’ stop).
+  why_visit: Memorial that connects battlefield history with reconciliation (excellent
+    ‘reflection’ stop).
   themes:
   - remembrance
   related:
@@ -454,6 +496,8 @@ pois:
     typical_visit_time: 20–45 min
     indoor_outdoor: outdoor
     notes: Pairs well with Messines Ridge sites.
+    visit_duration_min: 20
+    visit_duration_max: 45
   links:
     wikipedia: https://en.wikipedia.org/wiki/Island_of_Ireland_Peace_Park
     maps_query: Island of Ireland Peace Park Mesen
@@ -474,7 +518,8 @@ pois:
     locality: Ploegsteert (Comines-Warneton)
     province: Hainaut
     country: Belgium
-  why_visit: Southern edge of the Salient; quieter, reflective memorial setting in Ploegsteert Wood area.
+  why_visit: Southern edge of the Salient; quieter, reflective memorial setting in
+    Ploegsteert Wood area.
   themes:
   - remembrance
   related:
@@ -487,6 +532,8 @@ pois:
     typical_visit_time: 20–45 min
     indoor_outdoor: outdoor
     notes: Combine with a forest walk and nearby cemeteries.
+    visit_duration_min: 20
+    visit_duration_max: 45
   links:
     wikipedia: https://en.wikipedia.org/wiki/Ploegsteert_Memorial_to_the_Missing
     maps_query: Ploegsteert Memorial
@@ -510,7 +557,8 @@ pois:
     coordinates:
       lat: 51.0468
       lon: 2.8436
-  why_visit: Only preserved Belgian trench system from WWI; very direct ‘front-line’ experience.
+  why_visit: Only preserved Belgian trench system from WWI; very direct ‘front-line’
+    experience.
   themes:
   - trench-warfare
   - remembrance
@@ -524,6 +572,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: outdoor
     notes: Check seasonal hours; it can be busy in spring/summer.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     official: https://dodengang.be/en
     wikipedia: https://en.wikipedia.org/wiki/Dodengang
@@ -547,7 +597,8 @@ pois:
     coordinates:
       lat: 51.03166667
       lon: 2.85333333
-  why_visit: Strong Belgian-front focus + panoramic view over the former front area from the tower.
+  why_visit: Strong Belgian-front focus + panoramic view over the former front area
+    from the tower.
   themes:
   - remembrance
   - civilian-history
@@ -560,6 +611,8 @@ pois:
     typical_visit_time: 90–150 min
     indoor_outdoor: indoor
     notes: Plan time for the climb/elevator + viewing terrace.
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     official: https://www.museumaandeijzer.be/
     wikipedia: https://en.wikipedia.org/wiki/Yser_Tower
@@ -581,7 +634,8 @@ pois:
     locality: Vladslo (Diksmuide)
     province: West Flanders
     country: Belgium
-  why_visit: A very different cemetery atmosphere; famous Kollwitz sculpture adds powerful artistic lens on grief.
+  why_visit: A very different cemetery atmosphere; famous Kollwitz sculpture adds
+    powerful artistic lens on grief.
   themes:
   - remembrance
   - art
@@ -594,6 +648,8 @@ pois:
     typical_visit_time: 30–60 min
     indoor_outdoor: outdoor
     notes: Quiet site—good for a reflective stop.
+    visit_duration_min: 30
+    visit_duration_max: 60
   links:
     wikipedia: https://en.wikipedia.org/wiki/Vladslo_German_war_cemetery
     maps_query: Vladslo German war cemetery
@@ -616,7 +672,8 @@ pois:
     coordinates:
       lat: 51.13611111
       lon: 2.75555556
-  why_visit: Tells the story of how strategic inundations halted the German advance in 1914.
+  why_visit: Tells the story of how strategic inundations halted the German advance
+    in 1914.
   themes:
   - naval-coastal
   - civilian-history
@@ -630,6 +687,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
     notes: Combines well with coastal walk + King Albert I monument terrace.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     official: https://www.visit-nieuwpoort.be/en/westfront-nieuwpoort-0
     wikipedia: https://en.wikipedia.org/wiki/King_Albert_I_Memorial
@@ -654,7 +713,8 @@ pois:
     coordinates:
       lat: 51.13611111
       lon: 2.75555556
-  why_visit: Major Belgian WWI memorial at the Ganzepoot; great view and context for the IJzer story.
+  why_visit: Major Belgian WWI memorial at the Ganzepoot; great view and context for
+    the IJzer story.
   themes:
   - remembrance
   related:
@@ -666,6 +726,8 @@ pois:
     typical_visit_time: 20–45 min
     indoor_outdoor: outdoor
     notes: Often paired with Westfront visitor centre underneath/nearby.
+    visit_duration_min: 20
+    visit_duration_max: 45
   links:
     wikipedia: https://nl.wikipedia.org/wiki/Koning_Albert_I-monument
     maps_query: Koning Albert I monument Nieuwpoort
@@ -689,7 +751,8 @@ pois:
     coordinates:
       lat: 50.87361111
       lon: 3.45388889
-  why_visit: Only permanent American WWI cemetery in Belgium (ABMC); small, very peaceful site.
+  why_visit: Only permanent American WWI cemetery in Belgium (ABMC); small, very peaceful
+    site.
   themes:
   - remembrance
   related:
@@ -701,6 +764,8 @@ pois:
     typical_visit_time: 30–60 min
     indoor_outdoor: outdoor
     notes: Combine with a Leie/Lys day or as a ‘quiet’ stop on the way.
+    visit_duration_min: 30
+    visit_duration_max: 60
   links:
     official: https://www.abmc.gov/Flanders-Field
     wikipedia: https://en.wikipedia.org/wiki/Flanders_Field_American_Cemetery_and_Memorial
@@ -725,7 +790,8 @@ pois:
     coordinates:
       lat: 50.84055556
       lon: 4.39277778
-  why_visit: Huge reference collection on WWI across many belligerents; excellent for broader context.
+  why_visit: Huge reference collection on WWI across many belligerents; excellent
+    for broader context.
   themes:
   - civilian-history
   - remembrance
@@ -739,6 +805,8 @@ pois:
     typical_visit_time: 120–240 min
     indoor_outdoor: indoor
     notes: Good ‘rainy day’ option or a pre-trip context visit.
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     official: https://klm-mra.be/en/14-18-gallery
     wikipedia: https://en.wikipedia.org/wiki/Royal_Museum_of_the_Armed_Forces_and_Military_History
@@ -763,7 +831,8 @@ pois:
     coordinates:
       lat: 50.67461111
       lon: 5.49227778
-  why_visit: Signature site of the Battle of Liège; partly preserved in its destroyed state as a memorial.
+  why_visit: Signature site of the Battle of Liège; partly preserved in its destroyed
+    state as a memorial.
   themes:
   - fortress-warfare
   - remembrance
@@ -777,6 +846,8 @@ pois:
     typical_visit_time: 90–150 min
     indoor_outdoor: mixed
     notes: Often via guided tour/audio guide.
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     official: https://visitwallonia.com/en-gb/content/fort-de-loncin-unique-memorial-great-war-liege
     wikipedia: https://en.wikipedia.org/wiki/Fort_de_Loncin
@@ -801,7 +872,8 @@ pois:
     coordinates:
       lat: 50.797
       lon: 5.681
-  why_visit: If you like fortification history, the ring of forts is a full-day (or multi-day) theme.
+  why_visit: If you like fortification history, the ring of forts is a full-day (or
+    multi-day) theme.
   themes:
   - fortress-warfare
   - invasion-1914
@@ -814,6 +886,8 @@ pois:
     typical_visit_time: Half day to multi-day
     indoor_outdoor: mixed
     notes: Pick 1–2 forts max for a weekend; Loncin is the flagship.
+    visit_duration_min: 180
+    visit_duration_max: 300
   links:
     wikipedia: https://en.wikipedia.org/wiki/Fortified_position_of_Li%C3%A8ge
     maps_query: Fortified Position of Liege forts
@@ -834,7 +908,8 @@ pois:
     locality: Namur area
     province: Namur
     country: Belgium
-  why_visit: The 1914 siege story (heavy artillery vs forts) in a different region than Liège.
+  why_visit: The 1914 siege story (heavy artillery vs forts) in a different region
+    than Liège.
   themes:
   - fortress-warfare
   - invasion-1914
@@ -847,6 +922,8 @@ pois:
     typical_visit_time: Half day to multi-day
     indoor_outdoor: mixed
     notes: Pick one fort + a viewpoint/citadel for a focused visit.
+    visit_duration_min: 180
+    visit_duration_max: 300
   links:
     wikipedia: https://en.wikipedia.org/wiki/Fortified_position_of_Namur
     maps_query: Fortified Position of Namur
@@ -866,7 +943,8 @@ pois:
     locality: Wépion (Namur)
     province: Namur
     country: Belgium
-  why_visit: Concrete Brialmont fort heavily bombarded in August 1914; a good ‘fort interior’ visit.
+  why_visit: Concrete Brialmont fort heavily bombarded in August 1914; a good ‘fort
+    interior’ visit.
   themes:
   - fortress-warfare
   - invasion-1914
@@ -879,6 +957,8 @@ pois:
     typical_visit_time: 90–150 min
     indoor_outdoor: mixed
     notes: Check opening days; many forts are guided/limited schedule.
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     official: https://www.namurtourisme.be/en/musees-culture-patrimoine/patrimoine/patrimoine-militaire-fort-de-saint-heribert/
     wikipedia: https://en.wikipedia.org/wiki/Fort_of_Saint-H%C3%A9ribert
@@ -891,7 +971,8 @@ pois:
     locality: Dinant
     province: Namur
     country: Belgium
-  why_visit: 'Civilian history lens: memorial landscape tied to early-war violence on the Meuse.'
+  why_visit: 'Civilian history lens: memorial landscape tied to early-war violence
+    on the Meuse.'
   themes:
   - civilian-history
   - invasion-1914
@@ -905,6 +986,8 @@ pois:
     typical_visit_time: 45–120 min
     indoor_outdoor: mixed
     notes: Combine with a Meuse valley day (Dinant citadel + memorials).
+    visit_duration_min: 45
+    visit_duration_max: 120
   links:
     official: https://visitwallonia.com/en-gb/3/i-love/heritage-and-culture/wallonia-in-the-wars/14-18/dinant-martyr-town
     wikipedia: https://en.wikipedia.org/wiki/Dinant_massacre
@@ -925,7 +1008,8 @@ pois:
     locality: Liezele (Puurs-Sint-Amands)
     province: Antwerp
     country: Belgium
-  why_visit: Excellent entry point into the 1914 Siege of Antwerp and the ‘National Redoubt’ fort belt.
+  why_visit: Excellent entry point into the 1914 Siege of Antwerp and the ‘National
+    Redoubt’ fort belt.
   themes:
   - fortress-warfare
   - invasion-1914
@@ -938,6 +1022,8 @@ pois:
     typical_visit_time: 90–150 min
     indoor_outdoor: mixed
     notes: Modern interactive museum inside a preserved fort.
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     official: https://www.fortliezele.be/en/
     wikipedia: https://en.wikipedia.org/wiki/Fort_Liezele
@@ -953,7 +1039,8 @@ pois:
     coordinates:
       lat: 51.05638889
       lon: 4.34138889
-  why_visit: Built as part of Antwerp’s defenses and saw action in 1914, but today the museum focus is WWII.
+  why_visit: Built as part of Antwerp’s defenses and saw action in 1914, but today
+    the museum focus is WWII.
   themes:
   - fortress-warfare
   - remembrance
@@ -965,7 +1052,10 @@ pois:
   practical:
     typical_visit_time: —
     indoor_outdoor: mixed
-    notes: Include only if you also want WWII context; otherwise skip for a WWI-only weekend.
+    notes: Include only if you also want WWII context; otherwise skip for a WWI-only
+      weekend.
+    visit_duration_min: 75
+    visit_duration_max: 180
   links:
     official: https://fortbreendonk.be/en/historical-overview
     wikipedia: https://en.wikipedia.org/wiki/Fort_Breendonk
@@ -987,7 +1077,8 @@ pois:
     locality: Douaumont-Vaux
     province: Grand Est
     country: France
-  why_visit: Iconic Verdun remembrance site beside the national cemetery; powerful scale and symbolism.
+  why_visit: Iconic Verdun remembrance site beside the national cemetery; powerful
+    scale and symbolism.
   themes:
   - remembrance
   - trench-warfare
@@ -1000,6 +1091,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
     notes: Combine with Fort Douaumont + battlefield villages.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     official: https://www.verdun-tourisme.com/en/decouvrir/ossuaire-de-douaumont/
     wikipedia: https://en.wikipedia.org/wiki/Douaumont_Ossuary
@@ -1023,7 +1116,8 @@ pois:
     coordinates:
       lat: 49.21694444
       lon: 5.43833333
-  why_visit: Key Verdun fort; great for understanding fortress warfare and the 1916 struggle.
+  why_visit: Key Verdun fort; great for understanding fortress warfare and the 1916
+    struggle.
   themes:
   - fortress-warfare
   - trench-warfare
@@ -1037,6 +1131,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
     notes: Bring a jacket—interiors are cool year-round.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Fort_Douaumont
     maps_query: Fort de Douaumont
@@ -1057,7 +1153,8 @@ pois:
     locality: Vaux-devant-Damloup
     province: Grand Est
     country: France
-  why_visit: Famous Verdun fort with intense 1916 fighting; complements Douaumont well.
+  why_visit: Famous Verdun fort with intense 1916 fighting; complements Douaumont
+    well.
   themes:
   - fortress-warfare
   - trench-warfare
@@ -1071,6 +1168,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
     notes: Often less crowded than Douaumont; excellent paired visit.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Fort_Vaux
     maps_query: Fort de Vaux Verdun
@@ -1091,7 +1190,8 @@ pois:
     locality: Fleury-devant-Douaumont
     province: Grand Est
     country: France
-  why_visit: Strong museum giving battlefield context and human stories; great ‘start point’ for Verdun.
+  why_visit: Strong museum giving battlefield context and human stories; great ‘start
+    point’ for Verdun.
   themes:
   - civilian-history
   - trench-warfare
@@ -1105,6 +1205,8 @@ pois:
     typical_visit_time: 90–150 min
     indoor_outdoor: indoor
     notes: Ideal first stop before forts/terrain.
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     official: https://memorial-verdun.fr/en/
     wikipedia: https://en.wikipedia.org/wiki/M%C3%A9morial_de_Verdun
@@ -1117,7 +1219,8 @@ pois:
     locality: Fleury-devant-Douaumont
     province: Grand Est
     country: France
-  why_visit: Small but famous Verdun memorial near the battlefield core; quick reflective stop.
+  why_visit: Small but famous Verdun memorial near the battlefield core; quick reflective
+    stop.
   themes:
   - remembrance
   related:
@@ -1129,6 +1232,8 @@ pois:
     typical_visit_time: 20–40 min
     indoor_outdoor: mixed
     notes: Combine with nearby sites; short visit.
+    visit_duration_min: 20
+    visit_duration_max: 40
   links:
     wikipedia: https://en.wikipedia.org/wiki/Trench_of_Bayonets
     maps_query: Tranchée des Baïonnettes Verdun
@@ -1140,7 +1245,8 @@ pois:
     locality: Verdun area
     province: Grand Est
     country: France
-  why_visit: Marked village sites erased by the battle; powerful ‘landscape memory’ stops on the circuit.
+  why_visit: Marked village sites erased by the battle; powerful ‘landscape memory’
+    stops on the circuit.
   themes:
   - civilian-history
   - remembrance
@@ -1153,6 +1259,8 @@ pois:
     typical_visit_time: 30–120 min
     indoor_outdoor: outdoor
     notes: Drive/walk between multiple marked village sites.
+    visit_duration_min: 30
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Villages_d%C3%A9truits
     maps_query: Villages détruits Verdun
@@ -1179,6 +1287,8 @@ pois:
     typical_visit_time: 30–60 min
     indoor_outdoor: outdoor
     notes: Combine with nearby Ulster Tower/Lochnagar crater.
+    visit_duration_min: 30
+    visit_duration_max: 60
   links:
     wikipedia: https://en.wikipedia.org/wiki/Thiepval_Memorial
     maps_query: Thiepval Memorial
@@ -1211,6 +1321,8 @@ pois:
     typical_visit_time: 20–45 min
     indoor_outdoor: outdoor
     notes: Short stop; bring shoes for muddy edges in wet weather.
+    visit_duration_min: 20
+    visit_duration_max: 45
   links:
     wikipedia: https://en.wikipedia.org/wiki/Lochnagar_crater
     maps_query: Lochnagar Crater
@@ -1231,7 +1343,8 @@ pois:
     locality: Albert
     province: Hauts-de-France
     country: France
-  why_visit: Compact museum (incl. underground spaces) that works well as an intro to the Somme sector.
+  why_visit: Compact museum (incl. underground spaces) that works well as an intro
+    to the Somme sector.
   themes:
   - trench-warfare
   - civilian-history
@@ -1245,6 +1358,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
     notes: Good with a day loop around Albert/Thiepval.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     official: https://www.somme1916.org/en/discover/places-to-visit/somme-1916-museum
     wikipedia: https://en.wikipedia.org/wiki/Mus%C3%A9e_Somme_1916
@@ -1260,7 +1375,8 @@ pois:
     coordinates:
       lat: 49.92916667
       lon: 2.93083333
-  why_visit: Major WWI museum with multinational perspective; excellent ‘context + objects’ visit.
+  why_visit: Major WWI museum with multinational perspective; excellent ‘context +
+    objects’ visit.
   themes:
   - civilian-history
   - remembrance
@@ -1274,6 +1390,8 @@ pois:
     typical_visit_time: 120–240 min
     indoor_outdoor: indoor
     notes: Great rainy-day anchor on a Somme weekend.
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     official: https://www.historial.fr/en/
     wikipedia: https://en.wikipedia.org/wiki/Historial_de_la_Grande_Guerre
@@ -1298,7 +1416,8 @@ pois:
     coordinates:
       lat: 50.3794
       lon: 2.7736
-  why_visit: Iconic memorial + preserved trenches; very strong interpretation of Vimy Ridge.
+  why_visit: Iconic memorial + preserved trenches; very strong interpretation of Vimy
+    Ridge.
   themes:
   - remembrance
   - trench-warfare
@@ -1311,6 +1430,8 @@ pois:
     typical_visit_time: 90–180 min
     indoor_outdoor: mixed
     notes: Guided tours are worth it when available.
+    visit_duration_min: 90
+    visit_duration_max: 180
   links:
     official: https://www.veterans.gc.ca/eng/remembrance/memorials/overseas/first-world-war/france/vimy
     wikipedia: https://en.wikipedia.org/wiki/Canadian_National_Vimy_Memorial
@@ -1348,6 +1469,8 @@ pois:
     typical_visit_time: 75–120 min
     indoor_outdoor: indoor
     notes: Book ahead in peak season.
+    visit_duration_min: 75
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Carri%C3%A8re_Wellington
     maps_query: Carrière Wellington Arras
@@ -1381,6 +1504,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
     notes: Bring warm clothes; caves are cool.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     official: https://www.chemindesdames.fr/en
     wikipedia: https://en.wikipedia.org/wiki/Caverne_du_Dragon
@@ -1396,7 +1521,8 @@ pois:
     coordinates:
       lat: 47.86111111
       lon: 7.16111111
-  why_visit: Major mountain-front battlefield with trenches and a memorial; very different terrain from Flanders.
+  why_visit: Major mountain-front battlefield with trenches and a memorial; very different
+    terrain from Flanders.
   themes:
   - trench-warfare
   - remembrance
@@ -1411,6 +1537,8 @@ pois:
     typical_visit_time: 90–180 min
     indoor_outdoor: outdoor
     notes: Hiking shoes recommended; weather can change quickly.
+    visit_duration_min: 90
+    visit_duration_max: 180
   links:
     official: https://www.memorial-hwk.eu/en/
     wikipedia: https://en.wikipedia.org/wiki/Hartmannswillerkopf
@@ -1445,6 +1573,8 @@ pois:
     typical_visit_time: —
     indoor_outdoor: —
     notes: Voeg concrete musea/forten/monumenten toe via Wikipedia-links.
+    visit_duration_min: 30
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/World_War_I
     maps_query: Germany World War I museum
@@ -1454,7 +1584,9 @@ pois:
       thumb: https://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg?width=900
       page: https://commons.wikimedia.org/wiki/File:WWImontage.jpg
       license: Public domain
-      credit: "Trenches on the Western Front\n\t\t\n\t\t\n\t\t\t\n\t\t\t German Albatros D.III biplane fighters\
-        \ of Jasta 11 at Douai, France\n\t\t\n\t\t\n\t\t\t\n\t\t\t Vickers machine gun crew with gas masks\n\t\t\
-        \n\t\t\n\t\t\t\n\t\t\t British Mark V tanks\n\t\t\n\t\t\n\t\t\t\n\t\t\t British battleship HMS Irresistible"
+      credit: "Trenches on the Western Front\n\t\t\n\t\t\n\t\t\t\n\t\t\t German Albatros\
+        \ D.III biplane fighters of Jasta 11 at Douai, France\n\t\t\n\t\t\n\t\t\t\n\
+        \t\t\t Vickers machine gun crew with gas masks\n\t\t\n\t\t\n\t\t\t\n\t\t\t\
+        \ British Mark V tanks\n\t\t\n\t\t\n\t\t\t\n\t\t\t British battleship HMS\
+        \ Irresistible"
       source: wikimedia

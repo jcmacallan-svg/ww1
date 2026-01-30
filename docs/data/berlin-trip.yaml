@@ -12,7 +12,8 @@ settings:
 regions:
 - id: berlin-mitte
   name: Mitte & Museuminsel
-  description: 'Historisch hart: Museuminsel, Unter den Linden, regeringskwartier en gedenkplekken.'
+  description: 'Historisch hart: Museuminsel, Unter den Linden, regeringskwartier
+    en gedenkplekken.'
   base_towns:
   - Berlin-Mitte
 - id: berlin-tiergarten
@@ -43,7 +44,8 @@ regions:
   - Charlottenburg
 - id: berlin-daytrips
   name: Daytrips (buiten Berlijn)
-  description: Sterke (geschiedenis) uitstapjes buiten de stad, ideaal als je 3+ dagen hebt.
+  description: Sterke (geschiedenis) uitstapjes buiten de stad, ideaal als je 3+ dagen
+    hebt.
   base_towns:
   - Berlin
 pois:
@@ -58,8 +60,8 @@ pois:
     coordinates:
       lat: 52.52219
       lon: 13.38569
-  why_visit: 'Handig startpunt: centraal en dicht bij Friedrichstraße/Spree. Wordt gebruikt als start voor routes
-    in deze tab.'
+  why_visit: 'Handig startpunt: centraal en dicht bij Friedrichstraße/Spree. Wordt
+    gebruikt als start voor routes in deze tab.'
   themes:
   - logistics
   practical:
@@ -80,7 +82,8 @@ pois:
     coordinates:
       lat: 52.535
       lon: 13.38972222
-  why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum en uitkijkpunt.'
+  why_visit: 'Beste plek om de Muur écht te begrijpen: originele strook, documentatiecentrum
+    en uitkijkpunt.'
   themes:
   - history
   - cold-war
@@ -92,6 +95,8 @@ pois:
   practical:
     typical_visit_time: 90–150 min
     indoor_outdoor: mixed
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Wall_Memorial
     maps_query: Gedenkstätte Berliner Mauer
@@ -115,6 +120,8 @@ pois:
   practical:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/DDR_Museum
     maps_query: DDR Museum Berlin
@@ -138,6 +145,8 @@ pois:
   practical:
     typical_visit_time: 90–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     wikipedia: https://en.wikipedia.org/wiki/Stasi_Museum
     maps_query: Stasi Museum Berlin
@@ -153,13 +162,16 @@ pois:
     coordinates:
       lat: 52.5075
       lon: 13.39027778
-  why_visit: Symbolische grensovergang (Koude Oorlog). Druk/toeristisch, maar historisch relevant.
+  why_visit: Symbolische grensovergang (Koude Oorlog). Druk/toeristisch, maar historisch
+    relevant.
   themes:
   - history
   - cold-war
   practical:
     typical_visit_time: 20–40 min
     indoor_outdoor: outdoor
+    visit_duration_min: 20
+    visit_duration_max: 40
   links:
     wikipedia: https://en.wikipedia.org/wiki/Checkpoint_Charlie
     maps_query: Checkpoint Charlie
@@ -172,7 +184,8 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Openlucht-galerie op een stuk Muur: street art + historisch moment langs de Spree.'
+  why_visit: 'Openlucht-galerie op een stuk Muur: street art + historisch moment langs
+    de Spree.'
   themes:
   - street-art
   - history
@@ -184,6 +197,8 @@ pois:
   practical:
     typical_visit_time: 45–90 min
     indoor_outdoor: outdoor
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/East_Side_Gallery
     maps_query: East Side Gallery
@@ -199,7 +214,8 @@ pois:
     coordinates:
       lat: 52.45583333
       lon: 13.2725
-  why_visit: Sterk museum over de Westerse geallieerden in Berlijn en de Koude Oorlog (incl. luchtbrug).
+  why_visit: Sterk museum over de Westerse geallieerden in Berlijn en de Koude Oorlog
+    (incl. luchtbrug).
   themes:
   - history
   - cold-war
@@ -207,6 +223,8 @@ pois:
   practical:
     typical_visit_time: 75–140 min
     indoor_outdoor: indoor
+    visit_duration_min: 75
+    visit_duration_max: 140
   links:
     wikipedia: https://en.wikipedia.org/wiki/Allied_Museum
     maps_query: AlliiertenMuseum Berlin
@@ -231,6 +249,8 @@ pois:
   practical:
     typical_visit_time: 90–180 min
     indoor_outdoor: outdoor
+    visit_duration_min: 90
+    visit_duration_max: 180
   links:
     wikipedia: https://en.wikipedia.org/wiki/Teufelsberg
     maps_query: Teufelsberg Berlin
@@ -246,7 +266,8 @@ pois:
     coordinates:
       lat: 52.50694444
       lon: 13.38277778
-  why_visit: Indrukwekkend documentatiecentrum op historische locatie van het nazistische politie-apparaat.
+  why_visit: Indrukwekkend documentatiecentrum op historische locatie van het nazistische
+    politie-apparaat.
   themes:
   - history
   - ww2
@@ -255,6 +276,8 @@ pois:
   practical:
     typical_visit_time: 90–150 min
     indoor_outdoor: mixed
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     wikipedia: https://en.wikipedia.org/wiki/Topography_of_Terror
     maps_query: Topography of Terror
@@ -270,7 +293,8 @@ pois:
     coordinates:
       lat: 52.51388889
       lon: 13.37888889
-  why_visit: Krachtige herdenkingsplek met info-centrum; ligt centraal en is goed te combineren met Brandenburg/Reichstag.
+  why_visit: Krachtige herdenkingsplek met info-centrum; ligt centraal en is goed
+    te combineren met Brandenburg/Reichstag.
   themes:
   - remembrance
   - ww2
@@ -278,6 +302,8 @@ pois:
   practical:
     typical_visit_time: 45–90 min
     indoor_outdoor: mixed
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/Memorial_to_the_Murdered_Jews_of_Europe
     maps_query: Holocaust Memorial Berlin
@@ -302,6 +328,8 @@ pois:
   practical:
     typical_visit_time: 120–240 min
     indoor_outdoor: indoor
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     wikipedia: https://en.wikipedia.org/wiki/Jewish_Museum_Berlin
     maps_query: Jewish Museum Berlin
@@ -326,6 +354,8 @@ pois:
   practical:
     typical_visit_time: 45–90 min
     indoor_outdoor: indoor
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/German_Resistance_Memorial_Center
     maps_query: Gedenkstätte Deutscher Widerstand
@@ -349,6 +379,8 @@ pois:
   practical:
     typical_visit_time: 180–300 min
     indoor_outdoor: mixed
+    visit_duration_min: 180
+    visit_duration_max: 300
   links:
     wikipedia: https://en.wikipedia.org/wiki/Sachsenhausen_concentration_camp
     maps_query: Sachsenhausen Memorial
@@ -364,7 +396,8 @@ pois:
     coordinates:
       lat: 52.43305556
       lon: 13.16555556
-  why_visit: Historische locatie van de Wannseeconferentie; sober, informatief en belangrijk.
+  why_visit: Historische locatie van de Wannseeconferentie; sober, informatief en
+    belangrijk.
   themes:
   - ww2
   - history
@@ -373,6 +406,8 @@ pois:
   practical:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/House_of_the_Wannsee_Conference
     maps_query: Wannsee Conference House
@@ -388,7 +423,8 @@ pois:
     coordinates:
       lat: 52.51805556
       lon: 13.39694444
-  why_visit: Breed historisch overzicht (incl. Keizerrijk/WO1/WO2). Fijne ‘context’ dag.
+  why_visit: Breed historisch overzicht (incl. Keizerrijk/WO1/WO2). Fijne ‘context’
+    dag.
   themes:
   - history
   - museum
@@ -397,6 +433,8 @@ pois:
   practical:
     typical_visit_time: 120–240 min
     indoor_outdoor: indoor
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     wikipedia: https://en.wikipedia.org/wiki/Deutsches_Historisches_Museum
     maps_query: Deutsches Historisches Museum
@@ -420,6 +458,8 @@ pois:
   practical:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Cathedral
     maps_query: Berliner Dom
@@ -442,6 +482,8 @@ pois:
   practical:
     typical_visit_time: 15–30 min
     indoor_outdoor: outdoor
+    visit_duration_min: 15
+    visit_duration_max: 30
   links:
     wikipedia: https://en.wikipedia.org/wiki/Brandenburg_Gate
     maps_query: Brandenburg Gate
@@ -466,6 +508,8 @@ pois:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
     notes: Check vooraf reservering voor de koepel.
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Reichstag_building
     maps_query: Reichstag Building
@@ -489,6 +533,8 @@ pois:
   practical:
     typical_visit_time: 45–120 min
     indoor_outdoor: mixed
+    visit_duration_min: 45
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Potsdamer_Platz
     maps_query: Potsdamer Platz
@@ -512,6 +558,8 @@ pois:
   practical:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Fernsehturm_Berlin
     maps_query: Fernsehturm Berlin
@@ -535,6 +583,8 @@ pois:
   practical:
     typical_visit_time: 30–90 min
     indoor_outdoor: outdoor
+    visit_duration_min: 30
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/Alexanderplatz
     maps_query: Alexanderplatz
@@ -557,6 +607,8 @@ pois:
   practical:
     typical_visit_time: 120–240 min
     indoor_outdoor: indoor
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     wikipedia: https://en.wikipedia.org/wiki/Hamburger_Bahnhof
     maps_query: Hamburger Bahnhof
@@ -579,6 +631,8 @@ pois:
   practical:
     typical_visit_time: 90–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berlinische_Galerie
     maps_query: Berlinische Galerie
@@ -599,6 +653,8 @@ pois:
   practical:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/KW_Institute_for_Contemporary_Art
     maps_query: KW Institute for Contemporary Art
@@ -622,6 +678,8 @@ pois:
   practical:
     typical_visit_time: 90–180 min
     indoor_outdoor: indoor
+    visit_duration_min: 90
+    visit_duration_max: 180
   links:
     wikipedia: https://en.wikipedia.org/wiki/Gropius_Bau
     maps_query: Gropius Bau
@@ -643,6 +701,8 @@ pois:
   practical:
     typical_visit_time: 45–90 min
     indoor_outdoor: indoor
+    visit_duration_min: 45
+    visit_duration_max: 90
   links:
     wikipedia: https://en.wikipedia.org/wiki/Urban_Nation
     maps_query: Urban Nation Museum
@@ -658,7 +718,8 @@ pois:
     coordinates:
       lat: 52.50665
       lon: 13.33057
-  why_visit: Fotografie-anker met wisselende exposities; makkelijk te combineren met Zoo/Ku’damm.
+  why_visit: Fotografie-anker met wisselende exposities; makkelijk te combineren met
+    Zoo/Ku’damm.
   themes:
   - museum
   - modern-art
@@ -666,6 +727,8 @@ pois:
   practical:
     typical_visit_time: 60–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/C/O_Berlin
     maps_query: C/O Berlin
@@ -681,7 +744,8 @@ pois:
     coordinates:
       lat: 52.52138889
       lon: 13.39555556
-  why_visit: Culture cluster met meerdere musea; ideaal als je een museumdag wilt plannen.
+  why_visit: Culture cluster met meerdere musea; ideaal als je een museumdag wilt
+    plannen.
   themes:
   - museum
   - history
@@ -689,6 +753,8 @@ pois:
   practical:
     typical_visit_time: 120–360 min
     indoor_outdoor: mixed
+    visit_duration_min: 120
+    visit_duration_max: 360
   links:
     wikipedia: https://en.wikipedia.org/wiki/Museum_Island
     maps_query: Museumsinsel Berlin
@@ -712,6 +778,8 @@ pois:
   practical:
     typical_visit_time: 120–240 min
     indoor_outdoor: indoor
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     wikipedia: https://en.wikipedia.org/wiki/Pergamon_Museum
     maps_query: Pergamonmuseum
@@ -735,6 +803,8 @@ pois:
   practical:
     typical_visit_time: 120–240 min
     indoor_outdoor: indoor
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     wikipedia: https://en.wikipedia.org/wiki/Neues_Museum
     maps_query: Neues Museum Berlin
@@ -757,6 +827,8 @@ pois:
   practical:
     typical_visit_time: 45–180 min
     indoor_outdoor: outdoor
+    visit_duration_min: 45
+    visit_duration_max: 180
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tiergarten_(park)
     maps_query: Großer Tiergarten
@@ -779,6 +851,8 @@ pois:
   practical:
     typical_visit_time: 60–180 min
     indoor_outdoor: outdoor
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tempelhofer_Feld
     maps_query: Tempelhofer Feld
@@ -801,6 +875,8 @@ pois:
   practical:
     typical_visit_time: 60–150 min
     indoor_outdoor: outdoor
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     wikipedia: https://en.wikipedia.org/wiki/Mauerpark
     maps_query: Mauerpark
@@ -820,6 +896,8 @@ pois:
   practical:
     typical_visit_time: 45–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 45
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Markthalle_Neun
     maps_query: Markthalle Neun
@@ -838,6 +916,8 @@ pois:
   practical:
     typical_visit_time: 20–45 min
     indoor_outdoor: outdoor
+    visit_duration_min: 20
+    visit_duration_max: 45
   links:
     wikipedia: https://en.wikipedia.org/wiki/Mustafa%27s_Gem%C3%BCse_Kebap
     maps_query: Mustafa's Gemüse Kebap
@@ -856,6 +936,8 @@ pois:
   practical:
     typical_visit_time: 15–40 min
     indoor_outdoor: mixed
+    visit_duration_min: 15
+    visit_duration_max: 40
   links:
     wikipedia: https://en.wikipedia.org/wiki/Curry_36
     maps_query: Curry 36
@@ -867,7 +949,8 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Industriële vibe met street art, bars en events—goed voor avond/late sfeer.
+  why_visit: Industriële vibe met street art, bars en events—goed voor avond/late
+    sfeer.
   themes:
   - vibe
   - street-art
@@ -875,6 +958,8 @@ pois:
   practical:
     typical_visit_time: 60–180 min
     indoor_outdoor: mixed
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     wikipedia: https://en.wikipedia.org/wiki/RAW-Gel%C3%A4nde
     maps_query: RAW-Gelände Berlin
@@ -897,6 +982,8 @@ pois:
     typical_visit_time: —
     indoor_outdoor: indoor
     notes: Check actuele openingstijden/line-ups.
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     wikipedia: https://en.wikipedia.org/wiki/Berghain
     maps_query: Berghain
@@ -917,6 +1004,8 @@ pois:
     typical_visit_time: —
     indoor_outdoor: indoor
     notes: Check actuele openingstijden/line-ups.
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     wikipedia: https://en.wikipedia.org/wiki/Tresor
     maps_query: Tresor Berlin
@@ -936,6 +1025,8 @@ pois:
   practical:
     typical_visit_time: 120–240 min
     indoor_outdoor: mixed
+    visit_duration_min: 120
+    visit_duration_max: 240
   links:
     wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
     maps_query: Schloss Charlottenburg
@@ -954,6 +1045,8 @@ pois:
   practical:
     typical_visit_time: 45–120 min
     indoor_outdoor: outdoor
+    visit_duration_min: 45
+    visit_duration_max: 120
   links:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
@@ -965,7 +1058,8 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one big dinner” night.
+  why_visit: Top fine dining in Mitte (often cited among Berlin’s best). Perfect “one
+    big dinner” night.
   themes:
   - food
   - vibe
@@ -973,6 +1067,8 @@ pois:
     typical_visit_time: 150–240 min
     indoor_outdoor: indoor
     notes: Reserveer ruim op tijd.
+    visit_duration_min: 150
+    visit_duration_max: 240
   links:
     official: https://rutz-restaurant.de/
     maps_query: Rutz Restaurant, Chausseestraße 8, 10115 Berlin
@@ -984,7 +1080,8 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor “culinair + Berlijn vibe”.
+  why_visit: Vegetable-forward fine dining aan het Landwehrkanal; heel sterk voor
+    “culinair + Berlijn vibe”.
   themes:
   - food
   - vibe
@@ -992,6 +1089,8 @@ pois:
     typical_visit_time: 150–240 min
     indoor_outdoor: indoor
     notes: Reserveer; dresscode smart-casual werkt prima.
+    visit_duration_min: 150
+    visit_duration_max: 240
   links:
     official: https://www.restaurant-horvath.de/en
     maps_query: Restaurant Horváth, Paul-Lincke-Ufer 44a, 10999 Berlin
@@ -1003,7 +1102,8 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Iconische “special occasion” setting bij Brandenburger Tor; klassiek topsegment.
+  why_visit: Iconische “special occasion” setting bij Brandenburger Tor; klassiek
+    topsegment.
   themes:
   - food
   - vibe
@@ -1011,6 +1111,8 @@ pois:
   practical:
     typical_visit_time: 150–240 min
     indoor_outdoor: indoor
+    visit_duration_min: 150
+    visit_duration_max: 240
   links:
     official: https://www.hotel-adlon.de/en/restaurants-bars/lorenz-adlon-esszimmer/
     maps_query: Lorenz Adlon Esszimmer, Unter den Linden 77, 10117 Berlin
@@ -1022,13 +1124,16 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: 'Berlijn-klassieker aan de Spree: steaks/seafood + “see and be seen” sfeer.'
+  why_visit: 'Berlijn-klassieker aan de Spree: steaks/seafood + “see and be seen”
+    sfeer.'
   themes:
   - food
   - vibe
   practical:
     typical_visit_time: 90–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 90
+    visit_duration_max: 150
   links:
     official: https://www.grillroyal.com/
     maps_query: Grill Royal, Friedrichstraße 105b, 10117 Berlin
@@ -1040,13 +1145,16 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed beoordeeld.
+  why_visit: Moderne Thai met sterke cocktails/wijn; klein, gezellig en vaak erg goed
+    beoordeeld.
   themes:
   - food
   - vibe
   practical:
     typical_visit_time: 75–130 min
     indoor_outdoor: indoor
+    visit_duration_min: 75
+    visit_duration_max: 130
   links:
     official: https://kindeeberlin.de/
     maps_query: Kin Dee, Lützowstraße 81, 10785 Berlin
@@ -1058,13 +1166,16 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor lunch/early dinner).
+  why_visit: Craft beer + sterke keuken; relaxte vibe bij Gleisdreieck (lekker voor
+    lunch/early dinner).
   themes:
   - food
   - vibe
   practical:
     typical_visit_time: 60–120 min
     indoor_outdoor: mixed
+    visit_duration_min: 60
+    visit_duration_max: 120
   links:
     official: https://www.brlo.de/
     maps_query: BRLO Brwhouse, Schöneberger Straße 16, 10963 Berlin
@@ -1076,13 +1187,16 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin dining”.
+  why_visit: Hedendaags, seizoensgericht en erg populair; goed voor “modern Berlin
+    dining”.
   themes:
   - food
   - vibe
   practical:
     typical_visit_time: 75–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 75
+    visit_duration_max: 150
   links:
     official: https://lovis.berlin/
     maps_query: Lovis, Pannierstraße 24, 12047 Berlin
@@ -1101,6 +1215,8 @@ pois:
   practical:
     typical_visit_time: 45–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 45
+    visit_duration_max: 120
   links:
     official: https://houseofsmallwonder.de/
     maps_query: House of Small Wonder, Johannisstraße 20, 10117 Berlin
@@ -1119,6 +1235,8 @@ pois:
   practical:
     typical_visit_time: 20–60 min
     indoor_outdoor: mixed
+    visit_duration_min: 20
+    visit_duration_max: 60
   links:
     official: https://thefathercarpenter.com/
     maps_query: The Father Carpenter, Münzstraße 21, 10178 Berlin
@@ -1130,7 +1248,8 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out” start.
+  why_visit: Iconische hidden-entry bar (vibe + cocktails) — top voor een “night out”
+    start.
   themes:
   - nightlife
   - vibe
@@ -1138,6 +1257,8 @@ pois:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
     notes: Vaak druk; handig om vroeg te gaan.
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     official: https://tausendberlin.com/
     maps_query: Bar Tausend, Schiffbauerdamm 11, 10117 Berlin
@@ -1157,6 +1278,8 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
     notes: Klein; wachtrij mogelijk.
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     maps_query: Buck and Breck, Brunnenstraße 177, 10119 Berlin
 - id: green-door
@@ -1174,6 +1297,8 @@ pois:
   practical:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     official: https://greendoorbar.de/
     maps_query: Green Door Bar, Winterfeldtstraße 50, 10781 Berlin
@@ -1185,13 +1310,16 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse “louder” spots.
+  why_visit: Old-school cocktailbar met rustige sfeer — mooi contrast met Berlijnse
+    “louder” spots.
   themes:
   - nightlife
   - vibe
   practical:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     maps_query: Rum Trader, Rankestraße 33, 10789 Berlin
 - id: velvet-bar
@@ -1209,6 +1337,8 @@ pois:
   practical:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     maps_query: Velvet Bar Berlin, Ganghoferstraße 1, 12043 Berlin
 - id: becketts-kopf
@@ -1227,6 +1357,8 @@ pois:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
     notes: Check reservering/slots.
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     official: https://beckettskopf.de/
     maps_query: Beckett's Kopf, Pappelallee 64, 10437 Berlin
@@ -1245,6 +1377,8 @@ pois:
   practical:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     maps_query: Bellboy Bar, Pannierstraße 57, 12047 Berlin
 - id: bar-milano
@@ -1262,6 +1396,8 @@ pois:
   practical:
     typical_visit_time: 60–180 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     maps_query: Bar Milano Berlin, Linienstraße 127, 10115 Berlin
 - id: bar-brutal-54
@@ -1272,13 +1408,16 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met hidden gems.
+  why_visit: Meer “natural wine / apero” vibes (en cocktails), vaak in lijstjes met
+    hidden gems.
   themes:
   - nightlife
   - vibe
   practical:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     maps_query: Bar Brutal 54, Schönhauser Allee 54, 10437 Berlin
 - id: kwia
@@ -1296,6 +1435,8 @@ pois:
   practical:
     typical_visit_time: 45–120 min
     indoor_outdoor: indoor
+    visit_duration_min: 45
+    visit_duration_max: 120
   links:
     maps_query: kwia bar, Oranienburger Straße 13, 10178 Berlin
 - id: lamm-bar
@@ -1313,6 +1454,8 @@ pois:
   practical:
     typical_visit_time: 60–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 60
+    visit_duration_max: 150
   links:
     maps_query: Lamm Bar Berlin, Schillerpromenade 21, 12049 Berlin
 - id: monkey-bar
@@ -1331,6 +1474,8 @@ pois:
   practical:
     typical_visit_time: 60–180 min
     indoor_outdoor: mixed
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     official: https://www.monkeybarberlin.de/
     maps_query: Monkey Bar Berlin, Budapester Straße 40, 10787 Berlin
@@ -1342,13 +1487,16 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar wel goed”.
+  why_visit: Relaxte bistro met goede wijnselectie; perfect als “niet te formeel maar
+    wel goed”.
   themes:
   - food
   - vibe
   practical:
     typical_visit_time: 75–150 min
     indoor_outdoor: indoor
+    visit_duration_min: 75
+    visit_duration_max: 150
   links:
     maps_query: Trio Restaurant Berlin, Manteuffelstraße 12, 10997 Berlin
 - id: klunkerkranich
@@ -1359,7 +1507,8 @@ pois:
     locality: Berlin
     province: Berlin
     country: Germany
-  why_visit: Rooftop op een parkeerdek van de Neukölln Arcaden; sunset-vibe, muziek en prima bites/drinks.
+  why_visit: Rooftop op een parkeerdek van de Neukölln Arcaden; sunset-vibe, muziek
+    en prima bites/drinks.
   themes:
   - food
   - vibe
@@ -1369,6 +1518,8 @@ pois:
     typical_visit_time: 60–180 min
     indoor_outdoor: mixed
     notes: Check openingstijden en eventuele entree (verschilt per dag/event).
+    visit_duration_min: 60
+    visit_duration_max: 180
   links:
     official: https://klunkerkranich.org/
     wikipedia: https://de.wikipedia.org/wiki/Klunkerkranich
