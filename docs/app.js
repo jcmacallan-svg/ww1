@@ -111,6 +111,7 @@ function saveFavs(ds, favs){
   localStorage.setItem(favKey(ds), JSON.stringify(Array.from(favs)));
 }
 let favs = loadFavs(currentDataset);
+
 /* ---------------- Planner settings (per dataset) ---------------- */
 function planKey(ds){ return `tripkit_plan_${ds}_v1`; }
 
@@ -424,7 +425,6 @@ function googleMapsDirectionsLink(coords, originOverride=null){
   return u.toString();
 }
 
-
 function appleMapsDirectionsLink(coords, originOverride=null){
   if(coords.length < 2) return null;
   const fmt = (c)=> `${c.lat},${c.lon}`;
@@ -473,7 +473,6 @@ function defaultVisitMinutes(poi){
   if(buckets.includes("history")) return 60;
   return 60;
 }
-
 
 function avgSpeedKmph(doc){
   const s = doc?.settings?.routing?.avg_speed_kmph;
@@ -683,8 +682,10 @@ function insertMealSlotsBerlin(plan, origin, budgets, pools){
   for(let di=0; di<plan.days.length; di++){
     const day = plan.days[di];
     const dayStops = day.stops || [];
-    const mid = dayStops.length ? dayStops[Math.floor(dayStops.length/2)].coord : origin.coordinates;
-    const end = dayStops.length ? dayStops[dayStops.length-1].coord : origin.coordinates;
+
+    // FIX: origin is already {lat,lon}
+    const mid = dayStops.length ? dayStops[Math.floor(dayStops.length/2)].coord : origin;
+    const end = dayStops.length ? dayStops[dayStops.length-1].coord : origin;
 
     const lunchPref = getMealChoice(ds, di, "lunch");
     const dinnerPref = getMealChoice(ds, di, "dinner");
@@ -721,9 +722,10 @@ function insertMealSlotsBerlin(plan, origin, budgets, pools){
 
     day.stops = dayStops;
   }
+
+  // FIX: return plan so caller doesn't end up with undefined
+  return plan;
 }
-
-
 
 /* ---------------- Planner panel ---------------- */
 function ensurePlannerPanel(){
@@ -819,7 +821,6 @@ function ensurePlannerPanel(){
     .plan-li .li-tools{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
     .plan-li .li-tools .time{ width: 120px; }
     .plan-li .li-tools .move{ width: 120px; }
-
   `;
   document.head.appendChild(style);
 
@@ -860,7 +861,6 @@ async function updatePlannerUI(){
   }
 }
 
-
 function applyPlannerSettingsUI(){
   const panel = document.getElementById("plannerPanel");
   if(!panel) return;
@@ -883,6 +883,7 @@ function applyPlannerSettingsUI(){
   if(dinnerEl) dinnerEl.checked = (__PLAN.includeDinner !== false);
   if(cockEl) cockEl.checked = !!__PLAN.includeCocktails;
 }
+
 async function buildWeekendPlan(){
   const favList = (__DOC.pois || []).filter(p => favs.has(p.id));
   const isBerlin = (currentDataset === "berlin");
@@ -936,11 +937,13 @@ async function buildWeekendPlan(){
   }else{
     plan = { days: budgets.map(b=>({budgetMin:b, stops: [], travelKm:0, visitMin:0})), leftovers: [] };
   }
+
   if(isBerlin){
+    // FIX: function returns plan now, so this will never become undefined
     plan = insertMealSlotsBerlin(plan, origin, budgets, pools);
   }
 
-    const html = buildWeekendPlanHtml(plan, origin, budgets, withCoords.length, pools);
+  const html = buildWeekendPlanHtml(plan, origin, budgets, withCoords.length, pools);
   __CURRENT_PLAN = {
     plan,
     origin,
@@ -951,82 +954,86 @@ async function buildWeekendPlan(){
   };
   savePlanDraft();
   return html;
-
 }
 
 function buildWeekendPlanHtml(plan, origin, budgets, totalStops, pools){
-  const doc = __DOC;
   const slotLabel = (i)=>{
-      const d = budgets.length;
-      if(d === 1) return " (dagtrip)";
-      if(i === 0){
-        const a = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.arrival] || "";
-        return ` (aankomst: ${a})`;
-      }
-      if(i === d-1){
-        const dep = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.departure] || "";
-        return ` (vertrek: ${dep})`;
-      }
-      return " (volledige dag)";
-    };
-  
-    const provider = __PLAN.mapProvider || "both";
-    const mapsButtons = (coords)=>{
-      const g = googleMapsDirectionsLink(coords, origin);
-      const a = appleMapsDirectionsLink(coords, origin);
-      const gBtn = g ? `<a class="linkbtn" href="${g}" target="_blank" rel="noopener">Open in Google Maps</a>` : "";
-      const aBtn = a ? `<a class="linkbtn" href="${a}" target="_blank" rel="noopener">Open in Apple Maps</a>` : "";
-      if(provider === "google") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}</div>`;
-      if(provider === "apple") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${aBtn}</div>`;
-      return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}${aBtn}</div>`;
-    };
+    const d = budgets.length;
+    if(d === 1) return " (dagtrip)";
+    if(i === 0){
+      const a = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.arrival] || "";
+      return ` (aankomst: ${a})`;
+    }
+    if(i === d-1){
+      const dep = { morning:"ochtend", afternoon:"middag", evening:"avond" }[__PLAN.departure] || "";
+      return ` (vertrek: ${dep})`;
+    }
+    return " (volledige dag)";
+  };
 
-    const ds = currentDataset;
-    const ps = loadPlanSettings(ds);
+  const provider = __PLAN.mapProvider || "both";
+  const mapsButtons = (coords)=>{
+    const g = googleMapsDirectionsLink(coords, origin);
+    const a = appleMapsDirectionsLink(coords, origin);
+    const gBtn = g ? `<a class="linkbtn" href="${g}" target="_blank" rel="noopener">Open in Google Maps</a>` : "";
+    const aBtn = a ? `<a class="linkbtn" href="${a}" target="_blank" rel="noopener">Open in Apple Maps</a>` : "";
+    if(provider === "google") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}</div>`;
+    if(provider === "apple") return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${aBtn}</div>`;
+    return `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">${gBtn}${aBtn}</div>`;
+  };
 
-    const wantMealSlot = (di, slot) => {
-      const days = ps.days || plan.days.length;
-      const arrival = ps.arrival || "evening";
-      const departure = ps.departure || "afternoon";
-      const isFirst = di === 0;
-      const isLast = di === days - 1;
+  const ds = currentDataset;
+  const ps = loadPlanSettings(ds);
 
-      if(slot === "lunch"){
-        if(!ps.includeLunch) return false;
-        if(isFirst && arrival !== "morning") return false;
-        if(isLast && departure === "morning") return false;
-        return true;
-      }
-      if(slot === "dinner"){
-        if(!ps.includeDinner) return false;
-        if(isLast && departure === "morning") return false;
-        return true;
-      }
-      if(slot === "cocktail"){
-        if(!ps.includeCocktails) return false;
-        if(isLast && (departure === "morning" || departure === "afternoon")) return false;
-        return true;
-      }
-      return false;
-    };
+  const wantMealSlot = (di, slot) => {
+    const days = ps.days || plan.days.length;
+    const arrival = ps.arrival || "evening";
+    const departure = ps.departure || "afternoon";
+    const isFirst = di === 0;
+    const isLast = di === days - 1;
 
-    const mealSelect = (di, slot, label, pool) => {
-      if(!wantMealSlot(di, slot)) return "";
-      const chosen = getMealChoice(ds, di, slot);
-      const opts = (pool || []).map(s => {
-        const id = s.poi?.id || "";
-        const nm = s.poi?.name || id;
-        return `<option value="${escapeHtml(id)}"${id===chosen ? " selected":""}>${escapeHtml(nm)}</option>`;
-      }).join("");
-      const disabled = (!pool || !pool.length) ? " disabled" : "";
-      return `<label class="small">\n        ${label}\n        <select class="select" data-action="meal" data-slot="${slot}" data-day="${di}"${disabled}>\n          <option value="">(auto)</option>\n          ${opts}\n        </select>\n      </label>`;
-    };
-  
-    const section = (label, day, di) => {
-      const stops = day.stops || [];
-      const timeline = computeTimelineForDay(di, stops);
-      const coords = routeCoordsForDay(origin, stops);
-      return `
+    if(slot === "lunch"){
+      if(!ps.includeLunch) return false;
+      if(isFirst && arrival !== "morning") return false;
+      if(isLast && departure === "morning") return false;
+      return true;
+    }
+    if(slot === "dinner"){
+      if(!ps.includeDinner) return false;
+      if(isLast && departure === "morning") return false;
+      return true;
+    }
+    if(slot === "cocktail"){
+      if(!ps.includeCocktails) return false;
+      if(isLast && (departure === "morning" || departure === "afternoon")) return false;
+      return true;
+    }
+    return false;
+  };
+
+  const mealSelect = (di, slot, label, pool) => {
+    if(!wantMealSlot(di, slot)) return "";
+    const chosen = getMealChoice(ds, di, slot);
+    const opts = (pool || []).map(s => {
+      const id = s.poi?.id || "";
+      const nm = s.poi?.name || id;
+      return `<option value="${escapeHtml(id)}"${id===chosen ? " selected":""}>${escapeHtml(nm)}</option>`;
+    }).join("");
+    const disabled = (!pool || !pool.length) ? " disabled" : "";
+    return `<label class="small">
+        ${label}
+        <select class="select" data-action="meal" data-slot="${slot}" data-day="${di}"${disabled}>
+          <option value="">(auto)</option>
+          ${opts}
+        </select>
+      </label>`;
+  };
+
+  const section = (label, day, di) => {
+    const stops = day.stops || [];
+    const timeline = computeTimelineForDay(di, stops);
+    const coords = routeCoordsForDay(origin, stops);
+    return `
         <div class="plan">
           <h3>${label} <span class="pill">${stops.length} stop(s)</span></h3>
           <div class="plan-tools">
@@ -1058,32 +1065,26 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops, pools){
           ${stops.length ? mapsButtons(coords) : ""}
         </div>
       `;
-    };
-  
-    const allStops = plan.days.flatMap(d=>d.stops || []);
+  };
 
-    // Only count stops that actually have coordinates; some POIs (especially food/nightlife)
-    // may not be geocoded yet.
-    const withCoords = allStops.filter(x => {
-      const c = x?.poi?.location?.coordinates;
-      const lat = c?.lat, lon = c?.lon;
-      return Number.isFinite(lat) && Number.isFinite(lon);
-    });
+  const allStops = plan.days.flatMap(d=>d.stops || []);
 
-    const overallCoords = routeCoordsForDay(origin, withCoords);
-    const overallMaps = withCoords.length ? mapsButtons(overallCoords) : "";
-  
-    const leftoversHtml = plan.leftovers?.length ? `
+  // FIX: use the coords actually used by planner (x.coord), not poi.location.coordinates
+  const withCoords = allStops.filter(x => Number.isFinite(x?.coord?.lat) && Number.isFinite(x?.coord?.lon));
+  const overallCoords = routeCoordsForDay(origin, withCoords);
+  const overallMaps = withCoords.length ? mapsButtons(overallCoords) : "";
+
+  const leftoversHtml = plan.leftovers?.length ? `
       <div class="plan">
         <h3>Overige favorieten <span class="pill">${plan.leftovers.length}</span></h3>
         <div class="small">Deze pasten niet in het gekozen aantal dagen/tijden (of zouden de route erg lang maken).</div>
         <ul>${plan.leftovers.map(x=>`<li>${escapeHtml(x.poi.name)} <span class="pill">${escapeHtml(x.poi.location?.locality || "")}</span></li>`).join("")}</ul>
       </div>
     ` : "";
-  
-    return `
+
+  return `
       <div class="small">Route is geoptimaliseerd (nearest-neighbor) en verdeeld over dagen op basis van jouw tijdblokken. (Geen openingstijden/tickets meegenomen.)</div>
-      
+
       <div class="plan" style="margin-top:10px;">
         <h3>Handmatig aanpassen</h3>
         <div class="small" style="color:var(--muted);">Verplaats stops tussen dagen, zet een tijd, of heroptimaliseer per dag. Je wijzigingen worden opgeslagen in je browser.</div>
@@ -1093,24 +1094,24 @@ function buildWeekendPlanHtml(plan, origin, budgets, totalStops, pools){
           <button class="btn btn-ghost" data-action="reset">Reset naar automatische planning</button>
         </div>
       </div>
-  
+
       ${overallMaps ?  `<div class="plan"><h3>Alles in één route <span class="pill">${withCoords.length} stop(s)</span></h3>${overallMaps}</div>` : ""}
       ${plan.days.map((d,i)=>section(`Dag ${i+1}${slotLabel(i)}`, d, i)).join("")}
       ${leftoversHtml}
     `;
 }
 
-
-
 /* ---------------- Plan editor (manual tweaks) ---------------- */
-function planKey(){
+
+// FIX: avoid collision with planKey(ds) used for settings
+function planDraftKey(){
   const favIds = Array.from(favs).sort().join(",");
   return `tripkit.plan.${currentDataset}.${favIds}.${__PLAN.days}.${__PLAN.arrival}.${__PLAN.departure}.${__PLAN.includeLunch?'L':''}${__PLAN.includeDinner!==false?'D':''}${__PLAN.includeCocktails?'C':''}`;
 }
 function savePlanDraft(){
   try{
     if(!__CURRENT_PLAN) return;
-    localStorage.setItem(planKey(), JSON.stringify({
+    localStorage.setItem(planDraftKey(), JSON.stringify({
       v:1, dataset: currentDataset, saved_at: Date.now(),
       plan: __CURRENT_PLAN.plan,
       origin: __CURRENT_PLAN.origin
@@ -1119,7 +1120,7 @@ function savePlanDraft(){
 }
 function loadPlanDraft(){
   try{
-    const raw = localStorage.getItem(planKey());
+    const raw = localStorage.getItem(planDraftKey());
     if(!raw) return null;
     const obj = JSON.parse(raw);
     if(!obj || !obj.plan) return null;
@@ -1263,7 +1264,7 @@ function wirePlanEditor(container){
 
     if(action === "reset"){
       // remove manual draft for this key
-      try{ localStorage.removeItem(planKey()); }catch(_){}
+      try{ localStorage.removeItem(planDraftKey()); }catch(_){}
       // re-run planning fresh
       const panel = document.getElementById("plannerPanel");
       panel?.querySelector("#btnPlan")?.click();
@@ -1326,7 +1327,7 @@ function wirePlanEditor(container){
         insertMealSlotsBerlin(__CURRENT_PLAN.plan, __CURRENT_PLAN.origin, __CURRENT_PLAN.budgets, __CURRENT_PLAN.pools);
         // Recompute stats (distance/time)
         for(let i=0;i<__CURRENT_PLAN.plan.days.length;i++){
-          __CURRENT_PLAN.plan.days[i] = computeDayStats(__CURRENT_PLAN.plan.days[i], __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
+          computeDayStats(__CURRENT_PLAN.plan.days[i], __CURRENT_PLAN.origin, avgSpeedKmph(__DOC));
         }
       }
       renderCurrentPlan();
@@ -1352,22 +1353,22 @@ function wirePlanEditor(container){
       savePlanDraft(); renderCurrentPlan();
       return;
     }
+
     const t = e.target.closest("input[data-action='time']");
     const ds = e.target.closest("input[data-action='day-start']");
 
-if(ds){
-  const di = parseInt(ds.dataset.day,10);
-  if(!Number.isNaN(di)) setDayStart(di, ds.value);
-  renderCurrentPlan();
-  return;
-}
+    if(ds){
+      const di = parseInt(ds.dataset.day,10);
+      if(!Number.isNaN(di)) setDayStart(di, ds.value);
+      renderCurrentPlan();
+      return;
+    }
     if(t){
       const poiId = t.dataset.poi;
       if(poiId) setManualTime(poiId, t.value);
     }
   });
 }
-
 
 /* ---------------- Rendering ---------------- */
 function badge(text){
@@ -1459,7 +1460,6 @@ function createCard(poi, regionById){
   a.appendChild(meta);
   a.appendChild(summary);
 
-
   // If YAML already has an image (from enrich_media.py), use it immediately.
   const preThumb = poi.media?.image?.thumb || poi.media?.image?.url || null;
   if(preThumb){
@@ -1519,7 +1519,6 @@ function createCard(poi, regionById){
 
   return a;
 }
-
 
 /** Theme buckets (UI-level categories)
  * We keep detailed tags in YAML, but present 5 consistent categories in the UI.
@@ -1791,45 +1790,43 @@ async function main(){
 
   const panel = document.getElementById("plannerPanel");
 
+  // planner settings
+  const daysSel = panel.querySelector("#planDays");
+  const arrSel = panel.querySelector("#planArrival");
+  const depSel = panel.querySelector("#planDeparture");
+  const mapSel = panel.querySelector("#planMapProvider");
+  const startSel = panel.querySelector("#planStartTime");
+  const lunchSel = panel.querySelector("#planIncludeLunch");
+  const dinnerSel = panel.querySelector("#planIncludeDinner");
+  const cockSel = panel.querySelector("#planIncludeCocktails");
 
-// planner settings
-const daysSel = panel.querySelector("#planDays");
-const arrSel = panel.querySelector("#planArrival");
-const depSel = panel.querySelector("#planDeparture");
-const mapSel = panel.querySelector("#planMapProvider");
-const startSel = panel.querySelector("#planStartTime");
-const lunchSel = panel.querySelector("#planIncludeLunch");
-const dinnerSel = panel.querySelector("#planIncludeDinner");
-const cockSel = panel.querySelector("#planIncludeCocktails");
-const persistPlan = ()=>{
-  __PLAN = {
-    ...__PLAN,
-    days: parseInt(daysSel?.value || __PLAN.days, 10) || __PLAN.days,
-    arrival: arrSel?.value || __PLAN.arrival,
-    departure: depSel?.value || __PLAN.departure,
-    mapProvider: mapSel?.value || __PLAN.mapProvider,
-    startTime: startSel?.value || __PLAN.startTime,
-    includeLunch: lunchSel ? !!lunchSel.checked : __PLAN.includeLunch,
-    includeDinner: dinnerSel ? !!dinnerSel.checked : (__PLAN.includeDinner !== false),
-    includeCocktails: cockSel ? !!cockSel.checked : __PLAN.includeCocktails,
+  const persistPlan = ()=>{
+    __PLAN = {
+      ...__PLAN,
+      days: parseInt(daysSel?.value || __PLAN.days, 10) || __PLAN.days,
+      arrival: arrSel?.value || __PLAN.arrival,
+      departure: depSel?.value || __PLAN.departure,
+      mapProvider: mapSel?.value || __PLAN.mapProvider,
+      startTime: startSel?.value || __PLAN.startTime,
+      includeLunch: lunchSel ? !!lunchSel.checked : __PLAN.includeLunch,
+      includeDinner: dinnerSel ? !!dinnerSel.checked : (__PLAN.includeDinner !== false),
+      includeCocktails: cockSel ? !!cockSel.checked : __PLAN.includeCocktails,
+    };
+    savePlanSettings(currentDataset, __PLAN);
+    const out = panel.querySelector("#plannerOutput");
+    if(out){ out.innerHTML = ""; out.dataset.hasPlan = ""; }
+    updatePlannerUI();
   };
-  savePlanSettings(currentDataset, __PLAN);
-  const out = panel.querySelector("#plannerOutput");
-  if(out){ out.innerHTML = ""; out.dataset.hasPlan = ""; }
-  updatePlannerUI();
-};
-daysSel?.addEventListener("change", persistPlan);
-arrSel?.addEventListener("change", persistPlan);
-depSel?.addEventListener("change", persistPlan);
-mapSel?.addEventListener("change", persistPlan);
-startSel?.addEventListener("change", persistPlan);
-lunchSel?.addEventListener("change", persistPlan);
-dinnerSel?.addEventListener("change", persistPlan);
-cockSel?.addEventListener("change", persistPlan);
-// Berlin extras
-lunchSel?.addEventListener("change", persistPlan);
-dinnerSel?.addEventListener("change", persistPlan);
-cockSel?.addEventListener("change", persistPlan);
+
+  daysSel?.addEventListener("change", persistPlan);
+  arrSel?.addEventListener("change", persistPlan);
+  depSel?.addEventListener("change", persistPlan);
+  mapSel?.addEventListener("change", persistPlan);
+  startSel?.addEventListener("change", persistPlan);
+  lunchSel?.addEventListener("change", persistPlan);
+  dinnerSel?.addEventListener("change", persistPlan);
+  cockSel?.addEventListener("change", persistPlan);
+
   panel.querySelector("#btnClearFavs").addEventListener("click", ()=>{
     favs = new Set();
     saveFavs(currentDataset, favs);
@@ -1838,6 +1835,7 @@ cockSel?.addEventListener("change", persistPlan);
     if(out){ out.innerHTML = ""; out.dataset.hasPlan = ""; }
     updatePlannerUI();
   });
+
   panel.querySelector("#btnPlan").addEventListener("click", async ()=>{
     const out = panel.querySelector("#plannerOutput");
     out.dataset.hasPlan = "1";
