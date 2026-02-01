@@ -699,6 +699,17 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fernsehturm_Berlin
     maps_query: Fernsehturm Berlin
     wikidata: Q151356
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv_DH_2_Bild-A-07525,_Berlin,_Bau_Fernsehturm.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Bundesarchiv_DH_2_Bild-A-07525,_Berlin,_Bau_Fernsehturm.jpg
+      license: CC BY-SA 3.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+      credit: This image was provided to Wikimedia Commons by the German Federal Archive (Deutsches Bundesarchiv)
+        as part of a cooperation project. The German Federal Archive guarantees an authentic representation only
+        using the originals (negative and/or positive), resp. the digitalization of the originals as provided by
+        the Digital Image Archive.
+      source: wikimedia
 - id: alexanderplatz
   name: Alexanderplatz
   type: district
@@ -724,6 +735,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Alexanderplatz
     maps_query: Alexanderplatz
     wikidata: Q152783
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_-_Alexanderplatz1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_-_Alexanderplatz1.jpg
+      license: FAL
+      license_url: http://artlibre.org/licence/lal/en
+      credit: Own work
+      source: wikimedia
 - id: hamburger-bahnhof
   name: Hamburger Bahnhof – Museum für Gegenwart
   type: museum
@@ -748,6 +767,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Hamburger_Bahnhof
     maps_query: Hamburger Bahnhof
     wikidata: Q584756
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Hamburger_Bahnhof,_Berlin,_Eingangsbereich-49290.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Hamburger_Bahnhof,_Berlin,_Eingangsbereich-49290.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: berlinische-galerie
   name: Berlinische Galerie (moderne kunst / fotografie)
   type: museum
@@ -772,6 +799,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Berlinische_Galerie
     maps_query: Berlinische Galerie
     wikidata: Q700222
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlinische_Galerie_aussen.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlinische_Galerie_aussen.JPG
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Berlinische Galerie
+      source: wikimedia
 - id: kw-institute
   name: KW Institute for Contemporary Art
   type: museum
@@ -794,6 +829,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/KW_Institute_for_Contemporary_Art
     maps_query: KW Institute for Contemporary Art
     wikidata: Q1792296
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/161123_KW_0060_LQ.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:161123_KW_0060_LQ.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: gropius-bau
   name: Gropius Bau
   type: museum
@@ -819,6 +862,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Gropius_Bau
     maps_query: Gropius Bau
     wikidata: Q569445
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Martin-Gropius-Bau_Berlin_cropped.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Martin-Gropius-Bau_Berlin_cropped.jpg
+      license: Public domain
+      credit: Own work
+      source: wikimedia
 - id: urban-nation
   name: Urban Nation (street art museum)
   type: museum
@@ -842,6 +892,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Urban_Nation
     maps_query: Urban Nation Museum
     wikidata: Q111594318
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Schöneberg_Bülowstraße_7_Urban_Nation_2019.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Schöneberg_Bülowstraße_7_Urban_Nation_2019.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: co-berlin
   name: C/O Berlin (fotografie)
   type: museum
@@ -867,6 +925,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/C/O_Berlin
     maps_query: C/O Berlin
     wikidata: Q1022620
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/C-O_Berlin_im_Amerika_Haus-2577.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:C-O_Berlin_im_Amerika_Haus-2577.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: museum-island
   name: Museum Island (Museumsinsel)
   type: district
@@ -892,6 +958,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Museum_Island
     maps_query: Museumsinsel Berlin
     wikidata: Q151963
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Museumsinsel_Fernsehturm.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Museumsinsel_Fernsehturm.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: pergamon-museum
   name: Pergamon Museum (Museuminsel)
   type: museum
@@ -917,6 +991,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Pergamon_Museum
     maps_query: Pergamonmuseum
     wikidata: Q157298
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Pergamonmuseum_Front.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Pergamonmuseum_Front.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: neues-museum
   name: Neues Museum
   type: museum
@@ -942,6 +1024,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Neues_Museum
     maps_query: Neues Museum Berlin
     wikidata: Q157316
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Neues_Museum_-_Joy_of_Museums.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Neues_Museum_-_Joy_of_Museums.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: tiergarten-park
   name: Tiergarten (park-wandeling)
   type: park
@@ -966,6 +1056,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Tiergarten_(park)
     maps_query: Großer Tiergarten
     wikidata: Q694020
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Bln_Tiergtn8.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Bln_Tiergtn8.jpg
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Eisenacher~commonswiki
+      source: wikimedia
 - id: tempelhofer-feld
   name: Tempelhofer Feld (voormalig vliegveld)
   type: park
@@ -990,6 +1088,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Tempelhofer_Feld
     maps_query: Tempelhofer Feld
     wikidata: Q2402748
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Tempelhofer_Feld_May_2021.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Tempelhofer_Feld_May_2021.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: mauerpark
   name: Mauerpark
   type: park
@@ -1014,6 +1120,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Mauerpark
     maps_query: Mauerpark
     wikidata: Q639887
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Mauerpark_1979.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Mauerpark_1979.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: own work (taken with Canon PowerShot A640)
+      source: wikimedia
 - id: markthalle-neun
   name: Markthalle Neun (streetfood/markt)
   type: food
@@ -1120,6 +1234,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Berghain
     maps_query: Berghain
     wikidata: Q136975
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/1_Berlin_Berghain_NYE_01.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:1_Berlin_Berghain_NYE_01.jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: Own work
+      source: wikimedia
 - id: tresor
   name: Tresor (club – techno)
   type: nightlife
@@ -1167,6 +1289,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
     maps_query: Schloss Charlottenburg
     wikidata: Q154996
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Charlottenburg_2025.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Schloss_Charlottenburg_2025.jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: https://www.flickr.com/photos/abbilder/54927813195/
+      source: wikimedia
 - id: kurfuerstendamm
   name: Kurfürstendamm (Ku’damm)
   type: district
@@ -1188,6 +1318,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
     wikidata: Q160272
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Kurfürstendamm_2003.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Kurfürstendamm_2003.JPG
+      license: CC BY-SA 2.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/2.0/de/deed.en
+      credit: Own work
+      source: wikimedia
 - id: rutz-restaurant
   name: Rutz (fine dining)
   type: restaurant
@@ -1651,3 +1789,11 @@ pois:
     wikipedia: https://de.wikipedia.org/wiki/Klunkerkranich
     maps_query: Klunkerkranich Dachterrasse Neukölln Arcaden Karl-Marx-Straße 66 Berlin
     wikidata: Q1141135
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Grus_carunculata,_Linyanti,_Caprivi,_Namibia_1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Grus_carunculata,_Linyanti,_Caprivi,_Namibia_1.jpg
+      license: CC BY-SA 2.0
+      license_url: https://creativecommons.org/licenses/by-sa/2.0
+      credit: wattled_crane_2
+      source: wikimedia

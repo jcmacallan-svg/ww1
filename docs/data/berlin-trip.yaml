@@ -98,6 +98,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Wall_Memorial
     maps_query: Gedenkstätte Berliner Mauer
     wikidata: Q95517
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Mémorial_du_mur_de_Berlin_(6330924243).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Mémorial_du_mur_de_Berlin_(6330924243).jpg
+      license: CC BY 2.0
+      license_url: https://creativecommons.org/licenses/by/2.0
+      credit: Mémorial du mur de Berlin
+      source: wikimedia
 - id: ddr-museum
   name: DDR Museum
   type: museum
@@ -123,6 +131,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/DDR_Museum
     maps_query: DDR Museum Berlin
     wikidata: Q573322
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/20220811_DDR-Museum_01.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:20220811_DDR-Museum_01.jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: Own work
+      source: wikimedia
 - id: stasi-museum
   name: Stasi Museum (Normannenstraße)
   type: museum
@@ -148,6 +164,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Stasi_Museum
     maps_query: Stasi Museum Berlin
     wikidata: Q570472
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Sede_Stasi_Museum.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Sede_Stasi_Museum.JPG
+      license: CC BY 3.0
+      license_url: https://creativecommons.org/licenses/by/3.0
+      credit: Own work
+      source: wikimedia
 - id: checkpoint-charlie
   name: Checkpoint Charlie
   type: site
@@ -172,6 +196,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Checkpoint_Charlie
     maps_query: Checkpoint Charlie
     wikidata: Q68689
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Checkpoint_Charlie_Berlin.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Checkpoint_Charlie_Berlin.jpg
+      license: CC BY-SA 2.0
+      license_url: https://creativecommons.org/licenses/by-sa/2.0
+      credit: Checkpoint Charlie
+      source: wikimedia
 - id: east-side-gallery
   name: East Side Gallery
   type: site
@@ -198,6 +230,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/East_Side_Gallery
     maps_query: East Side Gallery
     wikidata: Q313746
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Wall6270.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Wall6270.JPG
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: allied-museum
   name: Allied Museum (AlliiertenMuseum)
   type: museum
@@ -223,6 +263,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Allied_Museum
     maps_query: AlliiertenMuseum Berlin
     wikidata: Q316329
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Clayallee_AlliiertenMuseum_UAV_04-2017.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Clayallee_AlliiertenMuseum_UAV_04-2017.jpg
+      license: FAL
+      license_url: http://artlibre.org/licence/lal/en
+      credit: Own work
+      source: wikimedia
 - id: teufelsberg
   name: Teufelsberg (afluisterstation & street art)
   type: site
