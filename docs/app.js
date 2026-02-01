@@ -1867,10 +1867,11 @@ async function loadDataset(ds) {
     if (r) opt.textContent = r.name;
   }
   // TYPE filter: actual dataset types (excluding hidden meal POIs for Berlin)
-  const visiblePois = (pois || []).filter((p) => !shouldHideFromCardList(p));
-  const types = uniq(visiblePois.map((p) => p.type))
+  // (Use dataset POIs; `pois` is a local variable inside render()).
+  const visiblePois = (__DOC.pois || []).filter((p) => !shouldHideFromCardList(p));
+  const types = uniq(visiblePois.map((p) => p.type).filter(Boolean))
     .map((t) => String(t))
-    .sort((a, b) => a.localeCompare(b));
+    .sort((a, b) => a.localeCompare(b, "nl", { sensitivity: "base" }));
 
   buildSelect(els.type, types, "Alle types");
   // THEMA filter: the 4 fixed buckets
