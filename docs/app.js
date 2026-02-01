@@ -76,6 +76,10 @@ function normalize(str) {
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "");
 }
+function uniq(arr) {
+  return Array.from(new Set((arr || []).filter(Boolean)));
+}
+
 function escapeHtml(s) {
   return (s || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
@@ -555,36 +559,55 @@ function mapToBuckets(poi) {
 }
 
 /* ---------------- Berlin: meals classification ---------------- */
-function isFoodPoi(poi) {
+function isRestaurantPoi(poi) {
   if (!poi) return false;
   const t = (poi.type || "").toLowerCase();
-  if (["food", "restaurant", "cafe", "bar", "cocktailbar"].includes(t)) return true;
+  if (t === "restaurant") return true;
+
   const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
-  return themes.includes("food") || themes.includes("restaurant") || themes.includes("cafe") || themes.includes("bar");
-}
-function isNightlifePoi(poi) {
-  if (!poi) return false;
-  const t = (poi.type || "").toLowerCase();
-  if (["nightlife", "bar", "cocktailbar", "cafe"].includes(t)) return true;
-  const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
-  return themes.includes("nightlife") || themes.includes("vibe") || themes.includes("bar");
-}
-function isCocktailPoi(poi) {
-  if (!poi) return false;
-  const t = (poi.type || "").toLowerCase();
-  if (t === "cocktailbar") return true;
-  const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
-  if (themes.includes("cocktails") || themes.includes("cocktail")) return true;
+  if (themes.includes("restaurant")) return true;
+
   const nm = (poi.name || "").toLowerCase();
-  if (nm.includes("cocktail")) return true;
-  if (isNightlifePoi(poi) && (nm.includes("bar") || nm.includes("roof"))) return true;
+  if (nm.includes("restaurant") && t !== "cocktailbar") return true;
+
   return false;
 }
+
+function isLunchPoi(poi) {
+  if (!poi) return false;
+  const t = (poi.type || "").toLowerCase();
+  if (["restaurant", "cafe", "food"].includes(t)) return true;
+
+  const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
+  return themes.includes("restaurant") || themes.includes("cafe") || themes.includes("food");
+}
+
+function isDrinkPoi(poi) {
+  if (!poi) return false;
+  const t = (poi.type || "").toLowerCase();
+
+  // Strong type signals
+  if (["cocktailbar", "bar", "nightlife"].includes(t)) return true;
+
+  // Theme signals (avoid overly broad tags like "vibe")
+  const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
+  if (themes.includes("cocktails") || themes.includes("cocktail")) return true;
+  if (themes.includes("bar") || themes.includes("nightlife")) return true;
+
+  // Name-based heuristic (word-boundary, to avoid false positives like "baroque")
+  const nm = (poi.name || "").toLowerCase();
+  if (nm.includes("cocktail")) return true;
+  if (/(^|\W)(bar|pub)(\W|$)/.test(nm)) return true;
+
+  return false;
+}
+
 
 /* ---------------- Berlin UX: hide meal POIs from card list ---------------- */
 function shouldHideFromCardList(poi) {
   if (currentDataset !== "berlin") return false;
-  return isFoodPoi(poi) || isCocktailPoi(poi);
+  // Keep the main card grid focused on sights; meals/drinks are managed via dropdowns in the planner.
+  return isRestaurantPoi(poi) || isDrinkPoi(poi);
 }
 
 /* ---------------- Planner core ---------------- */
@@ -706,11 +729,16 @@ function buildMealPoolsFromAllPois(doc) {
 
   for (const p of pois) {
     const entry = { poi: p, coord: coordsFromPoi(p) }; // coord may be null; still OK for dropdown
-    if (isFoodPoi(p)) {
+
+    if (isLunchPoi(p)) {
       lunchPool.push(entry);
+    }
+    // Dinner: ONLY restaurants (no cocktailbars/bars)
+    if (isRestaurantPoi(p)) {
       dinnerPool.push(entry);
     }
-    if (isCocktailPoi(p)) {
+    // Drinks: places to have a drink (cocktailbars/bars/nightlife). Avoid duplicating restaurants.
+    if (isDrinkPoi(p) && !isRestaurantPoi(p)) {
       cocktailPool.push(entry);
     }
   }
@@ -1047,8 +1075,9 @@ async function buildWeekendPlan() {
 
     mainStops = withCoords.filter((x) => {
       const p = x.poi;
-      if (isFoodPoi(p) && (includeLunch || includeDinner)) return false;
-      if (isCocktailPoi(p) && includeCocktails) return false;
+      if (includeLunch && isLunchPoi(p)) return false;
+      if (!includeLunch && includeDinner && isRestaurantPoi(p)) return false;
+      if (includeCocktails && isDrinkPoi(p)) return false;
       return true;
     });
   }
@@ -1714,8 +1743,8 @@ function render() {
 
   const filtered = pois.filter((p) => {
     if (regionFilter && p.region_id !== regionFilter) return false;
-    const catFilter = typeFilter || themeFilter;
-    if (catFilter && !(mapToBuckets(p) || []).includes(catFilter)) return false;
+    if (typeFilter && String(p.type || "") !== String(typeFilter)) return false;
+    if (themeFilter && !(mapToBuckets(p) || []).includes(themeFilter)) return false;
     if (q && !poiSearchHaystack(p, regionById).includes(q)) return false;
     return true;
   });
@@ -1837,9 +1866,17 @@ async function loadDataset(ds) {
     const r = regions.find((x) => x.id === opt.value);
     if (r) opt.textContent = r.name;
   }
+  // TYPE filter: actual dataset types (excluding hidden meal POIs for Berlin)
+  const visiblePois = (pois || []).filter((p) => !shouldHideFromCardList(p));
+  const types = uniq(visiblePois.map((p) => p.type))
+    .map((t) => String(t))
+    .sort((a, b) => a.localeCompare(b));
+
+  buildSelect(els.type, types, "Alle types");
+  // THEMA filter: the 4 fixed buckets
   const cats = THEME_BUCKETS.map((b) => ({ value: b.id, label: b.label }));
-  buildSelect(els.type, cats, "Alle categorieën");
-  buildSelect(els.theme, cats, "Alle categorieën");
+  buildSelect(els.theme, cats, "Alle thema’s");
+
   els.region.value = "";
   els.type.value = "";
   els.theme.value = "";
@@ -1888,14 +1925,10 @@ async function main() {
   });
   els.type?.addEventListener("change", (e) => {
     __STATE.type = e.target.value;
-    __STATE.theme = e.target.value;
-    if (els.theme.value !== e.target.value) els.theme.value = e.target.value;
     render();
   });
   els.theme?.addEventListener("change", (e) => {
     __STATE.theme = e.target.value;
-    __STATE.type = e.target.value;
-    if (els.type.value !== e.target.value) els.type.value = e.target.value;
     render();
   });
   els.photosOnly?.addEventListener("change", (e) => {
