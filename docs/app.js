@@ -555,53 +555,36 @@ function mapToBuckets(poi) {
 }
 
 /* ---------------- Berlin: meals classification ---------------- */
-function isRestaurantPoi(poi) {
+function isFoodPoi(poi) {
   if (!poi) return false;
   const t = (poi.type || "").toLowerCase();
-  if (t === "restaurant") return true;
-
+  if (["food", "restaurant", "cafe", "bar", "cocktailbar"].includes(t)) return true;
   const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
-  if (themes.includes("restaurant")) return true;
-
-  const nm = (poi.name || "").toLowerCase();
-  if (nm.includes("restaurant") && t !== "cocktailbar") return true;
-
-  return false;
+  return themes.includes("food") || themes.includes("restaurant") || themes.includes("cafe") || themes.includes("bar");
 }
-
-function isLunchPoi(poi) {
+function isNightlifePoi(poi) {
   if (!poi) return false;
   const t = (poi.type || "").toLowerCase();
-  if (["restaurant", "cafe", "food"].includes(t)) return true;
-
+  if (["nightlife", "bar", "cocktailbar", "cafe"].includes(t)) return true;
   const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
-  return themes.includes("restaurant") || themes.includes("cafe") || themes.includes("food");
+  return themes.includes("nightlife") || themes.includes("vibe") || themes.includes("bar");
 }
-
-function isDrinkPoi(poi) {
+function isCocktailPoi(poi) {
   if (!poi) return false;
   const t = (poi.type || "").toLowerCase();
-
-  // Strong signals
-  if (["cocktailbar", "bar", "nightlife"].includes(t)) return true;
-
+  if (t === "cocktailbar") return true;
   const themes = (poi.themes || []).map((x) => String(x).toLowerCase());
   if (themes.includes("cocktails") || themes.includes("cocktail")) return true;
-  if (themes.includes("bar") || themes.includes("nightlife") || themes.includes("vibe")) return true;
-
-  // Name-based heuristic
   const nm = (poi.name || "").toLowerCase();
   if (nm.includes("cocktail")) return true;
-  if (nm.includes("bar") || nm.includes("pub") || nm.includes("tap") || nm.includes("brew")) return true;
-
+  if (isNightlifePoi(poi) && (nm.includes("bar") || nm.includes("roof"))) return true;
   return false;
 }
 
 /* ---------------- Berlin UX: hide meal POIs from card list ---------------- */
 function shouldHideFromCardList(poi) {
   if (currentDataset !== "berlin") return false;
-  // Keep the main card grid focused on sights; meals/drinks are managed via dropdowns in the planner.
-  return isRestaurantPoi(poi) || isDrinkPoi(poi);
+  return isFoodPoi(poi) || isCocktailPoi(poi);
 }
 
 /* ---------------- Planner core ---------------- */
@@ -723,16 +706,11 @@ function buildMealPoolsFromAllPois(doc) {
 
   for (const p of pois) {
     const entry = { poi: p, coord: coordsFromPoi(p) }; // coord may be null; still OK for dropdown
-
-    if (isLunchPoi(p)) {
+    if (isFoodPoi(p)) {
       lunchPool.push(entry);
-    }
-    // Dinner: ONLY restaurants (no cocktailbars/bars)
-    if (isRestaurantPoi(p)) {
       dinnerPool.push(entry);
     }
-    // Drinks: places to have a drink (cocktailbars/bars/nightlife). Avoid duplicating restaurants.
-    if (isDrinkPoi(p) && !isRestaurantPoi(p)) {
+    if (isCocktailPoi(p)) {
       cocktailPool.push(entry);
     }
   }
@@ -1069,9 +1047,8 @@ async function buildWeekendPlan() {
 
     mainStops = withCoords.filter((x) => {
       const p = x.poi;
-      if (includeLunch && isLunchPoi(p)) return false;
-      if (!includeLunch && includeDinner && isRestaurantPoi(p)) return false;
-      if (includeCocktails && isDrinkPoi(p)) return false;
+      if (isFoodPoi(p) && (includeLunch || includeDinner)) return false;
+      if (isCocktailPoi(p) && includeCocktails) return false;
       return true;
     });
   }
