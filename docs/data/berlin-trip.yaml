@@ -297,6 +297,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Teufelsberg
     maps_query: Teufelsberg Berlin
     wikidata: Q564884
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Funkturm_Berlin_View_13.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Funkturm_Berlin_View_13.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: topography-of-terror
   name: Topography of Terror
   type: museum
@@ -323,6 +331,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Topography_of_Terror
     maps_query: Topography of Terror
     wikidata: Q819081
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Topographie_des_Terrors_Neubau.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Topographie_des_Terrors_Neubau.jpg
+      license: CC BY-SA 3.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+      credit: Stiftung Topographie des Terrors
+      source: wikimedia
 - id: memorial-murdered-jews
   name: Memorial to the Murdered Jews of Europe
   type: memorial
@@ -348,6 +364,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Memorial_to_the_Murdered_Jews_of_Europe
     maps_query: Holocaust Memorial Berlin
     wikidata: Q160700
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Holocaust-Mahnmal_in_Mitte_1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Holocaust-Mahnmal_in_Mitte_1.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: jewish-museum-berlin
   name: Jewish Museum Berlin
   type: museum
@@ -374,6 +398,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Jewish_Museum_Berlin
     maps_query: Jewish Museum Berlin
     wikidata: Q157003
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Jüdisches_Museum_und_der_Libeskind-Bau_(cropped).jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Jüdisches_Museum_und_der_Libeskind-Bau_(cropped).jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: bendlerblock-plot-20-july
   name: German Resistance Memorial Center (Bendlerblock)
   type: museum
@@ -400,6 +432,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/German_Resistance_Memorial_Center
     maps_query: Gedenkstätte Deutscher Widerstand
     wikidata: Q880798
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Bendlerblock.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Bendlerblock.jpg
+      license: Public domain
+      credit: 'Transferred from en.wikipedia to Commons. Original text: Photo by en:User:Adam Carr, May 2006'
+      source: wikimedia
 - id: sachsenhausen
   name: Sachsenhausen concentration camp memorial (daytrip)
   type: memorial
@@ -425,6 +464,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Sachsenhausen_concentration_camp
     maps_query: Sachsenhausen Memorial
     wikidata: Q154498
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Sachsenhausen_2_-_Flickr_-_GregTheBusker.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Sachsenhausen_2_-_Flickr_-_GregTheBusker.jpg
+      license: CC BY 2.0
+      license_url: https://creativecommons.org/licenses/by/2.0
+      credit: Sachsenhausen_2
+      source: wikimedia
 - id: wannsee-conference-house
   name: House of the Wannsee Conference
   type: museum
@@ -451,6 +498,15 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/House_of_the_Wannsee_Conference
     maps_query: Wannsee Conference House
     wikidata: Q152120
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Heydrich-Endlosung.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Heydrich-Endlosung.jpg
+      license: Public domain
+      credit: "Probably near to http://www.ghwk.de/fileadmin/user_upload/pdf-wannsee/dokumente/begleitschreiben-heydrich-1942.pdf\
+        \ (See  http://www.ghwk.de/wannsee-konferenz/dokumente-zur-wannsee-konferenz.html ). \n\nFor a more natural\
+        \ photo colouration of original document see: http://www.ghwk.de/fileadmin/user_upload/pdf-wannsee/dokumente/luther_einladung_dezember1941_barrierefrei.pdf"
+      source: wikimedia
 - id: german-historical-museum
   name: Deutsches Historisches Museum
   type: museum
@@ -477,6 +533,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Deutsches_Historisches_Museum
     maps_query: Deutsches Historisches Museum
     wikidata: Q688335
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin,_Mitte,_Unter_den_Linden,_Zeughaus_09.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin,_Mitte,_Unter_den_Linden,_Zeughaus_09.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: berlin-cathedral
   name: Berlin Cathedral (Berliner Dom)
   type: landmark
@@ -502,6 +566,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Berlin_Cathedral
     maps_query: Berliner Dom
     wikidata: Q154563
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berliner_Dom_von_Humboldt-Box.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berliner_Dom_von_Humboldt-Box.jpg
+      license: CC BY-SA 3.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+      credit: Own work
+      source: wikimedia
 - id: brandenburg-gate
   name: Brandenburger Tor
   type: landmark
@@ -526,6 +598,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Brandenburg_Gate
     maps_query: Brandenburg Gate
     wikidata: Q82425
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Brandenburger_Tor_morgens.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Brandenburger_Tor_morgens.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: reichstag-building
   name: Reichstag Building (koepel)
   type: landmark
@@ -552,6 +632,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Reichstag_building
     maps_query: Reichstag Building
     wikidata: Q151897
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Reichstagsgebäude_von_Westen.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Reichstagsgebäude_von_Westen.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: potsdamer-platz
   name: Potsdamer Platz (nieuwe stad / moderne herbouw)
   type: district
@@ -577,6 +665,15 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Potsdamer_Platz
     maps_query: Potsdamer Platz
     wikidata: Q152252
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/PotsdamerPlatz_Vogelperspektive_2004_1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:PotsdamerPlatz_Vogelperspektive_2004_1.jpg
+      license: Public domain
+      credit: 'de.wikipedia.org: 18:32, 17. Apr 2006 . . Mijozi (Diskussion) . . 997 x 730 (205480 Byte) (* Bildbeschreibung:
+        Potsdamer Platz, Berlin (Vogelperspektive) * Quelle: Privatarchiv * Fotograf: Michael J. Zirbes * Datum:
+        September 2004 )'
+      source: wikimedia
 - id: berliner-fernsehturm
   name: Fernsehturm Berlin (TV Tower) – uitzicht
   type: viewpoint
@@ -602,6 +699,17 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Fernsehturm_Berlin
     maps_query: Fernsehturm Berlin
     wikidata: Q151356
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv_DH_2_Bild-A-07525,_Berlin,_Bau_Fernsehturm.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Bundesarchiv_DH_2_Bild-A-07525,_Berlin,_Bau_Fernsehturm.jpg
+      license: CC BY-SA 3.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+      credit: This image was provided to Wikimedia Commons by the German Federal Archive (Deutsches Bundesarchiv)
+        as part of a cooperation project. The German Federal Archive guarantees an authentic representation only
+        using the originals (negative and/or positive), resp. the digitalization of the originals as provided by
+        the Digital Image Archive.
+      source: wikimedia
 - id: alexanderplatz
   name: Alexanderplatz
   type: district
@@ -627,6 +735,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Alexanderplatz
     maps_query: Alexanderplatz
     wikidata: Q152783
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_-_Alexanderplatz1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_-_Alexanderplatz1.jpg
+      license: FAL
+      license_url: http://artlibre.org/licence/lal/en
+      credit: Own work
+      source: wikimedia
 - id: hamburger-bahnhof
   name: Hamburger Bahnhof – Museum für Gegenwart
   type: museum
@@ -651,6 +767,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Hamburger_Bahnhof
     maps_query: Hamburger Bahnhof
     wikidata: Q584756
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Hamburger_Bahnhof,_Berlin,_Eingangsbereich-49290.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Hamburger_Bahnhof,_Berlin,_Eingangsbereich-49290.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: berlinische-galerie
   name: Berlinische Galerie (moderne kunst / fotografie)
   type: museum
@@ -675,6 +799,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Berlinische_Galerie
     maps_query: Berlinische Galerie
     wikidata: Q700222
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlinische_Galerie_aussen.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlinische_Galerie_aussen.JPG
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Berlinische Galerie
+      source: wikimedia
 - id: kw-institute
   name: KW Institute for Contemporary Art
   type: museum
@@ -697,6 +829,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/KW_Institute_for_Contemporary_Art
     maps_query: KW Institute for Contemporary Art
     wikidata: Q1792296
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/161123_KW_0060_LQ.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:161123_KW_0060_LQ.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: gropius-bau
   name: Gropius Bau
   type: museum
@@ -722,6 +862,13 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Gropius_Bau
     maps_query: Gropius Bau
     wikidata: Q569445
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Martin-Gropius-Bau_Berlin_cropped.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Martin-Gropius-Bau_Berlin_cropped.jpg
+      license: Public domain
+      credit: Own work
+      source: wikimedia
 - id: urban-nation
   name: Urban Nation (street art museum)
   type: museum
@@ -745,6 +892,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Urban_Nation
     maps_query: Urban Nation Museum
     wikidata: Q111594318
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Schöneberg_Bülowstraße_7_Urban_Nation_2019.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Schöneberg_Bülowstraße_7_Urban_Nation_2019.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: co-berlin
   name: C/O Berlin (fotografie)
   type: museum
@@ -770,6 +925,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/C/O_Berlin
     maps_query: C/O Berlin
     wikidata: Q1022620
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/C-O_Berlin_im_Amerika_Haus-2577.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:C-O_Berlin_im_Amerika_Haus-2577.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: museum-island
   name: Museum Island (Museumsinsel)
   type: district
@@ -795,6 +958,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Museum_Island
     maps_query: Museumsinsel Berlin
     wikidata: Q151963
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Berlin_Museumsinsel_Fernsehturm.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Berlin_Museumsinsel_Fernsehturm.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: Own work
+      source: wikimedia
 - id: pergamon-museum
   name: Pergamon Museum (Museuminsel)
   type: museum
@@ -820,6 +991,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Pergamon_Museum
     maps_query: Pergamonmuseum
     wikidata: Q157298
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Pergamonmuseum_Front.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Pergamonmuseum_Front.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: neues-museum
   name: Neues Museum
   type: museum
@@ -845,6 +1024,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Neues_Museum
     maps_query: Neues Museum Berlin
     wikidata: Q157316
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Neues_Museum_-_Joy_of_Museums.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Neues_Museum_-_Joy_of_Museums.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: tiergarten-park
   name: Tiergarten (park-wandeling)
   type: park
@@ -869,6 +1056,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Tiergarten_(park)
     maps_query: Großer Tiergarten
     wikidata: Q694020
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Bln_Tiergtn8.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Bln_Tiergtn8.jpg
+      license: CC BY-SA 3.0
+      license_url: http://creativecommons.org/licenses/by-sa/3.0/
+      credit: Eisenacher~commonswiki
+      source: wikimedia
 - id: tempelhofer-feld
   name: Tempelhofer Feld (voormalig vliegveld)
   type: park
