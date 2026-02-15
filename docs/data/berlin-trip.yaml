@@ -1088,6 +1088,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Tempelhofer_Feld
     maps_query: Tempelhofer Feld
     wikidata: Q2402748
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Tempelhofer_Feld_May_2021.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Tempelhofer_Feld_May_2021.jpg
+      license: CC BY-SA 4.0
+      license_url: https://creativecommons.org/licenses/by-sa/4.0
+      credit: Own work
+      source: wikimedia
 - id: mauerpark
   name: Mauerpark
   type: park
@@ -1112,6 +1120,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Mauerpark
     maps_query: Mauerpark
     wikidata: Q639887
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Mauerpark_1979.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Mauerpark_1979.jpg
+      license: CC BY-SA 3.0
+      license_url: https://creativecommons.org/licenses/by-sa/3.0
+      credit: own work (taken with Canon PowerShot A640)
+      source: wikimedia
 - id: markthalle-neun
   name: Markthalle Neun (streetfood/markt)
   type: food
@@ -1218,6 +1234,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Berghain
     maps_query: Berghain
     wikidata: Q136975
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/1_Berlin_Berghain_NYE_01.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:1_Berlin_Berghain_NYE_01.jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: Own work
+      source: wikimedia
 - id: tresor
   name: Tresor (club – techno)
   type: nightlife
@@ -1265,6 +1289,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Schloss_Charlottenburg
     maps_query: Schloss Charlottenburg
     wikidata: Q154996
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Charlottenburg_2025.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Schloss_Charlottenburg_2025.jpg
+      license: CC BY 4.0
+      license_url: https://creativecommons.org/licenses/by/4.0
+      credit: https://www.flickr.com/photos/abbilder/54927813195/
+      source: wikimedia
 - id: kurfuerstendamm
   name: Kurfürstendamm (Ku’damm)
   type: district
@@ -1286,6 +1318,14 @@ pois:
     wikipedia: https://en.wikipedia.org/wiki/Kurfürstendamm
     maps_query: Kurfürstendamm
     wikidata: Q160272
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Kurfürstendamm_2003.JPG?width=900
+      page: https://commons.wikimedia.org/wiki/File:Kurfürstendamm_2003.JPG
+      license: CC BY-SA 2.0 de
+      license_url: https://creativecommons.org/licenses/by-sa/2.0/de/deed.en
+      credit: Own work
+      source: wikimedia
 - id: rutz-restaurant
   name: Rutz (fine dining)
   type: restaurant
@@ -1749,3 +1789,11 @@ pois:
     wikipedia: https://de.wikipedia.org/wiki/Klunkerkranich
     maps_query: Klunkerkranich Dachterrasse Neukölln Arcaden Karl-Marx-Straße 66 Berlin
     wikidata: Q1141135
+  media:
+    image:
+      thumb: https://commons.wikimedia.org/wiki/Special:FilePath/Grus_carunculata,_Linyanti,_Caprivi,_Namibia_1.jpg?width=900
+      page: https://commons.wikimedia.org/wiki/File:Grus_carunculata,_Linyanti,_Caprivi,_Namibia_1.jpg
+      license: CC BY-SA 2.0
+      license_url: https://creativecommons.org/licenses/by-sa/2.0
+      credit: wattled_crane_2
+      source: wikimedia
